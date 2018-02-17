@@ -2,6 +2,6 @@ package stuff;
 
 public class SECRETS {
 
-    public static String TOKEN="TEST";
+    public static String TOKEN="TEStttT";
 
 }
