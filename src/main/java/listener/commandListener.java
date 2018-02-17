@@ -20,7 +20,7 @@ public class commandListener extends ListenerAdapter {
         try {
 
             Connection con = DriverManager.getConnection(url + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
-            PreparedStatement pst = con.prepareStatement("Select * FROM `ID` WHERE ID=" + event.getGuild().getId());
+            PreparedStatement pst = con.prepareStatement("Select * FROM `server` WHERE ID=" + event.getGuild().getId());
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 String PREFIX=rs.getString(2);
