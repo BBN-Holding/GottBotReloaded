@@ -38,7 +38,9 @@ public class prefix implements Command {
                     pst = con.prepareStatement("UPDATE `server` SET `Prefix`='" + args[0] + "' WHERE ID=" + event.getGuild().getId());
                     pst.execute();
                     event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Prefix changed").setDescription("Your Prefix is now: "+ args[0]).setColor(Color.green).build()).queue();
+                    pst.close();
                 }
+                rs.close();
             }
         } catch (Exception e) {
             e.printStackTrace();

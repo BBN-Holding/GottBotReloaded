@@ -1,5 +1,6 @@
 package core;
 
+import commands.language;
 import commands.prefix;
 import commands.test;
 import listener.Guildjoin;
@@ -21,6 +22,7 @@ public class Main {
         builder.addEventListener(new commandListener());
         builder.addEventListener(new Guildjoin());
 
+        commandHandler.commands.put("language", new language());
         commandHandler.commands.put("test", new test());
         commandHandler.commands.put("prefix", new prefix());
 
