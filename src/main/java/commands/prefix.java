@@ -22,13 +22,8 @@ public class prefix implements Command {
 
             if (args.length<1) {
                 try {
-                Connection con = DriverManager.getConnection(url + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
-                PreparedStatement pst = con.prepareStatement("Select * FROM `server` WHERE ID=" + event.getGuild().getId());
-                ResultSet rs = pst.executeQuery();
-                if (rs.next()) {
-                    event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Prefix").setDescription("Your Prefix is: " + rs.getString(2) + "\nTo set a new Prefix write: " + rs.getString(2) + "prefix <New Prefix>").setColor(Color.green).build()).queue();
-                }
-                rs.close();
+                    lang.getlanguage(event.getMember().getUser(), true, "prefix", event.getGuild());
+                    event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.CYAN).build()).queue();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -41,7 +36,8 @@ public class prefix implements Command {
                         con = DriverManager.getConnection(url + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
                         pst = con.prepareStatement("UPDATE `server` SET `Prefix`='" + args[0] + "' WHERE ID=" + event.getGuild().getId());
                         pst.execute();
-                        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Prefix changed").setDescription("Your Prefix is now: " + args[0]).setColor(Color.green).build()).queue();
+                        lang.getlanguage(event.getMember().getUser(), true, "prefixchanged", event.getGuild());
+                        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.green).build()).queue();
                         pst.close();
                     }
                     rs.close();

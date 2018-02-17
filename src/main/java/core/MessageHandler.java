@@ -64,12 +64,12 @@ public class MessageHandler {
                     }
                 }
                 //prefixerror1
-                if (message.equals("rpefixerror1")) {
+                if (message.equals("prefixerror1")) {
                     if (lang.equals("english")) {
                         Titel = "Error";
-                        Message = "This Prefix is not Supported by the Bot. Please take an other Prefix";
+                        Message = "This Prefix is not Supported by the Bot. Please take another Prefix";
                     } else if (lang.equals("german")) {
-                        Titel="Prefix geändert";
+                        Titel="Fehler";
                         Message="Dieser Prefix wird von unserem Bot nicht unterstützt. Bitte benutze einen anderen";
                     }
                 }
