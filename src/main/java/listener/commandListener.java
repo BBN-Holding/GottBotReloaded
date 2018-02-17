@@ -29,6 +29,7 @@ public class commandListener extends ListenerAdapter {
                     commandHandler.handleCommand(commandHandler.parser.parse(event.getMessage().getContentRaw().toLowerCase(), event));
                 }
             }
+            rs.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
