@@ -4,6 +4,8 @@ import core.Main;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import core.commandHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import stuff.SECRETS;
 
 import java.sql.Connection;
@@ -16,8 +18,10 @@ import static stuff.DATA.url;
 
 public class commandListener extends ListenerAdapter {
     public static String beheaded;
+    private static Logger logger = LoggerFactory.getLogger(commandListener.class);
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
+        logger.info(event.getAuthor().getName()+" mit ID "+ event.getAuthor().getId()+" auf "+event.getGuild().getName()+" hat "+ event.getMessage().getContentRaw()+ " geschrieben");
         try {
 
             Connection con = DriverManager.getConnection(url + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
@@ -28,7 +32,6 @@ public class commandListener extends ListenerAdapter {
                 if (event.getMessage().getContentRaw().startsWith(PREFIX) && event.getMessage().getAuthor().getId() != event.getJDA().getSelfUser().getId()) {
                     beheaded = event.getMessage().getContentRaw().replaceFirst(Pattern.quote(PREFIX), "");
                     commandHandler.handleCommand(commandHandler.parser.parse(event.getMessage().getContentRaw().toLowerCase(), event));
-                    System.out.println(event.getAuthor().getName()+" mit ID "+ event.getAuthor().getId()+" hat "+ event.getMessage().getContentRaw()+ " als Command benutzt!");
                 }
             }
             rs.close();

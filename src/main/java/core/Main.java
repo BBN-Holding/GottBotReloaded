@@ -10,15 +10,18 @@ import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.OnlineStatus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import stuff.SECRETS;
 
 import javax.security.auth.login.LoginException;
 
 public class Main {
     public static JDABuilder builder;
+
+
     public static void main(String[] args) {
         builder = new JDABuilder(AccountType.BOT).setToken(SECRETS.TOKEN).setAutoReconnect(true).setStatus(OnlineStatus.ONLINE);
-
         builder.addEventListener(new commandListener());
         builder.addEventListener(new Guildjoin());
 
