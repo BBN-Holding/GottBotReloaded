@@ -37,6 +37,7 @@ public class Guildjoin extends ListenerAdapter {
                         pst.close();
                     }
                     rs.close();
+                    System.out.println(event.getGuild().getMembers().get(i).getUser().getName()+" ID: "+event.getGuild().getMembers().get(i).getUser().getId()+ " wurde zu meiner Datenbank hinzugefügt!");
                     i++;
                 }
 

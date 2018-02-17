@@ -43,6 +43,38 @@ public class MessageHandler {
                         Message = "Deine Sprache ist nun Deutsch!";
                     }
                 }
+                // prefix
+                if (message.equals("prefix")) {
+                    if (lang.equals("english")) {
+                        Titel="Prefix";
+                        Message="The Prefix on this Server is: "+rs.getString(2)+"\nTo set a new Prefix write: "+rs.getString(2)+"prefix <New Prefix>";
+                    } else if (lang.equals("german")) {
+                        Titel="Prefix";
+                        Message="Der Prefix auf diesem Server ist: "+rs.getString(2)+"\nWenn du einen neuen setzen möchtest schreibe: "+rs.getString(2)+"prefix <Neuer Prefix>";
+                    }
+                }
+                // prefixchanged
+                if (message.equals("prefixchanged")) {
+                    if (lang.equals("english")) {
+                        Titel="Prefix changed";
+                        Message="The Prefix on this Server is now: "+rs.getString(2);
+                    } else if (lang.equals("german")) {
+                        Titel="Prefix geändert";
+                        Message="Der Prefix auf diesem Server ist jetzt: "+rs.getString(2);
+                    }
+                }
+                //prefixerror1
+                if (message.equals("rpefixerror1")) {
+                    if (lang.equals("english")) {
+                        Titel = "Error";
+                        Message = "This Prefix is not Supported by the Bot. Please take an other Prefix";
+                    } else if (lang.equals("german")) {
+                        Titel="Prefix geändert";
+                        Message="Dieser Prefix wird von unserem Bot nicht unterstützt. Bitte benutze einen anderen";
+                    }
+                }
+
+
             }
         } catch (Exception e) {
             e.printStackTrace();
