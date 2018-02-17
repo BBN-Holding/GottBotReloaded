@@ -1,5 +1,6 @@
 package core;
 
+import commands.test;
 import listener.Guildjoin;
 import listener.commandListener;
 import net.dv8tion.jda.core.AccountType;
@@ -18,6 +19,8 @@ public class Main {
 
         builder.addEventListener(new commandListener());
         builder.addEventListener(new Guildjoin());
+
+        commandHandler.commands.put("test", new test());
 
         try {
             JDA jda = builder.buildBlocking();

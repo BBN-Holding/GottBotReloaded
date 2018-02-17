@@ -17,11 +17,11 @@ public class Guildjoin extends ListenerAdapter {
         try {
             System.out.println("Ich bin auf einem neuen Server: Name: "+event.getGuild().getName()+" ID: "+event.getGuild().getId()+" Member: "+event.getGuild().getMembers().size());
             Connection con = DriverManager.getConnection(url + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
-            PreparedStatement pst = con.prepareStatement("Select * FROM `ID` WHERE ID=" + event.getGuild().getId());
+            PreparedStatement pst = con.prepareStatement("Select * FROM `server` WHERE ID=" + event.getGuild().getId());
             ResultSet rs = pst.executeQuery();
             if (!rs.next()) {
-                con = DriverManager.getConnection(url + "miner?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
-                pst = con.prepareStatement("INSERT INTO `Server` (`ID`) VALUES ('"+event.getGuild().getId()+"');");
+                con = DriverManager.getConnection(url + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
+                pst = con.prepareStatement("INSERT INTO `server` (`ID`) VALUES ('"+event.getGuild().getId()+"');");
                 pst.execute();
                 rs.close();
             }
