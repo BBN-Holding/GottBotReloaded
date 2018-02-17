@@ -4,6 +4,7 @@ import commands.help;
 import commands.language;
 import commands.prefix;
 import commands.test;
+import commands.cmd_bug;
 import listener.Guildjoin;
 import listener.commandListener;
 import net.dv8tion.jda.core.AccountType;
@@ -29,6 +30,7 @@ public class Main {
         commandHandler.commands.put("test", new test());
         commandHandler.commands.put("prefix", new prefix());
         commandHandler.commands.put("help", new help());
+        commandHandler.commands.put("bug", new cmd_bug());
 
         try {
             JDA jda = builder.buildBlocking();
