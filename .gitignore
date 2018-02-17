@@ -1,6 +1,6 @@
 # Compiled class file
 *.class
-src/main/java/stuff/
+src/main/java/stuff/*
 
 # Log file
 *.log
