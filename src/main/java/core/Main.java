@@ -6,6 +6,8 @@ import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.OnlineStatus;
 import stuff.SECRETS;
 
+import javax.security.auth.login.LoginException;
+
 public class Main {
 
     public static JDABuilder builder;
@@ -16,7 +18,9 @@ public class Main {
 
         try {
             JDA jda = builder.buildBlocking();
-        } catch (Exception e) {
+        } catch (LoginException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
