@@ -21,7 +21,7 @@ public class Guildjoin extends ListenerAdapter {
             ResultSet rs = pst.executeQuery();
             if (!rs.next()) {
                 con = DriverManager.getConnection(urlempty + "miner?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
-                pst = con.prepareStatement("Select * FROM `ID` WHERE ID=" + event.getGuild().getId());
+                pst = con.prepareStatement("INSERT INTO `Server` (`ID`) VALUES ('"+event.getGuild().getId()+"');");
                 pst.execute();
                 rs.close();
             }
