@@ -27,4 +27,4 @@ hs_err_pid*
 *.xml
 
 
-src/main/java/stuff/SECRETS.java
+SECRETS.java
