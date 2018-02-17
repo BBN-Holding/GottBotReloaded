@@ -11,7 +11,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import static stuff.DATA.urlempty;
+import static stuff.DATA.url;
 
 public class commandListener extends ListenerAdapter {
     public static String beheaded;
@@ -19,7 +19,7 @@ public class commandListener extends ListenerAdapter {
     public void onMessageReceived(MessageReceivedEvent event) {
         try {
 
-            Connection con = DriverManager.getConnection(urlempty + "miner?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
+            Connection con = DriverManager.getConnection(url + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
             PreparedStatement pst = con.prepareStatement("Select * FROM `ID` WHERE ID=" + event.getGuild().getId());
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
