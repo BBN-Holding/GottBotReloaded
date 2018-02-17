@@ -1,6 +1,6 @@
 # Compiled class file
 *.class
-src/main/java/stuff/*
+ GottBotReloaded/src/main/java/stuff/SECRETS.java 
 
 # Log file
 *.log
