@@ -21,7 +21,35 @@ public class MessageHandler {
             PreparedStatement pst = con.prepareStatement("SELECT * FROM `server` WHERE ID='"+guild.getId()+"'");
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
-                //lang
+                // noperms
+                if (message.equals("nopers")) {
+                    if (lang.equals("english")) {
+                        Titel="No permissions";
+                        Message="You need the GBOwner Role to use the Command";
+                    } else if (lang.equals("german")) {
+                        Titel="Keine Rechte";
+                        Message="Du brauchst die GBOwner Rolle damit du den Command benutzen darfst";
+                    }
+                }
+                // help
+                if (message.equals("help")) {
+                    if (lang.equals("english")) {
+                        Titel="Help Menu";
+                        Message="Here comes the Help for you!\n" +
+                                "``"+rs.getString(2)+"help`` - You become Help\n" +
+                                "``"+rs.getString(2)+"language`` - You can change your language\n" +
+                                "``"+rs.getString(2)+"prefix`` - [GBOwner Role only] You can edit the Server Prefix\n" +
+                                "``"+rs.getString(2)+"test`` - A Test";
+                    } else if (lang.equals("german")) {
+                        Titel="Hilfe Menü";
+                        Message="Hier kommt Hilfe für dich!\n" +
+                                "``"+rs.getString(2)+"help`` - Damit kommst du hier hin\n" +
+                                "``"+rs.getString(2)+"language`` - Damit kannst du deine Sprache ändern\n" +
+                                "``"+rs.getString(2)+"prefix`` - [nur GBOwner Role] Damit kannst du den Prefix ändern\n" +
+                                "``"+rs.getString(2)+"test`` - Ein Test";
+                    }
+                }
+                // lang
                 if (message.equals("lang")) {
                     if (lang.equals("english")) {
                         Titel = "Your language";

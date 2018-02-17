@@ -12,6 +12,7 @@ import java.sql.*;
 import static stuff.DATA.url;
 
 public class prefix implements Command {
+    boolean Role=false;
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -20,10 +21,19 @@ public class prefix implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
 
-            if (args.length<1) {
+        int i =0;
+        while (event.getMember().getRoles().size()-1>=i) {
+            if (event.getMember().getRoles().get(i).getName().equalsIgnoreCase("GBOwner")) {
+                Role=true;
+            }
+            i++;
+        }
+        if (event.getAuthor().getId()==event.getGuild().getOwner().getUser().getId() || Role) {
+            if (args.length < 1) {
                 try {
                     lang.getlanguage(event.getMember().getUser(), true, "prefix", event.getGuild());
                     event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.CYAN).build()).queue();
+                    Role=false;
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -41,14 +51,19 @@ public class prefix implements Command {
                         pst.close();
                     }
                     rs.close();
+                    Role=false;
                 } catch (SQLSyntaxErrorException e) {
                     lang.getlanguage(event.getMember().getUser(), true, "prefixerror1", event.getGuild());
                     event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.RED).build()).queue();
+                    Role=false;
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-
+        } else if (Role=false) {
+            lang.getlanguage(event.getMember().getUser(), true, "noperms", event.getGuild());
+            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.RED).build()).queue();
+        }
     }
 
     @Override

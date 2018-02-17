@@ -1,5 +1,6 @@
 package core;
 
+import commands.help;
 import commands.language;
 import commands.prefix;
 import commands.test;
@@ -15,7 +16,6 @@ import javax.security.auth.login.LoginException;
 
 public class Main {
     public static JDABuilder builder;
-
     public static void main(String[] args) {
         builder = new JDABuilder(AccountType.BOT).setToken(SECRETS.TOKEN).setAutoReconnect(true).setStatus(OnlineStatus.ONLINE);
 
@@ -25,6 +25,7 @@ public class Main {
         commandHandler.commands.put("language", new language());
         commandHandler.commands.put("test", new test());
         commandHandler.commands.put("prefix", new prefix());
+        commandHandler.commands.put("help", new help());
 
         try {
             JDA jda = builder.buildBlocking();
