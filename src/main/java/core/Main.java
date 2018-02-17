@@ -1,5 +1,7 @@
 package core;
 
+import listener.Guildjoin;
+import listener.commandListener;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
@@ -14,6 +16,8 @@ public class Main {
     public static void main(String[] args) {
         builder = new JDABuilder(AccountType.BOT).setToken(SECRETS.TOKEN).setAutoReconnect(true).setStatus(OnlineStatus.ONLINE);
 
+        builder.addEventListener(new commandListener());
+        builder.addEventListener(new Guildjoin());
 
         try {
             JDA jda = builder.buildBlocking();
