@@ -3,7 +3,6 @@ package commands;
 import core.MessageHandler;
 import core.lang;
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import stuff.SECRETS;
 
@@ -11,7 +10,6 @@ import java.awt.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 import static stuff.DATA.url;
 

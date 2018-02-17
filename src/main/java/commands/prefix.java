@@ -64,6 +64,7 @@ public class prefix implements Command {
             lang.getlanguage(event.getMember().getUser(), true, "noperms", event.getGuild());
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.RED).build()).queue();
         }
+
     }
 
     @Override

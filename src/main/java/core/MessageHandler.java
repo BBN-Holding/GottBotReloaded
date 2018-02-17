@@ -21,6 +21,16 @@ public class MessageHandler {
             PreparedStatement pst = con.prepareStatement("SELECT * FROM `server` WHERE ID='"+guild.getId()+"'");
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
+                // Bugsucess
+                if (message.equals("bugsucess")) {
+                    if (lang.equals("english")) {
+                        Titel="Bug reported";
+                        Message="Successfully send the bug to the developers.";
+                    } else if (lang.equals("german")) {
+                        Titel="Bug gemeldet";
+                        Message="Der Bug wurde erfolgreich zu den Entwicklern geschickt.";
+                    }
+                }
                 // noperms
                 if (message.equals("nopers")) {
                     if (lang.equals("english")) {
