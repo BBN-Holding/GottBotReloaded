@@ -1,5 +1,6 @@
 package core;
 
+import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.User;
 import stuff.SECRETS;
 
@@ -11,10 +12,8 @@ import java.sql.ResultSet;
 import static stuff.DATA.url;
 
 public class lang {
-    public static String Message;
-    public static String Titel;
     public static String language;
-    public static void getlanguage(User user) {
+    public static void getlanguage(User user, boolean MessageHandler, String message, Guild guild) {
         try {
             Connection con = DriverManager.getConnection(url + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
             PreparedStatement pst = con.prepareStatement("Select * FROM `user` WHERE ID=" + user.getId());
@@ -23,6 +22,9 @@ public class lang {
                 language = rs.getString(2);
             }
             rs.close();
+            if (MessageHandler) {
+                core.MessageHandler.get(language, message, guild);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
