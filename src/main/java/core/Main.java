@@ -1,5 +1,6 @@
 package core;
 
+import commands.prefix;
 import commands.test;
 import listener.Guildjoin;
 import listener.commandListener;
@@ -21,6 +22,7 @@ public class Main {
         builder.addEventListener(new Guildjoin());
 
         commandHandler.commands.put("test", new test());
+        commandHandler.commands.put("prefix", new prefix());
 
         try {
             JDA jda = builder.buildBlocking();
