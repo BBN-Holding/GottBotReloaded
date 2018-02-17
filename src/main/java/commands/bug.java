@@ -26,7 +26,6 @@ public class bug implements Command {
                             .setDescription("**New Bug Detected!**\n```fix\n" + text + "```")
                             .build()
             ).queue();
-            System.out.println("lol");
             //User Feedback
             lang.getlanguage(event.getMember().getUser(), true, "bugsucess", event.getGuild());
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.green).build()).queue();

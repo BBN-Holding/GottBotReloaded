@@ -21,7 +21,6 @@ public class commandListener extends ListenerAdapter {
     private static Logger logger = LoggerFactory.getLogger(commandListener.class);
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        logger.info(event.getAuthor().getName()+" mit ID "+ event.getAuthor().getId()+" auf "+event.getGuild().getName()+" hat "+ event.getMessage().getContentRaw()+ " geschrieben");
         try {
 
             Connection con = DriverManager.getConnection(url + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
@@ -32,6 +31,7 @@ public class commandListener extends ListenerAdapter {
                 if (event.getMessage().getContentRaw().startsWith(PREFIX) && event.getMessage().getAuthor().getId() != event.getJDA().getSelfUser().getId()) {
                     beheaded = event.getMessage().getContentRaw().replaceFirst(Pattern.quote(PREFIX), "");
                     commandHandler.handleCommand(commandHandler.parser.parse(event.getMessage().getContentRaw().toLowerCase(), event));
+                    logger.info(event.getAuthor().getName()+" mit ID "+ event.getAuthor().getId()+" auf "+event.getGuild().getName()+" hat den Command genutzt: "+ event.getMessage().getContentRaw());
                 }
             }
             rs.close();
