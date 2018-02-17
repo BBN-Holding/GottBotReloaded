@@ -1,7 +1,6 @@
 package stuff;
 
 public class DATA {
-
-    public static String PREFIX="";
+    public static String urlempty="jdbc:mysql://localhost/";
 
 }

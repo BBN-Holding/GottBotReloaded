@@ -7,7 +7,6 @@ import net.dv8tion.jda.core.OnlineStatus;
 import stuff.SECRETS;
 
 public class Main {
-
     public static JDABuilder builder;
 
     public static void main(String[] args) {
