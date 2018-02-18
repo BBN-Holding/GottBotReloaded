@@ -14,7 +14,7 @@ import java.sql.ResultSet;
 import static stuff.DATA.url;
 
 public class registeruser implements Command {
-    private static Logger logger = LoggerFactory.getLogger(commandListener.class);
+    private static Logger logger = LoggerFactory.getLogger(registeruser.class);
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -48,10 +48,10 @@ public class registeruser implements Command {
                         pst.close();
                         logger.info("neuer User in database Name: " + event.getGuild().getMembers().get(i).getUser().getName() + " ID: " + event.getGuild().getMembers().get(i).getUser().getId() + " von " + event.getGuild().getName());
                     }
-                    rs.close();
                     i++;
                 }
 
+                rs.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -2,6 +2,7 @@ package core;
 
 import commands.*;
 import listener.Guildjoin;
+import listener.Memberjoin;
 import listener.Message;
 import listener.commandListener;
 import net.dv8tion.jda.core.AccountType;
@@ -25,6 +26,7 @@ public class Main {
         builder.addEventListener(new commandListener());
         builder.addEventListener(new Guildjoin());
         builder.addEventListener(new Message());
+        builder.addEventListener(new Memberjoin());
         logger.info("loaded all listeners");
         commandHandler.commands.put("language", new language());
         commandHandler.commands.put("test", new test());
@@ -33,6 +35,7 @@ public class Main {
         commandHandler.commands.put("bug", new bug());
         commandHandler.commands.put("profile", new profile());
         commandHandler.commands.put("registeruser", new registeruser());
+        commandHandler.commands.put("joinmessage", new joinmessage());
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();

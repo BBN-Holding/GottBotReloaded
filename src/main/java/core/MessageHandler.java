@@ -40,6 +40,26 @@ public class MessageHandler {
             PreparedStatement pst = con.prepareStatement("SELECT * FROM `server` WHERE ID='"+guild.getId()+"'");
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
+                // joinmessagesucess
+                if (message.equals("joinmessagesucess")) {
+                    if (lang.equals("englsih")) {
+                        Titel="Sucess";
+                        Message="The Message is now edited. The Message is now: ";
+                    } else if (lang.equals("german")) {
+                        Titel="Erfolgreich!";
+                        Message="Die Nachricht wurde erfolgreich geändert! Sie lautet nun: ";
+                    }
+                }
+                // joinmessage
+                if (message.equals("joinmessage")) {
+                    if (lang.equals("english")) {
+                        Titel="Joinmessage";
+                        Message="You can edit the joinmessage with ``"+rs.getString(2)+"joinmessage [#channel] [Message] ``. Your Joinmessage is: ";
+                    } else if (lang.equals("german")) {
+                        Titel="Betretungs Nachricht";
+                        Message="Du kannst die Nachricht ändern mit ``"+rs.getString(2)+"joinmessage [#Kanal] [Nachricht] ``. Deine betretungsNachricht ist: ";
+                    }
+                }
                 // Profile
                 if (message.equals("profile")) {
                     if (lang.equals("english")) {

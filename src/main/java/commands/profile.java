@@ -162,6 +162,7 @@ public class profile implements Command {
                     }
                 }
             }
+            rs.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
