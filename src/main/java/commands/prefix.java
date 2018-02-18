@@ -1,6 +1,7 @@
 package commands;
 
 import core.MessageHandler;
+import listener.Message;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import stuff.SECRETS;
@@ -30,7 +31,7 @@ public class prefix implements Command {
         if (event.getAuthor().getId()==event.getGuild().getOwner().getUser().getId() || Role) {
             if (args.length < 1) {
                 try {
-                    lang.getlanguage(event.getMember().getUser(), true, "prefix", event.getGuild());
+                    MessageHandler.in(event.getMember().getUser(), true, "prefix", event.getGuild());
                     event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.CYAN).build()).queue();
                     Role=false;
                 } catch (Exception e) {
@@ -45,14 +46,14 @@ public class prefix implements Command {
                         con = DriverManager.getConnection(url + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
                         pst = con.prepareStatement("UPDATE `server` SET `Prefix`='" + args[0] + "' WHERE ID=" + event.getGuild().getId());
                         pst.execute();
-                        lang.getlanguage(event.getMember().getUser(), true, "prefixchanged", event.getGuild());
+                        MessageHandler.in(event.getMember().getUser(), true, "prefixchanged", event.getGuild());
                         event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.green).build()).queue();
                         pst.close();
                     }
                     rs.close();
                     Role=false;
                 } catch (SQLSyntaxErrorException e) {
-                    lang.getlanguage(event.getMember().getUser(), true, "prefixerror1", event.getGuild());
+                    MessageHandler.in(event.getMember().getUser(), true, "prefixerror1", event.getGuild());
                     event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.RED).build()).queue();
                     Role=false;
                 } catch (Exception e) {
@@ -60,7 +61,7 @@ public class prefix implements Command {
                 }
             }
         } else if (Role=false) {
-            lang.getlanguage(event.getMember().getUser(), true, "noperms", event.getGuild());
+            MessageHandler.in(event.getMember().getUser(), true, "noperms", event.getGuild());
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.RED).build()).queue();
         }
 

@@ -2,6 +2,7 @@ package core;
 
 import commands.*;
 import listener.Guildjoin;
+import listener.Message;
 import listener.commandListener;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -21,6 +22,7 @@ public class Main {
         builder = new JDABuilder(AccountType.BOT).setToken(SECRETS.TOKEN).setAutoReconnect(true).setStatus(OnlineStatus.ONLINE);
         builder.addEventListener(new commandListener());
         builder.addEventListener(new Guildjoin());
+        builder.addEventListener(new Message());
 
         System.out.println("asdf");
 
@@ -29,6 +31,7 @@ public class Main {
         commandHandler.commands.put("prefix", new prefix());
         commandHandler.commands.put("help", new help());
         commandHandler.commands.put("bug", new bug());
+        commandHandler.commands.put("profile", new profile());
 
         try {
             JDA jda = builder.buildBlocking();

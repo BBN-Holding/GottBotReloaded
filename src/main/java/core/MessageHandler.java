@@ -1,5 +1,6 @@
 package core;
 
+import listener.Message;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.User;
 import stuff.SECRETS;
@@ -39,6 +40,23 @@ public class MessageHandler {
             PreparedStatement pst = con.prepareStatement("SELECT * FROM `server` WHERE ID='"+guild.getId()+"'");
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
+                // Profile
+                if (message.equals("profile")) {
+                    if (lang.equals("english")) {
+                        Titel="Your Profile";
+                        Message="";
+                    }
+                }
+                // Mention
+                if (message.equals("mention")) {
+                    if (lang.equals("english")) {
+                        Titel="Hi!";
+                        Message="I'm the GottBot. My Prefix is ``"+rs.getString(2)+"`` Write ``"+rs.getString(2)+"help`` :smile:";
+                    } else if (lang.equals("german")) {
+                        Titel="Hi!";
+                        Message="Ich bin der GottBot. Mein Prefix ist ``"+rs.getString(2)+"`` Schreibe ``"+rs.getString(2)+"help`` :smile:";
+                    }
+                }
                 // Bug
                 if (message.equals("bug")) {
                     if (lang.equals("english")) {

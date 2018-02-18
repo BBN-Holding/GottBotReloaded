@@ -29,7 +29,7 @@ public class commandListener extends ListenerAdapter {
             if (rs.next()) {
                 String PREFIX=rs.getString(2);
                 if (event.getMessage().getContentRaw().startsWith(PREFIX) && event.getMessage().getAuthor().getId() != event.getJDA().getSelfUser().getId()) {
-                    beheaded = event.getMessage().getContentRaw().replaceFirst(Pattern.quote(PREFIX), "");
+                    beheaded = event.getMessage().getContentRaw().toLowerCase().replaceFirst(Pattern.quote(PREFIX), "");
                     commandHandler.handleCommand(commandHandler.parser.parse(event.getMessage().getContentRaw().toLowerCase(), event));
                     logger.info(event.getAuthor().getName()+" mit ID "+ event.getAuthor().getId()+" auf "+event.getGuild().getName()+" hat den Command genutzt: "+ event.getMessage().getContentRaw());
                 }

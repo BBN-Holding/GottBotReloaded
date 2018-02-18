@@ -22,7 +22,7 @@ public class language implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length<1) {
             try {
-                lang.getlanguage(event.getMember().getUser(), true, "lang", event.getGuild());
+                MessageHandler.in(event.getMember().getUser(), true, "lang", event.getGuild());
                 event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.CYAN).build()).queue();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -32,7 +32,7 @@ public class language implements Command {
                 Connection con = DriverManager.getConnection(url + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
                 PreparedStatement pst = con.prepareStatement("UPDATE `user` SET `Lang`='" + args[0] + "' WHERE ID=" + event.getAuthor().getId());
                 pst.execute();
-                lang.getlanguage(event.getMember().getUser(), true, "langedit", event.getGuild());
+                MessageHandler.in(event.getMember().getUser(), true, "langedit", event.getGuild());
                 pst.close();
                 event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.Message).setTitle(MessageHandler.Titel).setColor(Color.green).build()).queue();
             } catch (Exception e) {
