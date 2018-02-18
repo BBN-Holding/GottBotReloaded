@@ -24,9 +24,10 @@ public class Memberjoin extends ListenerAdapter {
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 if (!rs.getString(3).isEmpty()) {
-                    String Message = rs.getString(3);
-                    Message.replace("%m", event.getMember().getAsMention()).replace("%s", event.getGuild().getName());
-                    event.getGuild().getTextChannelById(rs.getLong(4)).sendMessage(new EmbedBuilder().setDescription(Message).build()).queue();
+                    String Message = rs.getString(3)+"";
+                    Message.replace("%m", "TEST");
+                            Message.replace("%s", "LOL");
+                    event.getGuild().getTextChannelById(rs.getLong(4)).sendMessage(Message).queue();
                 }
             }
             rs.close();

@@ -54,10 +54,10 @@ public class MessageHandler {
                 if (message.equals("joinmessage")) {
                     if (lang.equals("english")) {
                         Titel="Joinmessage";
-                        Message="You can edit the joinmessage with ``"+rs.getString(2)+"joinmessage [#channel] [Message] ``. Your Joinmessage is: ";
+                        Message="You can edit the joinmessage with ``"+rs.getString(2)+"joinmessage [#channel] [Message] (%s = Servername, %m = Membername)``. Your Joinmessage is: ";
                     } else if (lang.equals("german")) {
                         Titel="Betretungs Nachricht";
-                        Message="Du kannst die Nachricht ändern mit ``"+rs.getString(2)+"joinmessage [#Kanal] [Nachricht] ``. Deine betretungsNachricht ist: ";
+                        Message="Du kannst die Nachricht ändern mit ``"+rs.getString(2)+"joinmessage [#Kanal] [Nachricht] (%s = Servername, %m = Nutzername) ``. Deine betretungsNachricht ist: ";
                     }
                 }
                 // Profile

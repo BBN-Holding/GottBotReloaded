@@ -40,7 +40,7 @@ public class joinmessage implements Command {
                 PreparedStatement pst = con.prepareStatement("Select * FROM `server` WHERE ID=" + event.getGuild().getId());
                 ResultSet rs = pst.executeQuery();
                 if (rs.next()) {
-                    if (args.length <= 2) {
+                    if (args.length <= 1) {
                         MessageHandler.in(event.getAuthor(), true, "joinmessage", event.getGuild());
                         event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message + rs.getString(3)).build()).queue();
                     } else {
