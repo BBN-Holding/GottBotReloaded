@@ -64,7 +64,7 @@ public class profile implements Command {
 
         try {
             Connection con = DriverManager.getConnection(DATA.url + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
-            PreparedStatement pst = con.prepareStatement("SELECT * FROM `user` WHERE ID='"+event.getAuthor().getId()+"'");
+            PreparedStatement pst = con.prepareStatement("SELECT * FROM `user` WHERE ID='"+user.getUser().getId()+"'");
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 Punkte=rs.getInt(4)+"";
@@ -79,86 +79,86 @@ public class profile implements Command {
                     LevelPlus=(Integer.parseInt(Level)+1)+"";
                     //unter 25% viertel=2
                     if (viertel>Integer.parseInt(Punkte)) {
-                        Progress=event.getGuild().getEmotesByName("progbar_start_empty",true).get(0).getAsMention()+"" +
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
+                        Progress=event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_start_empty",true).get(0).getAsMention()+"" +
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
                     } else if (((viertel*2)>Integer.parseInt(Punkte))&&(viertel<=Integer.parseInt(Punkte))) {
-                        Progress=event.getGuild().getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
+                        Progress=event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
                     } else if (((viertel*3)>Integer.parseInt(Punkte))&&((viertel*2)<=Integer.parseInt(Punkte))) {
                         Progress=event.getGuild().getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
-                                event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
                     } else if (((viertel*4)>Integer.parseInt(Punkte))&&((viertel*3)<=Integer.parseInt(Punkte))) {
-                        Progress=event.getGuild().getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
-                                event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
+                        Progress=event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
                     } else if (((viertel*5)>Integer.parseInt(Punkte))&&((viertel*4)<=Integer.parseInt(Punkte))) {
-                        Progress=event.getGuild().getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
-                                event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
+                        Progress=event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
                     } else if (((viertel*6)>Integer.parseInt(Punkte))&&((viertel*5)<=Integer.parseInt(Punkte))) {
-                        Progress=event.getGuild().getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
-                                event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
+                        Progress=event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
                     } else if (((viertel*7)>Integer.parseInt(Punkte))&&((viertel*6)<=Integer.parseInt(Punkte))) {
-                        Progress=event.getGuild().getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
-                                event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
+                        Progress=event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
                     } else if (((viertel*8)>Integer.parseInt(Punkte))&&((viertel*7)<=Integer.parseInt(Punkte))) {
-                    Progress=event.getGuild().getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
-                            event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                            event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                            event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                            event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                            event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                            event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                            event.getGuild().getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
+                    Progress=event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
+                            event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                            event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                            event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                            event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                            event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                            event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                            event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
                     } else if (rs.getInt(2)==Integer.parseInt(Punkte)) {
-                        Progress=event.getGuild().getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
-                                event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
-                                event.getGuild().getEmotesByName("progbar_end_full",true).get(0).getAsMention();
+                        Progress=event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
+                                event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_end_full",true).get(0).getAsMention();
                     }
                 }
             }
@@ -177,7 +177,7 @@ public class profile implements Command {
                 .addField("Level", Level, true)
                 .addField("XP", Punkte, true)
                 .addField("Levelprogress", Progress, true)
-                .setColor(Color.CYAN).setThumbnail(event.getAuthor().getAvatarUrl()).build()).queue();
+                .setColor(Color.CYAN).setThumbnail(user.getUser().getAvatarUrl()).build()).queue();
     }
 
     @Override

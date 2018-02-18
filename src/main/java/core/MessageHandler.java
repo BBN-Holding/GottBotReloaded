@@ -44,7 +44,8 @@ public class MessageHandler {
                 if (message.equals("profile")) {
                     if (lang.equals("english")) {
                         Titel="Your Profile";
-                        Message="";
+                    } else if (lang.equals("german")) {
+                        Titel="Dein Profil";
                     }
                 }
                 // Mention

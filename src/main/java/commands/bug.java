@@ -14,7 +14,7 @@ public class bug implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (args.length<=3) {
+        if (args.length<=2) {
             MessageHandler.in(event.getMember().getUser(), true, "bug", event.getGuild());
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.RED).build()).queue();
         } else {

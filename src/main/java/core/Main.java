@@ -32,6 +32,7 @@ public class Main {
         commandHandler.commands.put("help", new help());
         commandHandler.commands.put("bug", new bug());
         commandHandler.commands.put("profile", new profile());
+        commandHandler.commands.put("registeruser", new registeruser());
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();
