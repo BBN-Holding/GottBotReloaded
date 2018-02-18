@@ -43,7 +43,6 @@ public class Message extends ListenerAdapter {
                     Punkte++;
                     pst = con.prepareStatement("UPDATE `user` SET `xp`='"+Punkte+"' WHERE ID='"+event.getAuthor().getId()+"'");
                     pst.execute();
-                    System.out.println("HIII");
 
                     pst = con.prepareStatement("SELECT * FROM `lvl`");
                     rs = pst.executeQuery();

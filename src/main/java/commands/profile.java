@@ -78,10 +78,7 @@ public class profile implements Command {
                     ProgressMax=rs.getInt(2)+"";
                     LevelPlus=(Integer.parseInt(Level)+1)+"";
                     //unter 25% viertel=2
-                    System.out.println(Punkte);
-                    System.out.println(viertel);
                     if (viertel>Integer.parseInt(Punkte)) {
-                        System.out.println("unter 12,5");
                         Progress=event.getGuild().getEmotesByName("progbar_start_empty",true).get(0).getAsMention()+"" +
                                 event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
                                 event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
@@ -91,7 +88,6 @@ public class profile implements Command {
                                 event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
                                 event.getGuild().getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
                     } else if (((viertel*2)>Integer.parseInt(Punkte))&&(viertel<=Integer.parseInt(Punkte))) {
-                        System.out.println("über 12,5 aber unter 25");
                         Progress=event.getGuild().getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
                                 event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
                                 event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
@@ -101,7 +97,6 @@ public class profile implements Command {
                                 event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
                                 event.getGuild().getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
                     } else if (((viertel*3)>Integer.parseInt(Punkte))&&((viertel*2)<=Integer.parseInt(Punkte))) {
-                        System.out.println("über 25 aber unter 37,5");
                         Progress=event.getGuild().getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
                                 event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
                                 event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
@@ -111,7 +106,6 @@ public class profile implements Command {
                                 event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
                                 event.getGuild().getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
                     } else if (((viertel*4)>Integer.parseInt(Punkte))&&((viertel*3)<=Integer.parseInt(Punkte))) {
-                        System.out.println("über 37,5 aber unter 50");
                         Progress=event.getGuild().getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
                                 event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
                                 event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
@@ -121,7 +115,6 @@ public class profile implements Command {
                                 event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
                                 event.getGuild().getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
                     } else if (((viertel*5)>Integer.parseInt(Punkte))&&((viertel*4)<=Integer.parseInt(Punkte))) {
-                        System.out.println("über 50 aber unter 62,5");
                         Progress=event.getGuild().getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
                                 event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
                                 event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
@@ -131,7 +124,6 @@ public class profile implements Command {
                                 event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
                                 event.getGuild().getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
                     } else if (((viertel*6)>Integer.parseInt(Punkte))&&((viertel*5)<=Integer.parseInt(Punkte))) {
-                        System.out.println("über 62,5 aber unter 75");
                         Progress=event.getGuild().getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
                                 event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
                                 event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
@@ -141,7 +133,6 @@ public class profile implements Command {
                                 event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
                                 event.getGuild().getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
                     } else if (((viertel*7)>Integer.parseInt(Punkte))&&((viertel*6)<=Integer.parseInt(Punkte))) {
-                        System.out.println("über 75 aber unter 87,5");
                         Progress=event.getGuild().getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
                                 event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
                                 event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
@@ -151,7 +142,6 @@ public class profile implements Command {
                                 event.getGuild().getEmotesByName("progbar_mid_empty",true).get(0).getAsMention()+""+
                                 event.getGuild().getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
                     } else if (((viertel*8)>Integer.parseInt(Punkte))&&((viertel*7)<=Integer.parseInt(Punkte))) {
-                    System.out.println("über 75 aber unter 87,5");
                     Progress=event.getGuild().getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
                             event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
                             event.getGuild().getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
