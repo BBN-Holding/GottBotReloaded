@@ -13,12 +13,14 @@ import org.slf4j.LoggerFactory;
 import stuff.SECRETS;
 
 import javax.security.auth.login.LoginException;
+import java.util.Date;
 
 public class Main {
     public static JDABuilder builder;
     private static Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
+        logger.info("------------------start Bot----------------------");
         builder = new JDABuilder(AccountType.BOT).setToken(SECRETS.TOKEN).setAutoReconnect(true).setStatus(OnlineStatus.ONLINE);
         builder.addEventListener(new commandListener());
         builder.addEventListener(new Guildjoin());
@@ -33,7 +35,6 @@ public class Main {
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();
-            logger.info("starting Bot");
         } catch (LoginException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
