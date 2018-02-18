@@ -1,7 +1,6 @@
 package commands;
 
 import core.MessageHandler;
-import core.lang;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
@@ -16,7 +15,8 @@ public class bug implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length<=3) {
-            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Usage").setDescription("bug [message] (min. 3 args)").setColor(Color.RED).build()).queue();
+            MessageHandler.in(event.getMember().getUser(), true, "bug", event.getGuild());
+            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.RED).build()).queue();
         } else {
 
             String text = event.getMessage().getContentRaw();
@@ -27,7 +27,7 @@ public class bug implements Command {
                             .build()
             ).queue();
             //User Feedback
-            lang.getlanguage(event.getMember().getUser(), true, "bugsucess", event.getGuild());
+            MessageHandler.in(event.getMember().getUser(), true, "bugsucess", event.getGuild());
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.green).build()).queue();
 
         }

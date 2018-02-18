@@ -1,6 +1,7 @@
 package core;
 
 import net.dv8tion.jda.core.entities.Guild;
+import net.dv8tion.jda.core.entities.User;
 import stuff.SECRETS;
 
 import java.sql.Connection;
@@ -14,6 +15,23 @@ public class MessageHandler {
 
     public static String Message;
     public static String Titel;
+    public static String language;
+    public static void in(User user, boolean MessageHandler, String message, Guild guild) {
+        try {
+            Connection con = DriverManager.getConnection(url + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
+            PreparedStatement pst = con.prepareStatement("Select * FROM `user` WHERE ID=" + user.getId());
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                language = rs.getString(2);
+            }
+            rs.close();
+            if (MessageHandler) {
+                core.MessageHandler.get(language, message, guild);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void get(String lang, String message, Guild guild){
         try {
@@ -21,6 +39,16 @@ public class MessageHandler {
             PreparedStatement pst = con.prepareStatement("SELECT * FROM `server` WHERE ID='"+guild.getId()+"'");
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
+                // Bug
+                if (message.equals("bug")) {
+                    if (lang.equals("english")) {
+                        Titel="Bug - Usage";
+                        Message=rs.getString(2)+"bug [Message min. 3 words]";
+                    } else if (lang.equals("german")) {
+                        Titel="Bug - Verwendung";
+                        Message=rs.getString(2)+"bug [Nachricht min. 3 Wörter]";
+                    }
+                }
                 // Bugsucess
                 if (message.equals("bugsucess")) {
                     if (lang.equals("english")) {
@@ -114,6 +142,7 @@ public class MessageHandler {
 
 
             }
+            rs.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
