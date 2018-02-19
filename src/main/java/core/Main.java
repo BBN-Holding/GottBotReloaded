@@ -22,6 +22,9 @@ public class Main {
 
     public static void main(String[] args) {
         logger.info("------------------start Bot----------------------");
+        logger.info("read Token and logins");
+
+
         builder = new JDABuilder(AccountType.BOT).setToken(SECRETS.TOKEN).setAutoReconnect(true).setStatus(OnlineStatus.ONLINE);
         builder.addEventListener(new commandListener());
         builder.addEventListener(new Guildjoin());

@@ -1,5 +1,7 @@
 package commands;
 
+import core.MessageHandler;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class test implements Command{
@@ -10,7 +12,8 @@ public class test implements Command{
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        event.getTextChannel().sendMessage("Test!").queue();
+        MessageHandler.in(event.getAuthor(), true, "Test", event.getGuild());
+        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).build()).queue(); // print wenn user language is english Test english wen user language is german Test german
     }
 
     @Override

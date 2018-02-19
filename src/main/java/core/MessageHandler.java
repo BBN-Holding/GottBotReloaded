@@ -40,6 +40,16 @@ public class MessageHandler {
             PreparedStatement pst = con.prepareStatement("SELECT * FROM `server` WHERE ID='"+guild.getId()+"'");
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
+                // Test
+                if (message.equals("test")) {
+                    if (lang.equals("english")) {
+                        Titel="Test";
+                        Message="Testtt english";
+                    } else if (lang.equals("german")) {
+                        Titel="Test";
+                        Message="Test german :D";
+                    }
+                }
                 // joinmessagesucess
                 if (message.equals("joinmessagesucess")) {
                     if (lang.equals("englsih")) {
