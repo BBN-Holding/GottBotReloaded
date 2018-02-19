@@ -44,7 +44,7 @@ public class MessageHandler {
                 if (message.equals("test")) {
                     if (lang.equals("english")) {
                         Titel="Test";
-                        Message="Testtt english";
+                        Message="Testt english";
                     } else if (lang.equals("german")) {
                         Titel="Test";
                         Message="Test german :D";
