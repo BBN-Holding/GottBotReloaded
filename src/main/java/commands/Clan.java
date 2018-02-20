@@ -1,6 +1,7 @@
 package commands;
 
 import core.MessageHandler;
+import core.MySQL;
 import listener.Message;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -30,28 +31,20 @@ public class Clan implements Command {
                 switch (args[0].toLowerCase()) {
 
                     case "list":
-                        Connection con = DriverManager.getConnection(url + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
-                        PreparedStatement pst = con.prepareStatement("SELECT * FROM `clan` WHERE ID='" + event.getGuild().getId() + "'");
-                        ResultSet rs = pst.executeQuery();
-                        if (rs.next()) {
-                            MessageHandler.in(event.getAuthor(), true, "clanlist", event.getGuild());
-                            String clans = MessageHandler.Message;
-                            while (rs.next()) {
-                                clans += rs.getString(1);
-                                rs.next();
-                            }
-                            MessageHandler.in(event.getAuthor(), true, "clanlistout", event.getGuild());
-                            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.GREEN).build()).queue();
-                        }
-                        rs.close();
+                        MySQL.get("clan", "guildid", event.getGuild().getId(), "2");
+                        MessageHandler.in(event.getAuthor(), true, "clanlist", event.getGuild());
+                        MySQL.getClansByValue("guildid", event.getGuild().getId());
+                        String clans = MessageHandler.Message + MySQL.Clannames;
+                        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(clans).setColor(Color.GREEN).build()).queue();
+
+
                         break;
 
                     case "join":
 
                         break;
-
-
                 }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }

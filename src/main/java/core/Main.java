@@ -38,7 +38,6 @@ public class Main {
         commandHandler.commands.put("bug", new bug());
         commandHandler.commands.put("profile", new profile());
         commandHandler.commands.put("registeruser", new registeruser());
-        commandHandler.commands.put("joinmessage", new joinmessage());
         commandHandler.commands.put("Clan", new Clan());
         logger.info("loaded all commands");
         try {

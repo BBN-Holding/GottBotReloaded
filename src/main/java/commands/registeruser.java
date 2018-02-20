@@ -1,5 +1,7 @@
 package commands;
 
+import core.MySQL;
+import listener.Memberjoin;
 import listener.commandListener;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.slf4j.Logger;
@@ -22,41 +24,14 @@ public class registeruser implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-
-        if (event.getAuthor().getId().equals("261083609148948488")) {
-            try {
-                Connection con = DriverManager.getConnection(url + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
-                PreparedStatement pst = con.prepareStatement("Select * FROM `server` WHERE ID=" + event.getGuild().getId());
-                ResultSet rs = pst.executeQuery();
-                if (!rs.next()) {
-                    con = DriverManager.getConnection(url + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
-                    pst = con.prepareStatement("INSERT INTO `server` (`ID`) VALUES ('" + event.getGuild().getId() + "');");
-                    pst.execute();
-                    rs.close();
-                    logger.info("neuer Server: Name: " + event.getGuild().getName() + " ID: " + event.getGuild().getId() + " Member: " + event.getGuild().getMembers().size());
-
-                }
-                rs.close();
-
-                int i = 0;
-                while (event.getGuild().getMembers().size() - 1 >= i) {
-                    pst = con.prepareStatement("Select * FROM `user` WHERE ID=" + event.getGuild().getMembers().get(i).getUser().getId());
-                    rs = pst.executeQuery();
-                    if (!rs.next()) {
-                        pst = con.prepareStatement("INSERT INTO `user` (`ID`) VALUES ('" + event.getGuild().getMembers().get(i).getUser().getId() + "');");
-                        pst.execute();
-                        pst.close();
-                        logger.info("neuer User in database Name: " + event.getGuild().getMembers().get(i).getUser().getName() + " ID: " + event.getGuild().getMembers().get(i).getUser().getId() + " von " + event.getGuild().getName());
-                    }
-                    i++;
-                }
-
-                rs.close();
-            } catch (Exception e) {
-                e.printStackTrace();
+        int i=0;
+        while (event.getGuild().getMembers().size()>=i) {
+            if (!MySQL.get("user", "ID", event.getGuild().getMembers().get(i).getUser().getId(), "ID").isEmpty()) {
+                MySQL.insert("user", "ID", event.getGuild().getMembers().get(i).getUser().getId());
+                logger.info("neuer User in database Name: " + event.getGuild().getMembers().get(i).getUser().getName() + " ID: " + event.getGuild().getMembers().get(i).getUser().getId() + " von " + event.getGuild().getName());
             }
-
-            }
+            i++;
+        }
     }
 
     @Override

@@ -5,8 +5,11 @@ import stuff.SECRETS;
 
 import java.lang.reflect.Executable;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MySQL {
+    public static List<String> Clannames = new ArrayList<>();
     private static Connection connection;
     private static org.slf4j.Logger Logger = LoggerFactory.getLogger(MySQL.class);
     public void connect() {
@@ -37,8 +40,37 @@ public class MySQL {
             ResultSet rs = ps.executeQuery();
             if (rs.next())
                 return rs.getString(spalte);
+            else return null;
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static String getall(String table, String spalte) {
+        try {
+           PreparedStatement ps = connection.prepareStatement("SELECT * FROM ?");
+           ps.setString(1, table);
+           ResultSet rs = ps.executeQuery();
+           if (rs.next()) return rs.getString(spalte);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static List<String> getClansByValue(String where, String wherevalue) {
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM Clans where `" + where + "` = ?");
+            ps.setString(1, wherevalue);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Clannames.add(rs.getString("id"));
+            }
+            return null;
+        } catch (Exception ex) {
+            Logger.error(ex.toString());
         }
         return null;
     }
@@ -58,9 +90,13 @@ public class MySQL {
         return null;
     }
 
-    public static String insert() {
+    public static String insert(String table, String what, String whatvalue) {
         try {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO `user`(`ID`) VALUES ([value-1])");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO `?`(`?`) VALUES (?])");
+            ps.setString(1, table);
+            ps.setString(2, what);
+            ps.setString(3, whatvalue);
+            ps.execute();
         } catch (Exception e) {
             e.printStackTrace();
         }
