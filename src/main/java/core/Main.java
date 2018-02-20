@@ -39,12 +39,11 @@ public class Main {
         commandHandler.commands.put("profile", new profile());
         commandHandler.commands.put("registeruser", new registeruser());
         commandHandler.commands.put("joinmessage", new joinmessage());
+        commandHandler.commands.put("Clan", new Clan());
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();
-        } catch (LoginException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

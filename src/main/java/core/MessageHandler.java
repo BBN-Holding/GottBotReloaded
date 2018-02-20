@@ -40,6 +40,24 @@ public class MessageHandler {
             PreparedStatement pst = con.prepareStatement("SELECT * FROM `server` WHERE ID='"+guild.getId()+"'");
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
+                // ClanList
+                if (message.equals("clanlist")) {
+                    if (lang.equals("english")) {
+                        Message="All Clans: \n";
+                    } else if (lang.equals("german")) {
+                        Message="Alle Clans: \n";
+                    }
+                }
+                // Clan
+                if (message.equals("clan")) {
+                    if (lang.equals("english")) {
+                        Titel="Clan - Help";
+                        Message="Here are all Clan Commands:\n"+rs.getString(3)+"clan list - Get a list from all Clans on your Server";
+                    } else if (lang.equals("german")) {
+                        Titel="Clan - Hilfe";
+                        Message="Hier sind alle Clan Commands:\n"+rs.getString(3)+"clan list - Bekomme eine Liste mit allen Clans auf diesem Server";
+                    }
+                }
                 // Test
                 if (message.equals("test")) {
                     if (lang.equals("english")) {
