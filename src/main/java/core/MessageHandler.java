@@ -19,7 +19,9 @@ public class MessageHandler {
     public static String language;
     public static void in(User user, boolean MessageHandler, String message, Guild guild) {
         try {
-            language = MySQL.get("user", "ID", user.getId(), "2");
+            System.out.println("adadasd");
+            language = MySQL.get("user", "ID", user.getId(), "language");
+            System.out.println("sasafasdfasf");
             if (MessageHandler) {
                 core.MessageHandler.get(language, message, guild);
             }

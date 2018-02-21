@@ -40,6 +40,7 @@ public class MySQL {
             ResultSet rs = ps.executeQuery();
             if (rs.next())
                 return rs.getString(spalte);
+            else if (!rs.next()) return "german";
         } catch (Exception e) {
             e.printStackTrace();
         }
