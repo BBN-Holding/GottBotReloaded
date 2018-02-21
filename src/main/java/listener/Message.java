@@ -37,16 +37,30 @@ public class Message extends ListenerAdapter {
             try {
 
                     Level= Integer.parseInt(MySQL.get("user", "ID", event.getAuthor().getId(), "lvl"));
+<<<<<<< HEAD
                 System.out.println(Level);
+=======
+>>>>>>> 819d45c6051bbd5548724b3f468dd67ee2e81217
                     Punkte= Integer.parseInt(MySQL.get("user", "ID", event.getAuthor().getId(), "xp"));
                     Punkte++;
                 System.out.println(Level);
                 System.out.println(Punkte);
+<<<<<<< HEAD
                 MySQL.update("user", "xp", String.valueOf(Punkte), "ID", event.getAuthor().getId());
                     int i=0;
                     while (MySQL.getall("lvl", "2").size()>=i) {
                         if (Punkte>Integer.parseInt(MySQL.getall("lvl", "2").get(i))-1) {
                             if (Level<Integer.parseInt(MySQL.getall("lvl", "1").get(i))) {
+=======
+                MySQL.update("user", "xp", Punkte, "ID", event.getAuthor().getId());
+                MySQL.getall("lvl", "");
+
+                    pst = con.prepareStatement("SELECT * FROM `lvl`");
+                    rs = pst.executeQuery();
+                    while (rs.next()) {
+                        if (Punkte>rs.getInt(2)-1) {
+                            if (Level<rs.getInt(1)) {
+>>>>>>> 819d45c6051bbd5548724b3f468dd67ee2e81217
                                 Level++;
                                 MySQL.update("user", "xp", "0" ,"ID", event.getAuthor().getId());
                                 MySQL.update("user", "level", String.valueOf(Level) ,"ID", event.getAuthor().getId());
