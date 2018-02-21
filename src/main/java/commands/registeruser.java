@@ -24,6 +24,7 @@ public class registeruser implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
+        System.out.println("TEST");
         int i=0;
         while (event.getGuild().getMembers().size()>=i) {
             if (!MySQL.get("user", "ID", event.getGuild().getMembers().get(i).getUser().getId(), "ID").isEmpty()) {

@@ -37,24 +37,23 @@ public class Message extends ListenerAdapter {
             try {
 
                     Level= Integer.parseInt(MySQL.get("user", "ID", event.getAuthor().getId(), "lvl"));
-                    Punkte= Integer.parseInt(MySQL.get("user", "ID", event.getAuthor().getId(), "xp"))
+                System.out.println(Level);
+                    Punkte= Integer.parseInt(MySQL.get("user", "ID", event.getAuthor().getId(), "xp"));
                     Punkte++;
                 System.out.println(Level);
                 System.out.println(Punkte);
-                MySQL.update("user", "xp", Punkte, "ID", event.getAuthor().getId());
-                MySQL.getall("lvl", "")
-
-                    pst = con.prepareStatement("SELECT * FROM `lvl`");
-                    rs = pst.executeQuery();
-                    while (rs.next()) {
-                        if (Punkte>rs.getInt(2)-1) {
-                            if (Level<rs.getInt(1)) {
+                MySQL.update("user", "xp", String.valueOf(Punkte), "ID", event.getAuthor().getId());
+                    int i=0;
+                    while (MySQL.getall("lvl", "2").size()>=i) {
+                        if (Punkte>Integer.parseInt(MySQL.getall("lvl", "2").get(i))-1) {
+                            if (Level<Integer.parseInt(MySQL.getall("lvl", "1").get(i))) {
                                 Level++;
-                                pst = con.prepareStatement("UPDATE `user` SET `xp`='0',`level`='"+Level+"' WHERE ID='"+event.getAuthor().getId()+"'");
-                                pst.execute();
+                                MySQL.update("user", "xp", "0" ,"ID", event.getAuthor().getId());
+                                MySQL.update("user", "level", String.valueOf(Level) ,"ID", event.getAuthor().getId());
                                 event.getChannel().sendMessage(new EmbedBuilder().setColor(Color.GREEN).setTitle("Level Aufgestiegen").setDescription("Du bist jetzt schon Lvl "+Level+"!").build()).complete().delete().queueAfter(10, TimeUnit.SECONDS);
                             }
                         }
+                        i++;
                     }
             } catch (Exception e) {
                 e.printStackTrace();

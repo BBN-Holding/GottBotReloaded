@@ -28,7 +28,7 @@ public class Main {
         builder = new JDABuilder(AccountType.BOT).setToken(SECRETS.TOKEN).setAutoReconnect(true).setStatus(OnlineStatus.ONLINE);
         builder.addEventListener(new commandListener());
         builder.addEventListener(new Guildjoin());
-        builder.addEventListener(new Message());
+        // builder.addEventListener(new Message());
         builder.addEventListener(new Memberjoin());
         logger.info("loaded all listeners");
         commandHandler.commands.put("language", new language());

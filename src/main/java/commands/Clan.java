@@ -33,8 +33,8 @@ public class Clan implements Command {
                     case "list":
                         MySQL.get("clan", "guildid", event.getGuild().getId(), "2");
                         MessageHandler.in(event.getAuthor(), true, "clanlist", event.getGuild());
-                        MySQL.getClansByValue("guildid", event.getGuild().getId());
-                        String clans = MessageHandler.Message + MySQL.Clannames;
+                        MySQL.getall("guildid", event.getGuild().getId());
+                        String clans = MessageHandler.Message + MySQL.List;
                         event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(clans).setColor(Color.GREEN).build()).queue();
 
 

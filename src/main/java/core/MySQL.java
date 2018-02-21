@@ -33,18 +33,17 @@ public class MySQL {
 
     public static String get(String table, String where, String wherevalue, String spalte) {
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM ? WHERE ?=?");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM `?` WHERE ?=`?`");
             ps.setString(1, table);
             ps.setString(2, where);
             ps.setString(3, wherevalue);
             ResultSet rs = ps.executeQuery();
             if (rs.next())
                 return rs.getString(spalte);
-            else return null;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return "Lol";
     }
 
     public static List<String> getall(String table, String spalte) {
