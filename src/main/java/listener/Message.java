@@ -37,12 +37,12 @@ public class Message extends ListenerAdapter {
             try {
 
                     Level= Integer.parseInt(MySQL.get("user", "ID", event.getAuthor().getId(), "lvl"));
-                    Punkte= Integer.parseInt(MySQL.get("user", "ID", event.getAuthor().getId(), "xp"))
+                    Punkte= Integer.parseInt(MySQL.get("user", "ID", event.getAuthor().getId(), "xp"));
                     Punkte++;
                 System.out.println(Level);
                 System.out.println(Punkte);
                 MySQL.update("user", "xp", Punkte, "ID", event.getAuthor().getId());
-                MySQL.getall("lvl", "")
+                MySQL.getall("lvl", "");
 
                     pst = con.prepareStatement("SELECT * FROM `lvl`");
                     rs = pst.executeQuery();
