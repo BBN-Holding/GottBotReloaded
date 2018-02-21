@@ -2,6 +2,8 @@ package listener;
 
 import core.Main;
 import core.MessageHandler;
+import core.MySQL;
+import javafx.beans.binding.IntegerBinding;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
@@ -33,16 +35,14 @@ public class Message extends ListenerAdapter {
         if (event.getAuthor().isBot()) {
         } else {
             try {
-                Connection con = DriverManager.getConnection(DATA.url + "" + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
-                PreparedStatement pst = con.prepareStatement("SELECT * FROM `user` WHERE ID='"+event.getAuthor().getId()+"'");
-                ResultSet rs = pst.executeQuery();
-                if (!rs.next()) {
-                } else {
-                    Level=rs.getInt(3);
-                    Punkte=rs.getInt(4);
+
+                    Level= Integer.parseInt(MySQL.get("user", "ID", event.getAuthor().getId(), "lvl"));
+                    Punkte= Integer.parseInt(MySQL.get("user", "ID", event.getAuthor().getId(), "xp"))
                     Punkte++;
-                    pst = con.prepareStatement("UPDATE `user` SET `xp`='"+Punkte+"' WHERE ID='"+event.getAuthor().getId()+"'");
-                    pst.execute();
+                System.out.println(Level);
+                System.out.println(Punkte);
+                MySQL.update("user", "xp", Punkte, "ID", event.getAuthor().getId());
+                MySQL.getall("lvl", "")
 
                     pst = con.prepareStatement("SELECT * FROM `lvl`");
                     rs = pst.executeQuery();
@@ -56,7 +56,6 @@ public class Message extends ListenerAdapter {
                             }
                         }
                     }
-                }
             } catch (Exception e) {
                 e.printStackTrace();
             }

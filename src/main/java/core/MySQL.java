@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySQL {
-    public static List<String> Clannames = new ArrayList<>();
+    public static List<String> List = new ArrayList<>();
     private static Connection connection;
     private static org.slf4j.Logger Logger = LoggerFactory.getLogger(MySQL.class);
     public void connect() {
@@ -47,35 +47,23 @@ public class MySQL {
         return null;
     }
 
-    public static String getall(String table, String spalte) {
+    public static List<String> getall(String table, String spalte) {
         try {
-           PreparedStatement ps = connection.prepareStatement("SELECT * FROM ?");
-           ps.setString(1, table);
-           ResultSet rs = ps.executeQuery();
-           if (rs.next()) return rs.getString(spalte);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public static List<String> getClansByValue(String where, String wherevalue) {
-        try {
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM Clans where `" + where + "` = ?");
-            ps.setString(1, wherevalue);
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM ? ");
+            ps.setString(1, table);
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Clannames.add(rs.getString("id"));
+                List.add(rs.getString(spalte));
             }
-            return null;
+            return List;
         } catch (Exception ex) {
             Logger.error(ex.toString());
         }
         return null;
     }
 
-    public static String update(String table, String what, String whatvalue, String where, String wherevalue, String spalte) {
+    public static String update(String table, String what, String whatvalue, String where, String wherevalue) {
         try {
             PreparedStatement ps = connection.prepareStatement("UPDATE `?` SET `?`=? WHERE ?=?");
             ps.setString(1, table);
