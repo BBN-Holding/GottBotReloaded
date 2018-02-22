@@ -1,6 +1,7 @@
 package listener;
 
 import core.Main;
+import core.MySQL;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import core.commandHandler;
@@ -22,19 +23,13 @@ public class commandListener extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         try {
-
-            Connection con = DriverManager.getConnection(url + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
-            PreparedStatement pst = con.prepareStatement("Select * FROM `server` WHERE ID=" + event.getGuild().getId());
-            ResultSet rs = pst.executeQuery();
-            if (rs.next()) {
-                String PREFIX=rs.getString(2);
+                String PREFIX= MySQL.get("server", "ID", event.getGuild().getId(), "prefix");
                 if (event.getMessage().getContentRaw().startsWith(PREFIX) && event.getMessage().getAuthor().getId() != event.getJDA().getSelfUser().getId()) {
                     beheaded = event.getMessage().getContentRaw().toLowerCase().replaceFirst(Pattern.quote(PREFIX), "");
                     commandHandler.handleCommand(commandHandler.parser.parse(event.getMessage().getContentRaw().toLowerCase(), event));
                     logger.info(event.getAuthor().getName()+" mit ID "+ event.getAuthor().getId()+" auf "+event.getGuild().getName()+" hat den Command genutzt: "+ event.getMessage().getContentRaw());
                 }
-            }
-            rs.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

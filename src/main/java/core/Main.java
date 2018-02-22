@@ -23,12 +23,12 @@ public class Main {
     public static void main(String[] args) {
         logger.info("------------------start Bot----------------------");
         logger.info("read Token and logins");
-
+        MySQL.connect();
 
         builder = new JDABuilder(AccountType.BOT).setToken(SECRETS.TOKEN).setAutoReconnect(true).setStatus(OnlineStatus.ONLINE);
         builder.addEventListener(new commandListener());
         builder.addEventListener(new Guildjoin());
-        // builder.addEventListener(new Message());
+        builder.addEventListener(new Message());
         builder.addEventListener(new Memberjoin());
         logger.info("loaded all listeners");
         commandHandler.commands.put("language", new language());
@@ -37,8 +37,7 @@ public class Main {
         commandHandler.commands.put("help", new help());
         commandHandler.commands.put("bug", new bug());
         commandHandler.commands.put("profile", new profile());
-        commandHandler.commands.put("registeruser", new registeruser());
-        commandHandler.commands.put("Clan", new Clan());
+        commandHandler.commands.put("clan", new Clan());
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();

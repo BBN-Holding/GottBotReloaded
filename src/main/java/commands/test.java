@@ -12,7 +12,7 @@ public class test implements Command{
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        MessageHandler.in(event.getAuthor(), true, "Test", event.getGuild());
+        MessageHandler.in(event.getAuthor(), true, "test", event.getGuild());
         event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).build()).queue(); // print wenn user language is english Test english wen user language is german Test german
     }
 

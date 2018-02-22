@@ -3,7 +3,6 @@ package core;
 import org.slf4j.LoggerFactory;
 import stuff.SECRETS;
 
-import java.lang.reflect.Executable;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,7 @@ public class MySQL {
     public static List<String> List = new ArrayList<>();
     private static Connection connection;
     private static org.slf4j.Logger Logger = LoggerFactory.getLogger(MySQL.class);
-    public void connect() {
+    public static void connect() {
         try {
             connection = DriverManager.getConnection("jdbc:mysql://" + SECRETS.host + ":" + SECRETS.port + "/" + SECRETS.database + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
             Logger.info("MySQL connection success");
@@ -32,26 +31,26 @@ public class MySQL {
     }
 
     public static String get(String table, String where, String wherevalue, String spalte) {
+        String out="";
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM `?` WHERE ?=`?`");
-            ps.setString(1, table);
-            ps.setString(2, where);
-            ps.setString(3, wherevalue);
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM `"+table+"` WHERE `"+where+"`=?");
+            ps.setString(1, wherevalue);
             ResultSet rs = ps.executeQuery();
-            if (rs.next())
-                return rs.getString(spalte);
-            else if (!rs.next()) return "german";
-        } catch (Exception e) {
+            // Only returning one result
+
+            if (rs.next()) {
+                System.out.println("DEBUG!!");
+                out = rs.getString(spalte);
+            } else out=null;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return "Lol";
+        return out;
     }
 
     public static List<String> getall(String table, String spalte) {
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM ? ");
-            ps.setString(1, table);
-
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM `"+table+"` ");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 List.add(rs.getString(spalte));
@@ -60,17 +59,14 @@ public class MySQL {
         } catch (Exception ex) {
             Logger.error(ex.toString());
         }
-        return null;
+        return List;
     }
 
     public static String update(String table, String what, String whatvalue, String where, String wherevalue) {
         try {
-            PreparedStatement ps = connection.prepareStatement("UPDATE `?` SET `?`=? WHERE ?=?");
-            ps.setString(1, table);
-            ps.setString(2, what);
-            ps.setString(3, whatvalue);
-            ps.setString(4, where);
-            ps.setString(5, wherevalue);
+            PreparedStatement ps = connection.prepareStatement("UPDATE `"+table+"` SET `"+what+"`=? WHERE `"+where+"`=?");
+            ps.setString(1, whatvalue);
+            ps.setString(2, wherevalue);
             ps.execute();
         } catch (Exception e) {
             e.printStackTrace();
@@ -80,10 +76,8 @@ public class MySQL {
 
     public static String insert(String table, String what, String whatvalue) {
         try {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO `?`(`?`) VALUES (?])");
-            ps.setString(1, table);
-            ps.setString(2, what);
-            ps.setString(3, whatvalue);
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO `"+table+"`(`"+what+"`) VALUES (?)");
+            ps.setString(1, whatvalue);
             ps.execute();
         } catch (Exception e) {
             e.printStackTrace();

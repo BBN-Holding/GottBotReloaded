@@ -1,6 +1,7 @@
 package commands;
 
 import core.MessageHandler;
+import core.MySQL;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import stuff.SECRETS;
@@ -29,11 +30,8 @@ public class language implements Command {
             }
         } else if (args[0].equalsIgnoreCase("german")||args[0].equalsIgnoreCase("english")) {
             try {
-                Connection con = DriverManager.getConnection(url + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
-                PreparedStatement pst = con.prepareStatement("UPDATE `user` SET `Lang`='" + args[0] + "' WHERE ID=" + event.getAuthor().getId());
-                pst.execute();
+                MySQL.update("user", "language", args[0], "ID", event.getAuthor().getId());
                 MessageHandler.in(event.getMember().getUser(), true, "langedit", event.getGuild());
-                pst.close();
                 event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.Message).setTitle(MessageHandler.Titel).setColor(Color.green).build()).queue();
             } catch (Exception e) {
                 e.printStackTrace();

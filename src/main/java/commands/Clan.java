@@ -31,7 +31,6 @@ public class Clan implements Command {
                 switch (args[0].toLowerCase()) {
 
                     case "list":
-                        MySQL.get("clan", "guildid", event.getGuild().getId(), "2");
                         MessageHandler.in(event.getAuthor(), true, "clanlist", event.getGuild());
                         MySQL.getall("guildid", event.getGuild().getId());
                         String clans = MessageHandler.Message + MySQL.List;

@@ -1,6 +1,8 @@
 package commands;
 
+import com.mysql.cj.mysqla.authentication.MysqlaAuthenticationProvider;
 import core.MessageHandler;
+import core.MySQL;
 import listener.Message;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -39,22 +41,9 @@ public class prefix implements Command {
                 }
             } else {
                 try {
-                    Connection con = DriverManager.getConnection(url + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
-                    PreparedStatement pst = con.prepareStatement("Select * FROM `server` WHERE ID=" + event.getGuild().getId());
-                    ResultSet rs = pst.executeQuery();
-                    if (rs.next()) {
-                        con = DriverManager.getConnection(url + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
-                        pst = con.prepareStatement("UPDATE `server` SET `Prefix`='" + args[0] + "' WHERE ID=" + event.getGuild().getId());
-                        pst.execute();
-                        MessageHandler.in(event.getMember().getUser(), true, "prefixchanged", event.getGuild());
-                        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.green).build()).queue();
-                        pst.close();
-                    }
-                    rs.close();
-                    Role=false;
-                } catch (SQLSyntaxErrorException e) {
-                    MessageHandler.in(event.getMember().getUser(), true, "prefixerror1", event.getGuild());
-                    event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.RED).build()).queue();
+                    MessageHandler.in(event.getMember().getUser(), true, "prefixchanged", event.getGuild());
+                    event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.green).build()).queue();
+                    MySQL.update("server", "Prefix", args[0], "ID", event.getGuild().getId());
                     Role=false;
                 } catch (Exception e) {
                     e.printStackTrace();

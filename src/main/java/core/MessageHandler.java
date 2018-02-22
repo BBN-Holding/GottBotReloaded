@@ -20,7 +20,8 @@ public class MessageHandler {
     public static void in(User user, boolean MessageHandler, String message, Guild guild) {
         try {
             System.out.println("adadasd");
-            language = MySQL.get("user", "ID", user.getId(), "language");
+            language = MySQL.get("user", "ID", user.getId()+"", "language");
+            System.out.println(language);
             System.out.println("sasafasdfasf");
             if (MessageHandler) {
                 core.MessageHandler.get(language, message, guild);
@@ -32,7 +33,7 @@ public class MessageHandler {
 
     public static void get(String lang, String message, Guild guild){
         try {
-            String Prefix = MySQL.get("server", "ID", guild.getId(), "2");
+            String Prefix = MySQL.get("server", "ID", guild.getId(), "prefix");
                 // ClanList
                 if (message.equals("clanlist")) {
                     if (lang.equals("english")) {

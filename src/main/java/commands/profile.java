@@ -1,6 +1,7 @@
 package commands;
 
 import core.MessageHandler;
+import core.MySQL;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -63,19 +64,11 @@ public class profile implements Command {
         }
 
         try {
-            Connection con = DriverManager.getConnection(DATA.url + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
-            PreparedStatement pst = con.prepareStatement("SELECT * FROM `user` WHERE ID='"+user.getUser().getId()+"'");
-            ResultSet rs = pst.executeQuery();
-            if (rs.next()) {
-                Punkte=rs.getInt(4)+"";
-                Level=rs.getInt(3)+"";
-                TempProgress=rs.getInt(3)+1;
-                con = DriverManager.getConnection(DATA.url+ "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
-                pst = con.prepareStatement("SELECT * FROM `lvl` WHERE lvl='"+TempProgress+"'");
-                rs = pst.executeQuery();
-                if (rs.next()) {
-                    viertel=rs.getInt(2)/8;
-                    ProgressMax=rs.getInt(2)+"";
+                Punkte=MySQL.get("user", "ID", user.getUser().getId(), "xp");
+                Level=MySQL.get("user", "ID", user.getUser().getId(), "level");
+                TempProgress=Integer.parseInt(MySQL.get("user", "ID", user.getUser().getId(),"xp"))+1;
+                    viertel=Integer.parseInt(MySQL.get("lvl", "lvl", String.valueOf(TempProgress), "xp"))/8;
+                    ProgressMax=MySQL.get("lvl", "lvl", String.valueOf(TempProgress), "xp");
                     LevelPlus=(Integer.parseInt(Level)+1)+"";
                     //unter 25% viertel=2
                     if (viertel>Integer.parseInt(Punkte)) {
@@ -150,7 +143,7 @@ public class profile implements Command {
                             event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
                             event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
                             event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_end_empty",true).get(0).getAsMention();
-                    } else if (rs.getInt(2)==Integer.parseInt(Punkte)) {
+                    } else if (ProgressMax.equals(Punkte)) {
                         Progress=event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_start_full",true).get(0).getAsMention()+"" +
                                 event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
                                 event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
@@ -160,9 +153,6 @@ public class profile implements Command {
                                 event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full",true).get(0).getAsMention()+""+
                                 event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_end_full",true).get(0).getAsMention();
                     }
-                }
-            }
-            rs.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
