@@ -12,8 +12,8 @@ public class test implements Command{
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        MessageHandler.in(event.getAuthor(), true, "test", event.getGuild());
-        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).build()).queue(); // print wenn user language is english Test english wen user language is german Test german
+        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("testtitel"))
+                .setDescription(MessageHandler.get(event.getAuthor()).getString("testtext")).build()).queue(); // print wenn user language is english Test english wen user language is german Test german
     }
 
     @Override

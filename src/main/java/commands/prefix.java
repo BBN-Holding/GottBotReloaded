@@ -33,16 +33,15 @@ public class prefix implements Command {
         if (event.getAuthor().getId()==event.getGuild().getOwner().getUser().getId() || Role) {
             if (args.length < 1) {
                 try {
-                    MessageHandler.in(event.getMember().getUser(), true, "prefix", event.getGuild());
-                    event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.CYAN).build()).queue();
+                    event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("prefixtitel"))
+                            .setDescription(MessageHandler.get(event.getAuthor()).getString("prefixtext").replaceAll("gb.", MessageHandler.getprefix(event.getGuild()))).setColor(Color.CYAN).build()).queue();
                     Role=false;
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             } else {
                 try {
-                    MessageHandler.in(event.getMember().getUser(), true, "prefixchanged", event.getGuild());
-                    event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.green).build()).queue();
+                    event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("prefixchangedtitel").setDescription(MessageHandler.get(event.getAuthor()).getString("prefixchangedtext")).setColor(Color.green).build()).queue();
                     MySQL.update("server", "Prefix", args[0], "ID", event.getGuild().getId());
                     Role=false;
                 } catch (Exception e) {
@@ -50,8 +49,8 @@ public class prefix implements Command {
                 }
             }
         } else if (Role=false) {
-            MessageHandler.in(event.getMember().getUser(), true, "noperms", event.getGuild());
-            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.RED).build()).queue();
+            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("nopermstitel"))
+                    .setDescription(MessageHandler.get(event.getAuthor()).getString("nopermstext")).setColor(Color.RED).build()).queue();
         }
 
     }

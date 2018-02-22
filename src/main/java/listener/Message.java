@@ -27,8 +27,8 @@ public class Message extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         // Mention
         if (event.getMessage().getContentRaw().startsWith("<@407189087649398795>")) {
-            MessageHandler.in(event.getAuthor(), true, "mention", event.getGuild());
-            event.getChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.CYAN).build()).queue();
+            event.getChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("mentiontitel"))
+                    .setDescription(MessageHandler.get(event.getAuthor()).getString("mentiontext").replaceAll("gb.", MessageHandler.getprefix(event.getGuild()))).setColor(Color.CYAN).build()).queue();
             logger.info(event.getAuthor().getName()+" mit ID "+ event.getAuthor().getId()+" auf "+event.getGuild().getName()+" hat mich erwähnt! ");
         }
         //lvl
@@ -40,7 +40,8 @@ public class Message extends ListenerAdapter {
             long xpmax = Long.parseLong(MySQL.get("lvl", "level", String.valueOf(level+1), "lvl"));
             if (xp>=xpmax) {
                 MySQL.update("user", "level", String.valueOf(level+1), "ID", event.getAuthor().getId());
-                event.getAuthor().openPrivateChannel().complete().sendMessage()
+                event.getAuthor().openPrivateChannel().complete().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("leveluptitel"))
+                        .setDescription(MessageHandler.get(event.getAuthor()).getString("leveluptext")+String.valueOf(Level+1)).build()).queue();
             }
 
         }

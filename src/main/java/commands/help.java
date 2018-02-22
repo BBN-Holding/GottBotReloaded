@@ -14,8 +14,8 @@ public class help implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        MessageHandler.in(event.getMember().getUser(), true, "help", event.getGuild());
-        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.CYAN).build()).queue();
+        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("helptitel"))
+                .setDescription(MessageHandler.get(event.getAuthor()).getString("helptext").replaceAll("gb.", MessageHandler.getprefix(event.getGuild()))).setColor(Color.CYAN).build()).queue();
     }
 
     @Override

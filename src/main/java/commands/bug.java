@@ -15,8 +15,8 @@ public class bug implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length<=2) {
-            MessageHandler.in(event.getMember().getUser(), true, "bug", event.getGuild());
-            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.RED).build()).queue();
+            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("bugtitel"))
+                    .setDescription(MessageHandler.get(event.getAuthor()).getString("bugtext").replaceAll("gb.", MessageHandler.getprefix(event.getGuild()))).setColor(Color.RED).build()).queue();
         } else {
 
             String text = event.getMessage().getContentRaw();
@@ -27,8 +27,8 @@ public class bug implements Command {
                             .build()
             ).queue();
             //User Feedback
-            MessageHandler.in(event.getMember().getUser(), true, "bugsucess", event.getGuild());
-            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel).setDescription(MessageHandler.Message).setColor(Color.green).build()).queue();
+            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("bugsucesstitel"))
+                    .setDescription(MessageHandler.get(event.getAuthor()).getString("bugsucesstext")).setColor(Color.green).build()).queue();
 
         }
     }

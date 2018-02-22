@@ -157,8 +157,8 @@ public class profile implements Command {
             e.printStackTrace();
         }
 
-        MessageHandler.in(event.getAuthor(),true,"profile",event.getGuild());
-        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.Titel)
+
+        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("profiletitel"))
                 .addField("Name", user.getUser().getName(),true)
                 .addField("Nickname", Nick, true)
                 .addField("Game", Game, true)
