@@ -66,7 +66,7 @@ public class profile implements Command {
         try {
                 Punkte=MySQL.get("user", "ID", user.getUser().getId(), "xp");
                 Level=MySQL.get("user", "ID", user.getUser().getId(), "level");
-                TempProgress=Integer.parseInt(MySQL.get("user", "ID", user.getUser().getId(),"xp"))+1;
+                TempProgress=Integer.parseInt(MySQL.get("user", "ID", user.getUser().getId(),"level"))+1;
                     viertel=Integer.parseInt(MySQL.get("lvl", "lvl", String.valueOf(TempProgress), "xp"))/8;
                     ProgressMax=MySQL.get("lvl", "lvl", String.valueOf(TempProgress), "xp");
                     LevelPlus=(Integer.parseInt(Level)+1)+"";

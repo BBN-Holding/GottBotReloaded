@@ -2,6 +2,7 @@ package commands;
 
 import core.MessageHandler;
 import core.MySQL;
+import listener.Message;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import stuff.SECRETS;
@@ -28,11 +29,24 @@ public class language implements Command {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else if (args[0].equalsIgnoreCase("german")||args[0].equalsIgnoreCase("english")) {
+        } else if (args[0].equalsIgnoreCase("list")) {
             try {
-                MySQL.update("user", "language", args[0], "ID", event.getAuthor().getId());
-                event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("languageedittext"))
-                        .setTitle(MessageHandler.get(event.getAuthor()).getString("languageedittitel")).setColor(Color.green).build()).queue();
+
+                String out=MySQL.getallstring("language", "name").replaceAll(" ", ", ");
+                event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("languagelisttext")+":\n"+out)
+                        .setTitle(MessageHandler.get(event.getAuthor()).getString("languagelisttitel")).build()).queue();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (args[0].length()==2) {
+            try {
+
+                if (MySQL.getallstring("language", "name").contains(args[0].toLowerCase())) {
+                    MySQL.update("user", "language", args[0].toLowerCase(), "ID", event.getAuthor().getId());
+                    event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("languageedittext"))
+                            .setTitle(MessageHandler.get(event.getAuthor()).getString("languageedittitel")).setColor(Color.green).build()).queue();
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }

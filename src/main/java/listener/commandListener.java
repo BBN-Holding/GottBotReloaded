@@ -23,12 +23,14 @@ public class commandListener extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         try {
-                String PREFIX= MySQL.get("server", "ID", event.getGuild().getId(), "prefix");
-                if (event.getMessage().getContentRaw().startsWith(PREFIX) && event.getMessage().getAuthor().getId() != event.getJDA().getSelfUser().getId()) {
+            if (!event.getAuthor().isBot()) {
+                String PREFIX = MySQL.get("server", "ID", event.getGuild().getId(), "prefix");
+                if (event.getMessage().getContentRaw().startsWith(PREFIX)) {
                     beheaded = event.getMessage().getContentRaw().toLowerCase().replaceFirst(Pattern.quote(PREFIX), "");
                     commandHandler.handleCommand(commandHandler.parser.parse(event.getMessage().getContentRaw().toLowerCase(), event));
-                    logger.info(event.getAuthor().getName()+" mit ID "+ event.getAuthor().getId()+" auf "+event.getGuild().getName()+" hat den Command genutzt: "+ event.getMessage().getContentRaw());
+                    logger.info(event.getAuthor().getName() + " mit ID " + event.getAuthor().getId() + " auf " + event.getGuild().getName() + " hat den Command genutzt: " + event.getMessage().getContentRaw());
                 }
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

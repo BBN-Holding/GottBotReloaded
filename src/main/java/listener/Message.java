@@ -37,9 +37,10 @@ public class Message extends ListenerAdapter {
             xp++;
             MySQL.update("user","xp", String.valueOf(xp), "ID", event.getAuthor().getId());
             long level = Long.parseLong(MySQL.get("user", "ID", event.getAuthor().getId(), "level"));
-            long xpmax = Long.parseLong(MySQL.get("lvl", "level", String.valueOf(level+1), "lvl"));
+            long xpmax = Long.parseLong(MySQL.get("lvl", "lvl", String.valueOf(level+1), "xp"));
             if (xp>=xpmax) {
                 MySQL.update("user", "level", String.valueOf(level+1), "ID", event.getAuthor().getId());
+                MySQL.update("user", "xp", "0", "ID", event.getAuthor().getId());
                 event.getAuthor().openPrivateChannel().complete().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("leveluptitel"))
                         .setDescription(MessageHandler.get(event.getAuthor()).getString("leveluptext")+String.valueOf(Level+1)).build()).queue();
             }

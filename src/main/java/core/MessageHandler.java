@@ -20,13 +20,8 @@ public class MessageHandler {
         try {
             String language = MySQL.get("user", "ID", user.getId()+"", "language");
             System.out.println(language);
-            String country = MySQL.get("user", "ID", user.getId()+"", "country");
-            Locale locale = new Locale(language, country);
-            if (country==null||language==null) {
-                messagebundle = ResourceBundle.getBundle("LanguageBundle");
-            } else {
-                messagebundle = ResourceBundle.getBundle("LanguageBundle", locale);
-            }
+            Locale locale = new Locale(language);
+            messagebundle = ResourceBundle.getBundle("MessagesBundle", locale);
         } catch (Exception e) {
             e.printStackTrace();
         }

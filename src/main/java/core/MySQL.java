@@ -6,6 +6,7 @@ import stuff.SECRETS;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class MySQL {
     public static List<String> List = new ArrayList<>();
@@ -39,7 +40,6 @@ public class MySQL {
             // Only returning one result
 
             if (rs.next()) {
-                System.out.println("DEBUG!!");
                 out = rs.getString(spalte);
             } else out=null;
         } catch (SQLException e) {
@@ -60,6 +60,21 @@ public class MySQL {
             Logger.error(ex.toString());
         }
         return List;
+    }
+
+    public static String getallstring(String table, String spalte) {
+        String out="";
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM `" + table + "`");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                out += rs.getString(spalte)+" ";
+            }
+            return out;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return out;
     }
 
     public static String update(String table, String what, String whatvalue, String where, String wherevalue) {

@@ -20,7 +20,7 @@ public class Memberjoin extends ListenerAdapter {
 
     @Override
     public void onGuildMemberJoin(GuildMemberJoinEvent event) {
-        if (!MySQL.get("user", "ID", event.getUser().getId(), "ID").isEmpty()) {
+        if (MySQL.get("user", "ID", event.getUser().getId(), "ID")==null) {
             MySQL.insert("user", "ID", event.getUser().getId());
             logger.info("neuer User in database Name: " + event.getMember().getUser().getName() + " ID: " + event.getUser().getId() + " von " + event.getGuild().getName());
         }
