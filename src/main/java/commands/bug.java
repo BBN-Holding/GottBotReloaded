@@ -20,7 +20,7 @@ public class bug implements Command {
         } else {
 
             String text = event.getMessage().getContentRaw();
-            event.getJDA().getGuildById("396732579920740352").getTextChannelById("411641204002783232").sendMessage(
+            event.getJDA().getGuildById("396732579920740352").getTextChannelById("417074854701826049").sendMessage(
                     new EmbedBuilder()
                             .setAuthor(event.getAuthor().getName() + "#" + event.getAuthor().getDiscriminator(), null, event.getAuthor().getAvatarUrl())
                             .setDescription("**New Bug Detected!**\n```fix\n" + text + "```")
