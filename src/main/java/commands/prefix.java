@@ -41,8 +41,9 @@ public class prefix implements Command {
                 }
             } else {
                 try {
-                    event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("prefixchangedtitel").setDescription(MessageHandler.get(event.getAuthor()).getString("prefixchangedtext")).setColor(Color.green).build()).queue();
                     MySQL.update("server", "Prefix", args[0], "ID", event.getGuild().getId());
+                    event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("prefixchangedtitel"))
+                            .setDescription(MessageHandler.get(event.getAuthor()).getString("prefixchangedtext").replaceAll("gb.", MessageHandler.getprefix(event.getGuild()))).setColor(Color.green).build()).queue();
                     Role=false;
                 } catch (Exception e) {
                     e.printStackTrace();
