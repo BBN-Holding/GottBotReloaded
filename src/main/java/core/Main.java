@@ -1,14 +1,12 @@
 package core;
 
 import commands.*;
-import listener.Guildjoin;
-import listener.Memberjoin;
-import listener.Message;
-import listener.commandListener;
+import listener.*;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.OnlineStatus;
+import net.dv8tion.jda.core.entities.Game;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import stuff.SECRETS;
@@ -38,6 +36,7 @@ public class Main {
         commandHandler.commands.put("profile", new profile());
         commandHandler.commands.put("clan", new Clan());
         logger.info("loaded all commands");
+        builder.setGame(Game.of(Game.GameType.DEFAULT, builder.toString()));
         try {
             JDA jda = builder.buildBlocking();
         } catch (Exception e) {
