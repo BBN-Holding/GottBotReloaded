@@ -49,9 +49,10 @@ public class MySQL {
         return out;
     }
 
-    public static List<String> getall(String table, String spalte) {
+    public static List<String> getall(String table, String where, String wherevalue, String spalte) {
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM `"+table+"` ");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM `"+table+"` WHERE `"+where+"`=?");
+            ps.setString(1,wherevalue);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 List.add(rs.getString(spalte));

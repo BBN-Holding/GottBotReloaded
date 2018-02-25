@@ -21,8 +21,6 @@ import java.util.concurrent.TimeUnit;
 
 public class Message extends ListenerAdapter {
     private static Logger logger = LoggerFactory.getLogger(Message.class);
-    int Punkte;
-    int Level;
     @Override
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         // Mention
@@ -42,7 +40,7 @@ public class Message extends ListenerAdapter {
                 MySQL.update("user", "level", String.valueOf(level+1), "ID", event.getAuthor().getId());
                 MySQL.update("user", "xp", "0", "ID", event.getAuthor().getId());
                 event.getAuthor().openPrivateChannel().complete().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("leveluptitel"))
-                        .setDescription(MessageHandler.get(event.getAuthor()).getString("leveluptext")+String.valueOf(Level+1)).build()).queue();
+                        .setDescription(MessageHandler.get(event.getAuthor()).getString("leveluptext")+String.valueOf(level+1)).build()).queue();
             }
 
         }

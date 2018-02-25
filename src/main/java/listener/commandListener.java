@@ -2,6 +2,7 @@ package listener;
 
 import core.Main;
 import core.MySQL;
+import net.dv8tion.jda.core.entities.ChannelType;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
@@ -24,7 +25,7 @@ public class commandListener extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         try {
-            if (event.getChannelType().equals("TEXT")) {
+            if (event.getChannelType().equals(ChannelType.TEXT)) {
                 if (!event.getAuthor().isBot()) {
                     String PREFIX = MySQL.get("server", "ID", event.getGuild().getId(), "prefix");
                     if (event.getMessage().getContentRaw().startsWith(PREFIX)) {
