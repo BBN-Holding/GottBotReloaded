@@ -24,7 +24,6 @@ public class Main {
         logger.info("------------------start Bot----------------------");
         logger.info("read Token and logins");
         MySQL.connect();
-
         builder = new JDABuilder(AccountType.BOT).setToken(SECRETS.TOKEN).setAutoReconnect(true).setStatus(OnlineStatus.ONLINE);
         builder.addEventListener(new commandListener());
         builder.addEventListener(new Guildjoin());

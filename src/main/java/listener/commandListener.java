@@ -3,6 +3,7 @@ package listener;
 import core.Main;
 import core.MySQL;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import core.commandHandler;
 import org.slf4j.Logger;
@@ -23,12 +24,14 @@ public class commandListener extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         try {
-            if (!event.getAuthor().isBot()) {
-                String PREFIX = MySQL.get("server", "ID", event.getGuild().getId(), "prefix");
-                if (event.getMessage().getContentRaw().startsWith(PREFIX)) {
-                    beheaded = event.getMessage().getContentRaw().toLowerCase().replaceFirst(Pattern.quote(PREFIX), "");
-                    commandHandler.handleCommand(commandHandler.parser.parse(event.getMessage().getContentRaw().toLowerCase(), event));
-                    logger.info(event.getAuthor().getName() + " mit ID " + event.getAuthor().getId() + " auf " + event.getGuild().getName() + " hat den Command genutzt: " + event.getMessage().getContentRaw());
+            if (event.getChannelType().equals("TEXT")) {
+                if (!event.getAuthor().isBot()) {
+                    String PREFIX = MySQL.get("server", "ID", event.getGuild().getId(), "prefix");
+                    if (event.getMessage().getContentRaw().startsWith(PREFIX)) {
+                        beheaded = event.getMessage().getContentRaw().toLowerCase().replaceFirst(Pattern.quote(PREFIX), "");
+                        commandHandler.handleCommand(commandHandler.parser.parse(event.getMessage().getContentRaw().toLowerCase(), event));
+                        logger.info(event.getAuthor().getName() + " mit ID " + event.getAuthor().getId() + " auf " + event.getGuild().getName() + " hat den Command genutzt: " + event.getMessage().getContentRaw());
+                    }
                 }
             }
 
