@@ -5,6 +5,7 @@ import core.MessageHandler;
 import core.MySQL;
 import listener.Message;
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import stuff.SECRETS;
 
@@ -22,15 +23,7 @@ public class prefix implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-
-        int i =0;
-        while (event.getMember().getRoles().size()-1>=i) {
-            if (event.getMember().getRoles().get(i).getName().equalsIgnoreCase("GBOwner")) {
-                Role=true;
-            }
-            i++;
-        }
-        if (event.getAuthor().getId()==event.getGuild().getOwner().getUser().getId() || Role) {
+        if (event.getAuthor().getId()==event.getGuild().getOwner().getUser().getId() || event.getMember().hasPermission(Permission.MANAGE_SERVER)) {
             if (args.length < 1) {
                 try {
                     event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("prefixtitel"))

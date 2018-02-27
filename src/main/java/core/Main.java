@@ -36,7 +36,6 @@ public class Main {
         commandHandler.commands.put("profile", new profile());
         commandHandler.commands.put("clan", new Clan());
         logger.info("loaded all commands");
-        builder.setGame(Game.of(Game.GameType.DEFAULT, builder.toString()));
         try {
             JDA jda = builder.buildBlocking();
         } catch (Exception e) {

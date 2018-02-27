@@ -45,9 +45,11 @@ public class Clan implements Command {
                                         .setTitle(MessageHandler.get(event.getAuthor()).getString("clanjointitel")).build()).queue();
                     } else {
                         if (MySQL.get("clan", "name", args[1], "open").equals("false")) {
-                            // MySQL.insert("requests", "name`,`user", args[]);
+                            MySQL.insert("requests", "name`,`user", args[1]+"`,`"+event.getAuthor().getId());
                             event.getGuild().getTextChannelsByName(args[1], true).get(0).sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("clanjoinrequesttitel"))
                                     .setDescription(MessageHandler.get(event.getAuthor()).getString("clanjoinrequesttext").replaceAll("User", event.getAuthor().getAsMention()).replaceAll("gb.", MessageHandler.getprefix(event.getGuild()))).build()).queue();
+                        } else if (MySQL.get("clan", "name", args[1], "open").equals("true")) {
+
                         }
                     }
                     break;
