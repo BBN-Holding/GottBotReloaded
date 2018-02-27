@@ -2,6 +2,7 @@ package core;
 
 import commands.*;
 import commands.botowner.givehashes;
+import commands.botowner.guilds;
 import commands.botowner.test;
 import listener.*;
 import net.dv8tion.jda.core.AccountType;
