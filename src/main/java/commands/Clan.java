@@ -53,6 +53,7 @@ public class Clan implements Command {
                                 event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("clancreatesucesstitel"))
                                         .setDescription(MessageHandler.get(event.getAuthor()).getString("clancreatesucesstext")).build()).queue();
                             } else {
+                                System.out.println("Test");
                                 event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("minertitel"))
                                         .setDescription(MessageHandler.get(event.getAuthor()).getString("minertext")
                                                 .replaceAll("gb.", MessageHandler.getprefix(event.getGuild()))).build()).queue();
