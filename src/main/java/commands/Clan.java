@@ -37,19 +37,49 @@ public class Clan implements Command {
                     List.clear();
                     break;
 
-                case "join":
-                    if (args.length < 2) {
-                        event.getTextChannel().sendMessage(
-                                new EmbedBuilder()
-                                        .setDescription(MessageHandler.get(event.getAuthor()).getString("clanjointext").replaceAll("gb.", MessageHandler.getprefix(event.getGuild())))
-                                        .setTitle(MessageHandler.get(event.getAuthor()).getString("clanjointitel")).build()).queue();
-                    } else {
-                        if (MySQL.get("clan", "name", args[1], "open").equals("false")) {
-                            MySQL.insert("requests", "name`,`user", args[1]+"`,`"+event.getAuthor().getId());
-                            event.getGuild().getTextChannelsByName(args[1], true).get(0).sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("clanjoinrequesttitel"))
-                                    .setDescription(MessageHandler.get(event.getAuthor()).getString("clanjoinrequesttext").replaceAll("User", event.getAuthor().getAsMention()).replaceAll("gb.", MessageHandler.getprefix(event.getGuild()))).build()).queue();
-                        } else if (MySQL.get("clan", "name", args[1], "open").equals("true")) {
+                case "create":
 
+                    if (MySQL.get("user", "ID", event.getAuthor().getId(), "clan").equals("none")) {
+                        if (args.length<2) {
+
+                        } else {
+                            if (Integer.parseInt(MySQL.get("user", "id", event.getAuthor().getId(), "miner"))>=1024) {
+                                Long TextChannel  = event.getGuild().getController().createTextChannel(args[1]).complete().getIdLong();
+                                int id =0;
+                                while (MySQL.getall("clan", "1", "", "id").size()>=id) {
+                                    id++;
+                                }
+                                MySQL.insert("clan", "name`, `id`, `textchannel",args[1]+"', '"+id+"', '"+TextChannel);
+                                event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("clancreatesucesstitel"))
+                                        .setDescription(MessageHandler.get(event.getAuthor()).getString("clancreatesucesstext")).build()).queue();
+                            } else {
+                                event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("minertitel"))
+                                        .setDescription(MessageHandler.get(event.getAuthor()).getString("minertext")
+                                                .replaceAll("gb.", MessageHandler.getprefix(event.getGuild()))).build()).queue();
+                            }
+                        }
+                    }
+
+                    break;
+
+                case "join":
+                    if (MySQL.get("user", "ID", event.getAuthor().getId(), "clan").equals("none")) {
+                        if (args.length < 2) {
+                            event.getTextChannel().sendMessage(
+                                    new EmbedBuilder()
+                                            .setDescription(MessageHandler.get(event.getAuthor()).getString("clanjointext").replaceAll("gb.", MessageHandler.getprefix(event.getGuild())))
+                                            .setTitle(MessageHandler.get(event.getAuthor()).getString("clanjointitel")).build()).queue();
+                        } else {
+                            if (MySQL.get("clan", "name", args[1], "open").equals("false")) {
+                                MySQL.insert("requests", "name`,`user", args[1] + "`,`" + event.getAuthor().getId());
+                                event.getGuild().getTextChannelsByName(args[1], true).get(0).sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("clanjoinrequesttitel"))
+                                        .setDescription(MessageHandler.get(event.getAuthor()).getString("clanjoinrequesttext").replaceAll("User", event.getAuthor().getAsMention()).replaceAll("gb.", MessageHandler.getprefix(event.getGuild()))).build()).queue();
+                            } else if (MySQL.get("clan", "name", args[1], "open").equals("true")) {
+                                String Channelid=MySQL.get("clan", "name", args[1], "id");
+                                MySQL.update("user", "clan", Channelid , "ID", event.getAuthor().getId());
+                                event.getGuild().getTextChannelById(Channelid).sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("clanjoineventtitel"))
+                                .setDescription(MessageHandler.get(event.getAuthor()).getString("clanjoineventtext")).build()).queue();
+                            }
                         }
                     }
                     break;
