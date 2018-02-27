@@ -1,10 +1,11 @@
-package commands;
+package commands.botowner;
 
+import commands.Command;
 import core.MessageHandler;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
-public class test implements Command{
+public class test implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
