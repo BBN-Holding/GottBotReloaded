@@ -57,9 +57,6 @@ public class guilds implements Command {
 
         event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("Bot running on following guilds" + "`Total guilds: " + event.getJDA().getGuilds().size() + " - Side " + sideNumb + " / " + sideNumbAll + "`\n\n" + runningOnServers.toString())
                 .setTitle("Titel").setColor(Color.MAGENTA).build()).queue();
-        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("prefixtitel"))
-                .setDescription(MessageHandler.get(event.getAuthor()).getString("prefixtext").replaceAll("gb.", MessageHandler.getprefix(event.getGuild()))).setColor(Color.CYAN).build()).queue();
-
     }
 
     @Override
