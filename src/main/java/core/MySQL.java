@@ -102,4 +102,14 @@ public class MySQL {
         return null;
     }
 
+    public static void delete(String table, String where, String wherevalue) {
+        try {
+            PreparedStatement ps = connection.prepareStatement("DELETE FROM `"+table+"` WHERE `"+where+"`=?");
+            ps.setString(1, wherevalue);
+            ps.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

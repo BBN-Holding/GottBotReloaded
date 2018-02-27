@@ -1,6 +1,7 @@
 package core;
 
 import commands.*;
+import commands.botowner.givehashes;
 import commands.botowner.test;
 import listener.*;
 import net.dv8tion.jda.core.AccountType;
@@ -32,6 +33,7 @@ public class Main {
         commandHandler.commands.put("bug", new bug());
         commandHandler.commands.put("profile", new profile());
         commandHandler.commands.put("clan", new Clan());
+        commandHandler.commands.put("givehashes", new givehashes());
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();
