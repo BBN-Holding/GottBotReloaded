@@ -34,6 +34,7 @@ public class Main {
         commandHandler.commands.put("profile", new profile());
         commandHandler.commands.put("clan", new Clan());
         commandHandler.commands.put("givehashes", new givehashes());
+        commandHandler.commands.put("guilds", new guilds());
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();
