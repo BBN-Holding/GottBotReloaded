@@ -19,7 +19,6 @@ public class MessageHandler {
     public static ResourceBundle get(User user){
         try {
             String language = MySQL.get("user", "ID", user.getId()+"", "language");
-            System.out.println(language);
             Locale locale = new Locale(language);
             messagebundle = ResourceBundle.getBundle("MessagesBundle", locale);
         } catch (Exception e) {

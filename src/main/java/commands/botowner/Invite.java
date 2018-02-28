@@ -2,7 +2,6 @@
 package commands.botowner;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.EmbedBuilder;
 import commands.Command;
