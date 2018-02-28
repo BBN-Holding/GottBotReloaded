@@ -4,11 +4,14 @@ import core.MessageHandler;
 import core.MySQL;
 import listener.Message;
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Clan implements Command {
+    public static List<String> List = new ArrayList<>();
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -41,17 +44,22 @@ public class Clan implements Command {
 
                     if (MySQL.get("user", "ID", event.getAuthor().getId(), "clan").equals("none")) {
                         if (args.length<2) {
-
+                            System.out.println("ll");
                         } else {
-                            if (Integer.parseInt(MySQL.get("user", "id", event.getAuthor().getId(), "miner"))>=1024) {
-                                Long TextChannel  = event.getGuild().getController().createTextChannel(args[1]).complete().getIdLong();
+                            if (Long.parseLong(MySQL.get("user", "id", event.getAuthor().getId(), "miner"))>1023) {
+                                String name=args[1];
+                                Long TextChannel  = event.getGuild().getController().createTextChannel(name).addPermissionOverride(event.getMember(), 3072, 0).addPermissionOverride(event.getGuild().getPublicRole(), 0, Permission.ALL_VOICE_PERMISSIONS).complete().getIdLong();
                                 int id =0;
-                                while (MySQL.getall("clan", "1", "", "id").size()>=id) {
+                                List=MySQL.getallwithoutwhere("clan", "id");
+                                while (List.size()>=id) {
                                     id++;
+                                    System.out.println(id);
                                 }
-                                MySQL.insert("clan", "name`, `id`, `textchannel",args[1]+"', '"+id+"', '"+TextChannel);
+                                System.out.println(id);
+                                MySQL.insert("clan", "name`, `id`, `textchannel`,`guildid",name+"', '"+id+"', '"+TextChannel+"', '"+event.getGuild().getId());
                                 event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("clancreatesucesstitel"))
                                         .setDescription(MessageHandler.get(event.getAuthor()).getString("clancreatesucesstext")).build()).queue();
+                                List.clear();
                             } else {
                                 System.out.println("Test");
                                 event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("minertitel"))
