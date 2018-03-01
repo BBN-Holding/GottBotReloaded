@@ -2,7 +2,6 @@
 package commands.botowner;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.EmbedBuilder;
 import commands.Command;
 
@@ -19,12 +18,11 @@ public class Invite implements Command {
     }
 
     @Override
-    public Message action(String[] args, MessageReceivedEvent event) {
+    public void action(String[] args, MessageReceivedEvent event) {
         String HALLO = event.getJDA().getGuildById(args[0]).getTextChannels().get(0).createInvite().complete().getURL();
 
         event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("Invite " +  HALLO)
                 .setTitle(":information_source: Invite").setColor(Color.MAGENTA).build()).queue();
-        return null;
     }
 
     @Override
