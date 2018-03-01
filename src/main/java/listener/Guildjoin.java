@@ -30,19 +30,7 @@ public class Guildjoin extends ListenerAdapter {
             }
             rs.close();
 
-                int i = 0;
-                while (event.getGuild().getMembers().size()-1>=i) {
-                    pst = con.prepareStatement("Select * FROM `user` WHERE ID=" + event.getGuild().getMembers().get(i).getUser().getId());
-                    rs = pst.executeQuery();
-                    if (!rs.next()) {
-                        pst = con.prepareStatement("INSERT INTO `user` (`ID`) VALUES ('"+event.getGuild().getMembers().get(i).getUser().getId()+"');");
-                        pst.execute();
-                        pst.close();
-                        logger.info("neuer User in database Name: "+event.getGuild().getMembers().get(i).getUser().getName()+" ID: "+event.getGuild().getMembers().get(i).getUser().getId()+" von "+event.getGuild().getName());
-                    }
-                    rs.close();
-                    i++;
-                }
+
 
 
 

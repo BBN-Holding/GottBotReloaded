@@ -64,6 +64,20 @@ public class MySQL {
         return List;
     }
 
+    public static List<String> getallwithoutwhere(String table, String spalte) {
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM `"+table+"`");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                List.add(rs.getString(spalte));
+            }
+            return List;
+        } catch (Exception ex) {
+            Logger.error(ex.toString());
+        }
+        return List;
+    }
+
     public static String getallstring(String table, String spalte) {
         String out="";
         try {
@@ -93,8 +107,7 @@ public class MySQL {
 
     public static String insert(String table, String what, String whatvalue) {
         try {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO `"+table+"`(`"+what+"`) VALUES (?)");
-            ps.setString(1, whatvalue);
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO `"+table+"`(`"+what+"`) VALUES ('"+whatvalue+"')");
             ps.execute();
         } catch (Exception e) {
             e.printStackTrace();

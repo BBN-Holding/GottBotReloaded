@@ -55,8 +55,8 @@ public class guilds implements Command {
 
         int sideNumb = SideNumbInput;
 
-        event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("Bot running on following guilds" + "`Total guilds: " + event.getJDA().getGuilds().size() + " - Side " + sideNumb + " / " + sideNumbAll + "`\n\n" + runningOnServers.toString())
-                .setTitle("Titel").setColor(Color.MAGENTA).build()).queue();
+        event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("`All: " + event.getJDA().getGuilds().size() + " - Side " + sideNumb + " / " + sideNumbAll + "`\n\n" + runningOnServers.toString())
+                .setTitle(":information_source: Guild's").setColor(Color.MAGENTA).build()).queue();
     }
 
     @Override

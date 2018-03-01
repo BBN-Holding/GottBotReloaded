@@ -24,14 +24,15 @@ public class Message extends ListenerAdapter {
     @Override
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         // Mention
-        if (event.getMessage().getContentRaw().startsWith("<@407189087649398795>")) {
+        if (event.getMessage().getContentRaw().startsWith("<@"+event.getJDA().getSelfUser().getIdLong()+">")) {
+            System.out.println("Lol");
             event.getChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("mentiontitel"))
                     .setDescription(MessageHandler.get(event.getAuthor()).getString("mentiontext").replaceAll("gb.", MessageHandler.getprefix(event.getGuild()))).setColor(Color.CYAN).build()).queue();
             logger.info(event.getAuthor().getName()+" mit ID "+ event.getAuthor().getId()+" auf "+event.getGuild().getName()+" hat mich erwähnt! ");
         }
         //lvl
         if (!event.getAuthor().isBot()) {
-            long xp = Long.parseLong(MySQL.get("user", "ID", event.getAuthor().getId(), "xp"));
+            long xp = Long.parseLong(MySQL.get("user", "id", event.getAuthor().getId(), "xp"));
             xp++;
             MySQL.update("user","xp", String.valueOf(xp), "ID", event.getAuthor().getId());
             long level = Long.parseLong(MySQL.get("user", "ID", event.getAuthor().getId(), "level"));
