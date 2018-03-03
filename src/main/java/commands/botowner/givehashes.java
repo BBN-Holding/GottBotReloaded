@@ -5,7 +5,6 @@ import core.MessageHandler;
 import core.MySQL;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class givehashes implements Command {
@@ -18,18 +17,20 @@ public class givehashes implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        try {
-            useruser = args[1].replace("<", "").replace("@", "").replace(">", "").replace("!","");
-            user = event.getGuild().getMemberById(useruser);
+        if (Handler.get(event.getAuthor())) {
+            try {
+                useruser = args[1].replace("<", "").replace("@", "").replace(">", "").replace("!", "");
+                user = event.getGuild().getMemberById(useruser);
 
-        }catch ( ArrayIndexOutOfBoundsException e) {
-            user = event.getMember();
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (ArrayIndexOutOfBoundsException e) {
+                user = event.getMember();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            MySQL.update("user", "miner", args[0], "id", user.getUser().getId());
+            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("givehashestitel").replaceAll("gb.", MessageHandler.getprefix(event.getGuild())))
+                    .setDescription(MessageHandler.get(event.getAuthor()).getString("givehashestext")).build()).queue();
         }
-        MySQL.update("user", "miner", args[0], "id", user.getUser().getId());
-        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("givehashestitel").replaceAll("gb.", MessageHandler.getprefix(event.getGuild())))
-                .setDescription(MessageHandler.get(event.getAuthor()).getString("givehashestext")).build()).queue();
     }
 
     @Override

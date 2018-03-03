@@ -2,7 +2,6 @@ package commands.botowner;
 
 import commands.Command;
 import core.MySQL;
-import listener.commandListener;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

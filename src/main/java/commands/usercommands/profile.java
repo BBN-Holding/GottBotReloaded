@@ -1,18 +1,14 @@
-package commands;
+package commands.usercommands;
 
+import commands.Command;
 import core.MessageHandler;
 import core.MySQL;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import stuff.DATA;
-import stuff.SECRETS;
 
 import java.awt.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.time.format.DateTimeFormatter;
 
 public class profile implements Command {

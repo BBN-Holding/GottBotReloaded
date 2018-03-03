@@ -1,5 +1,6 @@
-package commands;
+package commands.usercommands;
 
+import commands.Command;
 import core.MessageHandler;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;

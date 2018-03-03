@@ -1,10 +1,7 @@
 package core;
 
-import commands.*;
-import commands.botowner.givehashes;
-import commands.botowner.guilds;
-import commands.botowner.registeruser;
-import commands.botowner.test;
+import commands.botowner.*;
+import commands.usercommands.*;
 import listener.*;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -38,6 +35,7 @@ public class Main {
         commandHandler.commands.put("givehashes", new givehashes());
         commandHandler.commands.put("guilds", new guilds());
         commandHandler.commands.put("registeruser", new registeruser());
+        commandHandler.commands.put("invite", new Invite());
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();

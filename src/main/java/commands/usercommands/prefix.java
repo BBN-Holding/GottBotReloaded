@@ -1,18 +1,13 @@
-package commands;
+package commands.usercommands;
 
-import com.mysql.cj.mysqla.authentication.MysqlaAuthenticationProvider;
+import commands.Command;
 import core.MessageHandler;
 import core.MySQL;
-import listener.Message;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import stuff.SECRETS;
 
 import java.awt.*;
-import java.sql.*;
-
-import static stuff.DATA.url;
 
 public class prefix implements Command {
     boolean Role=false;
