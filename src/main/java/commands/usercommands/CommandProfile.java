@@ -11,7 +11,7 @@ import stuff.DATA;
 import java.awt.*;
 import java.time.format.DateTimeFormatter;
 
-public class profile implements Command {
+public class CommandProfile implements Command {
     String Nick;
     String Game;
     Member user;
@@ -34,7 +34,7 @@ public class profile implements Command {
             useruser = args[0].replace("<", "").replace("@", "").replace(">", "").replace("!","");
             user = event.getGuild().getMemberById(useruser);
             if (useruser.equals(event.getMember().getUser().getId())) {
-                event.getTextChannel().sendMessage("Was bringt es sich selbst zu hinzuschreiben?? egal... mach es nächstes mal einfach mit -profile :wink: ").queue();
+                event.getTextChannel().sendMessage("Was bringt es sich selbst zu hinzuschreiben?? egal... mach es nächstes mal einfach mit -CommandProfile :wink: ").queue();
             }
 
         }catch ( ArrayIndexOutOfBoundsException e) {

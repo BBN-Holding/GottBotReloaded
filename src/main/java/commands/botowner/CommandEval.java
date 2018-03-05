@@ -12,7 +12,7 @@ import javax.script.ScriptEngineFactory;
 import static core.Constants.progBars;
 
 
-public class eval implements Command {
+public class CommandEval implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;

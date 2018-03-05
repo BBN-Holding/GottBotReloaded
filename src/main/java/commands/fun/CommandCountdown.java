@@ -8,7 +8,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class countdown implements Command{
+public class CommandCountdown implements Command{
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;

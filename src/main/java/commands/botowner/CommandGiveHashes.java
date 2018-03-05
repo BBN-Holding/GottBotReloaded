@@ -7,7 +7,7 @@ import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
-public class givehashes implements Command {
+public class CommandGiveHashes implements Command {
     Member user;
     String useruser;
     @Override

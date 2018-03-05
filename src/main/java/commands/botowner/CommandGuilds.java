@@ -9,7 +9,7 @@ import net.dv8tion.jda.core.entities.Guild;
 import java.awt.*;
 import java.util.List;
 
-public class guilds implements Command {
+public class CommandGuilds implements Command {
 
 
     @Override
