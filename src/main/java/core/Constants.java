@@ -1,6 +1,5 @@
 package core;
 
-import net.dv8tion.jda.core.JDA;
 
 import java.util.HashMap;
 import java.util.Map;
