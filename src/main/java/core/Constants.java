@@ -16,4 +16,8 @@ public class Constants {
             progBars.put(names[i], ids[i]);
         }
     }
+    public static int clamp(int min, int max, int val) {
+        return val < min ? min : (val > max ? max : val);
+    }
+
 }
