@@ -36,8 +36,8 @@ public class CommandLanguage implements Command {
         } else if (args[0].length()==2) {
             try {
 
-                if (MySQL.getallstring("CommandLanguage", "name").contains(args[0].toLowerCase())) {
-                    MySQL.update("user", "CommandLanguage", args[0].toLowerCase(), "ID", event.getAuthor().getId());
+                if (MySQL.getallstring("language", "name").contains(args[0].toLowerCase())) {
+                    MySQL.update("user", "language", args[0].toLowerCase(), "ID", event.getAuthor().getId());
                     event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("languageedittext"))
                             .setTitle(MessageHandler.get(event.getAuthor()).getString("languageedittitel")).setColor(Color.green).build()).queue();
                 }
