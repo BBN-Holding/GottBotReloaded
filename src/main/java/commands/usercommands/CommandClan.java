@@ -1,8 +1,8 @@
-package commands;
+package commands.usercommands;
 
+import commands.Command;
 import core.MessageHandler;
 import core.MySQL;
-import listener.Message;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -10,7 +10,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Clan implements Command {
+public class CommandClan implements Command {
     public static List<String> List = new ArrayList<>();
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
@@ -48,7 +48,14 @@ public class Clan implements Command {
                         } else {
                             if (Long.parseLong(MySQL.get("user", "id", event.getAuthor().getId(), "miner"))>1023) {
                                 String name=args[1];
-                                Long TextChannel  = event.getGuild().getController().createTextChannel(name).addPermissionOverride(event.getMember(), 3072, 0).addPermissionOverride(event.getGuild().getPublicRole(), 0, Permission.ALL_VOICE_PERMISSIONS).complete().getIdLong();
+                                if (MySQL.get("server", "id", event.getGuild().getId(), "clancategory").equals("none")) {
+                                    MySQL.update("server", "clancategory", event.getGuild().getController().createCategory("clan").addPermissionOverride(event.getGuild().getPublicRole(), 0, Permission.ALL_VOICE_PERMISSIONS).complete().getId(), "id", event.getGuild().getId());
+                                }
+                                Long TextChannel = event.getGuild().getCategoryById(MySQL.get("server","id",event.getGuild().getId(), "clancategory"))
+                                        .createTextChannel(name)
+                                        .addPermissionOverride(event.getMember(), 3072, 0)
+                                        .addPermissionOverride(event.getGuild().getPublicRole(), 0, Permission.ALL_VOICE_PERMISSIONS)
+                                        .complete().getIdLong();
                                 int id =0;
                                 List=MySQL.getallwithoutwhere("clan", "id");
                                 while (List.size()>=id) {
@@ -79,8 +86,11 @@ public class Clan implements Command {
                                             .setDescription(MessageHandler.get(event.getAuthor()).getString("clanjointext").replaceAll("gb.", MessageHandler.getprefix(event.getGuild())))
                                             .setTitle(MessageHandler.get(event.getAuthor()).getString("clanjointitel")).build()).queue();
                         } else {
+
+
+
                             if (MySQL.get("clan", "name", args[1], "open").equals("false")) {
-                                MySQL.insert("requests", "name`,`user", args[1] + "`,`" + event.getAuthor().getId());
+                                MySQL.insert("requests", "name`,`user", args[1] + "','" + event.getAuthor().getId());
                                 event.getGuild().getTextChannelsByName(args[1], true).get(0).sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("clanjoinrequesttitel"))
                                         .setDescription(MessageHandler.get(event.getAuthor()).getString("clanjoinrequesttext").replaceAll("User", event.getAuthor().getAsMention()).replaceAll("gb.", MessageHandler.getprefix(event.getGuild()))).build()).queue();
                             } else if (MySQL.get("clan", "name", args[1], "open").equals("true")) {

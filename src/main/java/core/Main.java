@@ -1,10 +1,10 @@
 package core;
 
-import commands.*;
-import commands.botowner.givehashes;
-import commands.botowner.guilds;
-import commands.botowner.registeruser;
-import commands.botowner.test;
+import commands.botowner.*;
+import commands.fun.CommandCountdown;
+import commands.moderation.CommandBan;
+import commands.moderation.CommandKick;
+import commands.usercommands.*;
 import listener.*;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -28,16 +28,22 @@ public class Main {
         builder.addEventListener(new Message());
         builder.addEventListener(new Memberjoin());
         logger.info("loaded all listeners");
-        commandHandler.commands.put("language", new language());
-        commandHandler.commands.put("test", new test());
-        commandHandler.commands.put("prefix", new prefix());
-        commandHandler.commands.put("help", new help());
-        commandHandler.commands.put("bug", new bug());
-        commandHandler.commands.put("profile", new profile());
-        commandHandler.commands.put("clan", new Clan());
-        commandHandler.commands.put("givehashes", new givehashes());
-        commandHandler.commands.put("guilds", new guilds());
-        commandHandler.commands.put("registeruser", new registeruser());
+        commandHandler.commands.put("language", new CommandLanguage());
+        commandHandler.commands.put("test", new CommandTest());
+        commandHandler.commands.put("prefix", new CommandPrefix());
+        commandHandler.commands.put("help", new CommandHelp());
+        commandHandler.commands.put("bug", new CommandBug());
+        commandHandler.commands.put("profile", new CommandProfile());
+        commandHandler.commands.put("clan", new CommandClan());
+        commandHandler.commands.put("givehashes", new CommandGiveHashes());
+        commandHandler.commands.put("guilds", new CommandGuilds());
+        commandHandler.commands.put("registeruser", new CommandResgisterUser());
+        commandHandler.commands.put("invite", new CommandInvite());
+        commandHandler.commands.put("clyde", new CommandClyde());
+        commandHandler.commands.put("eval", new CommandEval());
+        commandHandler.commands.put("countdown", new CommandCountdown());
+        commandHandler.commands.put("ban", new CommandBan());
+        commandHandler.commands.put("kick", new CommandKick());
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();

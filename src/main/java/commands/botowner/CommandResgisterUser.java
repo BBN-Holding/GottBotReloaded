@@ -2,13 +2,12 @@ package commands.botowner;
 
 import commands.Command;
 import core.MySQL;
-import listener.commandListener;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class registeruser implements Command {
-    private static Logger logger = LoggerFactory.getLogger(registeruser.class);
+public class CommandResgisterUser implements Command {
+    private static Logger logger = LoggerFactory.getLogger(CommandResgisterUser.class);
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;

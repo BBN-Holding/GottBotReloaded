@@ -1,20 +1,14 @@
-package commands;
+package commands.usercommands;
 
+import commands.Command;
 import core.MessageHandler;
 import core.MySQL;
-import listener.Message;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import stuff.SECRETS;
 
 import java.awt.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 
-import static stuff.DATA.url;
-
-public class language implements Command {
+public class CommandLanguage implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -32,7 +26,7 @@ public class language implements Command {
         } else if (args[0].equalsIgnoreCase("list")) {
             try {
 
-                String out=MySQL.getallstring("language", "name").replaceAll(" ", ", ");
+                String out=MySQL.getallstring("CommandLanguage", "name").replaceAll(" ", ", ");
                 event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("languagelisttext")+":\n"+out)
                         .setTitle(MessageHandler.get(event.getAuthor()).getString("languagelisttitel")).build()).queue();
 

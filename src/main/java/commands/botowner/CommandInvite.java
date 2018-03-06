@@ -7,7 +7,7 @@ import commands.Command;
 
 import java.awt.*;
 
-public class Invite implements Command {
+public class CommandInvite implements Command {
 
 
 
@@ -19,10 +19,12 @@ public class Invite implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        String HALLO = event.getJDA().getGuildById(args[0]).getTextChannels().get(0).createInvite().complete().getURL();
+        if (Handler.get(event.getAuthor())) {
+            String HALLO = event.getJDA().getGuildById(args[0]).getTextChannels().get(0).createInvite().complete().getURL();
 
-        event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("Invite " +  HALLO)
-                .setTitle(":information_source: Invite").setColor(Color.MAGENTA).build()).queue();
+            event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("CommandInvite " + HALLO)
+                    .setTitle(":information_source: CommandInvite").setColor(Color.MAGENTA).build()).queue();
+        }
     }
 
     @Override
