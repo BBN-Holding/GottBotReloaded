@@ -32,7 +32,7 @@ public class question implements Command{
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         try {
-            GitHub gitHub = GitHub.connectUsingOAuth(SECRETS.GITHUB_TOKEN);
+            GitHub gitHub = GitHub.connectUsingOAuth(SECRETS.TOKEN);
             GHRepository repository = gitHub.getOrganization("BigBotNetwork").getRepository("GottBotReloaded");
             repository.createIssue("Frage").body(Header + "Der User ist " + event.getAuthor().getName() + "#" + event.getAuthor().getDiscriminator() + Sufix + event.getMessage().getContentDisplay()).label("Question").create();
         } catch (IOException e) {
