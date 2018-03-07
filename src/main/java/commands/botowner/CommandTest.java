@@ -16,6 +16,7 @@ public class CommandTest implements Command {
         if (Handler.get(event.getAuthor())) {
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("testtitel"))
                     .setDescription(MessageHandler.get(event.getAuthor()).getString("testtext")).build()).queue(); // print wenn user CommandLanguage is english Test english wen user CommandLanguage is german Test german
+
         }
     }
 
