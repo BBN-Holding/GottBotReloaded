@@ -38,7 +38,6 @@ public class Main {
         commandHandler.commands.put("guilds", new CommandGuilds());
         commandHandler.commands.put("registeruser", new CommandResgisterUser());
         commandHandler.commands.put("invite", new CommandInvite());
-        commandHandler.commands.put("clyde", new CommandClyde());
         commandHandler.commands.put("eval", new CommandEval());
         commandHandler.commands.put("countdown", new CommandCountdown());
         commandHandler.commands.put("ban", new CommandBan());
