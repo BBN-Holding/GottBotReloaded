@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d9cb05ab-a1bb-4b27-bfaa-3fb1338f1c51" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/GottBotReloaded.iml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/GottBotReloaded.iml" afterPath="$PROJECT_DIR$/GottBotReloaded.iml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -209,12 +209,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1520697095212</updated>
-      <workItem from="1520697096625" duration="31000" />
+      <workItem from="1520697096625" duration="54000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31000" />
+    <option name="totallyTimeSpent" value="54000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="886" extended-state="6" />
