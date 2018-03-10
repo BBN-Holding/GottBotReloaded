@@ -1,9 +1,8 @@
 package core;
 
 import commands.botowner.*;
-import commands.fun.CommandCountdown;
-import commands.moderation.CommandBan;
-import commands.moderation.CommandKick;
+import commands.fun.*;
+import commands.moderation.*;
 import commands.usercommands.*;
 import listener.*;
 import net.dv8tion.jda.core.AccountType;
@@ -43,6 +42,7 @@ public class Main {
         commandHandler.commands.put("countdown", new CommandCountdown());
         commandHandler.commands.put("ban", new CommandBan());
         commandHandler.commands.put("kick", new CommandKick());
+        commandHandler.commands.put("question", new CommandQuestion());
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();
