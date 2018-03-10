@@ -2,6 +2,8 @@ package commands.fun;
 
 import commands.Command;
 import core.Constants;
+import listener.Message;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 import java.util.Timer;
@@ -16,31 +18,22 @@ public class CommandCountdown implements Command{
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (args.length != 1) {
-            return;
-        }
-        int i = 10;
+        if (args.length!=1) return;
+        final int[] Timer = {Integer.parseInt(args[0])};
 
-
-        try {
-
-            i = Constants.clamp(1, 60, Integer.valueOf(args[0]));
-        } catch (Exception e) {
-            event.getMessage().getTextChannel().sendMessage(args[0] + " isn't a valid number. Using 10");
-        }
-        int f = i;
+            Long Message = event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Countdown "+event.getMember().getAsMention()).setDescription(String.valueOf(Timer[0])).build()).complete().getIdLong();
+        net.dv8tion.jda.core.entities.Message message=event.getTextChannel().getMessageById(Message).complete();
+            Timer[0]--;
+        final int[] finalTimer = {Timer[0]};
         Timer t = new Timer();
         t.schedule(new TimerTask() {
-            int j = f;
-
-            public void run() {
-                j--;
-                event.getMessage().getTextChannel().sendMessage(j + "").queue();
-                if (j < 1) {
-                    t.cancel();
+                @Override
+                public void run() {
+                    message.editMessage(new EmbedBuilder().setTitle("Countdown "+event.getMember().getAsMention()).setDescription(String.valueOf(finalTimer[0])).build()).queue();
+                    if (finalTimer[0]==0) t.cancel();
+                    else finalTimer[0]--;
                 }
-            }
-        }, 1000, 1000);
+            }, 1000, 1000);
     }
 
     @Override

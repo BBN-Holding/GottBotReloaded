@@ -28,11 +28,18 @@ public class commandListener extends ListenerAdapter {
             if (event.getChannelType().equals(ChannelType.TEXT)) {
                 if (!event.getAuthor().isBot()) {
                     String PREFIX = MySQL.get("server", "ID", event.getGuild().getId(), "prefix");
-                    if (event.getMessage().getContentRaw().startsWith(PREFIX)) {
-                        beheaded = event.getMessage().getContentRaw().toLowerCase().replaceFirst(Pattern.quote(PREFIX), "");
-                        commandHandler.handleCommand(commandHandler.parser.parse(event.getMessage().getContentRaw().toLowerCase(), event));
-                        logger.info(event.getAuthor().getName() + " mit ID " + event.getAuthor().getId() + " auf " + event.getGuild().getName() + " hat den Command genutzt: " + event.getMessage().getContentRaw());
+                    if (PREFIX!=null) {
+                        System.out.println("lellele");
+                    } else {
+                        PREFIX=event.getJDA().getSelfUser().getAsMention().toString();
                     }
+                        if (event.getMessage().getContentRaw().startsWith(PREFIX)) {
+                            System.out.println("YES");
+                            beheaded = event.getMessage().getContentRaw().toLowerCase().replaceFirst(Pattern.quote(PREFIX), "");
+                            commandHandler.handleCommand(commandHandler.parser.parse(event.getMessage().getContentRaw().toLowerCase(), event));
+                            logger.info(event.getAuthor().getName() + " mit ID " + event.getAuthor().getId() + " auf " + event.getGuild().getName() + " hat den Command genutzt: " + event.getMessage().getContentRaw());
+                        }
+
                 }
             }
 
