@@ -6,8 +6,8 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class CommandResgisterUser implements Command {
-    private static Logger logger = LoggerFactory.getLogger(CommandResgisterUser.class);
+public class CommandRegisterServer implements Command {
+    private static Logger logger = LoggerFactory.getLogger(CommandRegisterServer.class);
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -17,10 +17,10 @@ public class CommandResgisterUser implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         if (Handler.get(event.getAuthor())) {
             int i = 0;
-            while (event.getGuild().getMembers().size()-1>=i) {
-                if (MySQL.get("user", "id", event.getGuild().getMembers().get(i).getUser().getId(), "id")==null) {
-                    MySQL.insert("user", "id", event.getGuild().getMembers().get(i).getUser().getId()+"");
-                    logger.info("neuer User in database Name: " + event.getGuild().getMembers().get(i).getUser().getName() + " ID: " + event.getGuild().getMembers().get(i).getUser().getId() + " von " + event.getGuild().getName());
+            while (event.getJDA().getGuilds().size()-1>=i) {
+                if (MySQL.get("server", "id", event.getJDA().getGuilds().get(i).getId(), "id")==null) {
+                    MySQL.insert("server", "id", event.getJDA().getGuilds().get(i).getId()+"");
+                    logger.info("neuer Server in database Name: " + event.getJDA().getGuilds().get(i).getName() + " ID: " + event.getJDA().getGuilds().get(i).getId());
                 }
                 i++;
             }
