@@ -17,10 +17,10 @@ public class CommandBug implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length<=2) {
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("bugtitel"))
-                    .setDescription(MessageHandler.get(event.getAuthor()).getString("bugtext").replaceFirst("bug", "").replaceAll(MessageHandler.getprefix(event.getGuild()),"gb.")).setColor(Color.RED).build()).queue();
+                    .setDescription(MessageHandler.get(event.getAuthor()).getString("bugtext").replace("gb.", MessageHandler.getprefix(event.getGuild()))).setColor(Color.RED).build()).queue();
         } else {
 
-            String text = event.getMessage().getContentRaw();
+            String text = event.getMessage().getContentRaw().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("bug ", "");
             event.getJDA().getGuildById("396732579920740352").getTextChannelById("417074854701826049").sendMessage(
                     new EmbedBuilder()
                             .setAuthor(event.getAuthor().getName() + "#" + event.getAuthor().getDiscriminator(), null, event.getAuthor().getAvatarUrl())
