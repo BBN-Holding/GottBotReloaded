@@ -17,7 +17,7 @@ public class CommandBug implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length<=2) {
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("bugtitel"))
-                    .setDescription(MessageHandler.get(event.getAuthor()).getString("bugtext").replaceAll("gb.", MessageHandler.getprefix(event.getGuild()))).setColor(Color.RED).build()).queue();
+                    .setDescription(MessageHandler.get(event.getAuthor()).getString("bugtext").replaceFirst("bug", "").replaceAll(MessageHandler.getprefix(event.getGuild()),"gb.")).setColor(Color.RED).build()).queue();
         } else {
 
             String text = event.getMessage().getContentRaw();
@@ -27,7 +27,6 @@ public class CommandBug implements Command {
                             .setDescription("**New Bug Detected!**\n```fix\n" + text + "```")
                             .build()
             ).queue();
-            //User Feedback
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("bugsucesstitel"))
                     .setDescription(MessageHandler.get(event.getAuthor()).getString("bugsucesstext")).setColor(Color.green).build()).queue();
 
