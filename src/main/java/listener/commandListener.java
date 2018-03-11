@@ -29,7 +29,6 @@ public class commandListener extends ListenerAdapter {
                 if (!event.getAuthor().isBot()) {
                     String PREFIX = MySQL.get("server", "ID", event.getGuild().getId(), "prefix");
                     if (PREFIX!=null) {
-
                     } else {
                         PREFIX=event.getJDA().getSelfUser().getAsMention().toString();
                     }
