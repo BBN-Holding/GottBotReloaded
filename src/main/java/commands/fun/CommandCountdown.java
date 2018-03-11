@@ -21,7 +21,7 @@ public class CommandCountdown implements Command{
         if (args.length!=1) return;
         final int[] Timer = {Integer.parseInt(args[0])};
 
-            Long Message = event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Countdown "+event.getMember().getAsMention()).setDescription(String.valueOf(Timer[0])).build()).complete().getIdLong();
+            Long Message = event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Countdown ").setDescription(String.valueOf(Timer[0])).setFooter(event.getAuthor().getAsMention(), event.getAuthor().getAvatarUrl()).build()).complete().getIdLong();
         net.dv8tion.jda.core.entities.Message message=event.getTextChannel().getMessageById(Message).complete();
             Timer[0]--;
         final int[] finalTimer = {Timer[0]};
@@ -29,7 +29,7 @@ public class CommandCountdown implements Command{
         t.schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    message.editMessage(new EmbedBuilder().setTitle("Countdown "+event.getMember().getAsMention()).setDescription(String.valueOf(finalTimer[0])).build()).queue();
+                    message.editMessage(new EmbedBuilder().setTitle("Countdown ").setDescription(String.valueOf(finalTimer[0])).setFooter(event.getAuthor().getAsMention(), event.getAuthor().getAvatarUrl()).build()).queue();
                     if (finalTimer[0]==0) t.cancel();
                     else finalTimer[0]--;
                 }
