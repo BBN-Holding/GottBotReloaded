@@ -25,7 +25,6 @@ public class CommandClan implements Command {
         } else {
             switch (args[0].toLowerCase()) {
                 case "list":
-                    System.out.println("TEST");
                     int i = 0;
                     String out = MessageHandler.get(event.getAuthor()).getString("clanlisttext");
                     List<String> List = MySQL.getall("clan", "guildid", event.getGuild().getId(), "name");
@@ -53,6 +52,7 @@ public class CommandClan implements Command {
                                 }
                                 Long TextChannel = event.getGuild().getCategoryById(MySQL.get("server","id",event.getGuild().getId(), "clancategory"))
                                         .createTextChannel(name)
+                                        .addPermissionOverride(event.getGuild().getSelfMember(), 3072, 0)
                                         .addPermissionOverride(event.getMember(), 3072, 0)
                                         .addPermissionOverride(event.getGuild().getPublicRole(), 0, Permission.ALL_VOICE_PERMISSIONS)
                                         .complete().getIdLong();
@@ -64,8 +64,11 @@ public class CommandClan implements Command {
                                 }
                                 System.out.println(id);
                                 MySQL.insert("clan", "name`, `id`, `textchannel`,`guildid",name+"', '"+id+"', '"+TextChannel+"', '"+event.getGuild().getId());
+                                MySQL.update("user", "clan", String.valueOf(TextChannel), "id", event.getAuthor().getId());
                                 event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("clancreatesucesstitel"))
                                         .setDescription(MessageHandler.get(event.getAuthor()).getString("clancreatesucesstext")).build()).queue();
+                                event.getJDA().getTextChannelById(MySQL.get("clan", "name", name, "textchannel")).sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("clanwelcometitel"))
+                                        .setDescription(MessageHandler.get(event.getAuthor()).getString("clanwelcometext").replaceAll("User", event.getAuthor().getName())).build()).queue();
                                 List.clear();
                             } else {
                                 System.out.println("Test");
@@ -90,7 +93,7 @@ public class CommandClan implements Command {
 
 
                             if (MySQL.get("clan", "name", args[1], "open").equals("false")) {
-                                MySQL.insert("requests", "name`,`user", args[1] + "','" + event.getAuthor().getId());
+                                MySQL.insert("requests", "name`,`user", MySQL.get("clan", "name", args[1], "textchannel") + "','" + event.getAuthor().getId());
                                 event.getGuild().getTextChannelsByName(args[1], true).get(0).sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("clanjoinrequesttitel"))
                                         .setDescription(MessageHandler.get(event.getAuthor()).getString("clanjoinrequesttext").replaceAll("User", event.getAuthor().getAsMention()).replaceAll("gb.", MessageHandler.getprefix(event.getGuild()))).build()).queue();
                             } else if (MySQL.get("clan", "name", args[1], "open").equals("true")) {
