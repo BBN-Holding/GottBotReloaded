@@ -43,6 +43,7 @@ public class Main {
         commandHandler.commands.put("ban", new CommandBan());
         commandHandler.commands.put("kick", new CommandKick());
         commandHandler.commands.put("question", new CommandQuestion());
+        commandHandler.commands.put("stop0", new CommandStop());
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();
