@@ -26,6 +26,7 @@ public class Main {
         builder.addEventListener(new Guildjoin());
         builder.addEventListener(new Message());
         builder.addEventListener(new Memberjoin());
+        builder.addEventListener(new clanlistener());
         logger.info("loaded all listeners");
         commandHandler.commands.put("language", new CommandLanguage());
         commandHandler.commands.put("test", new CommandTest());
@@ -36,7 +37,8 @@ public class Main {
         commandHandler.commands.put("clan", new CommandClan());
         commandHandler.commands.put("givehashes", new CommandGiveHashes());
         commandHandler.commands.put("guilds", new CommandGuilds());
-        commandHandler.commands.put("registeruser", new CommandResgisterUser());
+        commandHandler.commands.put("registeruser", new CommandRegisterUser());
+        commandHandler.commands.put("registerserver", new CommandRegisterServer());
         commandHandler.commands.put("invite", new CommandInvite());
         commandHandler.commands.put("eval", new CommandEval());
         commandHandler.commands.put("countdown", new CommandCountdown());
