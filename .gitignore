@@ -35,3 +35,5 @@ SECRETS.java
 *.xml
 *.xml
 *.xml
+*.xml
+*.iml
