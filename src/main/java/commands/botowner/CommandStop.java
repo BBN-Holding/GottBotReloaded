@@ -2,11 +2,10 @@ package commands.botowner;
 
 import commands.Command;
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 
-public class stop implements Command {
+public class CommandStop implements Command {
 
 
 
@@ -17,9 +16,11 @@ public class stop implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        event.getMessage().getTextChannel().sendMessage(new EmbedBuilder().setDescription(":white_check_mark:  Bot herruntergefahren  :white_check_mark: ").build()).queue();
-        System.exit(0);
+        if (Handler.get(event.getAuthor())) {
+            event.getMessage().getTextChannel().sendMessage(new EmbedBuilder().setDescription(":white_check_mark:  Bot herruntergefahren  :white_check_mark: ").build()).queue();
+            System.exit(0);
 
+        }
     }
 
     @Override

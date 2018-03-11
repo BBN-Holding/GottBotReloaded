@@ -15,7 +15,7 @@ public class MySQL {
     private static org.slf4j.Logger Logger = LoggerFactory.getLogger(MySQL.class);
     public static void connect() {
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1/gottbot?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/gottbot?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
             Logger.info("MySQL connection success");
         } catch (SQLException e) {
             Logger.error(e.toString());

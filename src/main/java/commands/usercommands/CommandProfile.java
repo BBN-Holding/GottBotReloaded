@@ -42,9 +42,9 @@ public class CommandProfile implements Command {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (user.getGame() == null) Game = "Es gibt kein Aktuell gespieltes Spiel";
+        if (user.getGame() == null) Game = MessageHandler.get(event.getAuthor()).getString("profulegame");
         else Game  = ""+user.getGame().getName();
-        if (user.getNickname() == null) Nick = "Es gibt keinen Nicknamen";
+        if (user.getNickname() == null) Nick = MessageHandler.get(event.getAuthor()).getString("profilenick");
         else Nick = user.getNickname();
         int i=0;
         String Rollen="";
