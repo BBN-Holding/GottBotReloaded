@@ -42,9 +42,9 @@ public class CommandProfile implements Command {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (user.getGame() == null) Game = "Es gibt kein Aktuell gespieltes Spiel";
+        if (user.getGame() == null) Game = MessageHandler.get(event.getAuthor()).getString("profilegame");
         else Game  = ""+user.getGame().getName();
-        if (user.getNickname() == null) Nick = "Es gibt keinen Nicknamen";
+        if (user.getNickname() == null) Nick = MessageHandler.get(event.getAuthor()).getString("profilenick");
         else Nick = user.getNickname();
         int i=0;
         String Rollen="";
@@ -160,7 +160,9 @@ public class CommandProfile implements Command {
                 .addField("Game", Game, true)
                 .addField("Roles", Rollen, true)
                 .addField("Joined", user.getJoinDate().format(DateTimeFormatter.ofPattern("dd.MM.yy, HH:mm:ss")), true)
+                .addField("Created", event.getMessage().getAuthor().getCreationTime().format(DateTimeFormatter.ofPattern("dd.MM.yy, HH:mm:ss")), true)
                 .addField("Status", user.getOnlineStatus().toString(), true)
+                .addField("GitHub", MySQL.get("user", "ID", user.getUser().getId(), "github"), true)
                 .addField("Level", Level, true)
                 .addField("XP", Punkte, true)
                 .addField("Levelprogress", Progress, true)
