@@ -20,7 +20,7 @@ public class CommandBug implements Command {
                     .setDescription(MessageHandler.get(event.getAuthor()).getString("bugtext").replace("gb.", MessageHandler.getprefix(event.getGuild()))).setColor(Color.RED).build()).queue();
         } else {
 
-            String text = event.getMessage().getContentRaw().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("bug ", "");
+            String text = event.getMessage().getContentStripped().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("bug ", "");
             event.getJDA().getGuildById("396732579920740352").getTextChannelById("417074854701826049").sendMessage(
                     new EmbedBuilder()
                             .setAuthor(event.getAuthor().getName() + "#" + event.getAuthor().getDiscriminator(), null, event.getAuthor().getAvatarUrl())
