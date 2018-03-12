@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+=======
+<<<<<<< HEAD
+<?xml version="1.0" encoding="UTF-8"?>
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" version="4">
+>>>>>>> ef9979f931c31ad116bce2be00eaca7a5002b131
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_9">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
@@ -22,7 +28,11 @@
     <orderEntry type="library" name="Maven: commons-io:commons-io:1.4" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.9-rc" level="project" />
     <orderEntry type="library" name="Maven: org.json:json:20180130" level="project" />
+<<<<<<< HEAD
     <orderEntry type="library" name="Maven: net.dv8tion:JDA:3.5.1_348" level="project" />
+=======
+    <orderEntry type="library" name="Maven: net.dv8tion:JDA:3.5.1_347" level="project" />
+>>>>>>> ef9979f931c31ad116bce2be00eaca7a5002b131
     <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:3.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-collections4:4.1" level="project" />
     <orderEntry type="library" name="Maven: net.sf.trove4j:trove4j:3.0.3" level="project" />
@@ -31,4 +41,9 @@
     <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.8.1" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.13.0" level="project" />
   </component>
+<<<<<<< HEAD
 </module>
+=======
+</module>=======
+>>>>>>> 9d64fa52db70a967bc6454a8b0f78389e9f650cc
+>>>>>>> ef9979f931c31ad116bce2be00eaca7a5002b131
