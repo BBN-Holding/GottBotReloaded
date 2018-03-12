@@ -45,6 +45,7 @@ public class Main {
         commandHandler.commands.put("ban", new CommandBan());
         commandHandler.commands.put("kick", new CommandKick());
         commandHandler.commands.put("question", new CommandQuestion());
+        commandHandler.commands.put("github", new CommandGitHub());
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();
