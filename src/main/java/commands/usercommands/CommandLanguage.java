@@ -26,7 +26,7 @@ public class CommandLanguage implements Command {
         } else if (args[0].equalsIgnoreCase("list")) {
             try {
 
-                String out=MySQL.getallstring("CommandLanguage", "name").replaceAll(" ", ", ");
+                String out=MySQL.getallstring("language", "name").replaceAll(" ", ", ");
                 event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("languagelisttext")+":\n"+out)
                         .setTitle(MessageHandler.get(event.getAuthor()).getString("languagelisttitel")).build()).queue();
 
