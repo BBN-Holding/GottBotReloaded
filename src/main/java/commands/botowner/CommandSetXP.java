@@ -19,8 +19,8 @@ public class CommandSetXP implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         if (Handler.get(event.getAuthor())) {
             MySQL.update("user", "xp", args[1], "id", args[0]);
-            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("githubtitel").replaceAll("gb.", MessageHandler.getprefix(event.getGuild())))
-                    .setDescription(MessageHandler.get(event.getAuthor()).getString("githubdescription")).build()).queue();
+            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("setxptitel").replaceAll("gb.", MessageHandler.getprefix(event.getGuild())))
+                    .setDescription(MessageHandler.get(event.getAuthor()).getString("setxpdescription")).build()).queue();
         }
     }
     @Override
