@@ -46,7 +46,13 @@ public class Main {
         commandHandler.commands.put("kick", new CommandKick());
         commandHandler.commands.put("question", new CommandQuestion());
         commandHandler.commands.put("github", new CommandGitHub());
+<<<<<<< HEAD
         commandHandler.commands.put("clyde", new CommandClyde());
+=======
+        commandHandler.commands.put("stop", new CommandStop());
+        commandHandler.commands.put("setlvl", new CommandSetLevel());
+        commandHandler.commands.put("setxp", new CommandSetXP());
+>>>>>>> d40aa0cb4a70eec755d11ed24ca2f327c2854ed7
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();
