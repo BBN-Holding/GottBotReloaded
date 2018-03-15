@@ -48,8 +48,7 @@ public class CommandEval implements Command {
         se.put("author", event.getMessage().getAuthor());
 
         progBars.forEach(se::put);
-
-        String input = event.getMessage().getContentRaw().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("eval", "").trim();
+        String input = event.getMessage().getContentRaw().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").toLowerCase().replaceAll("jda.gettoken", "// jda.getToken").replaceFirst("eval", "").trim();
         try {
             if (input.equals("1+1")) {
                 ret = "1";
@@ -83,6 +82,7 @@ public class CommandEval implements Command {
         if (error != null) {
             eB.addField(":x:Error!", "```java\n" + error + "\n```", false);
         }
+
         event.getMessage().delete().queue();
         event.getMessage().getTextChannel().sendMessage(eB.build()).queue();
     }
