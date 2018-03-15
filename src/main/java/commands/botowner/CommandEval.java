@@ -48,26 +48,6 @@ public class CommandEval implements Command {
             se.put("message", event.getMessage());
             se.put("author", event.getMessage().getAuthor());
 
-<<<<<<< HEAD
-        progBars.forEach(se::put);
-        String input = event.getMessage().getContentRaw().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").toLowerCase().replaceAll("jda.gettoken", "// jda.getToken").replaceFirst("eval", "").trim();
-        try {
-            if (input.equals("1+1")) {
-                ret = "1";
-            } else {
-                ret = se.eval("{" +
-                        "with (imports) {\n" +
-                        "function complex(re, im){\n" +
-                        "  return new Complex(re,im);\n" +
-                        "};\n" +
-                        "\n" +
-                        "function thread() {\n" +
-                        "  return Thread.currentThread();\n" +
-                        "}\n" +
-                        input +
-                        "\n}\n" +
-                        "}") + "";
-=======
             progBars.forEach(se::put);
 
             String input = event.getMessage().getContentRaw().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("eval", "").trim();
@@ -82,7 +62,7 @@ public class CommandEval implements Command {
                             "};\n" +
                             "\n" +
                             "function thread() {\n" +
-                                "  return Thread.currentThread();\n" +
+                            "  return Thread.currentThread();\n" +
                             "}\n" +
                             input +
                             "\n}\n" +
@@ -90,9 +70,8 @@ public class CommandEval implements Command {
                 }
             } catch (Throwable e) {
                 error = e;
->>>>>>> 99006b3a1979a8d7c397e30f2808b3d036024dae
             }
-                EmbedBuilder eB = new EmbedBuilder()
+            EmbedBuilder eB = new EmbedBuilder()
                     .setTitle("Eval'd")
                     .setFooter(event.getMessage().getCategory().getName(), event.getJDA().getSelfUser().getEffectiveAvatarUrl())
                     .addField(MessageHandler.get(event.getAuthor()).getString("evaltitel"), "```java\n" + input + "\n```", false);
@@ -108,12 +87,6 @@ public class CommandEval implements Command {
             event.getMessage().delete().queue();
             event.getMessage().getTextChannel().sendMessage(eB.build()).queue();
         }
-<<<<<<< HEAD
-
-        event.getMessage().delete().queue();
-        event.getMessage().getTextChannel().sendMessage(eB.build()).queue();
-=======
->>>>>>> 99006b3a1979a8d7c397e30f2808b3d036024dae
     }
 
 

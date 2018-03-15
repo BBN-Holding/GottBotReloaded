@@ -48,11 +48,8 @@ public class Main {
         commandHandler.commands.put("stop", new CommandStop());
         commandHandler.commands.put("setlvl", new CommandSetLevel());
         commandHandler.commands.put("setxp", new CommandSetXP());
-<<<<<<< HEAD
         commandHandler.commands.put("work", new CommandWork());
-=======
         commandHandler.commands.put("clyde", new CommandClyde());
->>>>>>> 99006b3a1979a8d7c397e30f2808b3d036024dae
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();
