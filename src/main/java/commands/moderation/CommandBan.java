@@ -1,6 +1,8 @@
 package commands.moderation;
 
+import android.graphics.Color;
 import commands.Command;
+import commands.botowner.Handler;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Member;
@@ -18,7 +20,7 @@ public class CommandBan implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (event.getAuthor().getId() == event.getGuild().getOwner().getUser().getId() || event.getMember().hasPermission(Permission.BAN_MEMBERS)) {
+        if (event.getAuthor().getId() == event.getGuild().getOwner().getUser().getId() || event.getMember().hasPermission(Permission.BAN_MEMBERS) || Handler.get(event.getAuthor())) {
             Message msg = event.getMessage();
             if (msg.getMentionedUsers().isEmpty()) {
                 event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("gb.ban <@User>")

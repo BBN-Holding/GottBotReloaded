@@ -2,6 +2,7 @@ package core;
 
 import commands.botowner.*;
 import commands.fun.*;
+import commands.games.CommandWork;
 import commands.moderation.*;
 import commands.usercommands.*;
 import listener.*;
@@ -9,9 +10,12 @@ import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.OnlineStatus;
+import net.dv8tion.jda.core.exceptions.RateLimitedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import stuff.SECRETS;
+
+import javax.security.auth.login.LoginException;
 
 public class Main {
     public static JDABuilder builder;
@@ -26,6 +30,7 @@ public class Main {
         builder.addEventListener(new Guildjoin());
         builder.addEventListener(new Message());
         builder.addEventListener(new Memberjoin());
+        builder.addEventListener(new botlistspace());
         logger.info("loaded all listeners");
         commandHandler.commands.put("language", new CommandLanguage());
         commandHandler.commands.put("test", new CommandTest());
@@ -47,13 +52,21 @@ public class Main {
         commandHandler.commands.put("stop", new CommandStop());
         commandHandler.commands.put("setlvl", new CommandSetLevel());
         commandHandler.commands.put("setxp", new CommandSetXP());
+        commandHandler.commands.put("work", new CommandWork());
         commandHandler.commands.put("clyde", new CommandClyde());
+        commandHandler.commands.put("warn", new CommandWarn());
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();
+        } catch (LoginException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
     }
 
 }
