@@ -27,7 +27,6 @@ public class Main {
         builder.addEventListener(new Guildjoin());
         builder.addEventListener(new Message());
         builder.addEventListener(new Memberjoin());
-        builder.addEventListener(new clanlistener());
         logger.info("loaded all listeners");
         commandHandler.commands.put("language", new CommandLanguage());
         commandHandler.commands.put("test", new CommandTest());
@@ -35,7 +34,6 @@ public class Main {
         commandHandler.commands.put("help", new CommandHelp());
         commandHandler.commands.put("bug", new CommandBug());
         commandHandler.commands.put("profile", new CommandProfile());
-        commandHandler.commands.put("clan", new CommandClan());
         commandHandler.commands.put("givehashes", new CommandGiveHashes());
         commandHandler.commands.put("guilds", new CommandGuilds());
         commandHandler.commands.put("registeruser", new CommandRegisterUser());
@@ -50,7 +48,11 @@ public class Main {
         commandHandler.commands.put("stop", new CommandStop());
         commandHandler.commands.put("setlvl", new CommandSetLevel());
         commandHandler.commands.put("setxp", new CommandSetXP());
+<<<<<<< HEAD
         commandHandler.commands.put("work", new CommandWork());
+=======
+        commandHandler.commands.put("clyde", new CommandClyde());
+>>>>>>> 99006b3a1979a8d7c397e30f2808b3d036024dae
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();

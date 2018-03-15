@@ -20,18 +20,20 @@ public class CommandGitHub implements Command{
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        try {
-            useruser = event.getAuthor().getId();
-            user = event.getGuild().getMemberById(useruser);
+        if (args.length==1) {
+            try {
+                useruser = event.getAuthor().getId();
+                user = event.getGuild().getMemberById(useruser);
 
-        } catch (ArrayIndexOutOfBoundsException e) {
-            user = event.getMember();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }   
-        MySQL.update("user", "github", args[0], "id", user.getUser().getId());
-        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("githubtitel").replaceAll("gb.", MessageHandler.getprefix(event.getGuild())))
-                .setDescription(MessageHandler.get(event.getAuthor()).getString("githubdescription")).build()).queue();
+            } catch (ArrayIndexOutOfBoundsException e) {
+                user = event.getMember();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            MySQL.update("user", "github", args[0], "id", user.getUser().getId());
+            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("githubtitel").replaceAll("gb.", MessageHandler.getprefix(event.getGuild())))
+                    .setDescription(MessageHandler.get(event.getAuthor()).getString("githubdescription")).build()).queue();
+        }
     }
 
     @Override
