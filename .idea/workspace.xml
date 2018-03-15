@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8b7b7d40-d07a-44a3-bbe4-6e9eb2ba5d6d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/GottBotReloaded.iml" afterPath="$PROJECT_DIR$/GottBotReloaded.iml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,8 +17,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/core/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="38" column="67" lean-forward="true" selection-start-line="38" selection-start-column="67" selection-end-line="38" selection-end-column="67" />
+            <state relative-caret-position="548">
+              <caret line="45" column="63" lean-forward="true" selection-start-line="45" selection-start-column="63" selection-end-line="45" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -27,39 +26,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommandSetLevel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandSetLevel.java">
+      <file leaf-file-name="CommandEval.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandEval.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#344#345#0" expanded="true" />
-                <element signature="e#372#373#0" expanded="true" />
-                <element signature="e#1044#1045#0" expanded="true" />
-                <element signature="e#1071#1072#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="85">
+              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommandShopCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/commands/games/CommandShopCommand.java">
+      <file leaf-file-name="CommandGitHub.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/commands/fun/CommandGitHub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommandTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="102">
+              <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -68,46 +49,18 @@
       <file leaf-file-name="CommandClyde.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandClyde.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="24" column="75" lean-forward="true" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="75" />
+            <state relative-caret-position="357">
+              <caret line="31" column="35" lean-forward="false" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommandSetXP.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandSetXP.java">
+      <file leaf-file-name="CommandProfile.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/commands/usercommands/CommandProfile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="19" column="45" lean-forward="true" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MessagesBundle_de.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/MessagesBundle_de.properties">
-          <provider editor-type-id="ResourceBundle">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="783">
-              <caret line="52" column="9" lean-forward="false" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MessagesBundle_en.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/MessagesBundle_en.properties">
-          <provider editor-type-id="ResourceBundle">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="20" column="57" lean-forward="true" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
+            <state relative-caret-position="867">
+              <caret line="62" column="77" lean-forward="false" selection-start-line="62" selection-start-column="77" selection-end-line="62" selection-end-column="77" />
               <folding />
             </state>
           </provider>
@@ -137,12 +90,13 @@
         <option value="$PROJECT_DIR$/src/main/java/commands/usercommands/CommandLanguage.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/moderation/CommandBan.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/moderation/CommandKick.java" />
-        <option value="$PROJECT_DIR$/src/main/java/core/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/botowner/CommandSetLevel.java" />
         <option value="$PROJECT_DIR$/src/main/resources/MessagesBundle_de.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/MessagesBundle_en.properties" />
         <option value="$PROJECT_DIR$/src/main/java/commands/botowner/CommandSetXP.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/botowner/CommandTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/fun/CommandBDay.java" />
+        <option value="$PROJECT_DIR$/src/main/java/core/Main.java" />
       </list>
     </option>
   </component>
@@ -173,8 +127,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -268,20 +220,14 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="GottBotReloaded" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GottBotReloaded" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="Resource Bundle 'MessagesBundle'" type="a6c14932:ResourceBundleNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -431,12 +377,13 @@
       <workItem from="1520953229819" duration="3243000" />
       <workItem from="1520960260813" duration="3213000" />
       <workItem from="1521031782599" duration="2951000" />
-      <workItem from="1521038695639" duration="2474000" />
+      <workItem from="1521038695639" duration="5777000" />
+      <workItem from="1521096231573" duration="1083000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12705000" />
+    <option name="totallyTimeSpent" value="17091000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -496,13 +443,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="17" lean-forward="true" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#344#345#0" expanded="true" />
-            <element signature="e#372#373#0" expanded="true" />
-            <element signature="e#1044#1045#0" expanded="true" />
-            <element signature="e#1071#1072#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -510,9 +450,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="20" column="36" lean-forward="false" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -528,7 +465,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="19" column="45" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -536,7 +472,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="20" column="148" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="148" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -544,10 +479,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="20" column="148" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="148" />
-          <folding>
-            <element signature="e#2272#2273#0" expanded="false" />
-            <element signature="e#2299#2300#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -555,29 +486,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="41" column="13" lean-forward="false" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
-          <folding>
-            <element signature="e#2318#2319#0" expanded="false" />
-            <element signature="e#2345#2346#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/MessagesBundle_en.properties">
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-          <folding />
         </state>
+      </provider>
+      <provider editor-type-id="ResourceBundle">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="44" lean-forward="false" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -593,7 +518,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="148" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="148" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -601,10 +525,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="148" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="148" />
-          <folding>
-            <element signature="e#2272#2273#0" expanded="false" />
-            <element signature="e#2299#2300#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -612,29 +532,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
           <caret line="41" column="13" lean-forward="false" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
-          <folding>
-            <element signature="e#2318#2319#0" expanded="false" />
-            <element signature="e#2345#2346#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/MessagesBundle_en.properties">
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-          <folding />
         </state>
+      </provider>
+      <provider editor-type-id="ResourceBundle">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="44" lean-forward="false" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -660,7 +574,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="44" lean-forward="false" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -696,7 +609,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -722,7 +634,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -738,7 +649,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="44" lean-forward="false" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -746,7 +656,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -768,7 +677,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="20" column="148" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="148" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -776,10 +684,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="20" column="148" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="148" />
-          <folding>
-            <element signature="e#2272#2273#0" expanded="false" />
-            <element signature="e#2299#2300#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -787,18 +691,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="41" column="13" lean-forward="false" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
-          <folding>
-            <element signature="e#2318#2319#0" expanded="false" />
-            <element signature="e#2345#2346#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/fun/CommandGitHub.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="11" column="4" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -806,63 +698,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="19" column="45" lean-forward="false" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="38" column="67" lean-forward="true" selection-start-line="38" selection-start-column="67" selection-end-line="38" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/MessagesBundle_de.properties">
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="783">
           <caret line="52" column="9" lean-forward="false" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/MessagesBundle_en.properties">
       <provider editor-type-id="ResourceBundle">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/MessagesBundle_en.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
           <caret line="20" column="57" lean-forward="true" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
-          <folding />
         </state>
+      </provider>
+      <provider editor-type-id="ResourceBundle">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandSetXP.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="19" column="45" lean-forward="true" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandSetLevel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#344#345#0" expanded="true" />
-            <element signature="e#372#373#0" expanded="true" />
-            <element signature="e#1044#1045#0" expanded="true" />
-            <element signature="e#1071#1072#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -870,24 +732,76 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="45" lean-forward="true" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandSetLevel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="20" column="66" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/usercommands/CommandHelp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="18" column="153" lean-forward="false" selection-start-line="18" selection-start-column="110" selection-end-line="18" selection-end-column="153" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandClyde.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="31" column="35" lean-forward="false" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/usercommands/CommandProfile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="62" column="77" lean-forward="false" selection-start-line="62" selection-start-column="77" selection-end-line="62" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/fun/CommandBDay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="58" column="31" lean-forward="true" selection-start-line="58" selection-start-column="31" selection-end-line="60" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/fun/CommandGitHub.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/core/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="548">
+          <caret line="45" column="63" lean-forward="true" selection-start-line="45" selection-start-column="63" selection-end-line="45" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandClyde.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandEval.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="24" column="75" lean-forward="true" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="85">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding />
         </state>
       </provider>
