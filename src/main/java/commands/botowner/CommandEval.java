@@ -47,73 +47,45 @@ public class CommandEval implements Command {
             se.put("channel", event.getMessage().getChannel());
             se.put("message", event.getMessage());
             se.put("author", event.getMessage().getAuthor());
-
-<<<<<<< HEAD
         progBars.forEach(se::put);
         String input = event.getMessage().getContentRaw().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").toLowerCase().replaceAll("jda.gettoken", "// jda.getToken").replaceFirst("eval", "").trim();
         try {
             if (input.equals("1+1")) {
                 ret = "1";
             } else {
-                ret = se.eval("{" +
-                        "with (imports) {\n" +
-                        "function complex(re, im){\n" +
-                        "  return new Complex(re,im);\n" +
-                        "};\n" +
-                        "\n" +
-                        "function thread() {\n" +
-                        "  return Thread.currentThread();\n" +
-                        "}\n" +
-                        input +
-                        "\n}\n" +
-                        "}") + "";
-=======
-            progBars.forEach(se::put);
-
-            String input = event.getMessage().getContentRaw().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("eval", "").trim();
-            try {
-                if (input.equals("1+1")) {
-                    ret = "1";
-                } else {
-                    ret = se.eval("{" +
-                            "with (imports) {\n" +
-                            "function complex(re, im){\n" +
-                            "  return new Complex(re,im);\n" +
-                            "};\n" +
-                            "\n" +
-                            "function thread() {\n" +
+                progBars.forEach(se::put);
+                        ret = se.eval("{" +
+                                "with (imports) {\n" +
+                                "function complex(re, im){\n" +
+                                "  return new Complex(re,im);\n" +
+                                "};\n" +
+                                "\n" +
+                                "function thread() {\n" +
                                 "  return Thread.currentThread();\n" +
-                            "}\n" +
-                            input +
-                            "\n}\n" +
-                            "}") + "";
-                }
-            } catch (Throwable e) {
-                error = e;
->>>>>>> 99006b3a1979a8d7c397e30f2808b3d036024dae
-            }
+                                "}\n" +
+                                input +
+                                "\n}\n" +
+                                "}") + "";
                 EmbedBuilder eB = new EmbedBuilder()
-                    .setTitle("Eval'd")
-                    .setFooter(event.getMessage().getCategory().getName(), event.getJDA().getSelfUser().getEffectiveAvatarUrl())
-                    .addField(MessageHandler.get(event.getAuthor()).getString("evaltitel"), "```java\n" + input + "\n```", false);
-            if (initError != null) {
-                eB.addField(":x:Error! (During Init)", "```java\n" + initError + "\n```", false);
+                        .setTitle("Eval'd")
+                        .setFooter(event.getMessage().getCategory().getName(), event.getJDA().getSelfUser().getEffectiveAvatarUrl())
+                        .addField(MessageHandler.get(event.getAuthor()).getString("evaltitel"), "```java\n" + input + "\n```", false);
+                if (initError != null) {
+                    eB.addField(":x:Error! (During Init)", "```java\n" + initError + "\n```", false);
+                }
+                if (ret != null) {
+                    eB.addField(":outbox_tray:Output", "```java\n" + ret + "\n```", false);
+                }
+                if (error != null) {
+                    eB.addField(":x:Error!", "```java\n" + error + "\n```", false);
+                }
+                event.getMessage().delete().queue();
+                event.getMessage().getTextChannel().sendMessage(eB.build()).queue();
             }
-            if (ret != null) {
-                eB.addField(":outbox_tray:Output", "```java\n" + ret + "\n```", false);
-            }
-            if (error != null) {
-                eB.addField(":x:Error!", "```java\n" + error + "\n```", false);
-            }
-            event.getMessage().delete().queue();
-            event.getMessage().getTextChannel().sendMessage(eB.build()).queue();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-<<<<<<< HEAD
-
-        event.getMessage().delete().queue();
-        event.getMessage().getTextChannel().sendMessage(eB.build()).queue();
-=======
->>>>>>> 99006b3a1979a8d7c397e30f2808b3d036024dae
+        }
     }
 
 
