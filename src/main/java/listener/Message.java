@@ -5,6 +5,7 @@ import core.MessageHandler;
 import core.MySQL;
 import javafx.beans.binding.IntegerBinding;
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import org.slf4j.Logger;
