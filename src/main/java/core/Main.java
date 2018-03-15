@@ -30,6 +30,7 @@ public class Main {
         builder.addEventListener(new Guildjoin());
         builder.addEventListener(new Message());
         builder.addEventListener(new Memberjoin());
+        builder.addEventListener(new botlistspace());
         logger.info("loaded all listeners");
         commandHandler.commands.put("language", new CommandLanguage());
         commandHandler.commands.put("test", new CommandTest());
@@ -53,6 +54,7 @@ public class Main {
         commandHandler.commands.put("setxp", new CommandSetXP());
         commandHandler.commands.put("work", new CommandWork());
         commandHandler.commands.put("clyde", new CommandClyde());
+        commandHandler.commands.put("warn", new CommandWarn());
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();
