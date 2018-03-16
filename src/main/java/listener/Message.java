@@ -1,24 +1,14 @@
 package listener;
 
-import core.Main;
 import core.MessageHandler;
 import core.MySQL;
-import javafx.beans.binding.IntegerBinding;
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import stuff.DATA;
-import stuff.SECRETS;
 
 import java.awt.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.concurrent.TimeUnit;
 
 public class Message extends ListenerAdapter {
     private static Logger logger = LoggerFactory.getLogger(Message.class);
