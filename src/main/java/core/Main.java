@@ -53,7 +53,8 @@ public class Main {
         commandHandler.commands.put("setxp", new CommandSetXP());
         commandHandler.commands.put("work", new CommandWork());
         commandHandler.commands.put("clyde", new CommandClyde());
-        commandHandler.commands.put("warn", new CommandWarn());
+        commandHandler.commands.put("leave", new CommandLeave());
+        // commandHandler.commands.put("warn", new CommandWarn());
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();
