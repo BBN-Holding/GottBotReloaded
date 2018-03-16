@@ -1,18 +1,25 @@
 package core;
 
 import org.slf4j.LoggerFactory;
-import stuff.DATA;
 import stuff.SECRETS;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
 public class MySQL {
+
+
     public static List<String> List = new ArrayList<>();
     private static Connection connection;
     private static org.slf4j.Logger Logger = LoggerFactory.getLogger(MySQL.class);
+
+    @Deprecated
+    public static Connection getConnection() {
+        return connection;
+    }
+
+
     public static void connect() {
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost/gottbot?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
