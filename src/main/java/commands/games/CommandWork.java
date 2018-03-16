@@ -6,8 +6,6 @@ import core.MySQL;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Random;
 
 public class CommandWork implements Command {

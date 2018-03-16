@@ -10,7 +10,7 @@ import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.OnlineStatus;
-import net.dv8tion.jda.core.exceptions.RateLimitedException;
+import net.dv8tion.jda.core.entities.Game;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import stuff.SECRETS;
@@ -25,7 +25,7 @@ public class Main {
         logger.info("------------------start Bot----------------------");
         logger.info("read Token and logins");
         MySQL.connect();
-        builder = new JDABuilder(AccountType.BOT).setToken(SECRETS.TOKEN).setAutoReconnect(true).setStatus(OnlineStatus.ONLINE);
+        builder = new JDABuilder(AccountType.BOT).setToken(SECRETS.TOKEN).setAutoReconnect(true).setStatus(OnlineStatus.ONLINE).setGame(Game.of(Game.GameType.WATCHING, "@GottBot"));
         builder.addEventListener(new commandListener());
         builder.addEventListener(new Guildjoin());
         builder.addEventListener(new Message());
@@ -53,6 +53,7 @@ public class Main {
         commandHandler.commands.put("setxp", new CommandSetXP());
         commandHandler.commands.put("work", new CommandWork());
         commandHandler.commands.put("clyde", new CommandClyde());
+        commandHandler.commands.put("warn", new CommandWarn());
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();

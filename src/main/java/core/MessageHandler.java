@@ -1,18 +1,10 @@
 package core;
 
-import listener.Message;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.User;
-import stuff.SECRETS;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
-import static stuff.DATA.url;
 
 public class MessageHandler {
     public static ResourceBundle messagebundle;
