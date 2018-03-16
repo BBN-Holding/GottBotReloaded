@@ -19,16 +19,15 @@ public class commandListener extends ListenerAdapter {
             if (event.getChannelType().equals(ChannelType.TEXT)) {
                 if (!event.getAuthor().isBot()) {
                     String PREFIX = MySQL.get("server", "ID", event.getGuild().getId(), "prefix");
-                    if (PREFIX!=null) {
-                    } else {
-                        PREFIX=event.getJDA().getSelfUser().getAsMention().toString();
-                    }
                         if (event.getMessage().getContentRaw().startsWith(PREFIX)) {
                             beheaded = event.getMessage().getContentRaw().toLowerCase().replaceFirst(Pattern.quote(PREFIX), "");
                             commandHandler.handleCommand(commandHandler.parser.parse(event.getMessage().getContentRaw().toLowerCase(), event));
                             logger.info(event.getAuthor().getName() + " mit ID " + event.getAuthor().getId() + " auf " + event.getGuild().getName() + " hat den Command genutzt: " + event.getMessage().getContentRaw());
+                        } else if (event.getMessage().getContentRaw().replaceFirst("!", "").startsWith(event.getJDA().getSelfUser().getAsMention())) {
+                            beheaded = event.getMessage().getContentRaw().toLowerCase().replaceFirst("!", "").replace(event.getJDA().getSelfUser().getAsMention(), "");
+                            commandHandler.handleCommand(commandHandler.parser.parse(event.getMessage().getContentRaw().toLowerCase(), event));
+                            logger.info(event.getAuthor().getName() + " mit ID " + event.getAuthor().getId() + " auf " + event.getGuild().getName() + " hat den Command genutzt: " + event.getMessage().getContentRaw());
                         }
-
                 }
             }
 

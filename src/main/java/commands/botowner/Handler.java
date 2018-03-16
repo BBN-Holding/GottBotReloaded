@@ -8,7 +8,7 @@ public class Handler {
         boolean yes=false;
         if (user.getId().equals("362270177712275491")||user.getId().equals("261083609148948488")) {
             yes=true;
-        } else System.out.println("keine perm's");
+        }
         return yes;
     }
 
