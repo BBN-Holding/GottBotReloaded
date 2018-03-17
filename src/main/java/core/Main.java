@@ -61,6 +61,7 @@ public class Main {
         commandHandler.commands.put("stats", new CommandStats());
         commandHandler.commands.put("verification", new CommandVerification());
         commandHandler.commands.put("say", new CommandSay());
+        commandHandler.commands.put("blacklist", new CommandBlacklist());
         // commandHandler.commands.put("warn", new CommandWarn());
         logger.info("loaded all commands");
         try {
