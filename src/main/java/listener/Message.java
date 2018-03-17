@@ -15,11 +15,28 @@ public class Message extends ListenerAdapter {
     @Override
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         // Mention
-        if (event.getMessage().getContentRaw().equals(event.getJDA().getSelfUser().getAsMention())) {
+        if (event.getMessage().getContentRaw().replace("!", "").equals(event.getJDA().getSelfUser().getAsMention())) {
             event.getChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("mentiontitel"))
                     .setDescription(MessageHandler.get(event.getAuthor()).getString("mentiontext").replaceAll("gb.", MessageHandler.getprefix(event.getGuild()))).setColor(Color.CYAN).build()).queue();
             logger.info(event.getAuthor().getName()+" mit ID "+ event.getAuthor().getId()+" auf "+event.getGuild().getName()+" hat mich erwähnt! ");
         }
+        // registerserver
+        if (MySQL.get("server", "id", event.getGuild().getId(), "id")==null) {
+            MySQL.insert("server", "id", event.getGuild().getId());
+            logger.info("neuer Server: Name: "+event.getGuild().getName()+" ID: "+event.getGuild().getId()+" Member: "+event.getGuild().getMembers().size());
+            int i = 0;
+            while (event.getGuild().getMembers().size()-1>=i) {
+                if (MySQL.get("user", "id", event.getGuild().getMembers().get(i).getUser().getId(), "id")==null) {
+                    MySQL.insert("user", "id", event.getGuild().getMembers().get(i).getUser().getId()+"");
+                    logger.info("neuer User in database Name: " + event.getGuild().getMembers().get(i).getUser().getName() + " ID: " + event.getGuild().getMembers().get(i).getUser().getId() + " von " + event.getGuild().getName());
+                }
+                i++;
+            }
+        }
+        //stats
+        long Mesasge = Long.parseLong(MySQL.get1("stats", "1", "message"));
+        Mesasge++;
+        MySQL.update("stats", "message", String.valueOf(Mesasge), "message", MySQL.get1("stats", "1", "message"));
         //lvl
         if (!event.getAuthor().isBot()) {
             long xp = Long.parseLong(MySQL.get("user", "id", event.getAuthor().getId(), "xp"));
