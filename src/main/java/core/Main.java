@@ -5,6 +5,7 @@ import commands.fun.*;
 import commands.games.CommandWork;
 import commands.moderation.*;
 import commands.tools.CommandGitHub;
+import commands.tools.CommandPing;
 import commands.tools.CommandProfile;
 import commands.usercommands.*;
 import listener.*;
@@ -56,6 +57,8 @@ public class Main {
         commandHandler.commands.put("work", new CommandWork());
         commandHandler.commands.put("clyde", new CommandClyde());
         commandHandler.commands.put("warn", new CommandWarn());
+        commandHandler.commands.put("ping", new CommandPing());
+
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();
