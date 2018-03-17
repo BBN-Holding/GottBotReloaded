@@ -5,6 +5,7 @@ import commands.fun.*;
 import commands.games.CommandWork;
 import commands.moderation.*;
 import commands.tools.CommandGitHub;
+import commands.tools.CommandPing;
 import commands.tools.CommandProfile;
 import commands.usercommands.*;
 import listener.*;
@@ -57,6 +58,7 @@ public class Main {
         commandHandler.commands.put("setxp", new CommandSetXP());
         commandHandler.commands.put("work", new CommandWork());
         commandHandler.commands.put("clyde", new CommandClyde());
+        commandHandler.commands.put("ping", new CommandPing());
         commandHandler.commands.put("leave", new CommandLeave());
         commandHandler.commands.put("stats", new CommandStats());
         commandHandler.commands.put("verification", new CommandVerification());
