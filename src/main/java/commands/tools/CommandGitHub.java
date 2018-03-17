@@ -1,4 +1,4 @@
-package commands.fun;
+package commands.tools;
 
 import commands.Command;
 import core.MessageHandler;
