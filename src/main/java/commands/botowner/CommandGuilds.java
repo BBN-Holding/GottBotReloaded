@@ -40,7 +40,7 @@ public class CommandGuilds implements Command {
             int sideNumbAll;
             if (event.getJDA().getGuilds().size() >= 20) {
                 for (Guild guild : guild_sublist) {
-                    runningOnServers.append("`\t " + (((SideNumbInput - 1) * 20) + count_server) + ". ").append(guild.getName()).append("(").append(guild.getId()).append(")`\n");
+                    runningOnServers.append("`\t " + (((SideNumbInput - 1) * 20) + count_server) + ". ").append(guild.getName()).append("[User ").append(guild.getMembers().size()).append("]").append("(").append(guild.getId()).append(")`\n");
                     count_server++;
                 }
                 sideNumbAll = event.getJDA().getGuilds().size() / 20;
