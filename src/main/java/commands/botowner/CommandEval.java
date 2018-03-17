@@ -20,74 +20,72 @@ public class CommandEval implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (Handler.get(event.getAuthor())) {
-            ScriptEngineFactory scriptEngineFactory = new NashornScriptEngineFactory();
-            ScriptEngine se = scriptEngineFactory.getScriptEngine();
-            String ret = null;
-            Throwable error = null;
-            Throwable initError = null;
-            try {
-                se.eval("var imports = new JavaImporter(" +
-                        "java.nio.file," +
-                        "Packages.net.dv8tion.jda.core.Permission," +
-                        "Packages.net.dv8tion.jda.core," +
-                        "java.lang," +
-                        "java.lang.management," +
-                        "java.text," +
-                        "java.sql," +
-                        "java.util," +
-                        "java.time," +
-                        "Packages.com.sun.management" +
-                        ");");
-            } catch (Throwable e) {
-                initError = e;
-            }
-            se.put("jda", event.getJDA());
-            se.put("guild", event.getMessage().getGuild());
-            se.put("channel", event.getMessage().getChannel());
-            se.put("message", event.getMessage());
-            se.put("author", event.getMessage().getAuthor());
+        ScriptEngineFactory scriptEngineFactory = new NashornScriptEngineFactory();
+        ScriptEngine se = scriptEngineFactory.getScriptEngine();
+        String ret = null;
+        Throwable error = null;
+        Throwable initError = null;
+        try {
+            se.eval("var imports = new JavaImporter(" +
+                    "java.nio.file," +
+                    "Packages.net.dv8tion.jda.core.Permission," +
+                    "Packages.net.dv8tion.jda.core," +
+                    "java.lang," +
+                    "java.lang.management," +
+                    "java.text," +
+                    "java.sql," +
+                    "java.util," +
+                    "java.time," +
+                    "Packages.com.sun.management" +
+                    ");");
+        } catch (Throwable e) {
+            initError = e;
+        }
+        se.put("jda", event.getJDA());
+        se.put("guild", event.getMessage().getGuild());
+        se.put("channel", event.getMessage().getChannel());
+        se.put("message", event.getMessage());
+        se.put("author", event.getMessage().getAuthor());
+
         progBars.forEach(se::put);
-        String input = event.getMessage().getContentRaw().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").toLowerCase().replaceAll("jda.gettoken", "// jda.getToken").replaceFirst("eval", "").trim();
+
+        String input = event.getMessage().getContentRaw().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("eval", "").trim();
         try {
             if (input.equals("1+1")) {
                 ret = "1";
             } else {
-                progBars.forEach(se::put);
-                        ret = se.eval("{" +
-                                "with (imports) {\n" +
-                                "function complex(re, im){\n" +
-                                "  return new Complex(re,im);\n" +
-                                "};\n" +
-                                "\n" +
-                                "function thread() {\n" +
-                                "  return Thread.currentThread();\n" +
-                                "}\n" +
-                                input +
-                                "\n}\n" +
-                                "}") + "";
-                EmbedBuilder eB = new EmbedBuilder()
-                        .setTitle("Eval'd")
-                        .setFooter(event.getMessage().getCategory().getName(), event.getJDA().getSelfUser().getEffectiveAvatarUrl())
-                        .addField(MessageHandler.get(event.getAuthor()).getString("evaltitel"), "```java\n" + input + "\n```", false);
-                if (initError != null) {
-                    eB.addField(":x:Error! (During Init)", "```java\n" + initError + "\n```", false);
-                }
-                if (ret != null) {
-                    eB.addField(":outbox_tray:Output", "```java\n" + ret + "\n```", false);
-                }
-                if (error != null) {
-                    eB.addField(":x:Error!", "```java\n" + error + "\n```", false);
-                }
-                event.getMessage().delete().queue();
-                event.getMessage().getTextChannel().sendMessage(eB.build()).queue();
+                ret = se.eval("{" +
+                        "with (imports) {\n" +
+                        "function complex(re, im){\n" +
+                        "  return new Complex(re,im);\n" +
+                        "};\n" +
+                        "\n" +
+                        "function thread() {\n" +
+                        "  return Thread.currentThread();\n" +
+                        "}\n" +
+                        input +
+                        "\n}\n" +
+                        "}") + "";
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Throwable e) {
+            error = e;
         }
+        EmbedBuilder eB = new EmbedBuilder()
+                .setTitle("Eval'd")
+                .setFooter(event.getMessage().getCategory().getName(), event.getJDA().getSelfUser().getEffectiveAvatarUrl())
+                .addField(":inbox_tray:Input", "```java\n" + input + "\n```", false);
+        if (initError != null) {
+            eB.addField(":x:Error! (During Init)", "```java\n" + initError + "\n```", false);
         }
+        if (ret != null) {
+            eB.addField(":outbox_tray:Output", "```java\n" + ret + "\n```", false);
+        }
+        if (error != null) {
+            eB.addField(":x:Error!", "```java\n" + error + "\n```", false);
+        }
+        event.getMessage().delete().queue();
+        event.getMessage().getTextChannel().sendMessage(eB.build()).queue();
     }
-
 
     @Override
     public void executed(boolean success, MessageReceivedEvent event) {
