@@ -4,6 +4,8 @@ import commands.botowner.*;
 import commands.fun.*;
 import commands.games.CommandWork;
 import commands.moderation.*;
+import commands.tools.CommandGitHub;
+import commands.tools.CommandProfile;
 import commands.usercommands.*;
 import listener.*;
 import net.dv8tion.jda.core.AccountType;
