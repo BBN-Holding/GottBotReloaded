@@ -12,7 +12,6 @@ public class Reaction extends ListenerAdapter {
         if (!MySQL.get("server", "id", event.getGuild().getId(), "verification").equals("none")) {
             String Message = MySQL.get("server", "id", event.getGuild().getId(), "verification");
             if (event.getMessageId().equals(Message)) {
-                System.out.println(event.getReaction().getReactionEmote().getName());
                 if (event.getReaction().getReactionEmote().getName().equals("✅")) {
                     event.getGuild().getController().addSingleRoleToMember(event.getMember(), event.getGuild().getRoleById(MySQL.get("server", "id", event.getGuild().getId(), "verificationrole"))).queue();
                 } else if (event.getReaction().getReactionEmote().getName().equals("❌")) {
