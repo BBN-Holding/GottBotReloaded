@@ -1,17 +1,11 @@
 package commands.botowner;
 
-
 import commands.Command;
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.entities.Guild;
-
-import java.awt.*;
-import java.util.List;
+import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class CommandGuilds implements Command {
-
-
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -20,48 +14,37 @@ public class CommandGuilds implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (Handler.get(event.getAuthor())) {
-            StringBuilder runningOnServers = new StringBuilder();
-            int count_server = 1;
 
-            List<Guild> guild_sublist;
-            int SideNumbInput = 1;
-            if (args.length > 0) {
-                SideNumbInput = Integer.parseInt(args[0]);
-                System.out.println(SideNumbInput);
-            }
-
-            if (event.getJDA().getGuilds().size() > 20) {
-                guild_sublist = event.getJDA().getGuilds().subList((SideNumbInput - 1) * 20, (SideNumbInput - 1) * 20 + 20);
+            int jaso = event.getJDA().getGuilds().size();
+            jaso=jaso/20;
+            jaso++;
+            int server;
+            int site;
+            if (args.length>0) {
+                 server = Integer.parseInt(args[0])*20;
+                 site = Integer.parseInt(args[0]);
             } else {
-                guild_sublist = event.getJDA().getGuilds();
+                 server = 0;
+                 site = 1;
+            }
+            int i = 0;
+            String out ="";
+            while (event.getJDA().getGuilds().size()>server&&i<20) {
+                Guild guild = event.getJDA().getGuilds().get(server);
+                out += String.valueOf(server+1)+". "+guild.getName()+" | User: "+guild.getMembers().size()+" ("+guild.getId()+")";
+                i++;
+                server++;
+                System.out.println("Ja");
             }
 
-
-            int sideNumbAll;
-            if (event.getJDA().getGuilds().size() >= 20) {
-                for (Guild guild : guild_sublist) {
-                    runningOnServers.append("`\t " + (((SideNumbInput - 1) * 20) + count_server) + ". ").append(guild.getName()).append("[User ").append(guild.getMembers().size()).append("]").append("(").append(guild.getId()).append(")`\n");
-                    count_server++;
-                }
-                sideNumbAll = event.getJDA().getGuilds().size() / 20;
-            } else {
-                for (Guild guild : guild_sublist) {
-                    runningOnServers.append("`\t " + count_server + ". ").append(guild.getName()).append("(").append(guild.getId()).append(")`\n");
-                    count_server++;
-                }
-                sideNumbAll = 1;
-            }
-
-
-            int sideNumb = SideNumbInput;
-
-            event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("`All: " + event.getJDA().getGuilds().size() + " - Side " + sideNumb + " / " + sideNumbAll + "`\n\n" + runningOnServers.toString())
-                    .setTitle(":information_source: Guild's").setColor(Color.MAGENTA).build()).queue();
+            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Guilds").setDescription("Site: "+site+"/"+jaso+"\nAll Guilds: "+event.getJDA().getGuilds().size()+"\n``"+out+"``").build()).queue();
+            System.out.println("JAJAJA");
         }
     }
 
     @Override
     public void executed(boolean success, MessageReceivedEvent event) {
+
     }
 
     @Override
