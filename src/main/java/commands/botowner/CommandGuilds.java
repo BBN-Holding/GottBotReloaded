@@ -34,11 +34,9 @@ public class CommandGuilds implements Command {
                 out += String.valueOf(server+1)+". "+guild.getName()+" | User: "+guild.getMembers().size()+" ("+guild.getId()+")";
                 i++;
                 server++;
-                System.out.println("Ja");
             }
 
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Guilds").setDescription("Site: "+site+"/"+jaso+"\nAll Guilds: "+event.getJDA().getGuilds().size()+"\n``"+out+"``").build()).queue();
-            System.out.println("JAJAJA");
         }
     }
 
