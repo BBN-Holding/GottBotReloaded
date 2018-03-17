@@ -56,6 +56,23 @@ public class MySQL {
         return out;
     }
 
+    public static String get1(String table, String wherevalue, String spalte) {
+        String out="";
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM `"+table+"` WHERE ?");
+            ps.setString(1, wherevalue);
+            ResultSet rs = ps.executeQuery();
+            // Only returning one result
+
+            if (rs.next()) {
+                out = rs.getString(spalte);
+            } else out=null;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return out;
+    }
+
     public static List<String> getall(String table, String where, String wherevalue, String spalte) {
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM `"+table+"` WHERE `"+where+"`=?");

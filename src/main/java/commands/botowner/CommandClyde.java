@@ -47,7 +47,6 @@ public class CommandClyde implements Command{
                 WebhookMessage message = builder.build();
                 client.send(message);
                 client.close();
-                otherChannel.deleteWebhookById(webhook.getId()).queue();
 
             } catch (NullPointerException fuck) {
                 fuck.printStackTrace();
