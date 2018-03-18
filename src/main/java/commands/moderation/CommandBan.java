@@ -2,6 +2,7 @@ package commands.moderation;
 
 import commands.Command;
 import commands.botowner.Handler;
+import core.MessageHandler;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Member;
@@ -23,19 +24,19 @@ public class CommandBan implements Command {
             Message msg = event.getMessage();
             if (msg.getMentionedUsers().isEmpty()) {
                 event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("gb.ban <@User>")
-                        .setTitle("Usage").setColor(Color.MAGENTA).build()).queue();
+                        .setTitle(MessageHandler.get(event.getAuthor()).getString("bantitel1")).setColor(Color.MAGENTA).build()).queue();
             }
-            Member target = msg.getGuild().getMember(msg.getMentionedUsers().get(0));
-            if (!msg.getGuild().getSelfMember().canInteract(target)) {
-                event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("Sorry I can't ban this User.")
-                        .setTitle(":warning: No permissions").setColor(Color.MAGENTA).build()).queue();
+            Member User = msg.getGuild().getMember(msg.getMentionedUsers().get(0));
+            if (!msg.getGuild().getSelfMember().canInteract(User)) {
+                event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("bandescription1"))
+                        .setTitle(MessageHandler.get(event.getAuthor()).getString("bantitel2")).setColor(Color.MAGENTA).build()).queue();
             } else {
-                if (!target.getUser().isBot()) {
-                    PrivateChannel channel = target.getUser().openPrivateChannel().complete();
+                if (!User.getUser().isBot()) {
+                    PrivateChannel channel = User.getUser().openPrivateChannel().complete();
                     channel.sendMessage(new EmbedBuilder().setDescription("You got banned")
                             .setTitle(":white_check_mark: Banned").setColor(Color.MAGENTA).build()).queue();
                 }
-                msg.getGuild().getController().ban(target, 7).queue();
+                msg.getGuild().getController().ban(User, 1).queue();
                 event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("Succesfully banned")
                         .setTitle(":white_check_mark: Banned").setColor(Color.MAGENTA).build()).queue();
             }
