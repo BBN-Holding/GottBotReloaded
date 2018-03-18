@@ -2,6 +2,7 @@ package commands.moderation;
 
 import commands.Command;
 import commands.botowner.Handler;
+import core.MessageHandler;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Member;
@@ -19,30 +20,30 @@ public class CommandKick implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (event.getAuthor().getId() == event.getGuild().getOwner().getUser().getId() || event.getMember().hasPermission(Permission.KICK_MEMBERS)|| Handler.get(event.getAuthor())) {
+        if (event.getAuthor().getId() == event.getGuild().getOwner().getUser().getId() || event.getMember().hasPermission(Permission.KICK_MEMBERS) || Handler.get(event.getAuthor())) {
             Message msg = event.getMessage();
             if (msg.getMentionedUsers().isEmpty()) {
-                event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("gb.kick <@User>")
-                        .setTitle("Usage").setColor(Color.MAGENTA).build()).queue();
+                event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.getprefix(event.getGuild()) + "kick <@User>")
+                        .setTitle(MessageHandler.get(event.getAuthor()).getString("kicktitel1")).setColor(Color.YELLOW).build()).queue();
             }
-            Member target = msg.getGuild().getMember(msg.getMentionedUsers().get(0));
-            if (!msg.getGuild().getSelfMember().canInteract(target)) {
-                event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("Sorry I can't kick this User.")
-                        .setTitle(":warning: No permissions").setColor(Color.MAGENTA).build()).queue();
+            Member User = msg.getGuild().getMember(msg.getMentionedUsers().get(0));
+            if (!msg.getGuild().getSelfMember().canInteract(User)) {
+                event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("kickdescription1"))
+                        .setTitle(MessageHandler.get(event.getAuthor()).getString("kicktitel2")).setColor(Color.YELLOW).build()).queue();
             } else {
-                if (!target.getUser().isBot()) {
-                    PrivateChannel channel = target.getUser().openPrivateChannel().complete();
-                    channel.sendMessage(new EmbedBuilder().setDescription("You got kicked")
-                            .setTitle(":white_check_mark: Kicked").setColor(Color.MAGENTA).build()).queue();
+                if (!User.getUser().isBot()) {
+                    PrivateChannel channel = User.getUser().openPrivateChannel().complete();
+                    channel.sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("kickdescription2") + " " + event.getMessage().getGuild().getName())
+                            .setTitle(MessageHandler.get(event.getAuthor()).getString("kicktitel3")).setColor(Color.RED).build()).queue();
                 }
-                msg.getGuild().getController().ban(target, 7).queue();
-                event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("Succesfully kicked")
-
-                        .setTitle(":white_check_mark: Kicked").setColor(Color.MAGENTA).build()).queue();
+                msg.getGuild().getController().kick(User).queue();
+                event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(User.getUser().getAsMention() + " " + MessageHandler.get(event.getAuthor()).getString("kickdescription3"))
+                        .setTitle(MessageHandler.get(event.getAuthor()).getString("kicktitel4")).setColor(Color.GREEN).build()).queue();
             }
+        } else {
 
-       }
-
+            event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("kickdescription4")).setTitle(MessageHandler.get(event.getAuthor()).getString("kicktitel5")).build()).queue();
+        }
 
     }
 
