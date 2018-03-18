@@ -1,9 +1,10 @@
 package core;
 
 import commands.botowner.*;
-import commands.fun.*;
 import commands.games.CommandWork;
 import commands.moderation.*;
+import commands.tools.CommandGitHub;
+import commands.tools.CommandProfile;
 import commands.usercommands.*;
 import listener.*;
 import net.dv8tion.jda.core.AccountType;
@@ -30,6 +31,8 @@ public class Main {
         builder.addEventListener(new Guildjoin());
         builder.addEventListener(new Message());
         builder.addEventListener(new Memberjoin());
+        builder.addEventListener(new Reaction());
+        // builder.addEventListener(new botlistspace());
         logger.info("loaded all listeners");
         commandHandler.commands.put("language", new CommandLanguage());
         commandHandler.commands.put("test", new CommandTest());
@@ -38,12 +41,10 @@ public class Main {
         commandHandler.commands.put("bug", new CommandBug());
         commandHandler.commands.put("profile", new CommandProfile());
         commandHandler.commands.put("givehashes", new CommandGiveHashes());
-        commandHandler.commands.put("guilds", new CommandGuilds());
         commandHandler.commands.put("registeruser", new CommandRegisterUser());
         commandHandler.commands.put("registerserver", new CommandRegisterServer());
         commandHandler.commands.put("invite", new CommandInvite());
         commandHandler.commands.put("eval", new CommandEval());
-        commandHandler.commands.put("countdown", new CommandCountdown());
         commandHandler.commands.put("ban", new CommandBan());
         commandHandler.commands.put("kick", new CommandKick());
         commandHandler.commands.put("question", new CommandQuestion());
@@ -55,7 +56,11 @@ public class Main {
         commandHandler.commands.put("clyde", new CommandClyde());
         commandHandler.commands.put("leave", new CommandLeave());
         commandHandler.commands.put("stats", new CommandStats());
-
+        commandHandler.commands.put("verification", new CommandVerification());
+        commandHandler.commands.put("say", new CommandSay());
+        commandHandler.commands.put("blacklist", new CommandBlacklist());
+        commandHandler.commands.put("guilds", new CommandGuilds());
+        commandHandler.commands.put("lvlmessage", new CommandLevelMessage());
         // commandHandler.commands.put("warn", new CommandWarn());
         logger.info("loaded all commands");
         try {
