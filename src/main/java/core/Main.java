@@ -43,12 +43,10 @@ public class Main {
         commandHandler.commands.put("bug", new CommandBug());
         commandHandler.commands.put("profile", new CommandProfile());
         commandHandler.commands.put("givehashes", new CommandGiveHashes());
-        commandHandler.commands.put("guilds", new CommandGuilds());
         commandHandler.commands.put("registeruser", new CommandRegisterUser());
         commandHandler.commands.put("registerserver", new CommandRegisterServer());
         commandHandler.commands.put("invite", new CommandInvite());
         commandHandler.commands.put("eval", new CommandEval());
-        commandHandler.commands.put("countdown", new CommandCountdown());
         commandHandler.commands.put("ban", new CommandBan());
         commandHandler.commands.put("kick", new CommandKick());
         commandHandler.commands.put("question", new CommandQuestion());
@@ -64,6 +62,7 @@ public class Main {
         commandHandler.commands.put("verification", new CommandVerification());
         commandHandler.commands.put("say", new CommandSay());
         commandHandler.commands.put("blacklist", new CommandBlacklist());
+        commandHandler.commands.put("guilds", new CommandGuilds());
         // commandHandler.commands.put("warn", new CommandWarn());
         logger.info("loaded all commands");
         try {
