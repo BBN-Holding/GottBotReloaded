@@ -40,6 +40,9 @@ public class CommandKick implements Command {
                 event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(User.getUser().getAsMention() + " " + MessageHandler.get(event.getAuthor()).getString("kickdescription3"))
                         .setTitle(MessageHandler.get(event.getAuthor()).getString("kicktitel4")).setColor(Color.GREEN).build()).queue();
             }
+        } else {
+
+            event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("kickdescription4")).setTitle(MessageHandler.get(event.getAuthor()).getString("kicktitel5")).build()).queue();
         }
 
     }
