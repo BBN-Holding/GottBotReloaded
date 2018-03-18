@@ -1,7 +1,6 @@
 package core;
 
 import commands.botowner.*;
-import commands.fun.*;
 import commands.games.CommandWork;
 import commands.moderation.*;
 import commands.tools.CommandGitHub;
