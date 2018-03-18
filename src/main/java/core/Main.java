@@ -27,7 +27,7 @@ public class Main {
         logger.info("------------------start Bot----------------------");
         logger.info("read Token and logins");
         MySQL.connect();
-        builder = new JDABuilder(AccountType.BOT).setToken(SECRETS.TOKEN).setAutoReconnect(true).setStatus(OnlineStatus.ONLINE).setGame(Game.of(Game.GameType.WATCHING, "@GottBot"));
+        builder = new JDABuilder(AccountType.BOT).setToken(SECRETS.TOKEN).setAutoReconnect(true).setStatus(OnlineStatus.ONLINE).setGame(Game.streaming( "@GottBot", "https://www.twitch.tv/bigbotnetwork"));
         builder.addEventListener(new commandListener());
         builder.addEventListener(new Guildjoin());
         builder.addEventListener(new Message());
