@@ -34,7 +34,6 @@ public class Main {
         builder.addEventListener(new Memberjoin());
         builder.addEventListener(new Reaction());
         // builder.addEventListener(new BotList());
-        // builder.addEventListener(new botlistspace());
         logger.info("loaded all listeners");
         commandHandler.commands.put("language", new CommandLanguage());
         commandHandler.commands.put("test", new CommandTest());
