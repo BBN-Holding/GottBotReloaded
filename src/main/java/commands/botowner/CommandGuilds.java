@@ -31,7 +31,7 @@ public class CommandGuilds implements Command {
             String out ="";
             while (event.getJDA().getGuilds().size()>server&&i<20) {
                 Guild guild = event.getJDA().getGuilds().get(server);
-                out += String.valueOf(server+1)+". "+guild.getName()+" | User: "+guild.getMembers().size()+" ("+guild.getId()+")";
+                out += String.valueOf(server+1)+". "+guild.getName()+" | User: "+guild.getMembers().size()+" ("+guild.getId()+")\n";
                 i++;
                 server++;
             }
