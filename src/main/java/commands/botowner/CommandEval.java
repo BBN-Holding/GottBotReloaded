@@ -83,7 +83,6 @@ public class CommandEval implements Command {
         if (error != null) {
             eB.addField(":x:Error!", "```java\n" + error + "\n```", false);
         }
-        event.getMessage().delete().queue();
         event.getMessage().getTextChannel().sendMessage(eB.build()).queue();
     }
 
