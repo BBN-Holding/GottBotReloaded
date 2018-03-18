@@ -10,7 +10,6 @@ import java.util.List;
 public class MySQL {
 
 
-    public static List<String> List = new ArrayList<>();
     private static Connection connection;
     private static org.slf4j.Logger Logger = LoggerFactory.getLogger(MySQL.class);
 
@@ -74,6 +73,7 @@ public class MySQL {
     }
 
     public static List<String> getall(String table, String where, String wherevalue, String spalte) {
+        List<String> List = new ArrayList<>();
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM `"+table+"` WHERE `"+where+"`=?");
             ps.setString(1,wherevalue);
@@ -89,6 +89,7 @@ public class MySQL {
     }
 
     public static List<String> getallwithoutwhere(String table, String spalte) {
+        List<String> List = new ArrayList<>();
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM `"+table+"`");
             ResultSet rs = ps.executeQuery();
@@ -99,6 +100,7 @@ public class MySQL {
         } catch (Exception ex) {
             Logger.error(ex.toString());
         }
+
         return List;
     }
 

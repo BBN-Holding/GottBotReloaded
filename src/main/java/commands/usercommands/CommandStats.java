@@ -27,6 +27,8 @@ public class CommandStats implements Command {
                 .addField("User",String.valueOf(User), true)
                 .addField("Listeners", String.valueOf(event.getJDA().getRegisteredListeners().size()), true)
                 .addField("Commands", String.valueOf(commandHandler.commands.size()), true)
+                .addField("registered User", String.valueOf(MySQL.getallwithoutwhere("user", "id").size()), true)
+                .addField("registered Server", String.valueOf(MySQL.getallwithoutwhere("server", "id").size()), true)
                 .setThumbnail(event.getJDA().getSelfUser().getEffectiveAvatarUrl())
                 .build()
         ).queue();
