@@ -7,6 +7,8 @@ import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
+import java.util.List;
+
 public class CommandBlacklist implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
@@ -28,6 +30,16 @@ public class CommandBlacklist implements Command {
                     case "remove":
                         User usa = event.getMessage().getMentionedUsers().get(0);
                         MySQL.update("user", "blacklist", "false", "id", usa.getId());
+                        break;
+                    case "list":
+                        String out="";
+                        int i=0;
+                        List<String> list = MySQL.getall("user", "blacklist", "true", "id");
+                        while (MySQL.getall("user", "blacklist", "true", "id").size()>i) {
+                            out += event.getJDA().getUserById(list.get(i)).getName()+", ";
+                            i++;
+                        }
+                        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Blacklisted Users").setDescription(out).build()).queue();
                         break;
                 }
             }
