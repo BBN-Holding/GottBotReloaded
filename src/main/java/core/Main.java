@@ -46,7 +46,6 @@ public class Main {
         commandHandler.commands.put("registerserver", new CommandRegisterServer());
         commandHandler.commands.put("invite", new CommandInvite());
         commandHandler.commands.put("eval", new CommandEval());
-        commandHandler.commands.put("countdown", new CommandCountdown());
         commandHandler.commands.put("ban", new CommandBan());
         commandHandler.commands.put("kick", new CommandKick());
         commandHandler.commands.put("question", new CommandQuestion());
