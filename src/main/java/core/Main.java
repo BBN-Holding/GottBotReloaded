@@ -48,7 +48,6 @@ public class Main {
         commandHandler.commands.put("eval", new CommandEval());
         commandHandler.commands.put("ban", new CommandBan());
         commandHandler.commands.put("kick", new CommandKick());
-        commandHandler.commands.put("question", new CommandQuestion());
         commandHandler.commands.put("github", new CommandGitHub());
         commandHandler.commands.put("stop", new CommandStop());
         commandHandler.commands.put("setlvl", new CommandSetLevel());

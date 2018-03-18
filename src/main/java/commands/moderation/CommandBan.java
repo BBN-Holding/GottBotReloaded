@@ -33,7 +33,7 @@ public class CommandBan implements Command {
             } else {
                 if (!User.getUser().isBot()) {
                     PrivateChannel channel = User.getUser().openPrivateChannel().complete();
-                    channel.sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("bandescription2"))
+                    channel.sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("bandescription2") + " " + event.getMessage().getGuild().getName())
                             .setTitle(MessageHandler.get(event.getAuthor()).getString("bantitel3")).setColor(Color.RED).build()).queue();
                 }
                 msg.getGuild().getController().ban(User, 1).queue();
