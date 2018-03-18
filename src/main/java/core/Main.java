@@ -1,7 +1,6 @@
 package core;
 
 import commands.botowner.*;
-import commands.fun.*;
 import commands.games.CommandWork;
 import commands.moderation.*;
 import commands.tools.CommandGitHub;
@@ -61,6 +60,7 @@ public class Main {
         commandHandler.commands.put("say", new CommandSay());
         commandHandler.commands.put("blacklist", new CommandBlacklist());
         commandHandler.commands.put("guilds", new CommandGuilds());
+        commandHandler.commands.put("lvlmessage", new CommandLevelMessage());
         // commandHandler.commands.put("warn", new CommandWarn());
         logger.info("loaded all commands");
         try {
