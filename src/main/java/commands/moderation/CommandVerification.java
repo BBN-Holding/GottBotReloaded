@@ -17,11 +17,11 @@ public class CommandVerification implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length<1) {
-            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Verification - Help").setDescription("Setting up a Verification with " + MessageHandler.getprefix(event.getGuild()) + "verification setup").build()).queue();
+            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("verificationhelp")).setDescription(MessageHandler.get(event.getAuthor()).getString("verificationhelp2").replace("gb", MessageHandler.getprefix(event.getGuild()))).build()).queue();
         } else {
             if (args[0].equalsIgnoreCase("setup")) {
                 if (args.length < 2) {
-                    event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Verification Setup - Help").setDescription("Write a Message (you can use the gb.say Command) and than do ``gb.verification setup [MessageID] [RoleID]`` (type this in the verification Channel) (if you don't know how you get the MessageID do gb.faq messageid) (if you don't know how you get the RoleID do gb.faq roleid)").build()).queue();
+                    event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("verificationsetup")).setDescription(MessageHandler.get(event.getAuthor()).getString("verificationsetup2").replace("gb.", MessageHandler.getprefix(event.getGuild()))).build()).queue();
                 } else {
                     if (MySQL.get("server", "id", event.getGuild().getId(), "verification").equals("none")) {
                         if (event.getTextChannel().getMessageById(args[1]) != null) {
