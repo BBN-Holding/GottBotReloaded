@@ -1,6 +1,7 @@
 package commands.moderation;
 
 import commands.Command;
+import core.MessageHandler;
 import core.MySQL;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -16,7 +17,7 @@ public class CommandVerification implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length<1) {
-            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Verification - Help").setDescription("Setting up a Verification").build()).queue();
+            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Verification - Help").setDescription("Setting up a Verification with " + MessageHandler.getprefix(event.getGuild()) + "verification setup").build()).queue();
         } else {
             if (args[0].equalsIgnoreCase("setup")) {
                 if (args.length < 2) {
