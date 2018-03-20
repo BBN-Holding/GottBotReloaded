@@ -43,15 +43,7 @@ public class CommandBlacklist implements Command {
                         event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Blacklisted Users").setDescription(out).build()).queue();
                         break;
 
-                    case "list":
-                        String out="";
-                        int i=0;
-                        List<String> list = MySQL.getall("user", "blacklist", "true", "id");
-                        while (MySQL.getall("user", "blacklist", "true", "id").size()>i) {
-                            out += event.getJDA().getUserById(list.get(i)).getName()+", ";
-                        }
-                        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Blacklisted Users").setDescription(out).build()).queue();
-                        break;
+
                 }
             }
             if (event.getGuild().getMemberById(event.getJDA().getSelfUser().getId()).hasPermission(Permission.MESSAGE_MANAGE)) {
