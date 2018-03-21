@@ -3,6 +3,7 @@ package core;
 import commands.botowner.*;
 import commands.games.CommandWork;
 import commands.moderation.*;
+import commands.tools.CommandFAQ;
 import commands.tools.CommandGitHub;
 import commands.tools.CommandPing;
 import commands.tools.CommandProfile;
@@ -63,6 +64,7 @@ public class Main {
         commandHandler.commands.put("blacklist", new CommandBlacklist());
         commandHandler.commands.put("guilds", new CommandGuilds());
         commandHandler.commands.put("lvlmessage", new CommandLevelMessage());
+        commandHandler.commands.put("faq", new CommandFAQ());
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();
