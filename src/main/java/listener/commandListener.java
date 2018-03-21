@@ -17,7 +17,7 @@ public class commandListener extends ListenerAdapter {
     public void onMessageReceived(MessageReceivedEvent event) {
         try {
             if (!event.getAuthor().isBot()) {
-                if (MySQL.get("user", "id", event.getAuthor().getId(), "blacklist").equals("false")) {
+                if (MySQL.get("blacklist", "id", event.getAuthor().getId(), "id")==null) {
                    if (event.getChannelType().equals(ChannelType.TEXT)) {
                        String PREFIX = MySQL.get("server", "ID", event.getGuild().getId(), "prefix");
                         if (event.getMessage().getContentRaw().startsWith(PREFIX)) {
