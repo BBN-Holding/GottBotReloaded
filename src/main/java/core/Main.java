@@ -62,7 +62,6 @@ public class Main {
         commandHandler.commands.put("blacklist", new CommandBlacklist());
         commandHandler.commands.put("guilds", new CommandGuilds());
         commandHandler.commands.put("lvlmessage", new CommandLevelMessage());
-        // commandHandler.commands.put("warn", new CommandWarn());
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();
