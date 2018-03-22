@@ -1,5 +1,6 @@
 package listener;
 
+import org.discordbots.api.client.DiscordBotListAPI;
 import stuff.SECRETS;
 import net.dv8tion.jda.core.events.guild.GuildJoinEvent;
 import net.dv8tion.jda.core.events.guild.GuildLeaveEvent;
@@ -75,6 +76,20 @@ public class BotList extends ListenerAdapter {
         } catch(IOException e) {
             e.printStackTrace();
         }
+
+
+
+
+
+        DiscordBotListAPI api = new DiscordBotListAPI.Builder()
+                .token(SECRETS.discordbots)
+                .build();
+
+        String botId = "407189087649398795";
+        int serverCount = event.getJDA().getGuilds().size();
+
+        api.setStats(botId, serverCount);
+
     }
 
 
@@ -137,5 +152,16 @@ public class BotList extends ListenerAdapter {
         } catch(IOException e) {
             e.printStackTrace();
         }
+
+        DiscordBotListAPI api = new DiscordBotListAPI.Builder()
+                .token(SECRETS.discordbots)
+                .build();
+
+        String botId = "407189087649398795";
+        int serverCount = event.getJDA().getGuilds().size();
+
+        api.setStats(botId, serverCount);
+
+
     }
 }
