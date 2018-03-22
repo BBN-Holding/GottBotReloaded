@@ -1,5 +1,6 @@
 package listener;
 
+import org.discordbots.api.client.DiscordBotListAPI;
 import stuff.SECRETS;
 import net.dv8tion.jda.core.events.guild.GuildJoinEvent;
 import net.dv8tion.jda.core.events.guild.GuildLeaveEvent;
@@ -75,6 +76,37 @@ public class BotList extends ListenerAdapter {
         } catch(IOException e) {
             e.printStackTrace();
         }
+
+
+
+        String discordbots_url = "https://discordbiots.org/api/bots/407189087649398795/stats";
+
+        data.put("server_count", event.getJDA().getGuilds().size());
+
+
+        Request discordbots = new Request.Builder()
+                .url(discordbots_url)
+                .post(body)
+                .addHeader("Authorization", SECRETS.discordbots)
+                .build();
+
+        try {
+            new OkHttpClient().newCall(discordbots).execute();
+            System.out.println("Successfully posted count for Discord Bots");
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
+
+        DiscordBotListAPI api = new DiscordBotListAPI.Builder()
+                .token(SECRETS.discordbots)
+                .build();
+
+        String botId = "407189087649398795";
+        int serverCount = event.getJDA().getGuilds().size();
+
+        api.setStats(botId, serverCount);
+
     }
 
 
@@ -137,5 +169,16 @@ public class BotList extends ListenerAdapter {
         } catch(IOException e) {
             e.printStackTrace();
         }
+
+        DiscordBotListAPI api = new DiscordBotListAPI.Builder()
+                .token(SECRETS.discordbots)
+                .build();
+
+        String botId = "407189087649398795";
+        int serverCount = event.getJDA().getGuilds().size();
+
+        api.setStats(botId, serverCount);
+
+
     }
 }

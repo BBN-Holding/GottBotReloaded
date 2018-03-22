@@ -75,5 +75,10 @@
             <artifactId>HttpRequest</artifactId>
             <version>LATEST</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.DiscordBotList</groupId>
+            <artifactId>DBL-Java-Wrapper</artifactId>
+            <version>LATEST</version>
+        </dependency>
     </dependencies>
 </project>
