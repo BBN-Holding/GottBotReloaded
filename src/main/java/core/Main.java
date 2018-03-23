@@ -65,6 +65,7 @@ public class Main {
         commandHandler.commands.put("lvlmessage", new CommandLevelMessage());
         commandHandler.commands.put("faq", new CommandFAQ());
         commandHandler.commands.put("upvotes", new CommandUpvotes());
+        commandHandler.commands.put("uptime", new CommandUptime());
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();
