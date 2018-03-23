@@ -31,8 +31,4 @@ public class CommandFAQ implements Command {
 
     }
 
-    @Override
-    public String help() {
-        return null;
-    }
 }

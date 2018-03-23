@@ -52,8 +52,4 @@ public class CommandKick implements Command {
 
     }
 
-    @Override
-    public String help() {
-        return null;
-    }
 }

@@ -49,8 +49,4 @@ public class CommandPrefix implements Command {
 
     }
 
-    @Override
-    public String help() {
-        return null;
-    }
 }

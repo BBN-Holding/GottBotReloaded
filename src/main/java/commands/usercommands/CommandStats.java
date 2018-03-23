@@ -40,8 +40,5 @@ public class CommandStats implements Command {
 
     }
 
-    @Override
-    public String help() {
-        return null;
-    }
+
 }

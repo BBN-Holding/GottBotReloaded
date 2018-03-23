@@ -174,8 +174,4 @@ public class CommandProfile implements Command {
 
     }
 
-    @Override
-    public String help() {
-        return null;
-    }
 }

@@ -25,8 +25,4 @@ public class CommandLeave implements Command {
 
     }
 
-    @Override
-    public String help() {
-        return null;
-    }
 }

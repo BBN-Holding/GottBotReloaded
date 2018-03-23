@@ -60,8 +60,4 @@ public class CommandClyde implements Command{
 
     }
 
-    @Override
-    public String help() {
-        return null;
-    }
 }
