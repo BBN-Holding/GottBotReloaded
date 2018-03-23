@@ -26,8 +26,4 @@ public class CommandTest implements Command {
 
     }
 
-    @Override
-    public String help() {
-        return null;
-    }
 }

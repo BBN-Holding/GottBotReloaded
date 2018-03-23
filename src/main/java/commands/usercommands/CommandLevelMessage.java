@@ -31,8 +31,4 @@ public class CommandLevelMessage implements Command {
 
     }
 
-    @Override
-    public String help() {
-        return null;
-    }
 }

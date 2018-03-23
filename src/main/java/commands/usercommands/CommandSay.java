@@ -30,8 +30,4 @@ public class CommandSay implements Command {
 
     }
 
-    @Override
-    public String help() {
-        return null;
-    }
 }

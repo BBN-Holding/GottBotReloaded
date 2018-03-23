@@ -52,8 +52,4 @@ public class CommandBan implements Command {
 
     }
 
-    @Override
-    public String help() {
-        return null;
-    }
 }

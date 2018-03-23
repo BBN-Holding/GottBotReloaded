@@ -34,7 +34,7 @@ public class Main {
         builder.addEventListener(new Memberjoin());
         builder.addEventListener(new Reaction());
         builder.addEventListener(new Guildleave());
-        builder.addEventListener(new BotList());
+        // builder.addEventListener(new BotList());
         logger.info("loaded all listeners");
         commandHandler.commands.put("language", new CommandLanguage());
         commandHandler.commands.put("test", new CommandTest());
@@ -64,8 +64,7 @@ public class Main {
         commandHandler.commands.put("guilds", new CommandGuilds());
         commandHandler.commands.put("lvlmessage", new CommandLevelMessage());
         commandHandler.commands.put("faq", new CommandFAQ());
-
-
+        commandHandler.commands.put("upvotes", new CommandUpvotes());
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();

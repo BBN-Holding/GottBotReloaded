@@ -52,8 +52,4 @@ public class CommandLanguage implements Command {
 
     }
 
-    @Override
-    public String help() {
-        return null;
-    }
 }
