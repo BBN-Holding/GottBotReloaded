@@ -66,6 +66,7 @@ public class Main {
         commandHandler.commands.put("faq", new CommandFAQ());
         commandHandler.commands.put("upvotes", new CommandUpvotes());
         commandHandler.commands.put("uptime", new CommandUptime());
+        commandHandler.commands.put("warn", new CommandWarn());
         logger.info("loaded all commands");
         try {
             JDA jda = builder.buildBlocking();

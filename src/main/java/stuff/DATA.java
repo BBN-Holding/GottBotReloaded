@@ -1,6 +1,5 @@
 package stuff;
 
-import net.dv8tion.jda.core.entities.Guild;
 
 public class DATA {
     public static String url="jdbc:mysql://localhost/gottbot";
