@@ -15,6 +15,7 @@ import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import stuff.DATA;
 import stuff.SECRETS;
 
 import javax.security.auth.login.LoginException;
@@ -27,7 +28,7 @@ public class Main {
         logger.info("------------------start Bot----------------------");
         logger.info("read Token and logins");
         MySQL.connect();
-        builder = new JDABuilder(AccountType.BOT).setToken(SECRETS.TOKEN).setAutoReconnect(true).setStatus(OnlineStatus.ONLINE).setGame(Game.streaming( "@GottBot", "https://www.twitch.tv/bigbotnetwork"));
+        builder = new JDABuilder(AccountType.BOT).setToken(SECRETS.TOKEN).setAutoReconnect(true).setStatus(OnlineStatus.OFFLINE).setGame(Game.streaming( "@GottBot", "https://www.twitch.tv/bigbotnetwork"));
         builder.addEventListener(new commandListener());
         builder.addEventListener(new Guildjoin());
         builder.addEventListener(new Message());
@@ -65,6 +66,7 @@ public class Main {
         commandHandler.commands.put("guilds", new CommandGuilds());
         commandHandler.commands.put("lvlmessage", new CommandLevelMessage());
         commandHandler.commands.put("guild", new CommandGuild());
+        commandHandler.commands.put("help2", new CommandHelp2());
         // commandHandler.commands.put("warn", new CommandWarn());
         logger.info("loaded all commands");
         try {
