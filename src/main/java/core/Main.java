@@ -79,10 +79,6 @@ public class Main {
             // commandHandler.commands.put("warn", new CommandWarn());
             args = args2;
             logger.info("loaded all commands");
-            if (!dev) {
-                logger.error("dev Mode - don't load the botlist stats");
-                builder.removeEventListener(new BotList());
-            }
             jda = builder.buildBlocking();
         } catch (Exception e) {
             e.printStackTrace();

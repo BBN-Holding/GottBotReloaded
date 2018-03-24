@@ -7,6 +7,9 @@ import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.guild.react.GuildMessageReactionAddEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Reaction extends ListenerAdapter {
 
     @Override
@@ -27,11 +30,19 @@ public class Reaction extends ListenerAdapter {
         if (!event.getUser().isBot()) {
             if (event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().size() == 1)
                 if (event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0).getTitle().contains("HelpMenu")) {
-                    if (MySQL.get("helpmenu", "message", event.getMessageId(), "id").equals(event.getUser().getId())) {
-                        System.out.println(event.getReactionEmote().getName());
-                        Message message = event.getChannel().getMessageById(event.getMessageId()).complete();
-                        message.clearReactions().queue();
-                        message.editMessage(MenuHandler.getMessage(event.getReactionEmote(), event)).queue();
+                    try {
+                        if (MySQL.get("helpmenu", "message", event.getMessageId(), "id").equals(event.getUser().getId())) {
+                            Message message = event.getChannel().getMessageById(event.getMessageId()).complete();
+                            message.clearReactions().queue();
+                            List<String> list = MenuHandler.getemote(event.getReactionEmote(), event);
+                            while (list.size() > 0) {
+                                message.addReaction(list.get(0)).queue();
+                                list.remove(0);
+                            }
+                            message.editMessage(MenuHandler.getMessage(event.getReactionEmote(), event)).queue();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
                 }
         }
