@@ -15,7 +15,6 @@ import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import stuff.DATA;
 import stuff.SECRETS;
 
 import javax.security.auth.login.LoginException;
@@ -50,7 +49,6 @@ public class Main {
         commandHandler.commands.put("eval", new CommandEval());
         commandHandler.commands.put("ban", new CommandBan());
         commandHandler.commands.put("kick", new CommandKick());
-        commandHandler.commands.put("question", new CommandQuestion());
         commandHandler.commands.put("github", new CommandGitHub());
         commandHandler.commands.put("stop", new CommandStop());
         commandHandler.commands.put("setlvl", new CommandSetLevel());
@@ -67,6 +65,8 @@ public class Main {
         commandHandler.commands.put("lvlmessage", new CommandLevelMessage());
         commandHandler.commands.put("guild", new CommandGuild());
         commandHandler.commands.put("help2", new CommandHelp2());
+        commandHandler.commands.put("help3", new CommandHelp3());
+        commandHandler.commands.put("info", new CommandInfo());
         // commandHandler.commands.put("warn", new CommandWarn());
         logger.info("loaded all commands");
         try {

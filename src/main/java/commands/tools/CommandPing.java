@@ -15,7 +15,6 @@ public class CommandPing implements Command {
 
         event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(":stopwatch: " + event.getJDA().getPing()).build()).queue();
 
-
     }
 
     @Override

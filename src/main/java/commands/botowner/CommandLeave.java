@@ -12,7 +12,7 @@ public class CommandLeave implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (Handler.get(event.getAuthor())) {
+        if (Owner.get(event.getAuthor())) {
 
             event.getJDA().getGuildById(args[0]).leave().queue();
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Server lefted").setDescription("Left the Server "+event.getJDA().getGuildById(args[0]).getName()).build()).queue();

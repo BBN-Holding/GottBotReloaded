@@ -1,6 +1,9 @@
 package listener;
 
+import core.MenuHandler;
 import core.MySQL;
+import net.dv8tion.jda.core.entities.Emote;
+import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.guild.react.GuildMessageReactionAddEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
@@ -19,6 +22,18 @@ public class Reaction extends ListenerAdapter {
                     event.getGuild().getController().kick(event.getMember()).queue();
                 }
             }
+        }
+        // Help Menu
+        if (!event.getUser().isBot()) {
+            if (event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().size() == 1)
+                if (event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0).getTitle().contains("HelpMenu")) {
+                    if (MySQL.get("helpmenu", "message", event.getMessageId(), "id").equals(event.getUser().getId())) {
+                        System.out.println(event.getReactionEmote().getName());
+                        Message message = event.getChannel().getMessageById(event.getMessageId()).complete();
+                        message.clearReactions().queue();
+                        message.editMessage(MenuHandler.getMessage(event.getReactionEmote(), event)).queue();
+                    }
+                }
         }
     }
 }

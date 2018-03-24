@@ -1,7 +1,7 @@
 package commands.moderation;
 
 import commands.Command;
-import commands.botowner.Handler;
+import commands.botowner.Owner;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Member;
@@ -19,7 +19,7 @@ public class CommandKick implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (event.getAuthor().getId() == event.getGuild().getOwner().getUser().getId() || event.getMember().hasPermission(Permission.KICK_MEMBERS)|| Handler.get(event.getAuthor())) {
+        if (event.getAuthor().getId() == event.getGuild().getOwner().getUser().getId() || event.getMember().hasPermission(Permission.KICK_MEMBERS)|| Owner.get(event.getAuthor())) {
             Message msg = event.getMessage();
             if (msg.getMentionedUsers().isEmpty()) {
                 event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("gb.kick <@User>")

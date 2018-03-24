@@ -1,4 +1,4 @@
-package commands.botowner;
+package commands.usercommands;
 
 import commands.Command;
 import net.dv8tion.jda.core.EmbedBuilder;

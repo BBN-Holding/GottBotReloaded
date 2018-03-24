@@ -17,7 +17,7 @@ public class CommandGiveHashes implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (Handler.get(event.getAuthor())) {
+        if (Owner.get(event.getAuthor())) {
             try {
                 useruser = args[1].replace("<", "").replace("@", "").replace(">", "").replace("!", "");
                 user = event.getGuild().getMemberById(useruser);
