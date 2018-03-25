@@ -42,6 +42,8 @@ public class Main {
             builder.addEventListener(new Message());
             builder.addEventListener(new Memberjoin());
             builder.addEventListener(new Reaction());
+            builder.addEventListener(new PrivateMessage());
+            builder.addEventListener(new LogListener());
             // builder.addEventListener(new BotList());
             logger.info("loaded all listeners");
             commandHandler.commands.put("language", new CommandLanguage());
@@ -76,7 +78,10 @@ public class Main {
             commandHandler.commands.put("help3", new CommandHelp3());
             commandHandler.commands.put("info", new CommandInfo());
             commandHandler.commands.put("restart", new CommandRestart());
-            // commandHandler.commands.put("warn", new CommandWarn());
+            commandHandler.commands.put("token", new CommandToken());
+            commandHandler.commands.put("log", new CommandLog());
+            commandHandler.commands.put("play", new CommandPlay());
+            commandHandler.commands.put("dm", new CommandDM());
             args = args2;
             logger.info("loaded all commands");
             jda = builder.buildBlocking();
