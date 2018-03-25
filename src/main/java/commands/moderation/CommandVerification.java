@@ -9,6 +9,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import java.awt.*;
 
 public class CommandVerification implements Command {
+
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -41,13 +42,10 @@ public class CommandVerification implements Command {
                 MySQL.update("server", "verificationrole", "none", "id", event.getGuild().getId());
                 event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Verification resetted").setDescription("Verfication Message sucessfully resetted").build()).queue();
             }
-
         }
     }
 
     @Override
     public void executed(boolean success, MessageReceivedEvent event) {
-
     }
-
 }

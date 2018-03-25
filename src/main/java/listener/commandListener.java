@@ -42,7 +42,7 @@ public class commandListener extends ListenerAdapter {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("JAJAJA ERROR UND SO DIGGA");
         }
     }
 

@@ -19,7 +19,6 @@ public class CommandBug implements Command {
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("bugtitel"))
                     .setDescription(MessageHandler.get(event.getAuthor()).getString("bugtext").replace("gb.", MessageHandler.getprefix(event.getGuild()))).setColor(Color.RED).build()).queue();
         } else {
-
             String text = event.getMessage().getContentStripped().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("bug ", "");
             event.getJDA().getGuildById("396732579920740352").getTextChannelById("417074854701826049").sendMessage(
                     new EmbedBuilder()
@@ -29,13 +28,10 @@ public class CommandBug implements Command {
             ).queue();
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("bugsucesstitel"))
                     .setDescription(MessageHandler.get(event.getAuthor()).getString("bugsucesstext")).setColor(Color.green).build()).queue();
-
         }
     }
 
     @Override
     public void executed(boolean success, MessageReceivedEvent event) {
-
     }
-
 }

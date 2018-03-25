@@ -44,12 +44,9 @@ public class CommandBan implements Command {
 
             event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("bandescription4")).setTitle(MessageHandler.get(event.getAuthor()).getString("bantitel5")).build()).queue();
         }
-
     }
 
-        @Override
+    @Override
     public void executed(boolean success, MessageReceivedEvent event) {
-
     }
-
 }

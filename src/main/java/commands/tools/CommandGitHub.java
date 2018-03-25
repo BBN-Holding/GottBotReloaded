@@ -34,11 +34,17 @@ public class CommandGitHub implements Command{
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("githubtitel").replaceAll("gb.", MessageHandler.getprefix(event.getGuild())))
                     .setDescription(MessageHandler.get(event.getAuthor()).getString("githubdescription")).build()).queue();
         }
+        if (args[0].equals("list")) {
+
+            String Liste = MySQL.getallstring("user", "github");
+            String AlleMit = String.valueOf(!Liste.equals("none"));
+
+            event.getTextChannel().sendMessage(AlleMit).queue();
+
+        }
     }
 
     @Override
     public void executed(boolean success, MessageReceivedEvent event) {
-
     }
-
 }

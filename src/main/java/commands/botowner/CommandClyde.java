@@ -1,7 +1,5 @@
 package commands.botowner;
 
-
-
 import core.MessageHandler;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.webhook.WebhookClient;
@@ -20,7 +18,6 @@ public class CommandClyde implements Command{
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-
 
             TextChannel otherChannel = event.getMessage().getTextChannel();
 

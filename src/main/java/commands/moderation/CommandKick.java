@@ -44,12 +44,9 @@ public class CommandKick implements Command {
 
             event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("kickdescription4")).setTitle(MessageHandler.get(event.getAuthor()).getString("kicktitel5")).build()).queue();
         }
-
     }
 
     @Override
     public void executed(boolean success, MessageReceivedEvent event) {
-
     }
-
 }
