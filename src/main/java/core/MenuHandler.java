@@ -17,7 +17,7 @@ public class MenuHandler {
     public static MessageEmbed getMessage(String emote, MessageEmbed embed) {
         MessageEmbed out=new EmbedBuilder().setTitle("Error").setDescription("Sorry the Emote was not found! if you are sure that it is a bug use ``gb.bug`` Thanks <3").setColor(Color.RED).build();
         // Overwiev
-        if (embed.getTitle().equals("HelpMenu - Overview")) {
+        if (embed.getTitle().equals("HelpMenu")) {
             switch (emote) {
                 case "\uD83D\uDD28":
                     out = new EmbedBuilder().setTitle("HelpMenu - Moderation")
@@ -140,15 +140,23 @@ public class MenuHandler {
                     break;
             }
         }
-        if (embed.getTitle().contains("HelpMenu -")&&emote.equals("\uD83D\uDD19")) {
-                out = new EmbedBuilder().setTitle("HelpMenu").setDescription("Please react with the Emotes")
+
+        if (embed.getTitle().contains("HelpMenu - Moderation - ")&&emote.equals("◀")) {
+            out = getMessage("\uD83D\uDD28", new EmbedBuilder().setTitle("HelpMenu").build());
+        } else if (embed.getTitle().equals("HelpMenu - Tools - ")&&emote.equals("◀")) {
+            out = getMessage("\uD83D\uDEE0", new EmbedBuilder().setTitle("HelpMenu").build());
+        } else if (embed.getTitle().equals("HelpMenu - Usercommands - ")&&emote.equals("◀")) {
+            out = getMessage("\uD83D\uDC65", new EmbedBuilder().setTitle("HelpMenu").build());
+        }
+
+        if (embed.getTitle().replaceFirst("Moderation", "").replaceFirst("Tools", "").replaceFirst("Usercommands", "").equals("HelpMenu - ")&&emote.equals("\uD83D\uDD19")) {
+                out = new EmbedBuilder().setTitle("HelpMenu").setDescription("Please react with the Emotes. Use the :arrow_backward: or the :back: emoji to see the overview")
                         .addField("Moderation", "\uD83D\uDD28", true)
                         .addField("Tools", "\uD83D\uDEE0", true)
                         .addField("Usercommands", "\uD83D\uDC65", true)
                         .build();
 
         }
-        System.out.println(embed.getTitle());
         return out;
     }
 
@@ -179,12 +187,24 @@ public class MenuHandler {
                     break;
             }
         if (embed.getTitle().equals("HelpMenu")&&emote.equals("\uD83D\uDD19")) {
-                list.add("\uD83D\uDD28");
-                list.add("\uD83D\uDEE0");
-                list.add("\uD83D\uDC65");
+            list.add("\uD83D\uDD28");
+            list.add("\uD83D\uDEE0");
+            list.add("\uD83D\uDC65");
+        } else if (embed.getTitle().equals("HelpMenu - Moderation")&&emote.equals("◀")) {
+                list = getemote("\uD83D\uDD28", new EmbedBuilder().setTitle("HelpMenu -").build());
+        } else if (embed.getTitle().equals("HelpMenu - Tools")&&emote.equals("◀")) {
+                list = getemote("\uD83D\uDEE0", new EmbedBuilder().setTitle("HelpMenu -").build());
+        } else if (embed.getTitle().equals("HelpMenu - Usercommands")&&emote.equals("◀")) {
+            list = getemote("\uD83D\uDC65", new EmbedBuilder().setTitle("HelpMenu -").build());
         }
-        if (!embed.getTitle().equals("HelpMenu")) {
+
+
+        if (embed.getTitle().contains("HelpMenu -")) {
             list.add("\uD83D\uDD19");
+        }
+
+        if (embed.getTitle().replaceFirst("HelpMenu - ", "").contains(" - ")) {
+                list.add("◀");
         }
 
 

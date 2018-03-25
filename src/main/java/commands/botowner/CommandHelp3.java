@@ -18,13 +18,13 @@ public class CommandHelp3 implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         Message message =event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Loading...").setDescription("loading...").build()).complete();
-        List<String> list = MenuHandler.getemote("\uD83D\uDD19", new EmbedBuilder().setTitle("HelpMenu -").build());
+        MySQL.insert("helpmenu", "id`,`message", event.getAuthor().getId()+"','"+message.getId());
+        event.getTextChannel().editMessageById(message.getId(),MenuHandler.getMessage("\uD83D\uDD19", new EmbedBuilder().setTitle("HelpMenu - ").build())).queue();
+        List<String> list = MenuHandler.getemote("\uD83D\uDD19", new EmbedBuilder().setTitle("HelpMenu").build());
         while (list.size() > 0) {
             message.addReaction(list.get(0)).queue();
             list.remove(0);
         }
-        event.getTextChannel().editMessageById(message.getId(),MenuHandler.getMessage("\uD83D\uDD19", new EmbedBuilder().setTitle("HelpMenu -").build())).queue();
-        MySQL.insert("helpmenu", "id`,`message", event.getAuthor().getId()+"','"+message);
     }
 
     @Override
