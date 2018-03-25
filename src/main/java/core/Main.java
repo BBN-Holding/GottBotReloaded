@@ -43,6 +43,8 @@ public class Main {
             builder.addEventListener(new Message());
             builder.addEventListener(new Memberjoin());
             builder.addEventListener(new Reaction());
+            builder.addEventListener(new PrivateMessage());
+            builder.addEventListener(new LogListener());
             // builder.addEventListener(new BotList());
             logger.info("loaded all listeners");
             commandHandler.commands.put("language", new CommandLanguage());
@@ -84,10 +86,6 @@ public class Main {
             commandHandler.commands.put("dm", new CommandDM());
             args = args2;
             logger.info("loaded all commands");
-            if (!dev) {
-                logger.error("dev Mode - don't load the botlist stats");
-                builder.removeEventListener(new BotList());
-            }
             jda = builder.buildBlocking();
         } catch (Exception e) {
             e.printStackTrace();

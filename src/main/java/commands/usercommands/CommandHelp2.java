@@ -13,11 +13,11 @@ public class CommandHelp2 implements Command{
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Help")
-                                .addField("Botowner", "``blacklist`` ``Clyde`` ``Eval`` ``GiveHashes`` ``Guild`` ``Guilds`` ``Invite`` ``Leave`` ``Registerserver`` ``registeruser`` ``setlevel`` ``setxp`` ``Stop`` ``Test``", false)
-                                .addField("Moderation", "``ban`` ``kick`` ``prefix`` ``verification``", false)
-                                .addField("Tools", "``github`` ``ping`` ``profile``", false)
-                                .addField("User", "``bug`` ``help`` ``language`` ``levelmessage`` ``question`` ``say`` ``stats``", false)
-                                .build()).queue();
+                .addField("Botowner", "``blacklist`` ``Clyde`` ``Eval`` ``GiveHashes`` ``Guild`` ``Guilds`` ``Invite`` ``Leave`` ``Registerserver`` ``registeruser`` ``setlevel`` ``setxp`` ``Stop`` ``Test``", false)
+                .addField("Moderation", "``ban`` ``kick`` ``prefix`` ``verification``", false)
+                .addField("Tools", "``github`` ``ping`` ``profile``", false)
+                .addField("User", "``bug`` ``help`` ``language`` ``levelmessage`` ``question`` ``say`` ``stats``", false)
+                .build()).queue();
     }
 
     @Override
