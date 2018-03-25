@@ -23,6 +23,7 @@ public class CommandProfile implements Command {
     int TempProgress;
     int viertel;
     String LevelPlus;
+
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -153,7 +154,6 @@ public class CommandProfile implements Command {
             e.printStackTrace();
         }
 
-
         event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("profiletitel"))
                 .addField("Name", user.getUser().getName(),true)
                 .addField("Nickname", Nick, true)
@@ -171,11 +171,5 @@ public class CommandProfile implements Command {
 
     @Override
     public void executed(boolean success, MessageReceivedEvent event) {
-
-    }
-
-    @Override
-    public String help() {
-        return null;
     }
 }

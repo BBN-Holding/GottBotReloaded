@@ -156,12 +156,14 @@ public class MenuHandler {
                         .addField("Usercommands", "\uD83D\uDC65", true)
                         .build();
 
+
         }
         return out;
     }
 
     public static List<String> getemote(String emote, MessageEmbed embed) {
         List<String> list = new ArrayList<>();
+
             switch (emote) {
                 // Mod
                 case "\uD83D\uDD28":
@@ -186,11 +188,14 @@ public class MenuHandler {
                     list.add("\uD83D\uDCCB");
                     break;
             }
+
+ 
         if (embed.getTitle().equals("HelpMenu")&&emote.equals("\uD83D\uDD19")) {
             list.add("\uD83D\uDD28");
             list.add("\uD83D\uDEE0");
             list.add("\uD83D\uDC65");
         } else if (embed.getTitle().equals("HelpMenu - Moderation")&&emote.equals("◀")) {
+
                 list = getemote("\uD83D\uDD28", new EmbedBuilder().setTitle("HelpMenu -").build());
         } else if (embed.getTitle().equals("HelpMenu - Tools")&&emote.equals("◀")) {
                 list = getemote("\uD83D\uDEE0", new EmbedBuilder().setTitle("HelpMenu -").build());
@@ -204,11 +209,14 @@ public class MenuHandler {
         }
 
         if (embed.getTitle().replaceFirst("HelpMenu - ", "").contains(" - ")) {
+
                 list.add("◀");
+
         }
 
 
         return list;
     }
+
 
 }

@@ -54,8 +54,4 @@ public class CommandBlacklist implements Command {
 
     }
 
-    @Override
-    public String help() {
-        return null;
-    }
 }

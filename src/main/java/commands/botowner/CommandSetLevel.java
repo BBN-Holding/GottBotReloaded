@@ -28,8 +28,4 @@ public class CommandSetLevel implements Command {
 
     }
 
-    @Override
-    public String help() {
-        return null;
-    }
 }

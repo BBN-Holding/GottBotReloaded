@@ -6,6 +6,7 @@ import commands.moderation.*;
 import commands.tools.CommandGitHub;
 import commands.tools.CommandPing;
 import commands.tools.CommandProfile;
+import commands.tools.CommandToken;
 import commands.usercommands.*;
 import listener.*;
 import net.dv8tion.jda.core.AccountType;
@@ -78,6 +79,7 @@ public class Main {
             commandHandler.commands.put("help3", new CommandHelp3());
             commandHandler.commands.put("info", new CommandInfo());
             commandHandler.commands.put("restart", new CommandRestart());
+            commandHandler.commands.put("warn", new CommandWarn());
             commandHandler.commands.put("token", new CommandToken());
             commandHandler.commands.put("log", new CommandLog());
             commandHandler.commands.put("play", new CommandPlay());

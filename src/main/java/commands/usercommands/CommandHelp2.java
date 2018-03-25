@@ -4,7 +4,7 @@ import commands.Command;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
-public class CommandHelp2 implements Command {
+public class CommandHelp2 implements Command{
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -18,16 +18,10 @@ public class CommandHelp2 implements Command {
                 .addField("Tools", "``github`` ``ping`` ``profile``", false)
                 .addField("User", "``bug`` ``help`` ``language`` ``levelmessage`` ``question`` ``say`` ``stats``", false)
                 .build()).queue();
-
     }
 
     @Override
     public void executed(boolean success, MessageReceivedEvent event) {
 
-    }
-
-    @Override
-    public String help() {
-        return null;
     }
 }

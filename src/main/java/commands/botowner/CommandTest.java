@@ -4,6 +4,7 @@ import commands.Command;
 import core.MessageHandler;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import util.Embed;
 
 public class CommandTest implements Command {
     @Override
@@ -19,15 +20,10 @@ public class CommandTest implements Command {
 
         } else event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("nopermstitel"))
                 .setDescription(MessageHandler.get(event.getAuthor()).getString("nopermstext")).build()).queue();
+        Embed.error("f", "0").build();
     }
 
     @Override
     public void executed(boolean success, MessageReceivedEvent event) {
-
-    }
-
-    @Override
-    public String help() {
-        return null;
     }
 }

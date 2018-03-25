@@ -16,7 +16,6 @@ public class CommandLeave implements Command {
 
             event.getJDA().getGuildById(args[0]).leave().queue();
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Server lefted").setDescription("Left the Server "+event.getJDA().getGuildById(args[0]).getName()).build()).queue();
-
         }
     }
 
@@ -25,8 +24,4 @@ public class CommandLeave implements Command {
 
     }
 
-    @Override
-    public String help() {
-        return null;
-    }
 }

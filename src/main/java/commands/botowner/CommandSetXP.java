@@ -28,8 +28,4 @@ public class CommandSetXP implements Command {
 
     }
 
-    @Override
-    public String help() {
-        return null;
-    }
 }

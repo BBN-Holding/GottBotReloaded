@@ -23,34 +23,30 @@ public class CommandBan implements Command {
         if (event.getAuthor().getId() == event.getGuild().getOwner().getUser().getId() || event.getMember().hasPermission(Permission.BAN_MEMBERS) || Owner.get(event.getAuthor())) {
             Message msg = event.getMessage();
             if (msg.getMentionedUsers().isEmpty()) {
-                event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("gb.ban <@User>")
-                        .setTitle(MessageHandler.get(event.getAuthor()).getString("bantitel1")).setColor(Color.MAGENTA).build()).queue();
+                event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.getprefix(event.getGuild()) + "ban <@User>")
+                        .setTitle(MessageHandler.get(event.getAuthor()).getString("bantitel1")).setColor(Color.YELLOW).build()).queue();
             }
             Member User = msg.getGuild().getMember(msg.getMentionedUsers().get(0));
             if (!msg.getGuild().getSelfMember().canInteract(User)) {
                 event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("bandescription1"))
-                        .setTitle(MessageHandler.get(event.getAuthor()).getString("bantitel2")).setColor(Color.MAGENTA).build()).queue();
+                        .setTitle(MessageHandler.get(event.getAuthor()).getString("bantitel2")).setColor(Color.YELLOW).build()).queue();
             } else {
                 if (!User.getUser().isBot()) {
                     PrivateChannel channel = User.getUser().openPrivateChannel().complete();
-                    channel.sendMessage(new EmbedBuilder().setDescription("You got banned")
-                            .setTitle(":white_check_mark: Banned").setColor(Color.MAGENTA).build()).queue();
+                    channel.sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("bandescription2") + " " + event.getMessage().getGuild().getName())
+                            .setTitle(MessageHandler.get(event.getAuthor()).getString("bantitel3")).setColor(Color.RED).build()).queue();
                 }
                 msg.getGuild().getController().ban(User, 1).queue();
-                event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("Succesfully banned")
-                        .setTitle(":white_check_mark: Banned").setColor(Color.MAGENTA).build()).queue();
+                event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(User.getUser().getAsMention() + " " + MessageHandler.get(event.getAuthor()).getString("bandescription3"))
+                        .setTitle(MessageHandler.get(event.getAuthor()).getString("bantitel4")).setColor(Color.GREEN).build()).queue();
             }
+        } else {
+
+            event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("bandescription4")).setTitle(MessageHandler.get(event.getAuthor()).getString("bantitel5")).build()).queue();
         }
-
-    }
-
-        @Override
-    public void executed(boolean success, MessageReceivedEvent event) {
-
     }
 
     @Override
-    public String help() {
-        return null;
+    public void executed(boolean success, MessageReceivedEvent event) {
     }
 }

@@ -25,7 +25,7 @@ public class Reaction extends ListenerAdapter {
                     event.getGuild().getController().addSingleRoleToMember(event.getMember(), event.getGuild().getRoleById(MySQL.get("server", "id", event.getGuild().getId(), "verificationrole"))).queue();
                 } else if (event.getReaction().getReactionEmote().getName().equals("❌")) {
                     if (event.getJDA().getRoles().get(0).canInteract(event.getMember().getRoles().get(0)))
-                    event.getGuild().getController().kick(event.getMember()).queue();
+                        event.getGuild().getController().kick(event.getMember()).queue();
                 }
             }
         }

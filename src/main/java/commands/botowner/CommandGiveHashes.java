@@ -38,8 +38,4 @@ public class CommandGiveHashes implements Command {
 
     }
 
-    @Override
-    public String help() {
-        return null;
-    }
 }

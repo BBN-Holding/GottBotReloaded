@@ -10,7 +10,9 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import java.awt.*;
 
 public class CommandPrefix implements Command {
+
     boolean Role=false;
+
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -41,16 +43,9 @@ public class CommandPrefix implements Command {
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("nopermstitel"))
                     .setDescription(MessageHandler.get(event.getAuthor()).getString("nopermstext")).setColor(Color.RED).build()).queue();
         }
-
     }
 
     @Override
     public void executed(boolean success, MessageReceivedEvent event) {
-
-    }
-
-    @Override
-    public String help() {
-        return null;
     }
 }
