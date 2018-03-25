@@ -41,8 +41,6 @@ public class CommandBlacklist implements Command {
                         }
                         event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Blacklisted Users").setDescription(out).build()).queue();
                         break;
-
-
                 }
             }
             if (event.getGuild().getMemberById(event.getJDA().getSelfUser().getId()).hasPermission(Permission.MESSAGE_MANAGE)) {
