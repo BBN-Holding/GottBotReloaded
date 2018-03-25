@@ -15,7 +15,7 @@ public class CommandRegisterServer implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (Handler.get(event.getAuthor())) {
+        if (Owner.get(event.getAuthor())) {
             int i = 0;
             while (event.getJDA().getGuilds().size()-1>=i) {
                 if (MySQL.get("server", "id", event.getJDA().getGuilds().get(i).getId(), "id")==null) {

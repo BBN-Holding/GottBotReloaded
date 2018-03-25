@@ -13,7 +13,7 @@ public class CommandPremium implements Command{
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (Handler.get(event.getAuthor())) {
+        if (Owner.get(event.getAuthor())) {
             String check;
 
             try {

@@ -13,7 +13,7 @@ public class CommandGuilds implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (Handler.get(event.getAuthor())) {
+        if (Owner.get(event.getAuthor())) {
 
             int jaso = event.getJDA().getGuilds().size();
             jaso=jaso/20;

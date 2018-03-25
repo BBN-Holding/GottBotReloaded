@@ -3,7 +3,7 @@ package commands.botowner;
 import net.dv8tion.jda.core.entities.User;
 import stuff.DATA;
 
-public class Handler {
+public class Owner {
 
     public static Boolean get(User user) {
         boolean yes=false;
