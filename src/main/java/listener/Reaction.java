@@ -34,12 +34,12 @@ public class Reaction extends ListenerAdapter {
                         if (MySQL.get("helpmenu", "message", event.getMessageId(), "id").equals(event.getUser().getId())) {
                             Message message = event.getChannel().getMessageById(event.getMessageId()).complete();
                             message.clearReactions().queue();
-                            List<String> list = MenuHandler.getemote(event.getReactionEmote(), event);
+                            message.editMessage(MenuHandler.getMessage(event.getReactionEmote().getName(),event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0) )).queue();
+                            List<String> list = MenuHandler.getemote(event.getReactionEmote().getName(), event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0));
                             while (list.size() > 0) {
                                 message.addReaction(list.get(0)).queue();
                                 list.remove(0);
                             }
-                            message.editMessage(MenuHandler.getMessage(event.getReactionEmote(), event)).queue();
                         }
                     } catch (Exception e) {
                         e.printStackTrace();

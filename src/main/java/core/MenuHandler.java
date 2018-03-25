@@ -14,13 +14,11 @@ import java.util.List;
 
 public class MenuHandler {
 
-    public static MessageEmbed getMessage(MessageReaction.ReactionEmote emote, GuildMessageReactionAddEvent event) {
+    public static MessageEmbed getMessage(String emote, MessageEmbed embed) {
         MessageEmbed out=new EmbedBuilder().setTitle("Error").setDescription("Sorry the Emote was not found! if you are sure that it is a bug use ``gb.bug`` Thanks <3").setColor(Color.RED).build();
-        Message message = event.getChannel().getMessageById(event.getMessageId()).complete();
-        MessageEmbed embed = message.getEmbeds().get(0);
         // Overwiev
         if (embed.getTitle().equals("HelpMenu - Overview")) {
-            switch (emote.getName()) {
+            switch (emote) {
                 case "\uD83D\uDD28":
                     out = new EmbedBuilder().setTitle("HelpMenu - Moderation")
                             .addField("Ban", "\uD83D\uDC4A", true)
@@ -50,7 +48,7 @@ public class MenuHandler {
                     break;
             }
         } else if (embed.getTitle().equals("HelpMenu - Moderation")) {
-            switch (emote.getName()) {
+            switch (emote) {
                 case "\uD83D\uDC4A":
                     out = new EmbedBuilder().setTitle("HelpMenu - Moderation - Ban")
                             .addField("Usage", "gb.ban <@User>", false)
@@ -77,10 +75,73 @@ public class MenuHandler {
                             .build();
                     break;
             }
+        } else if (embed.getTitle().equals("HelpMenu - Tools")) {
+            switch (emote) {
+
+                case "⌨":
+                    out = new EmbedBuilder().setTitle("HelpMenu - Tools - Github")
+                            .addField("Usage", "gb.github <GitHub Name>", false)
+                            .addField("Description", "Link your Github Account. Then your Accountname is in your ``gb.profile``", false)
+                            .build();
+                    break;
+
+                case "⏱":
+                    out = new EmbedBuilder().setTitle("HelpMenu - Tools - Ping")
+                            .addField("Usage", "gb.ping", false)
+                            .addField("Description", "Shows the Bots Ping", false)
+                            .build();
+                    break;
+
+                case "\uD83E\uDD21":
+                    out = new EmbedBuilder().setTitle("HelpMenu - Tools - Profie")
+                            .addField("Usage", "gb.profile [@User (optional)]", false)
+                            .addField("Description", "Show Your/Users Profile", false)
+                            .build();
+                    break;
+
+            }
+        } else if (embed.getTitle().equals("HelpMenu - Usercommands")) {
+            switch (emote) {
+                case "‼":
+                    out = new EmbedBuilder().setTitle("HelpMenu - Usercommands - Bug")
+                            .addField("Usage", "gb.bug <Bug (min 3 args)>", false)
+                            .addField("Description", "Report a Bug to the Developers", false)
+                            .build();
+                    break;
+                case "❓":
+                    out= new EmbedBuilder().setTitle("HelpMenu - Usercommands - Help")
+                            .addField("Usage", "gb.help", false)
+                            .addField("Description", "Open the HelpMenu", false)
+                            .build();
+                    break;
+                case "\uD83D\uDE31":
+                    out = new EmbedBuilder().setTitle("HelpMenu - Usercommands - Help")
+                            .addField("Usage", "gb.language <en|de|...> (try gb.language list)",false)
+                            .addField("Description", "Change your Language", false)
+                            .build();
+                    break;
+                case "\uD83D\uDCF3":
+                    out = new EmbedBuilder().setTitle("HelpMenu - Usercommands - Levelmessage")
+                            .addField("Usage", "gb.levelmessage <true|false>", false)
+                            .addField("Description", "Toggle the Levelupmessage", false)
+                            .build();
+                    break;
+                case "\uD83D\uDCEF":
+                    out = new EmbedBuilder().setTitle("HelpMenu - Usercommands - Say")
+                            .addField("Usage", "gb.say <#textchannel> <Title> <Message>", false)
+                            .addField("Description", "write a EmbedMessage in the Mentioned Channel", false)
+                            .build();
+                    break;
+                case "\uD83D\uDCCB":
+                    out = new EmbedBuilder().setTitle("HelpMenu - Usercommands - Stats")
+                            .addField("Usage", "gb.stats", false)
+                            .addField("Description", "Show you Stats from the GottBot", false)
+                            .build();
+                    break;
+            }
         }
-        if (embed.getTitle().contains("HelpMenu -")&&emote.getName().equals("\uD83D\uDD19")) {
-                System.out.println("ok");
-                out = new EmbedBuilder().setTitle("HelpMenu - Overview").setDescription("Please react with the Emotes")
+        if (embed.getTitle().contains("HelpMenu -")&&emote.equals("\uD83D\uDD19")) {
+                out = new EmbedBuilder().setTitle("HelpMenu").setDescription("Please react with the Emotes")
                         .addField("Moderation", "\uD83D\uDD28", true)
                         .addField("Tools", "\uD83D\uDEE0", true)
                         .addField("Usercommands", "\uD83D\uDC65", true)
@@ -91,11 +152,9 @@ public class MenuHandler {
         return out;
     }
 
-    public static List<String> getemote(MessageReaction.ReactionEmote emote, GuildMessageReactionAddEvent event) {
+    public static List<String> getemote(String emote, MessageEmbed embed) {
         List<String> list = new ArrayList<>();
-        Message message = event.getChannel().getMessageById(event.getMessageId()).complete();
-        MessageEmbed embed = message.getEmbeds().get(0);
-            switch (emote.getName()) {
+            switch (emote) {
                 // Mod
                 case "\uD83D\uDD28":
                     list.add("\uD83D\uDC4A");
@@ -119,12 +178,12 @@ public class MenuHandler {
                     list.add("\uD83D\uDCCB");
                     break;
             }
-        if (embed.getTitle().contains("HelpMenu - ")&&emote.getName().equals("\uD83D\uDD19")) {
+        if (embed.getTitle().equals("HelpMenu")&&emote.equals("\uD83D\uDD19")) {
                 list.add("\uD83D\uDD28");
                 list.add("\uD83D\uDEE0");
                 list.add("\uD83D\uDC65");
         }
-        if (!embed.getTitle().equals("HelpMenu - Overview")) {
+        if (!embed.getTitle().equals("HelpMenu")) {
             list.add("\uD83D\uDD19");
         }
 

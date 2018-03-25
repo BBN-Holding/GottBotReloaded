@@ -1,11 +1,13 @@
 package commands.botowner;
 
 import commands.Command;
+import core.MenuHandler;
 import core.MySQL;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import stuff.DATA;
+
+import java.util.List;
 
 public class CommandHelp3 implements Command {
     @Override
@@ -15,15 +17,14 @@ public class CommandHelp3 implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        Message message = event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("HelpMenu - Overview").setDescription("Please react with the Emotes")
-                .addField("Moderation", "\uD83D\uDD28", true)
-                .addField("Tools", "\uD83D\uDEE0", true)
-                .addField("Usercommands", "\uD83D\uDC65", true)
-                .build()).complete();
-        MySQL.insert("helpmenu", "id`,`message", event.getAuthor().getId()+"','"+message.getId());
-        message.addReaction("\uD83D\uDD28").queue();
-        message.addReaction("\uD83D\uDEE0").queue();
-        message.addReaction("\uD83D\uDC65").queue();
+        Message message =event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Loading...").setDescription("loading...").build()).complete();
+        List<String> list = MenuHandler.getemote("\uD83D\uDD19", new EmbedBuilder().setTitle("HelpMenu -").build());
+        while (list.size() > 0) {
+            message.addReaction(list.get(0)).queue();
+            list.remove(0);
+        }
+        event.getTextChannel().editMessageById(message.getId(),MenuHandler.getMessage("\uD83D\uDD19", new EmbedBuilder().setTitle("HelpMenu -").build())).queue();
+        MySQL.insert("helpmenu", "id`,`message", event.getAuthor().getId()+"','"+message);
     }
 
     @Override
