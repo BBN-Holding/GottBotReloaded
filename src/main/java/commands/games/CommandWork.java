@@ -26,12 +26,9 @@ public class CommandWork implements Command {
             MySQL.update("user", "hashes", String.valueOf(current), "id", event.getAuthor().getId());
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("worktitel").replace("User", event.getAuthor().getName()))
                     .setDescription(MessageHandler.get(event.getAuthor()).getString("worktext").replace("User", event.getAuthor().getName()).replace("%v", String.valueOf(value))).build()).queue();
-
     }
 
     @Override
     public void executed(boolean success, MessageReceivedEvent event) {
-
     }
-
 }

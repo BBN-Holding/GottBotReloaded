@@ -21,7 +21,5 @@ public class CommandHelp implements Command {
 
     @Override
     public void executed(boolean success, MessageReceivedEvent event) {
-
     }
-
 }

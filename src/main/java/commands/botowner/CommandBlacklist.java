@@ -10,7 +10,6 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import java.util.List;
 
 public class CommandBlacklist implements Command {
-    List<String> LUL;
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;

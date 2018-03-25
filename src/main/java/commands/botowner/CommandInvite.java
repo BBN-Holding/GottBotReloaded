@@ -1,13 +1,10 @@
-
 package commands.botowner;
 
-import net.dv8tion.jda.core.entities.Invite;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.EmbedBuilder;
 import commands.Command;
 
 import java.awt.*;
-import java.util.List;
 
 public class CommandInvite implements Command {
 

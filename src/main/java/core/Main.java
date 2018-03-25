@@ -9,7 +9,6 @@ import listener.*;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
-import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,15 +26,18 @@ public class Main {
         logger.info("------------------start Bot----------------------");
         logger.info("read Token and logins");
         MySQL.connect();
-        builder = new JDABuilder(AccountType.BOT).setToken(SECRETS.TOKEN).setAutoReconnect(true).setStatus(OnlineStatus.ONLINE).setGame(Game.streaming( "@GottBot", "https://www.twitch.tv/bigbotnetwork"));
+        builder = new JDABuilder(AccountType.BOT).setToken(SECRETS.TOKEN).setAutoReconnect(true).setGame(Game.streaming( "@GottBot", "https://www.twitch.tv/bigbotnetwork"));
         builder.addEventListener(new commandListener());
         builder.addEventListener(new Guildjoin());
         builder.addEventListener(new Message());
         builder.addEventListener(new Memberjoin());
         builder.addEventListener(new Reaction());
         builder.addEventListener(new Guildleave());
+        builder.addEventListener(new PrivateMessage());
+        builder.addEventListener(new LogListener());
         // builder.addEventListener(new BotList());
         logger.info("loaded all listeners");
+
         commandHandler.commands.put("language", new CommandLanguage());
         commandHandler.commands.put("test", new CommandTest());
         commandHandler.commands.put("prefix", new CommandPrefix());
@@ -64,10 +66,15 @@ public class Main {
         commandHandler.commands.put("guilds", new CommandGuilds());
         commandHandler.commands.put("lvlmessage", new CommandLevelMessage());
         commandHandler.commands.put("faq", new CommandFAQ());
-        commandHandler.commands.put("upvotes", new CommandUpvotes());
+        commandHandler.commands.put("upvoted", new CommandUpvoted());
         commandHandler.commands.put("uptime", new CommandUptime());
         commandHandler.commands.put("warn", new CommandWarn());
+        commandHandler.commands.put("token", new CommandToken());
+        commandHandler.commands.put("log", new CommandLog());
+        commandHandler.commands.put("play", new CommandPlay());
+        commandHandler.commands.put("dm", new CommandDM());
         logger.info("loaded all commands");
+
         try {
             JDA jda = builder.buildBlocking();
         } catch (LoginException e) {
@@ -77,8 +84,5 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
-
 }

@@ -17,8 +17,10 @@ public class CommandFAQ implements Command {
                 event.getTextChannel().sendMessage("ZU KURZ EY").queue();
             } else switch (args[0].toLowerCase()) {
                 case "messageid":
+                    event.getTextChannel().sendMessage("I am sorry here is no gif :c").queue();
                     break;
                 case "roleid":
+                    event.getTextChannel().sendMessage("I am sorry here is no gif :c").queue();
                     break;
             }
         } catch (Exception e) {
@@ -28,7 +30,5 @@ public class CommandFAQ implements Command {
 
     @Override
     public void executed(boolean success, MessageReceivedEvent event) {
-
     }
-
 }

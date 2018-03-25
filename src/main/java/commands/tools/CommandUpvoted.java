@@ -1,6 +1,5 @@
 package commands.tools;
 
-
 import commands.Command;
 import core.MessageHandler;
 import core.MySQL;
@@ -16,7 +15,7 @@ import java.util.List;
 
 import static stuff.DATA.*;
 
-public class CommandUpvotes implements Command {
+public class CommandUpvoted implements Command {
 
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
@@ -50,12 +49,9 @@ public class CommandUpvotes implements Command {
 
                     event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("⚠ Error ⚠").setDescription(MessageHandler.get(event.getAuthor()).getString("wrong-server")).setColor(Color.RED).build()).queue();
                 }
-
     }
 
     @Override
     public void executed(boolean success, MessageReceivedEvent event) {
-
     }
-
 }
