@@ -19,7 +19,7 @@ public class CommandPlay implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (Handler.get(event.getAuthor())) {
+        if (Owner.get(event.getAuthor())) {
 
             EmbedBuilder succes = new EmbedBuilder();
                 event.getMessage().delete().queue();

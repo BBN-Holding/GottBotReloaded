@@ -17,7 +17,7 @@ public class CommandBlacklist implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (Handler.get(event.getAuthor())) {
+        if (Owner.get(event.getAuthor())) {
             if (args.length < 1) {
                 event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Blacklist - Help").setDescription("Do gb.blacklist add @User or gb.blacklist remove @User. DO IT JUST DO IT!").build()).queue();
             } else {
@@ -41,8 +41,6 @@ public class CommandBlacklist implements Command {
                         }
                         event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Blacklisted Users").setDescription(out).build()).queue();
                         break;
-
-
                 }
             }
             if (event.getGuild().getMemberById(event.getJDA().getSelfUser().getId()).hasPermission(Permission.MESSAGE_MANAGE)) {

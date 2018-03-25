@@ -1,7 +1,7 @@
 package commands.moderation;
 
 import commands.Command;
-import commands.botowner.Handler;
+import commands.botowner.Owner;
 import core.MySQL;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -12,7 +12,7 @@ public class CommandLog implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (event.getAuthor().getId() == event.getGuild().getOwner().getUser().getId() || event.getMember().hasPermission(Permission.MANAGE_SERVER) || Handler.get(event.getAuthor())) {
+        if (event.getAuthor().getId() == event.getGuild().getOwner().getUser().getId() || event.getMember().hasPermission(Permission.MANAGE_SERVER) || Owner.get(event.getAuthor())) {
 
             try {
                 if (args.length < 1) {

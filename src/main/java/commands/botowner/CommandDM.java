@@ -14,7 +14,7 @@ public class CommandDM implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (Handler.get(event.getAuthor())) {
+        if (Owner.get(event.getAuthor())) {
             Member User = event.getMessage().getGuild().getMember(event.getMessage().getMentionedUsers().get(0));
             String Content = event.getMessage().getContentStripped().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("dm", "").replaceFirst(String.valueOf(User), "");
 
