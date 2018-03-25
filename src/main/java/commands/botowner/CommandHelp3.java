@@ -31,9 +31,4 @@ public class CommandHelp3 implements Command {
     public void executed(boolean success, MessageReceivedEvent event) {
 
     }
-
-    @Override
-    public String help() {
-        return null;
-    }
 }
