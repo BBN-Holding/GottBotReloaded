@@ -8,6 +8,8 @@ import commands.tools.CommandPing;
 import commands.tools.CommandProfile;
 import commands.tools.CommandToken;
 import commands.usercommands.*;
+import commands.usercommands.CommandHelp3;
+import commands.usercommands.CommandInfo;
 import listener.*;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -27,7 +29,6 @@ public class Main {
     private static Logger logger = LoggerFactory.getLogger(Main.class);
     public static JDA jda;
     public static String[] args;
-    static boolean dev=false;
 
     public static void main(String[] args2) {
         try {
