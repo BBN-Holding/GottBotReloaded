@@ -85,6 +85,7 @@ public class Main {
             commandHandler.commands.put("log", new CommandLog());
             commandHandler.commands.put("play", new CommandPlay());
             commandHandler.commands.put("dm", new CommandDM());
+            commandHandler.commands.put("webhook", new CommandWebhook());
             args = args2;
             logger.info("loaded all commands");
             jda = builder.buildBlocking();
