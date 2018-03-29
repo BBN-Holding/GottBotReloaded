@@ -2,9 +2,11 @@ package commands.botowner;
 
 import commands.Command;
 import core.MySQL;
+import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import util.Embed;
 
 public class CommandRegisterServer implements Command {
     private static Logger logger = LoggerFactory.getLogger(CommandRegisterServer.class);
@@ -21,7 +23,7 @@ public class CommandRegisterServer implements Command {
                 if (MySQL.get("server", "id", event.getJDA().getGuilds().get(i).getId(), "id")==null) {
                     MySQL.insert("server", "id", event.getJDA().getGuilds().get(i).getId()+"");
                     logger.info("neuer Server in database Name: " + event.getJDA().getGuilds().get(i).getName() + " ID: " + event.getJDA().getGuilds().get(i).getId());
-                    event.getTextChannel().sendMessage("Succesfully register server").queue();
+                    new MessageBuilder().setEmbed(Embed.success("Registered", "Succesfully registered server!").build()).build();
                 }
                 i++;
             }

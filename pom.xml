@@ -80,5 +80,16 @@
             <artifactId>DBL-Java-Wrapper</artifactId>
             <version>LATEST</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.ForYaSee</groupId>
+            <artifactId>HttpRequest</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <!-- https://bintray.com/sedmelluq/com.sedmelluq/lavaplayer -->
+        <dependency>
+            <groupId>com.sedmelluq</groupId>
+            <artifactId>lavaplayer</artifactId>
+            <version>1.2.56</version>
+        </dependency>
     </dependencies>
 </project>

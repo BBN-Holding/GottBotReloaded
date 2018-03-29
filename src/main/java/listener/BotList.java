@@ -1,5 +1,8 @@
 package listener;
 
+import de.foryasee.httprequest.HttpRequestBuilder;
+import de.foryasee.httprequest.RequestHeader;
+import de.foryasee.httprequest.RequestType;
 import org.discordbots.api.client.DiscordBotListAPI;
 import stuff.SECRETS;
 import net.dv8tion.jda.core.events.guild.GuildJoinEvent;
@@ -16,13 +19,15 @@ import java.io.IOException;
 public class BotList extends ListenerAdapter {
     @Override
     public void onGuildJoin(GuildJoinEvent event) {
-
         String botlistspace_url = "https://botlist.space/api/bots/407189087649398795";
-
         JSONObject data = new JSONObject();
         data.put("server_count", event.getJDA().getGuilds().size());
+        Request body = RequestBody.create(MediaType.parse("application/json"), data.toString());
 
-        RequestBody body = RequestBody.create(MediaType.parse("application/json"), data.toString());
+        HttpRequestBuilder botlistspace = new HttpRequestBuilder(botlistspace_url, RequestType.POST)
+                .setRequestHeader(new RequestHeader().addField("User-Agent", "DiscordBot").addField("Authorization", SECRETS.botlistspace)).addParameter(body);
+
+
 
         Request botlistspace = new Request.Builder()
                 .url(botlistspace_url)

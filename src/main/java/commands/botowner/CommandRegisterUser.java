@@ -21,7 +21,6 @@ public class CommandRegisterUser implements Command {
                 if (MySQL.get("user", "id", event.getGuild().getMembers().get(i).getUser().getId(), "id")==null) {
                     MySQL.insert("user", "id", event.getGuild().getMembers().get(i).getUser().getId()+"");
                     logger.info("neuer User in database Name: " + event.getGuild().getMembers().get(i).getUser().getName() + " ID: " + event.getGuild().getMembers().get(i).getUser().getId() + " von " + event.getGuild().getName());
-                    event.getTextChannel().sendMessage("Succesfully register user").queue();
                 }
                 i++;
             }

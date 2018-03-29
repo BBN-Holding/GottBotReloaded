@@ -3,6 +3,9 @@ package core;
 import commands.botowner.*;
 import commands.games.CommandWork;
 import commands.moderation.*;
+import commands.music.CommandJoin;
+import commands.music.CommandLeave;
+import commands.music.CommandPause;
 import commands.tools.CommandGitHub;
 import commands.tools.CommandPing;
 import commands.tools.CommandProfile;
@@ -18,9 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import stuff.SECRETS;
 
-import javax.security.auth.login.LoginException;
 import java.io.File;
-import java.io.FileOutputStream;
 
 public class Main {
     public static JDABuilder builder;
@@ -37,13 +38,16 @@ public class Main {
             logger.info("------------------start Bot----------------------");
             logger.info("read Token and logins");
             MySQL.connect();
-            builder = new JDABuilder(AccountType.BOT).setToken(SECRETS.TOKEN).setAutoReconnect(true).setStatus(OnlineStatus.OFFLINE).setGame(Game.streaming("@GottBot", "https://www.twitch.tv/bigbotnetwork"));
+            builder = new JDABuilder(AccountType.BOT).setToken(SECRETS.TOKEN).setAutoReconnect(true).useSharding(jda.getShardInfo().getShardId(), 1);
+            builder.setGame(Game.playing("Starting...."));
+            builder.setStatus(OnlineStatus.DO_NOT_DISTURB);
+
             builder.addEventListener(new commandListener());
             builder.addEventListener(new Guildjoin());
             builder.addEventListener(new Message());
             builder.addEventListener(new Memberjoin());
             builder.addEventListener(new Reaction());
-            // builder.addEventListener(new BotList());
+            builder.addEventListener(new BotList());
             logger.info("loaded all listeners");
             commandHandler.commands.put("language", new CommandLanguage());
             commandHandler.commands.put("test", new CommandTest());
@@ -65,7 +69,7 @@ public class Main {
             commandHandler.commands.put("work", new CommandWork());
             commandHandler.commands.put("clyde", new CommandClyde());
             commandHandler.commands.put("ping", new CommandPing());
-            commandHandler.commands.put("leave", new CommandLeave());
+            commandHandler.commands.put("guildleave", new CommandGuildLeave());
             commandHandler.commands.put("stats", new CommandStats());
             commandHandler.commands.put("verification", new CommandVerification());
             commandHandler.commands.put("say", new CommandSay());
@@ -82,6 +86,12 @@ public class Main {
             commandHandler.commands.put("log", new CommandLog());
             commandHandler.commands.put("play", new CommandPlay());
             commandHandler.commands.put("dm", new CommandDM());
+            commandHandler.commands.put("role", new CommandRole());
+
+            // MUSIC
+            commandHandler.commands.put("join", new CommandJoin());
+            commandHandler.commands.put("leave", new CommandLeave());
+            commandHandler.commands.put("pause", new CommandPause());
             args = args2;
             logger.info("loaded all commands");
             if (!dev) {
@@ -89,6 +99,7 @@ public class Main {
                 builder.removeEventListener(new BotList());
             }
             jda = builder.buildBlocking();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,10 +1,20 @@
 package commands.botowner;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import commands.Command;
 import core.MessageHandler;
+import de.foryasee.httprequest.HttpRequestBuilder;
+import de.foryasee.httprequest.RequestHeader;
+import de.foryasee.httprequest.RequestResponse;
+import de.foryasee.httprequest.RequestType;
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import util.Embed;
+
+import java.io.IOException;
+import java.util.Arrays;
 
 public class CommandTest implements Command {
     @Override
@@ -15,12 +25,23 @@ public class CommandTest implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (Owner.get(event.getAuthor())) {
-            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("testtitel"))
-                    .setDescription(MessageHandler.get(event.getAuthor()).getString("testtext")).build()).queue(); // print wenn user CommandLanguage is english Test english wen user CommandLanguage is german Test german
+           new MessageBuilder().setEmbed(Embed.normal(MessageHandler.get(event.getAuthor()).getString("testtitel"), MessageHandler.get(event.getAuthor()).getString("testtext")).build()).build();
 
-        } else event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("nopermstitel"))
-                .setDescription(MessageHandler.get(event.getAuthor()).getString("nopermstext")).build()).queue();
-        Embed.error("f", "0").build();
+            HttpRequestBuilder httpRequestBuilder = new HttpRequestBuilder("https://botlist.space/api/bots/407189087649398795", RequestType.GET)
+                    .setRequestHeader(new RequestHeader().addField("User-Agent", "DiscordBot"));
+            try {
+                RequestResponse requestResponse = httpRequestBuilder.sendRequest();
+                System.out.println("ResponseCode: " + requestResponse.getResponseCode());
+                String vfal = Arrays.toString(requestResponse.getResponseMessage().replace("\"", "\n").split(","));
+                System.out.println(vfal);
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        } else
+                new MessageBuilder().setEmbed(Embed.error(MessageHandler.get(event.getAuthor()).getString("nopermstitel"), MessageHandler.get(event.getAuthor()).getString("nopermstext")).build()).build();
     }
 
     @Override

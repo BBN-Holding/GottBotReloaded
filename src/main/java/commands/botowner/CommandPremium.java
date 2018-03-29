@@ -3,7 +3,9 @@ package commands.botowner;
 import commands.Command;
 import core.MessageHandler;
 import core.MySQL;
+import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import util.Embed;
 
 public class CommandPremium implements Command{
     @Override
@@ -22,16 +24,18 @@ public class CommandPremium implements Command{
                 } else switch (args[0].toLowerCase()) {
                     case "add":
                         MySQL.insert("premium", "id", event.getMessage().getContentStripped().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("premium add", "")).replace("<", "").replace("@", "").replace(">", "").replace("!", "");
+                        new MessageBuilder().setEmbed(Embed.success("Premium added", "Succesfully added Premium!").build()).build();
                         break;
                     case "remove":
                         MySQL.delete("premium", "id", event.getMessage().getContentStripped().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("premium add", "").replace("<", "").replace("@", "").replace(">", "").replace("!", ""));
+                        new MessageBuilder().setEmbed(Embed.success("Premium removed", "Succesfully removed Premium!").build()).build();
                         break;
                     case "check":
                         try {
                             check = MySQL.get("premium", "id", event.getMessage().getContentStripped().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("premium add", "").replace("<", "").replace("@", "").replace(">", "").replace("!", ""), "id");
-                            event.getTextChannel().sendMessage("Der liebe <@" + check + "> ist ez Premium").queue();
+                            new MessageBuilder().setEmbed(Embed.success("Premium active", check  + " has premium").build()).build();
                         } catch (NullPointerException e) {
-                            event.getTextChannel().sendMessage(e + " \nist der error also hat der kein Premium").queue();
+                            new MessageBuilder().setEmbed(Embed.error("No premium", "This user is not premium").build()).build();
                         }
                         break;
                 }

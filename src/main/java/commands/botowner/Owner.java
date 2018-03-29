@@ -1,7 +1,9 @@
 package commands.botowner;
 
+import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.entities.User;
 import stuff.DATA;
+import util.Embed;
 
 public class Owner {
 
@@ -9,6 +11,8 @@ public class Owner {
         boolean yes=false;
         if (user.getId().equals(DATA.Skidder)||user.getId().equals(DATA.Hax)) {
             yes=true;
+        } else {
+            new MessageBuilder().setEmbed(Embed.no_premission().build()).build();
         }
         return yes;
     }

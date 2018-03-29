@@ -151,4 +151,12 @@ public class MySQL {
         }
     }
 
+    public static void exist(String table, String where) {
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM `"+table+"` WHERE `"+where+"` = ?");
+            ps.execute();
+        } catch (SQLException | NullPointerException e) {
+            e.printStackTrace();
+        }
+    }
 }
