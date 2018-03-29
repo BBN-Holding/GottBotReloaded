@@ -87,7 +87,6 @@ public class Main {
             commandHandler.commands.put("guild", new CommandGuild());
             commandHandler.commands.put("help", new CommandHelp3());
             commandHandler.commands.put("info", new CommandInfo());
-            commandHandler.commands.put("restart", new CommandRestart());
             commandHandler.commands.put("warn", new CommandWarn());
             commandHandler.commands.put("token", new CommandToken());
             commandHandler.commands.put("log", new CommandLog());
