@@ -38,7 +38,7 @@ public class Main {
             logger.info("------------------start Bot----------------------");
             logger.info("read Token and logins");
             MySQL.connect();
-            builder = new JDABuilder(AccountType.BOT).setToken(SECRETS.TOKEN).setAutoReconnect(true).useSharding(jda.getShardInfo().getShardId(), 1);
+            builder = new JDABuilder(AccountType.BOT).setToken(SECRETS.TOKEN).setAutoReconnect(true);
             builder.setGame(Game.playing("Starting...."));
             builder.setStatus(OnlineStatus.DO_NOT_DISTURB);
 

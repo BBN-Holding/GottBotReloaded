@@ -22,12 +22,7 @@ public class BotList extends ListenerAdapter {
         String botlistspace_url = "https://botlist.space/api/bots/407189087649398795";
         JSONObject data = new JSONObject();
         data.put("server_count", event.getJDA().getGuilds().size());
-        Request body = RequestBody.create(MediaType.parse("application/json"), data.toString());
-
-        HttpRequestBuilder botlistspace = new HttpRequestBuilder(botlistspace_url, RequestType.POST)
-                .setRequestHeader(new RequestHeader().addField("User-Agent", "DiscordBot").addField("Authorization", SECRETS.botlistspace)).addParameter(body);
-
-
+        RequestBody body = RequestBody.create(MediaType.parse("application/json"), data.toString());
 
         Request botlistspace = new Request.Builder()
                 .url(botlistspace_url)
