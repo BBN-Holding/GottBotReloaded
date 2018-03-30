@@ -11,12 +11,15 @@ import de.foryasee.httprequest.RequestType;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import util.Embed;
 
 import java.io.IOException;
 import java.util.Arrays;
 
 public class CommandTest implements Command {
+
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -29,19 +32,48 @@ public class CommandTest implements Command {
 
             HttpRequestBuilder httpRequestBuilder = new HttpRequestBuilder("https://botlist.space/api/bots/407189087649398795", RequestType.GET)
                     .setRequestHeader(new RequestHeader().addField("User-Agent", "DiscordBot"));
+
             try {
                 RequestResponse requestResponse = httpRequestBuilder.sendRequest();
                 System.out.println("ResponseCode: " + requestResponse.getResponseCode());
-                String vfal = Arrays.toString(requestResponse.getResponseMessage().replace("\"", "\n").split(","));
-                System.out.println(vfal);
+                String out = requestResponse.getResponseMessage();
+
+                JSONObject jsonObject = new JSONObject(out);
+
+                JSONObject chapitresJsonObject = jsonObject.getJSONObject("chapitres");
+
+                JSONArray chapitreJsonArray = chapitresJsonObject.getJSONArray("chapitre");
+
+                for (int i = 0; i < chapitreJsonArray.length(); i++) {
+
+                    JSONObject ChapJsonObject = chapitreJsonArray.getJSONObject(i);
+
+                    String id = ChapJsonObject.getString("author");
+                    String name = ChapJsonObject.getString("name");
+                    String desc = ChapJsonObject.getString("description");
+
+                    System.out.println(id);
+                    System.out.println(name);
+                    System.out.println(desc);
+
+                }
+
 
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-        } else
-                new MessageBuilder().setEmbed(Embed.error(MessageHandler.get(event.getAuthor()).getString("nopermstitel"), MessageHandler.get(event.getAuthor()).getString("nopermstext")).build()).build();
+
+
+
+
+
+        } else {
+            new MessageBuilder().setEmbed(Embed.error(MessageHandler.get(event.getAuthor()).getString("nopermstitel"), MessageHandler.get(event.getAuthor()).getString("nopermstext")).build()).build();
+        }
+
+
     }
 
     @Override

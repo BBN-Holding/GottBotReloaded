@@ -20,6 +20,7 @@ import net.dv8tion.jda.core.entities.Game;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import stuff.SECRETS;
+import util.GameAnimator;
 
 import java.io.File;
 
@@ -103,8 +104,5 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
-
 }

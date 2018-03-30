@@ -11,8 +11,6 @@ public class Owner {
         boolean yes=false;
         if (user.getId().equals(DATA.Skidder)||user.getId().equals(DATA.Hax)) {
             yes=true;
-        } else {
-            new MessageBuilder().setEmbed(Embed.no_premission().build()).build();
         }
         return yes;
     }

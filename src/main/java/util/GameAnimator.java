@@ -10,8 +10,8 @@ public class GameAnimator {
     private static int currentGame = 0;
 
     private static final String[] gameAnimations = {
-            "",
-            "rubicon.fun"
+            "bbn",
+            "gotbot"
 
     };
 

@@ -3,6 +3,7 @@ package commands.tools;
 import commands.Command;
 import core.MessageHandler;
 import core.MySQL;
+import core.UserSQL;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -12,17 +13,17 @@ import java.awt.*;
 import java.time.format.DateTimeFormatter;
 
 public class CommandProfile implements Command {
-    String Nick;
-    String Game;
-    Member user;
-    String useruser;
-    String Punkte;
-    String Level;
-    String Progress;
-    String ProgressMax;
-    int TempProgress;
-    int viertel;
-    String LevelPlus;
+    private String Nick;
+    private String Game;
+    private Member user;
+    private String useruser;
+    private String Punkte;
+    private String Level;
+    private String Progress;
+    private String ProgressMax;
+    private int TempProgress;
+    private int viertel;
+    private String LevelPlus;
 
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
@@ -35,7 +36,7 @@ public class CommandProfile implements Command {
             useruser = args[0].replace("<", "").replace("@", "").replace(">", "").replace("!","");
             user = event.getGuild().getMemberById(useruser);
             if (useruser.equals(event.getMember().getUser().getId())) {
-                event.getTextChannel().sendMessage("Was bringt es sich selbst zu hinzuschreiben?? egal... mach es nächstes mal einfach mit -CommandProfile :wink: ").queue();
+                event.getTextChannel().sendMessage("Was bringt es sich selbst zu hinzuschreiben?? egal... mach es nächstes mal einfach mit gb.CommandProfile :wink: ").queue();
             }
 
         }catch ( ArrayIndexOutOfBoundsException e) {
@@ -163,6 +164,7 @@ public class CommandProfile implements Command {
                 .addField("Created", event.getMessage().getAuthor().getCreationTime().format(DateTimeFormatter.ofPattern("dd.MM.yy, HH:mm:ss")), true)
                 .addField("Status", user.getOnlineStatus().toString(), true)
                 .addField("GitHub", MySQL.get("user", "ID", user.getUser().getId(), "github"), true)
+                .addField("Premium", (UserSQL.isPremium(useruser)) ? "has premium" : "has no premium", true)
                 .addField("Level", Level, true)
                 .addField("XP", Punkte, true)
                 .addField("Levelprogress", Progress, true)

@@ -22,6 +22,7 @@ public class CommandRegisterServer implements Command {
             while (event.getJDA().getGuilds().size()-1>=i) {
                 if (MySQL.get("server", "id", event.getJDA().getGuilds().get(i).getId(), "id")==null) {
                     MySQL.insert("server", "id", event.getJDA().getGuilds().get(i).getId()+"");
+                    MySQL.insert("log", "serverid", event.getJDA().getGuilds().get(i).getId() + "");
                     logger.info("neuer Server in database Name: " + event.getJDA().getGuilds().get(i).getName() + " ID: " + event.getJDA().getGuilds().get(i).getId());
                     new MessageBuilder().setEmbed(Embed.success("Registered", "Succesfully registered server!").build()).build();
                 }

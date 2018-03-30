@@ -3,6 +3,7 @@ package commands.botowner;
 import commands.Command;
 import core.MessageHandler;
 import core.MySQL;
+import core.UserSQL;
 import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import util.Embed;
@@ -32,11 +33,14 @@ public class CommandPremium implements Command{
                         break;
                     case "check":
                         try {
-                            check = MySQL.get("premium", "id", event.getMessage().getContentStripped().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("premium add", "").replace("<", "").replace("@", "").replace(">", "").replace("!", ""), "id");
-                            new MessageBuilder().setEmbed(Embed.success("Premium active", check  + " has premium").build()).build();
+                            if (MySQL.get("premium", "id", event.getMessage().getMentionedMembers().get(0).getUser().getId(), "id")==null) {
+                                new MessageBuilder().setEmbed(Embed.success("Premium active",  event.getMessage().getMentionedMembers().get(0).getUser().getAsMention() + " has premium").build()).build();
+                            }
                         } catch (NullPointerException e) {
-                            new MessageBuilder().setEmbed(Embed.error("No premium", "This user is not premium").build()).build();
+                            new MessageBuilder().setEmbed(Embed.error("No premium", "This user has no premium").build()).build();
                         }
+
+                        UserSQL.isPremium(event.getMessage().getMentionedUsers().get(0).getId());
                         break;
                 }
             } catch (Exception e) {

@@ -17,7 +17,7 @@ public class CommandRole implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (event.getMember().hasPermission(Permission.MANAGE_SERVER) || event.getMember().isOwner() || Owner.get(event.getAuthor())) {
+        if (event.getMember().hasPermission(Permission.MANAGE_ROLES) || event.getMember().isOwner() || Owner.get(event.getAuthor())) {
             try {
 
                 String Role = event.getMessage().getContentStripped().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("role add", "").replaceFirst("role remove", "").replaceFirst(String.valueOf(event.getMessage().getMentionedMembers()), "");

@@ -19,6 +19,4 @@ public class Embed {
     public static EmbedBuilder no_premission() {
         return new EmbedBuilder().setTitle(":warning: No permissions").setDescription("You dont have permission to excute this command!").setColor(Color.C_ERROR);
     }
-
-
 }

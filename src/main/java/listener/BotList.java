@@ -2,6 +2,7 @@ package listener;
 
 import de.foryasee.httprequest.HttpRequestBuilder;
 import de.foryasee.httprequest.RequestHeader;
+import de.foryasee.httprequest.RequestResponse;
 import de.foryasee.httprequest.RequestType;
 import org.discordbots.api.client.DiscordBotListAPI;
 import stuff.SECRETS;
@@ -19,6 +20,7 @@ import java.io.IOException;
 public class BotList extends ListenerAdapter {
     @Override
     public void onGuildJoin(GuildJoinEvent event) {
+
         String botlistspace_url = "https://botlist.space/api/bots/407189087649398795";
         JSONObject data = new JSONObject();
         data.put("server_count", event.getJDA().getGuilds().size());
@@ -30,14 +32,12 @@ public class BotList extends ListenerAdapter {
                 .addHeader("User-Agent", "DiscordBot")
                 .addHeader("Authorization", SECRETS.botlistspace)
                 .build();
-
         try {
             new OkHttpClient().newCall(botlistspace).execute();
             System.out.println("Successfully posted count for botlist.space!");
         } catch(IOException e) {
             e.printStackTrace();
         }
-
 
 
 
