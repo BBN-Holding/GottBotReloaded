@@ -16,7 +16,7 @@ public class Embed {
         return new EmbedBuilder().setTitle(title).setDescription(description).setColor(Color.C_NORMAL);
     }
 
-    public static EmbedBuilder no_premission() {
+    public static EmbedBuilder no_permission() {
         return new EmbedBuilder().setTitle(":warning: No permissions").setDescription("You dont have permission to excute this command!").setColor(Color.C_ERROR);
     }
 }
