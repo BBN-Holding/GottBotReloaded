@@ -13,7 +13,7 @@ import stuff.SECRETS;
 import java.awt.*;
 import java.time.format.DateTimeFormatter;
 
-import static core.JSONHandler.readJsonFromUrl;
+import static core.JSONhandler.readJsonFromUrl;
 
 public class CommandProfile implements Command {
     String Nick;

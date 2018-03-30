@@ -3,12 +3,11 @@ package commands.usercommands;
 import commands.Command;
 import core.MySQL;
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.json.JSONObject;
 import stuff.SECRETS;
 
-import static core.JSONHandler.readJsonFromUrl;
+import static core.JSONhandler.readJsonFromUrl;
 
 public class CommandMiner implements Command {
     @Override

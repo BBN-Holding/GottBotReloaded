@@ -7,7 +7,7 @@ import java.io.*;
 import java.net.URL;
 import java.nio.charset.Charset;
 
-public class JSONHandler {
+public class JSONhandler {
 
     public static JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
         InputStream is = new URL(url).openStream();
