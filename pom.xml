@@ -96,5 +96,15 @@
             <artifactId>riot-api-java</artifactId>
             <version>4.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ftpserver</groupId>
+            <artifactId>ftpserver-core</artifactId>
+            <version>LATEST</version>
+        </dependency>
     </dependencies>
 </project>
