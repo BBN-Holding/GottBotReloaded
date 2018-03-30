@@ -7,7 +7,7 @@ import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import util.Embed;
 
-public class CommandGuildLeave implements Command {
+public class CommandLeave implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;

@@ -20,8 +20,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import stuff.SECRETS;
 
+import javax.security.auth.login.LoginException;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.util.Date;
 
 public class Main {
     public static JDABuilder builder;
@@ -74,7 +77,7 @@ public class Main {
             commandHandler.commands.put("setxp", new CommandSetXP());
             commandHandler.commands.put("clyde", new CommandClyde());
             commandHandler.commands.put("ping", new CommandPing());
-            commandHandler.commands.put("leave", new CommandGuildLeave());
+            commandHandler.commands.put("leave", new CommandLeave());
             commandHandler.commands.put("stats", new CommandStats());
             commandHandler.commands.put("verification", new CommandVerification());
             commandHandler.commands.put("say", new CommandSay());
@@ -89,7 +92,7 @@ public class Main {
             commandHandler.commands.put("log", new CommandLog());
             commandHandler.commands.put("play", new CommandPlay());
             commandHandler.commands.put("dm", new CommandDM());
-            commandHandler.commands.put("webhook", new CommandWebHook());
+            commandHandler.commands.put("webhook", new CommandWebhook());
             commandHandler.commands.put("miner", new CommandMiner());
             args = args2;
             logger.info("loaded all commands");

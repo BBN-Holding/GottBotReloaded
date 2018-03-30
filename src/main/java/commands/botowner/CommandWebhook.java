@@ -12,7 +12,7 @@ import net.dv8tion.jda.webhook.WebhookMessageBuilder;
 
 import java.util.concurrent.TimeUnit;
 
-public class CommandWebHook implements Command {
+public class CommandWebhook implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
