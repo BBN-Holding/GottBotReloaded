@@ -91,5 +91,10 @@
             <artifactId>lavaplayer</artifactId>
             <version>1.2.56</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.taycaldwell</groupId>
+            <artifactId>riot-api-java</artifactId>
+            <version>4.0.1</version>
+        </dependency>
     </dependencies>
 </project>
