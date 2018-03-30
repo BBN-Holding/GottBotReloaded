@@ -31,42 +31,6 @@ public class CommandTest implements Command {
            new MessageBuilder().setEmbed(Embed.normal(MessageHandler.get(event.getAuthor()).getString("testtitel"), MessageHandler.get(event.getAuthor()).getString("testtext")).build()).build();
 
             HttpRequestBuilder httpRequestBuilder = new HttpRequestBuilder("https://botlist.space/api/bots/407189087649398795", RequestType.GET)
-                    .setRequestHeader(new RequestHeader().addField("User-Agent", "DiscordBot"));
-
-            try {
-                RequestResponse requestResponse = httpRequestBuilder.sendRequest();
-                System.out.println("ResponseCode: " + requestResponse.getResponseCode());
-                String out = requestResponse.getResponseMessage();
-
-                JSONObject jsonObject = new JSONObject(out);
-
-                JSONObject chapitresJsonObject = jsonObject.getJSONObject("chapitres");
-
-                JSONArray chapitreJsonArray = chapitresJsonObject.getJSONArray("chapitre");
-
-                for (int i = 0; i < chapitreJsonArray.length(); i++) {
-
-                    JSONObject ChapJsonObject = chapitreJsonArray.getJSONObject(i);
-
-                    String id = ChapJsonObject.getString("author");
-                    String name = ChapJsonObject.getString("name");
-                    String desc = ChapJsonObject.getString("description");
-
-                    System.out.println(id);
-                    System.out.println(name);
-                    System.out.println(desc);
-
-                }
-
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
-
-
 
 
         } else {
