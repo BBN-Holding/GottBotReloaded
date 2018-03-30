@@ -2,6 +2,7 @@ package listener;
 
 import core.MySQL;
 import net.dv8tion.jda.core.entities.ChannelType;
+import net.dv8tion.jda.core.events.ShutdownEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import core.commandHandler;
@@ -13,6 +14,7 @@ import java.util.regex.Pattern;
 public class commandListener extends ListenerAdapter {
     public static String beheaded;
     private static Logger logger = LoggerFactory.getLogger(commandListener.class);
+
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         try {

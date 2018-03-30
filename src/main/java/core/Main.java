@@ -20,11 +20,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import stuff.SECRETS;
 
-import javax.security.auth.login.LoginException;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.util.Date;
 
 public class Main {
     public static JDABuilder builder;
