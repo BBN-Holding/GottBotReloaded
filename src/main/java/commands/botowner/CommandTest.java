@@ -1,22 +1,11 @@
 package commands.botowner;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import commands.Command;
 import core.MessageHandler;
-import de.foryasee.httprequest.HttpRequestBuilder;
-import de.foryasee.httprequest.RequestHeader;
-import de.foryasee.httprequest.RequestResponse;
-import de.foryasee.httprequest.RequestType;
-import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import util.Embed;
 
-import java.io.IOException;
-import java.util.Arrays;
 
 public class CommandTest implements Command {
 
