@@ -58,7 +58,7 @@ public class MenuHandler {
 
                 case "\uD83D\uDD90":
                     out = new EmbedBuilder().setTitle("HelpMenu - Moderation - Kick")
-                            .addField("Usage", "gb.ban <@User>", false)
+                            .addField("Usage", "gb.kick <@User>", false)
                             .addField("Description", "Kick a User from the Server", false)
                             .build();
                     break;
@@ -140,12 +140,11 @@ public class MenuHandler {
                     break;
             }
         }
-
         if (embed.getTitle().contains("HelpMenu - Moderation - ")&&emote.equals("◀")) {
             out = getMessage("\uD83D\uDD28", new EmbedBuilder().setTitle("HelpMenu").build());
-        } else if (embed.getTitle().equals("HelpMenu - Tools - ")&&emote.equals("◀")) {
+        } else if (embed.getTitle().contains("HelpMenu - Tools - ")&&emote.equals("◀")) {
             out = getMessage("\uD83D\uDEE0", new EmbedBuilder().setTitle("HelpMenu").build());
-        } else if (embed.getTitle().equals("HelpMenu - Usercommands - ")&&emote.equals("◀")) {
+        } else if (embed.getTitle().contains("HelpMenu - Usercommands - ")&&emote.equals("◀")) {
             out = getMessage("\uD83D\uDC65", new EmbedBuilder().setTitle("HelpMenu").build());
         }
 

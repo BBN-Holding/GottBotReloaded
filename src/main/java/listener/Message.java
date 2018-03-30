@@ -14,6 +14,11 @@ public class Message extends ListenerAdapter {
     private static Logger logger = LoggerFactory.getLogger(Message.class);
     @Override
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
+        //registeruser
+        if (MySQL.get("user", "id", event.getAuthor().getId(), "id")==null) {
+            MySQL.insert("user", "id", event.getAuthor().getId()+"");
+            logger.info("neuer User in database Name: " + event.getAuthor().getName() + " ID: " + event.getAuthor().getId() + " von " + event.getGuild().getName());
+        }
         // Mention
         if (event.getMessage().getContentRaw().replace("!", "").equals(event.getJDA().getSelfUser().getAsMention())) {
             event.getChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("mentiontitel"))
