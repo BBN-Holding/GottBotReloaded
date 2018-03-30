@@ -3,9 +3,6 @@ package core;
 import commands.botowner.*;
 import commands.games.CommandWork;
 import commands.moderation.*;
-import commands.music.CommandJoin;
-import commands.music.CommandLeave;
-import commands.music.CommandPause;
 import commands.tools.CommandGitHub;
 import commands.tools.CommandPing;
 import commands.tools.CommandProfile;
@@ -20,7 +17,6 @@ import net.dv8tion.jda.core.entities.Game;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import stuff.SECRETS;
-import util.GameAnimator;
 
 import java.io.File;
 
@@ -89,10 +85,7 @@ public class Main {
             commandHandler.commands.put("dm", new CommandDM());
             commandHandler.commands.put("role", new CommandRole());
 
-            // MUSIC
-            commandHandler.commands.put("join", new CommandJoin());
-            commandHandler.commands.put("leave", new CommandLeave());
-            commandHandler.commands.put("pause", new CommandPause());
+
             args = args2;
             logger.info("loaded all commands");
             if (!dev) {

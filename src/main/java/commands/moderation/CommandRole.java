@@ -6,6 +6,8 @@ import core.Main;
 import core.MessageHandler;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Member;
+import net.dv8tion.jda.core.entities.Role;
+import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 
@@ -17,11 +19,10 @@ public class CommandRole implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (event.getMember().hasPermission(Permission.MANAGE_ROLES) || event.getMember().isOwner() || Owner.get(event.getAuthor())) {
+        if (event.getMember().hasPermission(Permission.MANAGE_ROLES) || event.getMember().isOwner() || Owner.get(event.getAuthor()))
             try {
 
-                String Role = event.getMessage().getContentStripped().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("role add", "").replaceFirst("role remove", "").replaceFirst(String.valueOf(event.getMessage().getMentionedMembers()), "");
-
+                Role Role = event.getMessage().getMentionedRoles().get(0);
                 Member Member = event.getMessage().getMentionedMembers().get(0);
 
                 if (args.length < 1) {
@@ -29,23 +30,22 @@ public class CommandRole implements Command {
                 } else switch (args[0].toLowerCase()) {
                     case "add":
 
-                        event.getGuild().getController().addSingleRoleToMember(Member, Main.jda.getRoleById(Role)).queue();
+                        event.getGuild().getController().addSingleRoleToMember(Member, Role).queue();
 
-                        event.getTextChannel().sendMessage(":white_check_mark: Succesfully added role to " + Member).queue();
+                        event.getTextChannel().sendMessage(":white_check_mark: Succesfully added role to " + Member.getUser().getAsMention()).queue();
 
                         break;
                     case "remove":
 
-                        event.getGuild().getController().removeSingleRoleFromMember(Member, Main.jda.getRoleById(Role)).queue();
+                        event.getGuild().getController().removeSingleRoleFromMember(Member, Role).queue();
 
-                        event.getTextChannel().sendMessage(":white_check_mark: Succesfully reomved role from " + Member).queue();
+                        event.getTextChannel().sendMessage(":white_check_mark: Succesfully reomved role from " + Member.getUser().getAsMention()).queue();
 
                         break;
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
 
     }
 
