@@ -30,14 +30,9 @@ public class CommandTest implements Command {
         if (Owner.get(event.getAuthor())) {
            new MessageBuilder().setEmbed(Embed.normal(MessageHandler.get(event.getAuthor()).getString("testtitel"), MessageHandler.get(event.getAuthor()).getString("testtext")).build()).build();
 
-            HttpRequestBuilder httpRequestBuilder = new HttpRequestBuilder("https://botlist.space/api/bots/407189087649398795", RequestType.GET)
-
-
         } else {
             new MessageBuilder().setEmbed(Embed.error(MessageHandler.get(event.getAuthor()).getString("nopermstitel"), MessageHandler.get(event.getAuthor()).getString("nopermstext")).build()).build();
         }
-
-
     }
 
     @Override
