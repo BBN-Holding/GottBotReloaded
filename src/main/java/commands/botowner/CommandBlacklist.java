@@ -27,11 +27,13 @@ public class CommandBlacklist implements Command {
                     case "add":
                         User user = event.getMessage().getMentionedUsers().get(0);
                         MySQL.insert("blacklist", "id", user.getId());
+                        event.getTextChannel().sendMessage(":white_check_mark:").queue();
                         break;
 
                     case "remove":
                         User usa = event.getMessage().getMentionedUsers().get(0);
                         MySQL.delete("blacklist", "id", usa.getId());
+                        event.getTextChannel().sendMessage(":white_check_mark:").queue();
                         break;
                     case "list":
                         String out="";
