@@ -2,10 +2,13 @@ package commands.botowner;
 
 import commands.Command;
 import core.MessageHandler;
-import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import util.Embed;
+
 
 public class CommandTest implements Command {
+
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -13,21 +16,19 @@ public class CommandTest implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (Handler.get(event.getAuthor())) {
-            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("testtitel"))
-                    .setDescription(MessageHandler.get(event.getAuthor()).getString("testtext")).build()).queue(); // print wenn user CommandLanguage is english Test english wen user CommandLanguage is german Test german
+        if (Owner.get(event.getAuthor())) {
+           new MessageBuilder().setEmbed(Embed.normal(MessageHandler.get(event.getAuthor()).getString("testtitel"), MessageHandler.get(event.getAuthor()).getString("testtext")).build()).build();
 
-        } else event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("nopermstitel"))
-                .setDescription(MessageHandler.get(event.getAuthor()).getString("nopermstext")).build()).queue();
+
+
+        } else {
+            new MessageBuilder().setEmbed(Embed.error(MessageHandler.get(event.getAuthor()).getString("nopermstitel"), MessageHandler.get(event.getAuthor()).getString("nopermstext")).build()).build();
+        }
+
+
     }
 
     @Override
     public void executed(boolean success, MessageReceivedEvent event) {
-
-    }
-
-    @Override
-    public String help() {
-        return null;
     }
 }

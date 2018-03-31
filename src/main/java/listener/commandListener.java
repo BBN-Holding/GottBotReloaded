@@ -16,10 +16,10 @@ public class commandListener extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         try {
-            if (MySQL.get("user", "id", event.getAuthor().getId(), "blacklist").equals("false")) {
-                if (event.getChannelType().equals(ChannelType.TEXT)) {
-                    if (!event.getAuthor().isBot()) {
-                        String PREFIX = MySQL.get("server", "ID", event.getGuild().getId(), "prefix");
+            if (!event.getAuthor().isBot()) {
+                if (MySQL.get("blacklist", "id", event.getAuthor().getId(), "id")==null) {
+                   if (event.getChannelType().equals(ChannelType.TEXT)) {
+                       String PREFIX = MySQL.get("server", "ID", event.getGuild().getId(), "prefix");
                         if (event.getMessage().getContentRaw().startsWith(PREFIX)) {
                             beheaded = event.getMessage().getContentRaw().toLowerCase().replaceFirst(Pattern.quote(PREFIX), "");
                             commandHandler.handleCommand(commandHandler.parser.parse(event.getMessage().getContentRaw().toLowerCase(), event));
@@ -42,7 +42,7 @@ public class commandListener extends ListenerAdapter {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("JAJAJA ERROR UND SO DIGGA");
         }
     }
 

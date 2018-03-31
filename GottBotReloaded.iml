@@ -10,9 +10,14 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: net.dv8tion:JDA:3.5.1_348" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-log4j12:1.8.0-beta1" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.8.0-beta1" level="project" />
+    <orderEntry type="library" name="Maven: net.dv8tion:JDA:3.5.1_351" level="project" />
+    <orderEntry type="library" name="Maven: com.github.ForYaSee:HttpRequest:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.github.DiscordBotList:DBL-Java-Wrapper:v1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.retrofit2:converter-gson:2.3.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.7" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.retrofit2:retrofit:2.3.0" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-log4j12:1.8.0-beta2" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.8.0-beta2" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
     <orderEntry type="library" name="Maven: org.kohsuke:github-api:1.92" level="project" />
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
@@ -26,7 +31,7 @@
     <orderEntry type="library" name="Maven: com.google.code.scriptengines:scriptengines-javascript:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.livetribe:livetribe-jsr223:2.0.3" level="project" />
     <orderEntry type="library" name="Maven: rhino:js:1.7R1" level="project" />
-    <orderEntry type="library" name="Maven: net.dv8tion:JDA:3.5.1_350" level="project" />
+    <orderEntry type="library" name="Maven: net.dv8tion:JDA:3.5.1_353" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:3.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-collections4:4.1" level="project" />
     <orderEntry type="library" name="Maven: net.sf.trove4j:trove4j:3.0.3" level="project" />
@@ -34,5 +39,10 @@
     <orderEntry type="library" name="Maven: com.neovisionaries:nv-websocket-client:2.2" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.8.1" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.13.0" level="project" />
+    <orderEntry type="library" name="Maven: com.github.ForYaSee:HttpRequest:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.github.DiscordBotList:DBL-Java-Wrapper:v1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.retrofit2:converter-gson:2.3.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.7" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.retrofit2:retrofit:2.3.0" level="project" />
   </component>
 </module>

@@ -26,6 +26,10 @@
         <name>jcenter-bintray</name>
         <url>http://jcenter.bintray.com</url>
     </repository>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
 </repositories>
     <dependencies>
         <dependency>
@@ -64,6 +68,42 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.ForYaSee</groupId>
+            <artifactId>HttpRequest</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.DiscordBotList</groupId>
+            <artifactId>DBL-Java-Wrapper</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.ForYaSee</groupId>
+            <artifactId>HttpRequest</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <!-- https://bintray.com/sedmelluq/com.sedmelluq/lavaplayer -->
+        <dependency>
+            <groupId>com.sedmelluq</groupId>
+            <artifactId>lavaplayer</artifactId>
+            <version>1.2.56</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.taycaldwell</groupId>
+            <artifactId>riot-api-java</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ftpserver</groupId>
+            <artifactId>ftpserver-core</artifactId>
             <version>LATEST</version>
         </dependency>
     </dependencies>

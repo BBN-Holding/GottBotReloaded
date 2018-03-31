@@ -15,7 +15,7 @@ public class CommandRegisterUser implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (Handler.get(event.getAuthor())) {
+        if (Owner.get(event.getAuthor())) {
             int i = 0;
             while (event.getGuild().getMembers().size()-1>=i) {
                 if (MySQL.get("user", "id", event.getGuild().getMembers().get(i).getUser().getId(), "id")==null) {
@@ -32,8 +32,4 @@ public class CommandRegisterUser implements Command {
 
     }
 
-    @Override
-    public String help() {
-        return null;
-    }
 }

@@ -1,7 +1,5 @@
 package commands.botowner;
 
-
-
 import core.MessageHandler;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.webhook.WebhookClient;
@@ -20,8 +18,7 @@ public class CommandClyde implements Command{
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-
-
+        if (Owner.get(event.getAuthor())) {
             TextChannel otherChannel = event.getMessage().getTextChannel();
 
             try {
@@ -42,8 +39,8 @@ public class CommandClyde implements Command{
 
                 event.getMessage().delete().queue();
                 WebhookMessageBuilder builder = new WebhookMessageBuilder();
-                builder.setContent(event.getMessage().getContentRaw().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("clyde", ""));
-                builder.setAvatarUrl("https://cdn.discordapp.com/avatars/419613495881891841/f0454b649c2f2faaf4f6e2ff12a5d954.webp?size=256");
+                builder.setContent(event.getMessage().getContentStripped().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("clyde", ""));
+                builder.setAvatarUrl("https://cdn.discordapp.com/avatars/419613495881891841/f0454b649c2f2faaf4f6e2ff12a5d954.webp");
                 WebhookMessage message = builder.build();
                 client.send(message);
                 client.close();
@@ -51,7 +48,7 @@ public class CommandClyde implements Command{
             } catch (NullPointerException fuck) {
                 fuck.printStackTrace();
             }
-
+        }
 
     }
 
@@ -60,8 +57,4 @@ public class CommandClyde implements Command{
 
     }
 
-    @Override
-    public String help() {
-        return null;
-    }
 }

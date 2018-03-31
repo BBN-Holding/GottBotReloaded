@@ -1,8 +1,11 @@
 package commands.botowner;
 
 import commands.Command;
+import core.MessageHandler;
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import util.Embed;
 
 public class CommandLeave implements Command {
     @Override
@@ -12,10 +15,11 @@ public class CommandLeave implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (Handler.get(event.getAuthor())) {
+        if (Owner.get(event.getAuthor())) {
 
             event.getJDA().getGuildById(args[0]).leave().queue();
-            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Server lefted").setDescription("Left the Server "+event.getJDA().getGuildById(args[0]).getName()).build()).queue();
+
+            new MessageBuilder().setEmbed(Embed.normal("Succesfully lefted", "Left the Server " + event.getJDA().getGuildById(args[0])).build()).build();
 
         }
     }
@@ -25,8 +29,4 @@ public class CommandLeave implements Command {
 
     }
 
-    @Override
-    public String help() {
-        return null;
-    }
 }

@@ -9,7 +9,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineFactory;
 
-import static core.Constants.progBars;
+import static util.Constants.progBars;
 
 
 public class CommandEval implements Command {
@@ -91,8 +91,4 @@ public class CommandEval implements Command {
 
     }
 
-    @Override
-    public String help() {
-        return null;
-    }
 }

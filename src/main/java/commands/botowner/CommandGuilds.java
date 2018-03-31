@@ -1,9 +1,12 @@
 package commands.botowner;
 
 import commands.Command;
+import core.MessageHandler;
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import util.Embed;
 
 public class CommandGuilds implements Command {
     @Override
@@ -13,7 +16,7 @@ public class CommandGuilds implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (Handler.get(event.getAuthor())) {
+        if (Owner.get(event.getAuthor())) {
 
             int jaso = event.getJDA().getGuilds().size();
             jaso=jaso/20;
@@ -31,12 +34,14 @@ public class CommandGuilds implements Command {
             String out ="";
             while (event.getJDA().getGuilds().size()>server&&i<20) {
                 Guild guild = event.getJDA().getGuilds().get(server);
-                out += String.valueOf(server+1)+". "+guild.getName()+" | User: "+guild.getMembers().size()+" ("+guild.getId()+")\n";
+                out += String.valueOf(server+1) + ". " + guild.getName() + " | User: " + guild.getMembers().size() + " (" + guild.getId() + ")\n";
                 i++;
                 server++;
             }
 
-            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Guilds").setDescription("Site: "+site+"/"+jaso+"\nAll Guilds: "+event.getJDA().getGuilds().size()+"\n``"+out+"``").build()).queue();
+            new MessageBuilder().setEmbed(Embed.normal("Guilds", "Site: " + site + "/" + jaso + "\nAll Guilds: " + event.getJDA().getGuilds().size() + "\n``" + out + "``").build()).build();
+
+
         }
     }
 
@@ -45,8 +50,4 @@ public class CommandGuilds implements Command {
 
     }
 
-    @Override
-    public String help() {
-        return null;
-    }
 }

@@ -1,6 +1,7 @@
 package commands.moderation;
 
 import commands.Command;
+import commands.botowner.Owner;
 import core.MessageHandler;
 import core.MySQL;
 import net.dv8tion.jda.core.EmbedBuilder;
@@ -10,7 +11,9 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import java.awt.*;
 
 public class CommandPrefix implements Command {
+
     boolean Role=false;
+
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -18,7 +21,7 @@ public class CommandPrefix implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (event.getAuthor().getId()==event.getGuild().getOwner().getUser().getId() || event.getMember().hasPermission(Permission.MANAGE_SERVER)) {
+        if (event.getAuthor().getId()==event.getGuild().getOwner().getUser().getId() || event.getMember().hasPermission(Permission.MANAGE_SERVER) || Owner.get(event.getAuthor())) {
             if (args.length < 1) {
                 try {
                     event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("prefixtitel"))
@@ -41,16 +44,9 @@ public class CommandPrefix implements Command {
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("nopermstitel"))
                     .setDescription(MessageHandler.get(event.getAuthor()).getString("nopermstext")).setColor(Color.RED).build()).queue();
         }
-
     }
 
     @Override
     public void executed(boolean success, MessageReceivedEvent event) {
-
-    }
-
-    @Override
-    public String help() {
-        return null;
     }
 }
