@@ -9,6 +9,7 @@ import commands.tools.CommandToken;
 import commands.usercommands.*;
 import commands.usercommands.CommandHelp3;
 import commands.usercommands.CommandInfo;
+import commands.usercommands.CommandPremium;
 import listener.*;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -91,6 +92,7 @@ public class Main {
             commandHandler.commands.put("dm", new CommandDM());
             commandHandler.commands.put("webhook", new CommandWebhook());
             commandHandler.commands.put("miner", new CommandMiner());
+            commandHandler.commands.put("premium", new CommandPremium());
             args = args2;
             logger.info("loaded all commands");
             jda = builder.buildBlocking();

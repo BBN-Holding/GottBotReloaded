@@ -21,7 +21,7 @@ public class MenuHandler {
             switch (emote) {
                 case "\uD83D\uDD28":
                     out = new EmbedBuilder().setTitle("HelpMenu - Moderation")
-                            .addField("Ban", "Usage: gb.ban\nDescription: Bans a User", true)
+                            .addField("Ban", "\uD83D\uDC4A", true)
                             .addField("Kick", "\uD83D\uDD90", true)
                             .addField("Prefix", "❗", true)
                             .addField("Verification", "✅", true)

@@ -15,9 +15,11 @@ public class Message extends ListenerAdapter {
     @Override
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         //registeruser
-        if (MySQL.get("user", "id", event.getAuthor().getId(), "id")==null) {
-            MySQL.insert("user", "id", event.getAuthor().getId()+"");
-            logger.info("neuer User in database Name: " + event.getAuthor().getName() + " ID: " + event.getAuthor().getId() + " von " + event.getGuild().getName());
+        if (!event.getAuthor().isBot()) {
+            if (MySQL.get("user", "id", event.getAuthor().getId(), "id") == null) {
+                MySQL.insert("user", "id", event.getAuthor().getId() + "");
+                logger.info("neuer User in database Name: " + event.getAuthor().getName() + " ID: " + event.getAuthor().getId() + " von " + event.getGuild().getName());
+            }
         }
         // Mention
         if (event.getMessage().getContentRaw().replace("!", "").equals(event.getJDA().getSelfUser().getAsMention())) {
@@ -58,6 +60,17 @@ public class Message extends ListenerAdapter {
                 }
             }
 
+        }
+        // Verification
+        if (!event.getAuthor().isBot()) {
+            if (!MySQL.get("server", "id", event.getGuild().getId(), "verification").equals("none")&&MySQL.get("server", "id", event.getGuild().getId(), "verificationart").equals("text")) {
+                String Message = MySQL.get("server", "id", event.getGuild().getId(), "verification");
+                if (event.getChannel().getId().equals(Message)) {
+                    if (event.getMessage().getContentRaw().equalsIgnoreCase(MySQL.get("server", "id", event.getGuild().getId(), "verificationmessage"))&&event.getChannel().getId().equals(MySQL.get("server", "id", event.getGuild().getId(), "verification"))) {
+                        event.getGuild().getController().addSingleRoleToMember(event.getMember(), event.getGuild().getRoleById(MySQL.get("server", "id", event.getGuild().getId(), "verificationrole"))).queue();
+                    }
+                }
+            }
         }
     }
 }

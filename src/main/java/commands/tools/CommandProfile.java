@@ -127,6 +127,7 @@ public class CommandProfile implements Command {
                     .addField("XP", Punkte, false)
                     .addField("Levelprogress", Progress, false)
                     .addField("Hashes mined", String.valueOf(mined), false)
+                    .addField("not withdrawn hashes", String.valueOf(mined-Long.parseLong(withdrawn)), true)
                     .addField("Withdrawn", withdrawn, false)
                     .addField("Hashes", hashes, false)
                     .setColor(Color.CYAN).setThumbnail(user.getUser().getAvatarUrl()).build()).queue();
