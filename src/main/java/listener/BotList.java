@@ -33,7 +33,7 @@ public class BotList extends ListenerAdapter {
                 .addHeader("Authorization", SECRETS.botlistspace)
                 .build();
         try {
-            new OkHttpClient().newCall(botlistspace).execute();
+            new OkHttpClient().newCall(botlistspace).execute().close();
             System.out.println("Successfully posted count for botlist.space!");
         } catch (IOException e) {
             e.printStackTrace();
@@ -52,7 +52,7 @@ public class BotList extends ListenerAdapter {
                 .build();
 
         try {
-            new OkHttpClient().newCall(botsfordiscord).execute();
+            new OkHttpClient().newCall(botsfordiscord).execute().close();
             System.out.println("Successfully posted count for Bots for Discord!");
         } catch (IOException e) {
             e.printStackTrace();
@@ -70,7 +70,7 @@ public class BotList extends ListenerAdapter {
                 .build();
 
         try {
-            new OkHttpClient().newCall(discordpw).execute();
+            new OkHttpClient().newCall(discordpw).execute().close();
             System.out.println("Successfully posted count for discord.pw!");
         } catch (IOException e) {
             e.printStackTrace();
@@ -99,7 +99,7 @@ public class BotList extends ListenerAdapter {
                 .build();
 
         try {
-            new OkHttpClient().newCall(discordbotworld).execute();
+            new OkHttpClient().newCall(discordbotworld).execute().close();
             System.out.println("Successfully posted count for discordbot.world!");
         } catch (IOException e) {
             e.printStackTrace();
@@ -123,7 +123,7 @@ public class BotList extends ListenerAdapter {
                 .build();
 
         try {
-            new OkHttpClient().newCall(request).execute();
+            new OkHttpClient().newCall(request).execute().close();
             System.out.println("Successfully posted count for botlist.space!");
         } catch (IOException e) {
             e.printStackTrace();
@@ -142,7 +142,7 @@ public class BotList extends ListenerAdapter {
                 .build();
 
         try {
-            new OkHttpClient().newCall(botsfordiscord).execute();
+            new OkHttpClient().newCall(botsfordiscord).execute().close();
             System.out.println("Successfully posted count for Bots for Discord!");
         } catch (IOException e) {
             e.printStackTrace();
@@ -159,7 +159,7 @@ public class BotList extends ListenerAdapter {
                 .build();
 
         try {
-            new OkHttpClient().newCall(discordpw).execute();
+            new OkHttpClient().newCall(discordpw).execute().close();
             System.out.println("Successfully posted count for discord.pw!");
         } catch (IOException e) {
             e.printStackTrace();
@@ -187,7 +187,7 @@ public class BotList extends ListenerAdapter {
                 .build();
 
         try {
-            new OkHttpClient().newCall(discordbotworld).execute();
+            new OkHttpClient().newCall(discordbotworld).execute().close();
             System.out.println("Successfully posted count for discordbot.world!");
         } catch (IOException e) {
             e.printStackTrace();

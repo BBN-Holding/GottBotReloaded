@@ -2,10 +2,7 @@ package core;
 
 import commands.botowner.*;
 import commands.moderation.*;
-import commands.tools.CommandGitHub;
-import commands.tools.CommandPing;
-import commands.tools.CommandProfile;
-import commands.tools.CommandToken;
+import commands.tools.*;
 import commands.usercommands.*;
 import commands.usercommands.CommandHelp3;
 import commands.usercommands.CommandInfo;
@@ -94,6 +91,7 @@ public class Main {
             commandHandler.commands.put("dm", new CommandDM());
             commandHandler.commands.put("webhook", new CommandWebhook());
             commandHandler.commands.put("miner", new CommandMiner());
+            commandHandler.commands.put("upvoted", new CommandUpvoted());
             args = args2;
             logger.info("loaded all commands");
             jda = builder.buildBlocking();

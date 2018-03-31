@@ -22,7 +22,7 @@ public class CommandDM implements Command {
 
             PrivateChannel channel = User.getUser().openPrivateChannel().complete();
             channel.sendMessage(Content).queue();
-            new MessageBuilder().setEmbed(Embed.success(MessageHandler.get(event.getAuthor()).getString("dmtitel"), MessageHandler.get(event.getAuthor()).getString("dmdescription")).build()).build();
+            event.getTextChannel().sendMessage(Embed.success(MessageHandler.get(event.getAuthor()).getString("dmtitel"), MessageHandler.get(event.getAuthor()).getString("dmdescription")).build()).queue();
         }
     }
 
