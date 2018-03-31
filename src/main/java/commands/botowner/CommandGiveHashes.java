@@ -30,7 +30,7 @@ public class CommandGiveHashes implements Command {
                 e.printStackTrace();
             }
             MySQL.update("user", "miner", args[0], "id", user.getUser().getId());
-            new MessageBuilder().setEmbed(Embed.normal(MessageHandler.get(event.getAuthor()).getString("givehashestitel"), MessageHandler.get(event.getAuthor()).getString("givehashestext")).build()).build();
+            event.getTextChannel().sendMessage(Embed.normal(MessageHandler.get(event.getAuthor()).getString("givehashestitel"), MessageHandler.get(event.getAuthor()).getString("givehashestext")).build()).queue();
 
         }
     }

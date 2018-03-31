@@ -19,7 +19,7 @@ public class CommandLeave implements Command {
 
             event.getJDA().getGuildById(args[0]).leave().queue();
 
-            new MessageBuilder().setEmbed(Embed.normal("Succesfully lefted", "Left the Server " + event.getJDA().getGuildById(args[0])).build()).build();
+            event.getTextChannel().sendMessage(Embed.normal("Succesfully lefted", "Left the Server " + event.getJDA().getGuildById(args[0])).build()).queue();
 
         }
     }

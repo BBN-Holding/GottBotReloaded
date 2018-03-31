@@ -39,7 +39,7 @@ public class CommandGuilds implements Command {
                 server++;
             }
 
-            new MessageBuilder().setEmbed(Embed.normal("Guilds", "Site: " + site + "/" + jaso + "\nAll Guilds: " + event.getJDA().getGuilds().size() + "\n``" + out + "``").build()).build();
+            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Guilds").setDescription("Site: " + site + "/" + jaso + "\nAll Guilds: " + event.getJDA().getGuilds().size() + "\n``" + out + "``").build()).queue();
 
 
         }

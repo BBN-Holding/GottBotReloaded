@@ -24,7 +24,7 @@ public class CommandInvite implements Command {
         if (Owner.get(event.getAuthor())) {
             String HALLO = event.getJDA().getGuildById(args[0]).getTextChannels().get(0).createInvite().setMaxAge(400).complete().getURL();
 
-            new MessageBuilder().setEmbed(Embed.normal(":information_source: Invite", "Invite: " + HALLO).build()).build();
+            event.getTextChannel().sendMessage(Embed.normal(":information_source: Invite", "Invite: " + HALLO).build()).queue();
 
         }
     }

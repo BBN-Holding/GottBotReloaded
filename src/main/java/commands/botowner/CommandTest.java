@@ -17,12 +17,12 @@ public class CommandTest implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (Owner.get(event.getAuthor())) {
-           new MessageBuilder().setEmbed(Embed.normal(MessageHandler.get(event.getAuthor()).getString("testtitel"), MessageHandler.get(event.getAuthor()).getString("testtext")).build()).build();
+           event.getTextChannel().sendMessage(Embed.normal(MessageHandler.get(event.getAuthor()).getString("testtitel"), MessageHandler.get(event.getAuthor()).getString("testtext")).build()).queue();
 
 
 
         } else {
-            new MessageBuilder().setEmbed(Embed.error(MessageHandler.get(event.getAuthor()).getString("nopermstitel"), MessageHandler.get(event.getAuthor()).getString("nopermstext")).build()).build();
+            event.getTextChannel().sendMessage(Embed.error(MessageHandler.get(event.getAuthor()).getString("nopermstitel"), MessageHandler.get(event.getAuthor()).getString("nopermstext")).build()).queue();
         }
 
 

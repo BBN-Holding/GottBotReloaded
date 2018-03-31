@@ -21,7 +21,7 @@ public class CommandBlacklist implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         if (Owner.get(event.getAuthor())) {
             if (args.length < 1) {
-                new MessageBuilder().setEmbed(Embed.error("Blacklist - Help ", "Do gb.blacklist add @User or gb.blacklist remove @User. DO IT JUST DO IT!").build()).build();
+                event.getTextChannel().sendMessage(Embed.error("Blacklist - Help ", "Do gb.blacklist add @User or gb.blacklist remove @User. DO IT JUST DO IT!").build()).queue();
             } else {
                 switch (args[0].toLowerCase()) {
                     case "add":
@@ -41,7 +41,7 @@ public class CommandBlacklist implements Command {
                             out += event.getJDA().getUserById(list.get(i)).getName()+", ";
                             i++;
                         }
-                        new MessageBuilder().setEmbed(Embed.normal("Blacklist - Help ", "Do gb.blacklist add @User or gb.blacklist remove @User. DO IT JUST DO IT!").build()).build();
+                        event.getTextChannel().sendMessage(Embed.normal("Blacklisted Users", out).build()).queue();
                         break;
                 }
             }
