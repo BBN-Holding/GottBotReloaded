@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.awt.*;
+import java.util.concurrent.TimeUnit;
 
 public class Message extends ListenerAdapter {
     private static Logger logger = LoggerFactory.getLogger(Message.class);
@@ -68,6 +69,7 @@ public class Message extends ListenerAdapter {
                 if (event.getChannel().getId().equals(Message)) {
                     if (event.getMessage().getContentRaw().equalsIgnoreCase(MySQL.get("server", "id", event.getGuild().getId(), "verificationmessage"))&&event.getChannel().getId().equals(MySQL.get("server", "id", event.getGuild().getId(), "verification"))) {
                         event.getGuild().getController().addSingleRoleToMember(event.getMember(), event.getGuild().getRoleById(MySQL.get("server", "id", event.getGuild().getId(), "verificationrole"))).queue();
+                        event.getMessage().delete().queueAfter(2, TimeUnit.SECONDS);
                     }
                 }
             }

@@ -16,15 +16,19 @@ public class CommandRegisterUser implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (Owner.get(event.getAuthor())) {
-            int i = 0;
-            while (event.getGuild().getMembers().size()-1>=i) {
-                if (MySQL.get("user", "id", event.getGuild().getMembers().get(i).getUser().getId(), "id")==null) {
-                    MySQL.insert("user", "id", event.getGuild().getMembers().get(i).getUser().getId()+"");
-                    logger.info("neuer User in database Name: " + event.getGuild().getMembers().get(i).getUser().getName() + " ID: " + event.getGuild().getMembers().get(i).getUser().getId() + " von " + event.getGuild().getName());
+            Thread t = new Thread(() -> {
+                int i = 0;
+                while (event.getGuild().getMembers().size() - 1 >= i) {
+                    if (MySQL.get("user", "id", event.getGuild().getMembers().get(i).getUser().getId(), "id") == null) {
+                        MySQL.insert("user", "id", event.getGuild().getMembers().get(i).getUser().getId() + "");
+                        logger.info("neuer User in database Name: " + event.getGuild().getMembers().get(i).getUser().getName() + " ID: " + event.getGuild().getMembers().get(i).getUser().getId() + " von " + event.getGuild().getName());
+                    }
+                    i++;
                 }
-                i++;
-            }
-            event.getTextChannel().sendMessage("Succesfully registered "+i+" user").queue();
+                event.getTextChannel().sendMessage("Succesfully registered "+i+" user").queue();
+            });
+            t.setName("registeruser");
+            t.start();
         }
     }
 
