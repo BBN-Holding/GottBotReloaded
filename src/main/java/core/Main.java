@@ -2,10 +2,14 @@ package core;
 
 import commands.botowner.*;
 import commands.moderation.*;
-import commands.tools.*;
+import commands.tools.CommandGitHub;
+import commands.tools.CommandPing;
+import commands.tools.CommandProfile;
+import commands.tools.CommandToken;
 import commands.usercommands.*;
 import commands.usercommands.CommandHelp3;
 import commands.usercommands.CommandInfo;
+import commands.usercommands.CommandPremium;
 import listener.*;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -17,11 +21,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import stuff.SECRETS;
 
-import javax.security.auth.login.LoginException;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.util.Date;
 
 public class Main {
     public static JDABuilder builder;
@@ -91,7 +92,7 @@ public class Main {
             commandHandler.commands.put("dm", new CommandDM());
             commandHandler.commands.put("webhook", new CommandWebhook());
             commandHandler.commands.put("miner", new CommandMiner());
-            commandHandler.commands.put("upvoted", new CommandUpvoted());
+            commandHandler.commands.put("premium", new CommandPremium());
             args = args2;
             logger.info("loaded all commands");
             jda = builder.buildBlocking();

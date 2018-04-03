@@ -32,6 +32,7 @@ public class CommandWebhook implements Command {
                     WebhookClientBuilder clientBuilder = webhook.newClient();
                     WebhookClient client = clientBuilder.build();
 
+
                     event.getMessage().delete().queue();
                     WebhookMessageBuilder builder = new WebhookMessageBuilder();
                     builder.setContent(event.getMessage().getContentRaw()

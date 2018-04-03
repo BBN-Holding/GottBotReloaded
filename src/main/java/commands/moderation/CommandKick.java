@@ -20,6 +20,7 @@ public class CommandKick implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
+
         if (event.getAuthor().getId() == event.getGuild().getOwner().getUser().getId() || event.getMember().hasPermission(Permission.KICK_MEMBERS) || Owner.get(event.getAuthor())) {
             Message msg = event.getMessage();
             if (msg.getMentionedUsers().isEmpty()) {
