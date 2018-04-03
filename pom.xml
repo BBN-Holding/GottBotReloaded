@@ -33,6 +33,16 @@
 </repositories>
     <dependencies>
         <dependency>
+            <groupId>com.github.ForYaSee</groupId>
+            <artifactId>HttpRequest</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.DiscordBotList</groupId>
+            <artifactId>DBL-Java-Wrapper</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>LATEST</version>
@@ -48,11 +58,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.9-rc</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.json/json -->
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.google.code.scriptengines/scriptengines-javascript -->
         <dependency>
@@ -70,14 +75,10 @@
             <artifactId>JDA</artifactId>
             <version>LATEST</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-net/commons-net -->
         <dependency>
-            <groupId>com.github.ForYaSee</groupId>
-            <artifactId>HttpRequest</artifactId>
-            <version>LATEST</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.DiscordBotList</groupId>
-            <artifactId>DBL-Java-Wrapper</artifactId>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
             <version>LATEST</version>
         </dependency>
     </dependencies>
