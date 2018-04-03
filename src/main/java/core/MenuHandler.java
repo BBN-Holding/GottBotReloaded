@@ -58,7 +58,7 @@ public class MenuHandler {
 
                 case "\uD83D\uDD90":
                     out = new EmbedBuilder().setTitle("HelpMenu - Moderation - Kick")
-                            .addField("Usage", "gb.ban <@User>", false)
+                            .addField("Usage", "gb.kick <@User>", false)
                             .addField("Description", "Kick a User from the Server", false)
                             .build();
                     break;
@@ -140,21 +140,21 @@ public class MenuHandler {
                     break;
             }
         }
-
         if (embed.getTitle().contains("HelpMenu - Moderation - ")&&emote.equals("◀")) {
             out = getMessage("\uD83D\uDD28", new EmbedBuilder().setTitle("HelpMenu").build());
-        } else if (embed.getTitle().equals("HelpMenu - Tools - ")&&emote.equals("◀")) {
+        } else if (embed.getTitle().contains("HelpMenu - Tools - ")&&emote.equals("◀")) {
             out = getMessage("\uD83D\uDEE0", new EmbedBuilder().setTitle("HelpMenu").build());
-        } else if (embed.getTitle().equals("HelpMenu - Usercommands - ")&&emote.equals("◀")) {
+        } else if (embed.getTitle().contains("HelpMenu - Usercommands - ")&&emote.equals("◀")) {
             out = getMessage("\uD83D\uDC65", new EmbedBuilder().setTitle("HelpMenu").build());
         }
 
         if (embed.getTitle().replaceFirst("Moderation", "").replaceFirst("Tools", "").replaceFirst("Usercommands", "").equals("HelpMenu - ")&&emote.equals("\uD83D\uDD19")) {
-            out = new EmbedBuilder().setTitle("HelpMenu").setDescription("Please react with the Emotes. Use the :arrow_backward: or the :back: emoji to see the overview")
-                    .addField("Moderation", "\uD83D\uDD28", true)
-                    .addField("Tools", "\uD83D\uDEE0", true)
-                    .addField("Usercommands", "\uD83D\uDC65", true)
-                    .build();
+                out = new EmbedBuilder().setTitle("HelpMenu").setDescription("Please react with the Emotes. Use the :arrow_backward: or the :back: emoji to see the overview")
+                        .addField("Moderation", "\uD83D\uDD28", true)
+                        .addField("Tools", "\uD83D\uDEE0", true)
+                        .addField("Usercommands", "\uD83D\uDC65", true)
+                        .build();
+
 
         }
         return out;
@@ -162,38 +162,42 @@ public class MenuHandler {
 
     public static List<String> getemote(String emote, MessageEmbed embed) {
         List<String> list = new ArrayList<>();
-        switch (emote) {
-            // Mod
-            case "\uD83D\uDD28":
-                list.add("\uD83D\uDC4A");
-                list.add("\uD83D\uDD90");
-                list.add("❗");
-                list.add("✅");
-                break;
-            // Tools
-            case "\uD83D\uDEE0":
-                list.add("⌨");
-                list.add("⏱");
-                list.add("\uD83E\uDD21");
-                break;
-            // UserCommands
-            case "\uD83D\uDC65":
-                list.add("‼");
-                list.add("❓");
-                list.add("\uD83D\uDE31");
-                list.add("\uD83D\uDCF3");
-                list.add("\uD83D\uDCEF");
-                list.add("\uD83D\uDCCB");
-                break;
-        }
+
+            switch (emote) {
+                // Mod
+                case "\uD83D\uDD28":
+                    list.add("\uD83D\uDC4A");
+                    list.add("\uD83D\uDD90");
+                    list.add("❗");
+                    list.add("✅");
+                    break;
+                // Tools
+                case "\uD83D\uDEE0":
+                    list.add("⌨");
+                    list.add("⏱");
+                    list.add("\uD83E\uDD21");
+                    break;
+                // UserCommands
+                case "\uD83D\uDC65":
+                    list.add("‼");
+                    list.add("❓");
+                    list.add("\uD83D\uDE31");
+                    list.add("\uD83D\uDCF3");
+                    list.add("\uD83D\uDCEF");
+                    list.add("\uD83D\uDCCB");
+                    break;
+            }
+
+ 
         if (embed.getTitle().equals("HelpMenu")&&emote.equals("\uD83D\uDD19")) {
             list.add("\uD83D\uDD28");
             list.add("\uD83D\uDEE0");
             list.add("\uD83D\uDC65");
         } else if (embed.getTitle().equals("HelpMenu - Moderation")&&emote.equals("◀")) {
-            list = getemote("\uD83D\uDD28", new EmbedBuilder().setTitle("HelpMenu -").build());
+
+                list = getemote("\uD83D\uDD28", new EmbedBuilder().setTitle("HelpMenu -").build());
         } else if (embed.getTitle().equals("HelpMenu - Tools")&&emote.equals("◀")) {
-            list = getemote("\uD83D\uDEE0", new EmbedBuilder().setTitle("HelpMenu -").build());
+                list = getemote("\uD83D\uDEE0", new EmbedBuilder().setTitle("HelpMenu -").build());
         } else if (embed.getTitle().equals("HelpMenu - Usercommands")&&emote.equals("◀")) {
             list = getemote("\uD83D\uDC65", new EmbedBuilder().setTitle("HelpMenu -").build());
         }
@@ -204,11 +208,14 @@ public class MenuHandler {
         }
 
         if (embed.getTitle().replaceFirst("HelpMenu - ", "").contains(" - ")) {
-            list.add("◀");
+
+                list.add("◀");
+
         }
 
 
         return list;
     }
+
 
 }

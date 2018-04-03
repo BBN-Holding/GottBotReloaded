@@ -9,6 +9,7 @@ import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import util.Embed;
 
+import java.awt.*;
 import java.util.List;
 
 public class CommandBlacklist implements Command {

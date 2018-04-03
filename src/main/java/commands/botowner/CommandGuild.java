@@ -42,5 +42,6 @@ public class CommandGuild implements Command {
     public void executed(boolean success, MessageReceivedEvent event) {
 
     }
-
 }
+
+
