@@ -4,7 +4,7 @@ import core.MySQL;
 import net.dv8tion.jda.core.events.guild.GuildBanEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
-public class LogListener extends ListenerAdapter {
+public class LogListener extends ListenerAdapter  {
 
 
     @Override

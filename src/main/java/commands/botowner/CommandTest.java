@@ -21,6 +21,8 @@ public class CommandTest implements Command {
 
 
 
+
+
         } else {
             event.getTextChannel().sendMessage(Embed.error(MessageHandler.get(event.getAuthor()).getString("nopermstitel"), MessageHandler.get(event.getAuthor()).getString("nopermstext")).build()).queue();
         }

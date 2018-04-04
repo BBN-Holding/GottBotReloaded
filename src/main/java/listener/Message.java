@@ -9,9 +9,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.awt.*;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class Message extends ListenerAdapter {
+public class Message extends ListenerAdapter  {
     private static Logger logger = LoggerFactory.getLogger(Message.class);
     @Override
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
@@ -20,6 +21,15 @@ public class Message extends ListenerAdapter {
             if (MySQL.get("user", "id", event.getAuthor().getId(), "id") == null) {
                 MySQL.insert("user", "id", event.getAuthor().getId() + "");
                 logger.info("neuer User in database Name: " + event.getAuthor().getName() + " ID: " + event.getAuthor().getId() + " von " + event.getGuild().getName());
+            }
+        }
+        // Premium
+        if (!MySQL.get("user", "id", event.getAuthor().getId(), "premium").equals("none")) {
+            Date date = new Date();
+            date.setTime(Long.parseLong(MySQL.get("user", "id", event.getAuthor().getId(), "premium")));
+            if (date.before(new Date())) {
+                MySQL.update("user", "premium", "none", "id", event.getAuthor().getId());
+                event.getAuthor().openPrivateChannel().complete().sendMessage(new EmbedBuilder().setTitle("Premium expired").setDescription("Buy new Premium with gb.premium buy").build()).queue();
             }
         }
         // Mention

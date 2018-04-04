@@ -13,7 +13,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
-public class Reaction extends ListenerAdapter {
+public class Reaction extends ListenerAdapter  {
 
     @Override
     public void onGuildMessageReactionAdd(GuildMessageReactionAddEvent event) {

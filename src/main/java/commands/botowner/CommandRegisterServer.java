@@ -2,9 +2,11 @@ package commands.botowner;
 
 import commands.Command;
 import core.MySQL;
+import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import util.Embed;
 
 public class CommandRegisterServer implements Command {
     private static Logger logger = LoggerFactory.getLogger(CommandRegisterServer.class);

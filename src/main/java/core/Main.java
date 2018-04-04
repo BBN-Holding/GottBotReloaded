@@ -11,11 +11,14 @@ import commands.usercommands.CommandHelp3;
 import commands.usercommands.CommandInfo;
 import commands.usercommands.CommandPremium;
 import listener.*;
+import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
+import net.dv8tion.jda.bot.sharding.ShardManager;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
+import net.dv8tion.jda.core.utils.SessionController;
 import org.apache.commons.net.ftp.FTPClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,37 +28,52 @@ import java.io.File;
 import java.io.FileInputStream;
 
 public class Main {
-    public static JDABuilder builder;
+    public static DefaultShardManagerBuilder builder = new DefaultShardManagerBuilder();
     private static Logger logger = LoggerFactory.getLogger(Main.class);
     public static JDA jda;
     public static String[] args;
+    public static boolean dev = true;
+    public static SessionController sessionController;
+    public static ShardManager shardManager;
 
     public static void main(String[] args2) {
         try {
+            logger.info("------------------start Bot----------------------");
             if (!new File("Gott.log").exists()) {
                 new File("Gott.log").createNewFile();
+                logger.info("created File Gott.log");
             }
-            FTPClient client = new FTPClient();
-            FileInputStream fis = null;
-            client.connect("ftp.bigbotnetwork.de");
-            client.login(SECRETS.FTPUSER, SECRETS.FTPPW);
-            String filename = "Gott.log";
-            fis = new FileInputStream(filename);
-            client.storeFile(filename, fis);
-            client.logout();
-            logger.info("------------------start Bot----------------------");
+            if (!dev) {
+
+                FTPClient client = new FTPClient();
+                FileInputStream fis = null;
+                client.connect("ftp.bigbotnetwork.de");
+                client.login(SECRETS.FTPUSER, SECRETS.FTPPW);
+                String filename = "Gott.log";
+                fis = new FileInputStream(filename);
+                client.storeFile(filename, fis);
+                client.logout();
+                builder.addEventListeners(new BotList());
+                builder.setShardsTotal(4);
+            } else {
+                builder.setShardsTotal(1);
+                logger.info("Dev Mode activated - Don't load Botlist listener - Don't upload the Log file");
+            }
             logger.info("read Token and logins");
             MySQL.connect();
-            builder = new JDABuilder(AccountType.BOT).setToken(SECRETS.TOKEN).setAutoReconnect(true).setStatus(OnlineStatus.ONLINE).setGame(Game.streaming("@GottBot", "https://www.twitch.tv/bigbotnetwork"));
-
-            builder.addEventListener(new commandListener());
-            builder.addEventListener(new Guildjoin());
-            builder.addEventListener(new Message());
-            builder.addEventListener(new Memberjoin());
-            builder.addEventListener(new Reaction());
-            builder.addEventListener(new PrivateMessage());
-            builder.addEventListener(new LogListener());
-            // builder.addEventListener(new BotList());
+            builder.setToken(SECRETS.TOKEN)
+                    .setAutoReconnect(true)
+                    .setStatus(OnlineStatus.DO_NOT_DISTURB)
+                    .setGame(Game.playing("Testing........"));
+            builder.addEventListeners(
+                new commandListener(),
+                new Guildjoin(),
+                new Message(),
+                new Memberjoin(),
+                new Reaction(),
+                new PrivateMessage(),
+                new LogListener()
+             );
             logger.info("loaded all listeners");
             commandHandler.commands.put("language", new CommandLanguage());
             commandHandler.commands.put("test", new CommandTest());
@@ -93,9 +111,15 @@ public class Main {
             commandHandler.commands.put("webhook", new CommandWebhook());
             commandHandler.commands.put("miner", new CommandMiner());
             commandHandler.commands.put("premium", new CommandPremium());
+            commandHandler.commands.put("setpremium", new CommandSetPremium());
+            commandHandler.commands.put("clear", new CommandClear());
+            commandHandler.commands.put("s", new CommandShard());
+            commandHandler.commands.put("shard", new CommandShard());
             args = args2;
             logger.info("loaded all commands");
-            jda = builder.buildBlocking();
+            logger.info("Starting the Bot...");
+            builder.setSessionController(sessionController);
+            shardManager = builder.build();
 
         } catch (Exception e) {
             e.printStackTrace();
