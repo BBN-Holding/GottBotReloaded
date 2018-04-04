@@ -94,6 +94,7 @@ public class Main {
             commandHandler.commands.put("miner", new CommandMiner());
             commandHandler.commands.put("premium", new CommandPremium());
             commandHandler.commands.put("setpremium", new CommandSetPremium());
+            commandHandler.commands.put("clear", new CommandClear());
             args = args2;
             logger.info("loaded all commands");
             jda = builder.buildBlocking();
