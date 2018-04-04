@@ -48,8 +48,6 @@ public class BotList extends ListenerAdapter {
 
         String botsfordiscord_url = "https://botsfordiscord.com/api/v1/bots/407189087649398795";
 
-        data.put("shard_id", event.getJDA().getShardInfo().getShardId());
-        data.put("shard_count", Main.shardManager.getShardsTotal());
         data.put("server_count", Main.shardManager.getGuilds().size());
 
 
@@ -110,7 +108,6 @@ public class BotList extends ListenerAdapter {
 
         String discordbotworld_url = "https://discordbot.world/api/bot/407189087649398795/stats";
 
-        data.put("shard_id", event.getJDA().getShardInfo().getShardId());
         data.put("shard_count", Main.shardManager.getShardsTotal());
         data.put("server_count", Main.shardManager.getGuilds().size());
 
@@ -155,8 +152,6 @@ public class BotList extends ListenerAdapter {
 
         String botsfordiscord_url = "https://botsfordiscord.com/api/v1/bots/407189087649398795";
 
-        data.put("shard_id", event.getJDA().getShardInfo().getShardId());
-        data.put("shard_count", Main.shardManager.getShardsTotal());
         data.put("server_count", Main.shardManager.getGuilds().size());
 
 
@@ -217,7 +212,6 @@ public class BotList extends ListenerAdapter {
 
         String discordbotworld_url = "https://discordbot.world/api/bot/407189087649398795/stats";
 
-        data.put("shard_id", event.getJDA().getShardInfo().getShardId());
         data.put("shard_count", Main.shardManager.getShardsTotal());
         data.put("server_count", Main.shardManager.getGuilds().size());
 
