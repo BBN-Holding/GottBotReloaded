@@ -1,5 +1,6 @@
 package listener;
 
+import core.Main;
 import de.foryasee.httprequest.HttpRequestBuilder;
 import de.foryasee.httprequest.RequestHeader;
 import de.foryasee.httprequest.RequestResponse;
@@ -16,6 +17,9 @@ import okhttp3.RequestBody;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.List;
+
+import static core.Main.jda;
 
 public class BotList extends ListenerAdapter {
     @Override
@@ -23,7 +27,9 @@ public class BotList extends ListenerAdapter {
 
         String botlistspace_url = "https://botlist.space/api/bots/407189087649398795";
         JSONObject data = new JSONObject();
-        data.put("server_count", event.getJDA().getGuilds().size());
+        data.put("shard_id", jda.getShardInfo().getShardId());
+        data.put("shard_count", jda.getShardInfo().getShardTotal());
+        data.put("server_count", jda.getGuilds().size());
         RequestBody body = RequestBody.create(MediaType.parse("application/json"), data.toString());
 
         Request botlistspace = new Request.Builder()
@@ -42,7 +48,9 @@ public class BotList extends ListenerAdapter {
 
         String botsfordiscord_url = "https://botsfordiscord.com/api/v1/bots/407189087649398795";
 
-        data.put("server_count", event.getJDA().getGuilds().size());
+        data.put("shard_id", jda.getShardInfo().getShardId());
+        data.put("shard_count", jda.getShardInfo().getShardTotal());
+        data.put("server_count", jda.getGuilds().size());
 
 
         Request botsfordiscord = new Request.Builder()
@@ -60,7 +68,9 @@ public class BotList extends ListenerAdapter {
 
         String discordpw_url = "https://bots.discord.pw/api/bots/407189087649398795/stats";
 
-        data.put("server_count", event.getJDA().getGuilds().size());
+        data.put("shard_id", jda.getShardInfo().getShardId());
+        data.put("shard_count", jda.getShardInfo().getShardTotal());
+        data.put("server_count", jda.getGuilds().size());
 
 
         Request discordpw = new Request.Builder()
@@ -77,19 +87,32 @@ public class BotList extends ListenerAdapter {
         }
 
 
-        DiscordBotListAPI api = new DiscordBotListAPI.Builder()
-                .token(SECRETS.discordbots)
+        String discordbots_url = "https://bots.discord.pw/api/bots/407189087649398795/stats";
+
+        data.put("shard_id", jda.getShardInfo().getShardId());
+        data.put("shard_count", jda.getShardInfo().getShardTotal());
+        data.put("server_count", jda.getGuilds().size());
+
+
+        Request discordbots = new Request.Builder()
+                .url(discordbots_url)
+                .post(body)
+                .addHeader("Authorization", SECRETS.discordbots)
                 .build();
 
-        String botId = "407189087649398795";
-        int serverCount = event.getJDA().getGuilds().size();
-
-        api.setStats(botId, serverCount);
+        try {
+            new OkHttpClient().newCall(discordbots).execute().close();
+            System.out.println("Successfully posted count for discord.pw!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
         String discordbotworld_url = "https://discordbot.world/api/bot/407189087649398795/stats";
 
-        data.put("server_count", event.getJDA().getGuilds().size());
+        data.put("shard_id", jda.getShardInfo().getShardId());
+        data.put("shard_count", jda.getShardInfo().getShardTotal());
+        data.put("server_count", jda.getGuilds().size());
 
 
         Request discordbotworld = new Request.Builder()
@@ -108,22 +131,22 @@ public class BotList extends ListenerAdapter {
 
 
     public void onGuildLeave(GuildLeaveEvent event) {
-        String url = "https://botlist.space/api/bots/407189087649398795";
 
+        String botlistspace_url = "https://botlist.space/api/bots/407189087649398795";
         JSONObject data = new JSONObject();
-        data.put("server_count", event.getJDA().getGuilds().size());
-
+        data.put("shard_id", jda.getShardInfo().getShardId());
+        data.put("shard_count", jda.getShardInfo().getShardTotal());
+        data.put("server_count", jda.getGuilds().size());
         RequestBody body = RequestBody.create(MediaType.parse("application/json"), data.toString());
 
-        Request request = new Request.Builder()
-                .url(url)
+        Request botlistspace = new Request.Builder()
+                .url(botlistspace_url)
                 .post(body)
                 .addHeader("User-Agent", "DiscordBot")
                 .addHeader("Authorization", SECRETS.botlistspace)
                 .build();
-
         try {
-            new OkHttpClient().newCall(request).execute().close();
+            new OkHttpClient().newCall(botlistspace).execute().close();
             System.out.println("Successfully posted count for botlist.space!");
         } catch (IOException e) {
             e.printStackTrace();
@@ -132,7 +155,9 @@ public class BotList extends ListenerAdapter {
 
         String botsfordiscord_url = "https://botsfordiscord.com/api/v1/bots/407189087649398795";
 
-        data.put("server_count", event.getJDA().getGuilds().size());
+        data.put("shard_id", jda.getShardInfo().getShardId());
+        data.put("shard_count", jda.getShardInfo().getShardTotal());
+        data.put("server_count", jda.getGuilds().size());
 
 
         Request botsfordiscord = new Request.Builder()
@@ -147,9 +172,12 @@ public class BotList extends ListenerAdapter {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         String discordpw_url = "https://bots.discord.pw/api/bots/407189087649398795/stats";
 
-        data.put("server_count", event.getJDA().getGuilds().size());
+        data.put("shard_id", jda.getShardInfo().getShardId());
+        data.put("shard_count", jda.getShardInfo().getShardTotal());
+        data.put("server_count", jda.getGuilds().size());
 
 
         Request discordpw = new Request.Builder()
@@ -165,19 +193,33 @@ public class BotList extends ListenerAdapter {
             e.printStackTrace();
         }
 
-        DiscordBotListAPI api = new DiscordBotListAPI.Builder()
-                .token(SECRETS.discordbots)
+
+        String discordbots_url = "https://bots.discord.pw/api/bots/407189087649398795/stats";
+
+        data.put("shard_id", jda.getShardInfo().getShardId());
+        data.put("shard_count", jda.getShardInfo().getShardTotal());
+        data.put("server_count", jda.getGuilds().size());
+
+
+        Request discordbots = new Request.Builder()
+                .url(discordbots_url)
+                .post(body)
+                .addHeader("Authorization", SECRETS.discordbots)
                 .build();
 
-        String botId = "407189087649398795";
-        int serverCount = event.getJDA().getGuilds().size();
-
-        api.setStats(botId, serverCount);
+        try {
+            new OkHttpClient().newCall(discordbots).execute().close();
+            System.out.println("Successfully posted count for discord.pw!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
         String discordbotworld_url = "https://discordbot.world/api/bot/407189087649398795/stats";
 
-        data.put("server_count", event.getJDA().getGuilds().size());
+        data.put("shard_id", jda.getShardInfo().getShardId());
+        data.put("shard_count", jda.getShardInfo().getShardTotal());
+        data.put("server_count", jda.getGuilds().size());
 
 
         Request discordbotworld = new Request.Builder()
