@@ -21,10 +21,10 @@ public class MenuHandler {
             switch (emote) {
                 case "\uD83D\uDD28":
                     out = new EmbedBuilder().setTitle("HelpMenu - Moderation")
-                            .addField("Ban", "\uD83D\uDC4A", true)
-                            .addField("Kick", "\uD83D\uDD90", true)
-                            .addField("Prefix", "❗", true)
-                            .addField("Verification", "✅", true)
+                            .addField("gb.ban <@User>", "Bans the User from the Guild [Ban Permission required]", false)
+                            .addField("gb.kick <@User>", "Kicks the User from the Guild [Kick Permission required]", false)
+                            .addField("gb.prefix <New Prefix>", "Edit the Prefix from the Bot [Manage Server Permission required]", false)
+                            .addField("Verification", "✅", false)
                             .build();
                     break;
 
@@ -166,9 +166,6 @@ public class MenuHandler {
             switch (emote) {
                 // Mod
                 case "\uD83D\uDD28":
-                    list.add("\uD83D\uDC4A");
-                    list.add("\uD83D\uDD90");
-                    list.add("❗");
                     list.add("✅");
                     break;
                 // Tools

@@ -15,15 +15,12 @@ public class CommandSay implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length<3) {
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Say - Help").setDescription(MessageHandler.get(event.getAuthor()).getString("saytitel")).build()).queue();
-        } else {
-            int i = 2;
-            String Message = "";
-            while (args.length > i) {
-                Message += args[i]+" ";
-                i++;
-            }
-            event.getGuild().getTextChannelById(args[0].replaceFirst("<", "").replaceFirst("#", "").replaceFirst(">", "")).sendMessage(new EmbedBuilder().setTitle(args[1]).setDescription(Message).build()).queue();
+        } else if (event.getMessage().getMentionedChannels().size()==1){
+            String Message = event.getMessage().getContentRaw().replaceFirst(MessageHandler.getprefix(event.getGuild())+"say "+args[0]+" "+args[1], "");
+            System.out.println(Message);
+            event.getMessage().getMentionedChannels().get(0).sendMessage(new EmbedBuilder().setTitle(args[1]).setDescription(Message).build()).queue();
         }
+
     }
 
     @Override

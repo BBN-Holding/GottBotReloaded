@@ -7,7 +7,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import stuff.DATA;
 
-public class PrivateMessage extends ListenerAdapter {
+public class PrivateMessage extends ListenerAdapter  {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
@@ -20,8 +20,8 @@ public class PrivateMessage extends ListenerAdapter {
                 PrivateChannel Hax = event.getJDA().getUserById(DATA.Hax).openPrivateChannel().complete();
                 PrivateChannel Skidder = event.getJDA().getUserById(DATA.Skidder).openPrivateChannel().complete();
 
-                Hax.sendMessage(new EmbedBuilder().setTitle("Neue Private Nachricht von " + Author + " .").setDescription(Content).build()).queue();
-                Skidder.sendMessage(new EmbedBuilder().setTitle("Neue Private Nachricht von " + Author + " .").setDescription(Content).build()).queue();
+                Hax.sendMessage(new EmbedBuilder().setTitle("Neue Private Nachricht von " + Author + "("+event.getAuthor().getId()+") .").setDescription(Content).build()).queue();
+                Skidder.sendMessage(new EmbedBuilder().setTitle("Neue Private Nachricht von " + Author +"("+event.getAuthor().getId()+") .").setDescription(Content).build()).queue();
 
             }
         }

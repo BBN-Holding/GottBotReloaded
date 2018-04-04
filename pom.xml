@@ -81,5 +81,12 @@
             <artifactId>commons-net</artifactId>
             <version>LATEST</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-net/commons-net -->
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>LATEST</version>
+        </dependency>
+
     </dependencies>
 </project>

@@ -1,6 +1,7 @@
 package commands.botowner;
 
 import commands.Command;
+import core.Main;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
@@ -15,7 +16,7 @@ public class CommandStop implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         if (Owner.get(event.getAuthor())) {
             event.getMessage().getTextChannel().sendMessage(new EmbedBuilder().setDescription(":white_check_mark:  Bot herruntergefahren  :white_check_mark: ").build()).queue();
-            System.exit(0);
+            Main.jda.shutdown();
         }
     }
 

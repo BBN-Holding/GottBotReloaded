@@ -27,7 +27,7 @@ public class CommandGiveHashes implements Command {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            MySQL.update("user", "miner", args[0], "id", user.getUser().getId());
+            MySQL.update("user", "hashes", args[0], "id", user.getUser().getId());
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("givehashestitel").replaceAll("gb.", MessageHandler.getprefix(event.getGuild())))
                     .setDescription(MessageHandler.get(event.getAuthor()).getString("givehashestext")).build()).queue();
         }
