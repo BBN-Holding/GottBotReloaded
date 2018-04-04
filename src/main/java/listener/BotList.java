@@ -1,5 +1,9 @@
 package listener;
 
+import de.foryasee.httprequest.HttpRequestBuilder;
+import de.foryasee.httprequest.RequestHeader;
+import de.foryasee.httprequest.RequestResponse;
+import de.foryasee.httprequest.RequestType;
 import org.discordbots.api.client.DiscordBotListAPI;
 import stuff.SECRETS;
 import net.dv8tion.jda.core.events.guild.GuildJoinEvent;
@@ -18,10 +22,8 @@ public class BotList extends ListenerAdapter {
     public void onGuildJoin(GuildJoinEvent event) {
 
         String botlistspace_url = "https://botlist.space/api/bots/407189087649398795";
-
         JSONObject data = new JSONObject();
         data.put("server_count", event.getJDA().getGuilds().size());
-
         RequestBody body = RequestBody.create(MediaType.parse("application/json"), data.toString());
 
         Request botlistspace = new Request.Builder()
@@ -30,15 +32,12 @@ public class BotList extends ListenerAdapter {
                 .addHeader("User-Agent", "DiscordBot")
                 .addHeader("Authorization", SECRETS.botlistspace)
                 .build();
-
         try {
-            new OkHttpClient().newCall(botlistspace).execute();
+            new OkHttpClient().newCall(botlistspace).execute().close();
             System.out.println("Successfully posted count for botlist.space!");
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
-
 
 
         String botsfordiscord_url = "https://botsfordiscord.com/api/v1/bots/407189087649398795";
@@ -53,9 +52,9 @@ public class BotList extends ListenerAdapter {
                 .build();
 
         try {
-            new OkHttpClient().newCall(botsfordiscord).execute();
+            new OkHttpClient().newCall(botsfordiscord).execute().close();
             System.out.println("Successfully posted count for Bots for Discord!");
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -71,14 +70,11 @@ public class BotList extends ListenerAdapter {
                 .build();
 
         try {
-            new OkHttpClient().newCall(discordpw).execute();
+            new OkHttpClient().newCall(discordpw).execute().close();
             System.out.println("Successfully posted count for discord.pw!");
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
 
 
         DiscordBotListAPI api = new DiscordBotListAPI.Builder()
@@ -90,8 +86,25 @@ public class BotList extends ListenerAdapter {
 
         api.setStats(botId, serverCount);
 
-    }
 
+        String discordbotworld_url = "https://discordbot.world/api/bot/407189087649398795/stats";
+
+        data.put("server_count", event.getJDA().getGuilds().size());
+
+
+        Request discordbotworld = new Request.Builder()
+                .url(discordbotworld_url)
+                .post(body)
+                .addHeader("Authorization", SECRETS.botworld)
+                .build();
+
+        try {
+            new OkHttpClient().newCall(discordbotworld).execute().close();
+            System.out.println("Successfully posted count for discordbot.world!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public void onGuildLeave(GuildLeaveEvent event) {
@@ -110,12 +123,11 @@ public class BotList extends ListenerAdapter {
                 .build();
 
         try {
-            new OkHttpClient().newCall(request).execute();
+            new OkHttpClient().newCall(request).execute().close();
             System.out.println("Successfully posted count for botlist.space!");
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
 
 
         String botsfordiscord_url = "https://botsfordiscord.com/api/v1/bots/407189087649398795";
@@ -130,9 +142,9 @@ public class BotList extends ListenerAdapter {
                 .build();
 
         try {
-            new OkHttpClient().newCall(botsfordiscord).execute();
+            new OkHttpClient().newCall(botsfordiscord).execute().close();
             System.out.println("Successfully posted count for Bots for Discord!");
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         String discordpw_url = "https://bots.discord.pw/api/bots/407189087649398795/stats";
@@ -147,9 +159,9 @@ public class BotList extends ListenerAdapter {
                 .build();
 
         try {
-            new OkHttpClient().newCall(discordpw).execute();
+            new OkHttpClient().newCall(discordpw).execute().close();
             System.out.println("Successfully posted count for discord.pw!");
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -163,5 +175,22 @@ public class BotList extends ListenerAdapter {
         api.setStats(botId, serverCount);
 
 
+        String discordbotworld_url = "https://discordbot.world/api/bot/407189087649398795/stats";
+
+        data.put("server_count", event.getJDA().getGuilds().size());
+
+
+        Request discordbotworld = new Request.Builder()
+                .url(discordbotworld_url)
+                .post(body)
+                .addHeader("Authorization", SECRETS.botworld)
+                .build();
+
+        try {
+            new OkHttpClient().newCall(discordbotworld).execute().close();
+            System.out.println("Successfully posted count for discordbot.world!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

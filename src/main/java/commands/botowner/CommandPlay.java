@@ -31,17 +31,6 @@ public class CommandPlay implements Command {
                 event.getTextChannel().sendMessage(succes.build()).queue(msg -> {
                     msg.delete().queueAfter(20, TimeUnit.SECONDS);
                 });
-
-        } else {
-            EmbedBuilder error = new EmbedBuilder();
-
-            event.getMessage().delete().queue();
-            error.setTitle("Error");
-            error.setColor(Color.RED);
-            error.setDescription("Keine Berechtigung");
-            event.getTextChannel().sendMessage(error.build()).queue(msg -> {
-                msg.delete().queueAfter(20, TimeUnit.SECONDS);
-            });
         }
     }
 
