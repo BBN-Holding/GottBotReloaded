@@ -17,10 +17,11 @@ public class CommandToken implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
+        String Token = event.getMessage().getContentStripped().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("token ", "");
         if (args.length  > 0) {
             try {
                 new JDABuilder(AccountType.BOT)
-                        .setToken(String.valueOf(event.getTextChannel().sendMessage(event.getMessage().getContentStripped().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("token", "")))).addEventListener(new ListenerAdapter() {
+                        .setToken(Token).addEventListener(new ListenerAdapter() {
                     @Override
                     public void onReady(ReadyEvent bot) {
                         super.onReady(bot);

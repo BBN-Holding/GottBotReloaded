@@ -2,9 +2,11 @@ package commands.botowner;
 
 import commands.Command;
 import core.MessageHandler;
+import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.PrivateChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import util.Embed;
 
 public class CommandDM implements Command {
     @Override
@@ -20,9 +22,7 @@ public class CommandDM implements Command {
 
             PrivateChannel channel = User.getUser().openPrivateChannel().complete();
             channel.sendMessage(Content).queue();
-            event.getTextChannel().sendMessage("Message succesfully send").queue();
-        } else {
-            event.getTextChannel().sendMessage("No Perms").queue();
+            event.getTextChannel().sendMessage(Embed.success(MessageHandler.get(event.getAuthor()).getString("dmtitel"), MessageHandler.get(event.getAuthor()).getString("dmdescription")).build()).queue();
         }
     }
 

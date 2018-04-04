@@ -59,6 +59,11 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.9-rc</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/com.google.code.scriptengines/scriptengines-javascript -->
         <dependency>
             <groupId>com.google.code.scriptengines</groupId>
@@ -81,12 +86,31 @@
             <artifactId>commons-net</artifactId>
             <version>LATEST</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/commons-net/commons-net -->
+        <dependency>
+            <groupId>com.github.ForYaSee</groupId>
+            <artifactId>HttpRequest</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <!-- https://bintray.com/sedmelluq/com.sedmelluq/lavaplayer -->
+        <dependency>
+            <groupId>com.sedmelluq</groupId>
+            <artifactId>lavaplayer</artifactId>
+            <version>1.2.56</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.taycaldwell</groupId>
+            <artifactId>riot-api-java</artifactId>
+            <version>4.0.1</version>
+        </dependency>
         <dependency>
             <groupId>commons-net</groupId>
             <artifactId>commons-net</artifactId>
             <version>LATEST</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.ftpserver</groupId>
+            <artifactId>ftpserver-core</artifactId>
+            <version>LATEST</version>
+        </dependency>
     </dependencies>
 </project>

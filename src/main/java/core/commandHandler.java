@@ -21,9 +21,6 @@ public class commandHandler {
             } else {
                 commands.get(cmd.invoke).executed(safe, cmd.event);
             }
-
         }
-
     }
-
 }

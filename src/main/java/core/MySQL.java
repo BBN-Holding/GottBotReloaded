@@ -5,6 +5,7 @@ import stuff.SECRETS;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MySQL {
@@ -147,6 +148,15 @@ public class MySQL {
             ps.setString(1, wherevalue);
             ps.execute();
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void exist(String table, String where) {
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM `"+table+"` WHERE `"+where+"` = ?");
+            ps.execute();
+        } catch (SQLException | NullPointerException e) {
             e.printStackTrace();
         }
     }
