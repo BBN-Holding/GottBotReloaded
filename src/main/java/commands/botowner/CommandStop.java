@@ -16,7 +16,7 @@ public class CommandStop implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         if (Owner.get(event.getAuthor())) {
             event.getMessage().getTextChannel().sendMessage(new EmbedBuilder().setDescription(":white_check_mark:  Bot herruntergefahren  :white_check_mark: ").build()).queue();
-            Main.jda.shutdown();
+            Main.shardManager.shutdown();
         }
     }
 
