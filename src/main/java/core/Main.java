@@ -13,10 +13,7 @@ import commands.usercommands.CommandPremium;
 import listener.*;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.bot.sharding.ShardManager;
-import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
-import net.dv8tion.jda.core.JDABuilder;
-import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.utils.SessionController;
 import org.apache.commons.net.ftp.FTPClient;
@@ -58,13 +55,12 @@ public class Main {
             } else {
                 builder.setShardsTotal(1);
                 logger.info("Dev Mode activated - Don't load Botlist listener - Don't upload the Log file");
+                builder.setAutoReconnect(true)
+                        .setGame(Game.streaming("@GottBot", "https://twitch.tv/bigbotnetwork"));
             }
             logger.info("read Token and logins");
             MySQL.connect();
-            builder.setToken(SECRETS.TOKEN)
-                    .setAutoReconnect(true)
-                    .setStatus(OnlineStatus.DO_NOT_DISTURB)
-                    .setGame(Game.playing("Testing........"));
+            builder.setToken(SECRETS.TOKEN);
             builder.addEventListeners(
                 new commandListener(),
                 new Guildjoin(),
@@ -108,7 +104,6 @@ public class Main {
             commandHandler.commands.put("log", new CommandLog());
             commandHandler.commands.put("play", new CommandPlay());
             commandHandler.commands.put("dm", new CommandDM());
-            commandHandler.commands.put("webhook", new CommandWebhook());
             commandHandler.commands.put("miner", new CommandMiner());
             commandHandler.commands.put("premium", new CommandPremium());
             commandHandler.commands.put("setpremium", new CommandSetPremium());
