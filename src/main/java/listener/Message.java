@@ -12,7 +12,7 @@ import java.awt.*;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class Message extends ListenerAdapter {
+public class Message extends ListenerAdapter  {
     private static Logger logger = LoggerFactory.getLogger(Message.class);
     @Override
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {

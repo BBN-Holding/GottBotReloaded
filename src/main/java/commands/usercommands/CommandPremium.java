@@ -41,8 +41,8 @@ public class CommandPremium implements Command {
                     Guild bbn = event.getJDA().getGuildById(DATA.BBNS);
                     try {
                         bbn.getController().addSingleRoleToMember(bbn.getMember(event.getAuthor()), bbn.getRoleById(408660274103451649L)).queue();
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    } catch (IllegalArgumentException e) {
+                        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("You must be on the official BigBotNetwork Server https://disco.gg/bbn").build()).queue();
                     }
                 } else event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Mine!").setDescription("You don't have enough Hashes... Mine! https://miner.bigbotnetwork.de").build()).queue();
             } else event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("You already have Premium").setColor(Color.RED).build()).queue();
