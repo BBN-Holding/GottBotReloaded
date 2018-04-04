@@ -93,6 +93,7 @@ public class Main {
             commandHandler.commands.put("webhook", new CommandWebhook());
             commandHandler.commands.put("miner", new CommandMiner());
             commandHandler.commands.put("premium", new CommandPremium());
+            commandHandler.commands.put("setpremium", new CommandSetPremium());
             args = args2;
             logger.info("loaded all commands");
             jda = builder.buildBlocking();
