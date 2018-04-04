@@ -29,7 +29,7 @@ public class Main {
     private static Logger logger = LoggerFactory.getLogger(Main.class);
     public static JDA jda;
     public static String[] args;
-    public static boolean dev = true;
+    public static boolean dev = false;
     public static SessionController sessionController;
     public static ShardManager shardManager;
 
@@ -51,7 +51,7 @@ public class Main {
                 client.storeFile(filename, fis);
                 client.logout();
                 builder.addEventListeners(new BotList());
-                builder.setShardsTotal(4);
+                builder.setShardsTotal(2);
             } else {
                 builder.setShardsTotal(1);
                 logger.info("Dev Mode activated - Don't load Botlist listener - Don't upload the Log file");

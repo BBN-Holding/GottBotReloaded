@@ -28,7 +28,7 @@ public class CommandShard implements Command {
                     case "info":
                     case "i":
                         if (args.length>1) {
-                            if (Main.shardManager.getShardsTotal()>=Integer.parseInt(args[1])) {
+                            if (Main.shardManager.getShardsTotal()>=Integer.parseInt(args[2])) {
                                 JDA shard = Main.shardManager.getShardById(args[2]);
                                 if (args[1].equalsIgnoreCase("o")||args[1].equalsIgnoreCase("overview")) {
                                     event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Shardinfo - Shard "+args[1]+" - Overview")
