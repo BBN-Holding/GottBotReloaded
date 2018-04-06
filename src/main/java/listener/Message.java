@@ -23,13 +23,10 @@ public class Message extends ListenerAdapter  {
                 logger.info("neuer User in database Name: " + event.getAuthor().getName() + " ID: " + event.getAuthor().getId() + " von " + event.getGuild().getName());
             }
         }
-        // Premium
-        if (!MySQL.get("user", "id", event.getAuthor().getId(), "premium").equals("none")) {
-            Date date = new Date();
-            date.setTime(Long.parseLong(MySQL.get("user", "id", event.getAuthor().getId(), "premium")));
-            if (date.before(new Date())) {
-                MySQL.update("user", "premium", "none", "id", event.getAuthor().getId());
-                event.getAuthor().openPrivateChannel().complete().sendMessage(new EmbedBuilder().setTitle("Premium expired").setDescription("Buy new Premium with gb.premium buy").build()).queue();
+        //registeruser premium
+        if (!event.getAuthor().isBot()) {
+            if (MySQL.get("premium", "id", event.getAuthor().getId(), "id") == null) {
+                MySQL.insert("premium", "id", event.getAuthor().getId() + "");
             }
         }
         // Mention

@@ -2,12 +2,9 @@ package core;
 
 import commands.botowner.*;
 import commands.moderation.*;
-import commands.tools.CommandGitHub;
-import commands.tools.CommandPing;
-import commands.tools.CommandProfile;
-import commands.tools.CommandToken;
+import commands.tools.*;
 import commands.usercommands.*;
-import commands.usercommands.CommandHelp3;
+import commands.usercommands.CommandHelp;
 import commands.usercommands.CommandInfo;
 import commands.usercommands.CommandPremium;
 import listener.*;
@@ -97,7 +94,7 @@ public class Main {
             commandHandler.commands.put("guilds", new CommandGuilds());
             commandHandler.commands.put("lvlmessage", new CommandLevelMessage());
             commandHandler.commands.put("guild", new CommandGuild());
-            commandHandler.commands.put("help", new CommandHelp3());
+            commandHandler.commands.put("help", new CommandHelp());
             commandHandler.commands.put("info", new CommandInfo());
             commandHandler.commands.put("warn", new CommandWarn());
             commandHandler.commands.put("token", new CommandToken());
@@ -110,6 +107,7 @@ public class Main {
             commandHandler.commands.put("clear", new CommandClear());
             commandHandler.commands.put("s", new CommandShard());
             commandHandler.commands.put("shard", new CommandShard());
+            commandHandler.commands.put("uptime", new CommandUptime());
             args = args2;
             logger.info("loaded all commands");
             logger.info("Starting the Bot...");
