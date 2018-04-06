@@ -13,6 +13,7 @@ import java.awt.*;
 import java.util.List;
 
 public class CommandHelp implements Command {
+
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -31,11 +32,11 @@ public class CommandHelp implements Command {
                         message.addReaction(list.get(0)).queue();
                         list.remove(0);
                     }
+                } else {
+                    event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("helptitel"))
+                            .setDescription(MessageHandler.get(event.getAuthor()).getString("helptext").replaceAll("gb.", MessageHandler.getprefix(event.getGuild()))).setColor(Color.CYAN).build()).queue();
                 }
             }
-        } else {
-            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("helptitel"))
-                    .setDescription(MessageHandler.get(event.getAuthor()).getString("helptext").replaceAll("gb.", MessageHandler.getprefix(event.getGuild()))).setColor(Color.CYAN).build()).queue();
         }
     }
 
