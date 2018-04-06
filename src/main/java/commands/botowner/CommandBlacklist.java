@@ -1,6 +1,7 @@
 package commands.botowner;
 
 import commands.Command;
+import core.Main;
 import core.MySQL;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.MessageBuilder;
@@ -41,7 +42,7 @@ public class CommandBlacklist implements Command {
                         int i=0;
                         List<String> list = MySQL.getallwithoutwhere("blacklist",  "id");
                         while (list.size()>i) {
-                            out += event.getJDA().getUserById(list.get(i)).getName()+", ";
+                            out += Main.shardManager.getUserById(list.get(i)).getName()+", ";
                             i++;
                         }
                         event.getTextChannel().sendMessage(Embed.normal("Blacklisted Users", out).build()).queue();

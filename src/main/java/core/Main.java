@@ -56,7 +56,7 @@ public class Main {
                 builder.addEventListeners(new BotList());
                 builder.setShardsTotal(4);
             } else {
-                builder.setShardsTotal(1);
+                builder.setShardsTotal(100);
                 logger.info("Dev Mode activated - Don't load Botlist listener - Don't upload the Log file");
             }
             logger.info("read Token and logins");
@@ -108,7 +108,7 @@ public class Main {
             commandHandler.commands.put("log", new CommandLog());
             commandHandler.commands.put("play", new CommandPlay());
             commandHandler.commands.put("dm", new CommandDM());
-            commandHandler.commands.put("webhook", new CommandWebhook());
+            // commandHandler.commands.put("webhook", new CommandWebhook());
             commandHandler.commands.put("miner", new CommandMiner());
             commandHandler.commands.put("premium", new CommandPremium());
             commandHandler.commands.put("setpremium", new CommandSetPremium());
