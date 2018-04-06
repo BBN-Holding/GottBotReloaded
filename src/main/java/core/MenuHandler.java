@@ -16,7 +16,7 @@ public class MenuHandler {
 
     public static MessageEmbed getMessage(String emote, MessageEmbed embed) {
         MessageEmbed out=new EmbedBuilder().setTitle("Error").setDescription("Sorry the Emote was not found! if you are sure that it is a bug use ``gb.bug`` Thanks <3").setColor(Color.RED).build();
-        // Overwiev
+        // Overview
         if (embed.getTitle().equals("HelpMenu")) {
             switch (emote) {
                 case "\uD83D\uDD28":
@@ -49,25 +49,6 @@ public class MenuHandler {
             }
         } else if (embed.getTitle().equals("HelpMenu - Moderation")) {
             switch (emote) {
-                case "\uD83D\uDC4A":
-                    out = new EmbedBuilder().setTitle("HelpMenu - Moderation - Ban")
-                            .addField("Usage", "gb.ban <@User>", false)
-                            .addField("Description", "Bans a User from the Server", false)
-                            .build();
-                    break;
-
-                case "\uD83D\uDD90":
-                    out = new EmbedBuilder().setTitle("HelpMenu - Moderation - Kick")
-                            .addField("Usage", "gb.kick <@User>", false)
-                            .addField("Description", "Kick a User from the Server", false)
-                            .build();
-                    break;
-                case "❗":
-                    out = new EmbedBuilder().setTitle("HelpMenu - Moderation - Prefix")
-                            .addField("Usage", "gb.prefix <new Prefix>", false)
-                            .addField("Description", "edit/see the Prefix", false)
-                            .build();
-                    break;
                 case "✅":
                     out = new EmbedBuilder().setTitle("HelpMenu - Moderation - Verification")
                             .addField("Usage", "gb.verification", false)
