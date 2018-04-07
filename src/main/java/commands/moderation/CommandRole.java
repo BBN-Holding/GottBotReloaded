@@ -2,6 +2,7 @@ package commands.moderation;
 
 import commands.Command;
 import commands.botowner.Owner;
+import core.MessageHandler;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Role;
@@ -23,20 +24,20 @@ public class CommandRole implements Command {
                 Member Member = event.getMessage().getMentionedMembers().get(0);
 
                 if (args.length < 1) {
-                    event.getTextChannel().sendMessage("ZU KURZ EY").queue();
+                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("moderation.role.title", "moderation.role.text", "", "normal", event)).queue();
                 } else switch (args[0].toLowerCase()) {
                     case "add":
 
                         event.getGuild().getController().addSingleRoleToMember(Member, Role).queue();
 
-                        event.getTextChannel().sendMessage(":white_check_mark: Succesfully added role to " + Member.getUser().getAsMention()).queue();
+                        event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "moderation.role.added", Member.getUser().getAsMention(),"sucess", event)).queue();
 
                         break;
                     case "remove":
 
                         event.getGuild().getController().removeSingleRoleFromMember(Member, Role).queue();
 
-                        event.getTextChannel().sendMessage(":white_check_mark: Succesfully reomved role from " + Member.getUser().getAsMention()).queue();
+                        event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "moderation.role.removed", Member.getUser().getAsMention(),"sucess", event)).queue();
 
                         break;
                 }

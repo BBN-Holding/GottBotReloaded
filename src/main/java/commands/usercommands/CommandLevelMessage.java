@@ -15,7 +15,7 @@ public class CommandLevelMessage implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length<1) {
-            event.getTextChannel().sendMessage(MessageHandler.getEmbed("usercommands.levelmessage.title", "usercommands.levelmessage.descritpion","","normal", event)).queue();
+            event.getTextChannel().sendMessage(MessageHandler.getEmbed("usercommands.levelmessage.title", "usercommands.levelmessage.description","","normal", event)).queue();
         } else {
             if (args[0].equalsIgnoreCase("true")) {
                 MySQL.update("user", "lvlmessage", "true", "id", event.getAuthor().getId());
