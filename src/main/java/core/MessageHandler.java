@@ -18,15 +18,15 @@ public class MessageHandler {
         String getMsg = get(event.getAuthor()).getString(msg);
         switch (type.toLowerCase()) {
             case "normal":
-                result = new EmbedBuilder().setColor(Color.CYAN).setTitle(getTitle).setDescription(getMsg.replace("%prefix%", getprefix(event.getGuild()).replace("%extra%", extra))).build();
+                result = new EmbedBuilder().setColor(Color.CYAN).setTitle(getTitle).setDescription(getMsg.replaceAll("%prefix%", getprefix(event.getGuild()).replace("%extra%", extra))).build();
                 break;
 
             case "error":
-                result = new EmbedBuilder().setColor(Color.RED).setTitle(getTitle).setDescription(getMsg.replace("%prefix%", getprefix(event.getGuild()).replace("%extra%", extra))).build();
+                result = new EmbedBuilder().setColor(Color.RED).setTitle(getTitle).setDescription(getMsg.replaceAll("%prefix%", getprefix(event.getGuild()).replace("%extra%", extra))).build();
                 break;
 
             case "sucess":
-                result = new EmbedBuilder().setColor(Color.GREEN).setTitle(getTitle).setDescription(getMsg.replace("%prefix%", getprefix(event.getGuild()).replace("%extra%", extra))).build();
+                result = new EmbedBuilder().setColor(Color.GREEN).setTitle(getTitle).setDescription(getMsg.replaceAll("%prefix%", getprefix(event.getGuild()).replace("%extra%", extra))).build();
                 break;
         }
         return result;
