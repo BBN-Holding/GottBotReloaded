@@ -2,12 +2,9 @@ package commands.moderation;
 
 import commands.Command;
 import commands.botowner.Owner;
-import core.Main;
-import core.MessageHandler;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Role;
-import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 

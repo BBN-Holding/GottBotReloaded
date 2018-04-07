@@ -1,6 +1,7 @@
 package commands.usercommands;
 
 import commands.Command;
+import core.MessageHandler;
 import core.MySQL;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed;
@@ -28,10 +29,11 @@ public class CommandMiner implements Command {
                     if (mined-Long.parseLong(withdrawn)>0) {
                         if (mined-Long.parseLong(withdrawn)-Long.parseLong(args[1])>=0) {
                             MySQL.update("user", "hashes`,`withdrawnhashes", Long.parseLong(hashes)+Long.parseLong(args[1])+"','"+Long.parseLong(withdrawn)+Long.parseLong(args[1]),"id", event.getAuthor().getId());
+                            event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "usercommands.miner.withdrawn", args[1],"sucess", event)).queue();
                         }
                     }
                 }
-            } else event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Miner - Usage").setDescription("withdraw your Mined Hashes in Bot Hashes ``gb.miner withdraw [amount]`` (You see your mined hashes with gb.profile)").build()).queue();
+            } else event.getTextChannel().sendMessage(MessageHandler.getEmbed("usercommands.miner.title", "usercommands.miner.description", "", "normal", event)).queue();
         } catch (Exception e) {
             e.printStackTrace();
         }
