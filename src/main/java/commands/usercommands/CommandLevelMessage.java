@@ -19,10 +19,10 @@ public class CommandLevelMessage implements Command {
         } else {
             if (args[0].equalsIgnoreCase("true")) {
                 MySQL.update("user", "lvlmessage", "true", "id", event.getAuthor().getId());
-                event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.succes","usercomamnds.levelmessage.true","", "sucess", event)).queue();
+                event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess","usercomamnds.levelmessage.true","", "sucess", event)).queue();
             } else if (args[0].equalsIgnoreCase("false")) {
                 MySQL.update("user", "lvlmessage", "false", "id", event.getAuthor().getId());
-                event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "usercommands.levelmessage.false","", "sucess", event)).queue();
+                event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "usercomamnds.levelmessage.false","", "sucess", event)).queue();
             }
         }
     }

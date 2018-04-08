@@ -13,7 +13,7 @@ public class CommandPing implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("``"+event.getJDA().getShardInfo().getShardId()+" -> " + event.getJDA().getPing()+"``").build()).queue();
+        event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("``Shard "+event.getJDA().getShardInfo().getShardId()+" -> " + event.getJDA().getPing()+"``").build()).queue();
     }
     @Override
     public void executed(boolean success, MessageReceivedEvent event) {

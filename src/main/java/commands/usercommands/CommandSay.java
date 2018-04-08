@@ -17,7 +17,7 @@ public class CommandSay implements Command {
             event.getTextChannel().sendMessage(MessageHandler.getEmbed("usercommands.say.title", "usercommands.say.text", "", "normal", event)).queue();
         } else if (event.getMessage().getMentionedChannels().size()==1){
             String Message = event.getMessage().getContentRaw().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("say", "")
-                    .replaceFirst(event.getMessage().getMentionedChannels().get(0).getAsMention(),"").replace(args[1], "");
+                    .replaceFirst(event.getMessage().getMentionedChannels().get(0).getAsMention(),"").replaceFirst(args[1], "");
             event.getMessage().getMentionedChannels().get(0).sendMessage(new EmbedBuilder().setTitle(args[1]).setDescription(Message).build()).queue();
         }
 

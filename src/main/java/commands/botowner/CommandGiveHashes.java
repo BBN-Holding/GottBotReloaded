@@ -3,13 +3,12 @@ package commands.botowner;
 import commands.Command;
 import core.MessageHandler;
 import core.MySQL;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import util.Embed;
 
 public class CommandGiveHashes implements Command {
-    Member user;
-    String useruser;
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -18,18 +17,11 @@ public class CommandGiveHashes implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (Owner.get(event.getAuthor())) {
-            try {
-                useruser = args[1].replace("<", "").replace("@", "").replace(">", "").replace("!", "");
-                user = event.getGuild().getMemberById(useruser);
-
-            } catch (ArrayIndexOutOfBoundsException e) {
-                user = event.getMember();
-            } catch (Exception e) {
-                e.printStackTrace();
+            if (event.getMessage().getMentionedUsers().size()==1) {
+                long hashes = Long.parseLong(MySQL.get("user", "id", event.getMessage().getMentionedUsers().get(0).getId(), "hashes"))+Long.parseLong(args[0]);
+                MySQL.update("user", "hashes", String.valueOf(hashes), "id", event.getMessage().getMentionedUsers().get(0).getId());
+                event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Sucess!").setDescription("Sucessfully add "+event.getMessage().getMentionedUsers().get(0).getName()+" "+args[0]+" hashes").build()).queue();
             }
-            MySQL.update("user", "miner", args[0], "id", user.getUser().getId());
-            event.getTextChannel().sendMessage(Embed.normal(MessageHandler.get(event.getAuthor()).getString("givehashestitel"), MessageHandler.get(event.getAuthor()).getString("givehashestext")).build()).queue();
-
         }
     }
 

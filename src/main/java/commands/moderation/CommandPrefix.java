@@ -21,14 +21,14 @@ public class CommandPrefix implements Command {
         if (event.getAuthor().getId()==event.getGuild().getOwner().getUser().getId() || event.getMember().hasPermission(Permission.MANAGE_SERVER) || Owner.get(event.getAuthor())) {
             if (args.length < 1) {
                 try {
-                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("moderation.prefix.title", "mdoeration.prefix.text", "", "normal", event)).queue();
+                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("moderation.prefix.title", "moderation.prefix.text", "", "normal", event)).queue();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             } else {
                 try {
                     MySQL.update("server", "Prefix", args[0], "ID", event.getGuild().getId());
-                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "modertaion.prefix.changed", "", "sucess", event)).queue();
+                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "moderation.prefix.changed", "", "sucess", event)).queue();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

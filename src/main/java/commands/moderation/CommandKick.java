@@ -31,10 +31,10 @@ public class CommandKick implements Command {
                 } else {
                     if (!User.getUser().isBot()) {
                         PrivateChannel channel = User.getUser().openPrivateChannel().complete();
-                        channel.sendMessage(MessageHandler.getEmbed("moderation.kick.ban", "moderation.kick.user", event.getGuild().getName(), "sucess", event)).queue();
+                        channel.sendMessage(MessageHandler.getEmbed("moderation.kick.kick", "moderation.kick.user", event.getGuild().getName(), "sucess", event)).queue();
                     }
                     msg.getGuild().getController().kick(User).queue();
-                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("moderation.kick.ban", "moderation.kick.channel", event.getGuild().getName(), "sucess", event)).queue();
+                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("moderation.kick.kick", "moderation.kick.channel", User.getUser().getName(), "sucess", event)).queue();
                 }
             }
         } else {

@@ -34,7 +34,7 @@ public class CommandBan implements Command {
                         channel.sendMessage(MessageHandler.getEmbed("moderation.ban.ban", "moderation.ban.user", event.getGuild().getName(), "sucess", event)).queue();
                     }
                     msg.getGuild().getController().ban(User, 1).queue();
-                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("moderation.ban.ban", "moderation.ban.channel", event.getGuild().getName(), "sucess", event)).queue();
+                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("moderation.ban.ban", "moderation.ban.channel", User.getUser().getName(), "sucess", event)).queue();
                 }
             }
         } else {

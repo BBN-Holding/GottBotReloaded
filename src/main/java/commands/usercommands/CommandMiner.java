@@ -28,12 +28,13 @@ public class CommandMiner implements Command {
                     String hashes = MySQL.get("user", "id", event.getAuthor().getId(), "hashes");
                     if (mined-Long.parseLong(withdrawn)>0) {
                         if (mined-Long.parseLong(withdrawn)-Long.parseLong(args[1])>=0) {
-                            MySQL.update("user", "hashes`,`withdrawnhashes", Long.parseLong(hashes)+Long.parseLong(args[1])+"','"+Long.parseLong(withdrawn)+Long.parseLong(args[1]),"id", event.getAuthor().getId());
+                            MySQL.update("user", "hashes", String.valueOf(Long.parseLong(hashes)+Long.parseLong(args[1])), "id", event.getAuthor().getId());
+                            MySQL.update("user", "withdrawnhashes", String.valueOf(Long.parseLong(withdrawn)+Long.parseLong(args[1])), "id", event.getAuthor().getId());
                             event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "usercommands.miner.withdrawn", args[1],"sucess", event)).queue();
                         }
                     }
                 }
-            } else event.getTextChannel().sendMessage(MessageHandler.getEmbed("usercommands.miner.title", "usercommands.miner.description", "", "normal", event)).queue();
+            } else event.getTextChannel().sendMessage(MessageHandler.getEmbed("usercommands.miner.title", "usercomamnds.miner.description", "", "normal", event)).queue();
         } catch (Exception e) {
             e.printStackTrace();
         }

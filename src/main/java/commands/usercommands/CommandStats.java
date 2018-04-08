@@ -26,14 +26,14 @@ public class CommandStats implements Command {
         }
         ResourceBundle msg = MessageHandler.get(event.getAuthor());
         event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Stats")
-                .addField(msg.getString("usercomamnds.stats.stats1"), MySQL.get1("stats",  "1", "command"),true)
-                .addField(msg.getString("usercomamnds.stats.stats2"), MySQL.get1("stats", "1", "message"),true)
-                .addField(msg.getString("usercomamnds.stats.stats3"), String.valueOf(Main.shardManager.getGuilds().size()), true)
-                .addField(msg.getString("usercomamnds.stats.stats4"),String.valueOf(User), true)
-                .addField(msg.getString("usercomamnds.stats.stats5"), String.valueOf(event.getJDA().getRegisteredListeners().size()), true)
-                .addField(msg.getString("usercomamnds.stats.stats6"), String.valueOf(commandHandler.commands.size()), true)
-                .addField(msg.getString("usercomamnds.stats.stats7"), String.valueOf(MySQL.getallwithoutwhere("user", "id").size()), true)
-                .addField(msg.getString("usercomamnds.stats.stats8"), String.valueOf(MySQL.getallwithoutwhere("server", "id").size()), true)
+                .addField(msg.getString("usercommands.stats.stats1"), MySQL.get1("stats",  "1", "command"),true)
+                .addField(msg.getString("usercommands.stats.stats2"), MySQL.get1("stats", "1", "message"),true)
+                .addField(msg.getString("usercommands.stats.stats3"), String.valueOf(Main.shardManager.getGuilds().size()), true)
+                .addField(msg.getString("usercommands.stats.stats4"),String.valueOf(User), true)
+                .addField(msg.getString("usercommands.stats.stats5"), String.valueOf(event.getJDA().getRegisteredListeners().size()), true)
+                .addField(msg.getString("usercommands.stats.stats6"), String.valueOf(commandHandler.commands.size()), true)
+                .addField(msg.getString("usercommands.stats.stats7"), String.valueOf(MySQL.getallwithoutwhere("user", "id").size()), true)
+                .addField(msg.getString("usercommands.stats.stats8"), String.valueOf(MySQL.getallwithoutwhere("server", "id").size()), true)
                 .setThumbnail(event.getJDA().getSelfUser().getEffectiveAvatarUrl())
                 .build()
         ).queue();

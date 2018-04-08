@@ -30,7 +30,7 @@ public class CommandPremium implements Command {
                 date.setTime(Long.parseLong(MySQL.get("user", "id", event.getAuthor().getId(), "premium")));
                 status= "until "+date.toGMTString();
             }
-            event.getTextChannel().sendMessage(MessageHandler.getEmbed("usercommands.premium.status.title", "usercommands.premium.status.text", status,"normal", event)).queue();
+            event.getTextChannel().sendMessage(MessageHandler.getEmbed("usercommands.premium.status.title", "usercomamnds.premium.status.text", status,"normal", event)).queue();
         } else if (args[0].equalsIgnoreCase("buy")) {
             Guild bbn = Main.shardManager.getGuildById(DATA.BBNS);
             if (event.getGuild().getId().equals(bbn.getId())) {
@@ -41,9 +41,8 @@ public class CommandPremium implements Command {
                     if (Long.parseLong(MySQL.get("user", "id", event.getAuthor().getId(), "hashes")) >= 750000) {
                         MySQL.update("user", "premium", String.valueOf(Date), "id", event.getAuthor().getId());
                         MySQL.update("user", "hashes", String.valueOf(Long.parseLong(MySQL.get("user", "id", event.getAuthor().getId(), "hashes")) - 750000), "id", event.getAuthor().getId());
-                        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Premium buyed").setDescription("You have buy Premium").build()).queue();
                         bbn.getController().addSingleRoleToMember(bbn.getMember(event.getAuthor()), bbn.getRoleById(408660274103451649L)).queue();
-                        event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "usercommands.premium.buyed", "", "sucess", event)).queue();
+                        event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "usercomamnds.premium.buyed", "", "sucess", event)).queue();
                     } else
                         event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "util.mine", "https://miner.bigbotnetwork.de/", "error", event)).queue();
                 } else

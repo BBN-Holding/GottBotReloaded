@@ -32,7 +32,7 @@ public class CommandGitHub implements Command{
 
             } else {
                 MySQL.update("user", "github", args[0], "id", event.getAuthor().getId());
-                event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.usage", "tools.github.set", "", "sucess", event)).queue();
+                event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "tools.github.set", "", "sucess", event)).queue();
             }
         }
 

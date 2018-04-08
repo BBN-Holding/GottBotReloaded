@@ -116,7 +116,7 @@ public class CommandProfile implements Command {
                         event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_end_full", true).get(0).getAsMention();
             }
             String Github = MySQL.get("user", "ID", user.getUser().getId(), "github");
-            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("profiletitel"))
+            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("tools.profile.title"))
                     .addField(msg.getString("tools.profile.1"), user.getUser().getName(), false)
                     .addField(msg.getString("tools.profile.2"), Nick, false)
                     .addField(msg.getString("tools.profile.3"), Game, false)
@@ -130,7 +130,8 @@ public class CommandProfile implements Command {
                     .addField(msg.getString("tools.profile.11"), Progress, false)
                     .addField(msg.getString("tools.profile.12"), String.valueOf(mined), false)
                     .addField(msg.getString("tools.profile.13"), withdrawn, false)
-                    .addField(msg.getString("tools.profile.14"), hashes, false)
+                    .addField(msg.getString("tools.profile.14"), String.valueOf(mined-Long.parseLong(withdrawn)), false)
+                    .addField(msg.getString("tools.profile.15"), hashes, false)
                     .setColor(Color.CYAN).setThumbnail(user.getUser().getAvatarUrl()).build()).queue();
         } catch (Exception e) {
             e.printStackTrace();

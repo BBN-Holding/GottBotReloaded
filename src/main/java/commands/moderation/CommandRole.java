@@ -20,26 +20,28 @@ public class CommandRole implements Command {
         if (event.getMember().hasPermission(Permission.MANAGE_ROLES) || event.getMember().isOwner() || Owner.get(event.getAuthor()))
             try {
 
-                Role Role = event.getMessage().getMentionedRoles().get(0);
-                Member Member = event.getMessage().getMentionedMembers().get(0);
 
-                if (args.length < 1) {
+                if (args.length < 1&&event.getMessage().getMentionedRoles().size()!=1&&event.getMessage().getMentionedMembers().size()!=1) {
                     event.getTextChannel().sendMessage(MessageHandler.getEmbed("moderation.role.title", "moderation.role.text", "", "normal", event)).queue();
-                } else switch (args[0].toLowerCase()) {
-                    case "add":
+                } else {
+                    Role Role = event.getMessage().getMentionedRoles().get(0);
+                    Member Member = event.getMessage().getMentionedMembers().get(0);
+                    switch (args[0].toLowerCase()) {
+                        case "add":
 
-                        event.getGuild().getController().addSingleRoleToMember(Member, Role).queue();
+                            event.getGuild().getController().addSingleRoleToMember(Member, Role).queue();
 
-                        event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "moderation.role.added", Member.getUser().getAsMention(),"sucess", event)).queue();
+                            event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "moderation.role.added", Member.getUser().getAsMention(), "sucess", event)).queue();
 
-                        break;
-                    case "remove":
+                            break;
+                        case "remove":
 
-                        event.getGuild().getController().removeSingleRoleFromMember(Member, Role).queue();
+                            event.getGuild().getController().removeSingleRoleFromMember(Member, Role).queue();
 
-                        event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "moderation.role.removed", Member.getUser().getAsMention(),"sucess", event)).queue();
+                            event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "moderation.role.removed", Member.getUser().getAsMention(), "sucess", event)).queue();
 
-                        break;
+                            break;
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();

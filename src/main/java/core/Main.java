@@ -91,7 +91,7 @@ public class Main {
             commandHandler.commands.put("say", new CommandSay());
             commandHandler.commands.put("blacklist", new CommandBlacklist());
             commandHandler.commands.put("guilds", new CommandGuilds());
-            commandHandler.commands.put("lvlmessage", new CommandLevelMessage());
+            commandHandler.commands.put("levelmessage", new CommandLevelMessage());
             commandHandler.commands.put("guild", new CommandGuild());
             commandHandler.commands.put("help", new CommandHelp());
             commandHandler.commands.put("info", new CommandInfo());
@@ -107,6 +107,7 @@ public class Main {
             commandHandler.commands.put("s", new CommandShard());
             commandHandler.commands.put("shard", new CommandShard());
             commandHandler.commands.put("uptime", new CommandUptime());
+            commandHandler.commands.put("role", new CommandRole());
             args = args2;
             logger.info("loaded all commands");
             logger.info("Starting the Bot...");
