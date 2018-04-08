@@ -22,7 +22,7 @@ public class CommandBan implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         if (event.getAuthor().getId() == event.getGuild().getOwner().getUser().getId() || event.getMember().hasPermission(Permission.BAN_MEMBERS) || Owner.get(event.getAuthor())) {
             Message msg = event.getMessage();
-            if (msg.getMentionedUsers().isEmpty()) {
+            if (msg.getMentionedUsers().size()== 0) {
                 event.getTextChannel().sendMessage(MessageHandler.getEmbed("moderation.ban.title", "moderation.ban.text", "", "normal", event)).queue();
             } else {
                 Member User = msg.getGuild().getMember(msg.getMentionedUsers().get(0));
