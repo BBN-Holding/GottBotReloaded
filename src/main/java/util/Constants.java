@@ -1,12 +1,7 @@
 package util;
 
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 public class Constants {
@@ -19,19 +14,6 @@ public class Constants {
         for (int i = 0; i < names.length; i++) {
             progBars.put(names[i], ids[i]);
         }
-    }
-    public static List<String> extractUrls(String text) {
-        List<String> containedUrls = new ArrayList<>();
-        String urlRegex = "((https?|ftp|gopher|telnet|file):((//)|(\\\\))+[\\w\\d:#@%/;$()~_?\\+-=\\\\\\.&]*)";
-        Pattern pattern = Pattern.compile(urlRegex, Pattern.CASE_INSENSITIVE);
-        Matcher urlMatcher = pattern.matcher(text);
-
-        while (urlMatcher.find()) {
-            containedUrls.add(text.substring(urlMatcher.start(0),
-                    urlMatcher.end(0)));
-        }
-
-        return containedUrls;
     }
 
 
