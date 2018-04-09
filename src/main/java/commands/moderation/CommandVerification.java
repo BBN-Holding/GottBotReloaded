@@ -22,11 +22,11 @@ public class CommandVerification implements Command {
         if (event.getAuthor().getId()==event.getGuild().getOwner().getUser().getId() || event.getMember().hasPermission(Permission.MANAGE_SERVER) || Owner.get(event.getAuthor())) {
 
             if (args.length < 1) {
-                event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("verificationhelp")).setDescription(MessageHandler.get(event.getAuthor()).getString("verificationhelp2").replace("gb", MessageHandler.getprefix(event.getGuild()))).build()).queue();
+                event.getTextChannel().sendMessage(MessageHandler.getEmbed("moderation.verification.title", "moderation.verification.text", "", "normal", event)).queue();
             } else {
                 if (args[0].equalsIgnoreCase("setup")) {
                     if (args.length < 2) {
-                        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("verificationsetup")).setDescription(MessageHandler.get(event.getAuthor()).getString("verificationsetup2").replace("gb.", MessageHandler.getprefix(event.getGuild()))).build()).queue();
+                        event.getTextChannel().sendMessage(MessageHandler.getEmbed("moderation.verification.setup", "moderation.verification.setup2", "", "normal", event)).queue();
                     } else {
                         if (MySQL.get("server", "id", event.getGuild().getId(), "verification").equals("none")) {
                             if (event.getTextChannel().getMessageById(args[1]) != null) {
@@ -35,16 +35,17 @@ public class CommandVerification implements Command {
                                     MySQL.update("server", "verificationrole", event.getGuild().getRoleById(args[2]).getId(), "id", event.getGuild().getId());
                                     event.getTextChannel().getMessageById(args[1]).complete().addReaction("✅").queue();
                                     event.getTextChannel().getMessageById(args[1]).complete().addReaction("❌").queue();
-                                    event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Sucess").setDescription("Set the verification: \nRole: " + event.getGuild().getRoleById(args[2]).getName() + "\nMessage: " + event.getTextChannel().getMessageById(args[1]).complete().getContentRaw()).setColor(Color.green).build()).queue();
+                                    String zusatz = event.getGuild().getRoleById(args[2]).getName()+" - "+event.getTextChannel().getMessageById(args[1]).complete().getContentRaw();
+                                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "moderation.verification.set", zusatz, "sucess", event)).queue();
                                 }
                             }
                         } else
-                            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("VerificationMessage already exist").setDescription("You can reset the Verification Message with ``gb.verfication reset``").build()).queue();
+                            event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "moderation.verification.alreadyexist", "", "error", event)).queue();
                     }
                 } else if (args[0].equalsIgnoreCase("reset")) {
                     MySQL.update("server", "verification", "none", "id", event.getGuild().getId());
                     MySQL.update("server", "verificationrole", "none", "id", event.getGuild().getId());
-                    event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Verification resetted").setDescription("Verfication Message sucessfully resetted").build()).queue();
+                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "moderation.verification.reset", "", "normal", event)).queue();
                 }
             }
         }

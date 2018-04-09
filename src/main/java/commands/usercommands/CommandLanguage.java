@@ -18,17 +18,14 @@ public class CommandLanguage implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length<1) {
             try {
-                event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("languagetitel"))
-                        .setDescription(MessageHandler.get(event.getAuthor()).getString("languagetext").replaceAll("gb.", MessageHandler.getprefix(event.getGuild()))).setColor(Color.CYAN).build()).queue();
+                event.getTextChannel().sendMessage(MessageHandler.getEmbed("usercommands.language.title", "usercommands.language.text","", "normal", event)).queue();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else if (args[0].equalsIgnoreCase("list")) {
             try {
-
                 String out=MySQL.getallstring("language", "name").replaceAll(" ", ", ");
-                event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("languagelisttext")+":\n"+out)
-                        .setTitle(MessageHandler.get(event.getAuthor()).getString("languagelisttitel")).build()).queue();
+                event.getTextChannel().sendMessage(MessageHandler.getEmbed("usercommands.language.list.title", "usercommands.language.list.description", out,"normal", event)).queue();
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -38,8 +35,7 @@ public class CommandLanguage implements Command {
 
                 if (MySQL.getallstring("language", "name").contains(args[0].toLowerCase())) {
                     MySQL.update("user", "language", args[0].toLowerCase(), "ID", event.getAuthor().getId());
-                    event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("languageedittext"))
-                            .setTitle(MessageHandler.get(event.getAuthor()).getString("languageedittitel")).setColor(Color.green).build()).queue();
+                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("usercommands.language.edit.title", "usercommands.language.edit.description","", "sucess", event)).queue();
                 }
             } catch (Exception e) {
                 e.printStackTrace();

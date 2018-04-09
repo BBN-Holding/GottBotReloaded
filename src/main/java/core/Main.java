@@ -2,21 +2,15 @@ package core;
 
 import commands.botowner.*;
 import commands.moderation.*;
-import commands.tools.CommandGitHub;
-import commands.tools.CommandPing;
-import commands.tools.CommandProfile;
-import commands.tools.CommandToken;
+import commands.tools.*;
 import commands.usercommands.*;
-import commands.usercommands.CommandHelp3;
-import commands.usercommands.CommandInfo;
+import commands.usercommands.CommandHelp;
+import commands.botowner.CommandInfo;
 import commands.usercommands.CommandPremium;
 import listener.*;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.bot.sharding.ShardManager;
-import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
-import net.dv8tion.jda.core.JDABuilder;
-import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.utils.SessionController;
 import org.apache.commons.net.ftp.FTPClient;
@@ -54,25 +48,22 @@ public class Main {
                 client.storeFile(filename, fis);
                 client.logout();
                 builder.addEventListeners(new BotList());
-                builder.setShardsTotal(4);
+                builder.setShardsTotal(2);
             } else {
                 builder.setShardsTotal(100);
                 logger.info("Dev Mode activated - Don't load Botlist listener - Don't upload the Log file");
+                builder.setAutoReconnect(true);
             }
             logger.info("read Token and logins");
             MySQL.connect();
-            builder.setToken(SECRETS.TOKEN)
-                    .setAutoReconnect(true)
-                    .setStatus(OnlineStatus.DO_NOT_DISTURB)
-                    .setGame(Game.playing("Testing........"));
+            builder.setToken(SECRETS.TOKEN);
             builder.addEventListeners(
                 new commandListener(),
                 new Guildjoin(),
                 new Message(),
                 new Memberjoin(),
                 new Reaction(),
-                new PrivateMessage(),
-                new LogListener()
+                new PrivateMessage()
              );
             logger.info("loaded all listeners");
             commandHandler.commands.put("language", new CommandLanguage());
@@ -99,22 +90,23 @@ public class Main {
             commandHandler.commands.put("say", new CommandSay());
             commandHandler.commands.put("blacklist", new CommandBlacklist());
             commandHandler.commands.put("guilds", new CommandGuilds());
-            commandHandler.commands.put("lvlmessage", new CommandLevelMessage());
+            commandHandler.commands.put("levelmessage", new CommandLevelMessage());
             commandHandler.commands.put("guild", new CommandGuild());
-            commandHandler.commands.put("help", new CommandHelp3());
+            commandHandler.commands.put("help", new CommandHelp());
             commandHandler.commands.put("info", new CommandInfo());
             commandHandler.commands.put("warn", new CommandWarn());
             commandHandler.commands.put("token", new CommandToken());
             commandHandler.commands.put("log", new CommandLog());
             commandHandler.commands.put("play", new CommandPlay());
             commandHandler.commands.put("dm", new CommandDM());
-            // commandHandler.commands.put("webhook", new CommandWebhook());
             commandHandler.commands.put("miner", new CommandMiner());
             commandHandler.commands.put("premium", new CommandPremium());
             commandHandler.commands.put("setpremium", new CommandSetPremium());
             commandHandler.commands.put("clear", new CommandClear());
             commandHandler.commands.put("s", new CommandShard());
             commandHandler.commands.put("shard", new CommandShard());
+            commandHandler.commands.put("uptime", new CommandUptime());
+            commandHandler.commands.put("role", new CommandRole());
             args = args2;
             logger.info("loaded all commands");
             logger.info("Starting the Bot...");

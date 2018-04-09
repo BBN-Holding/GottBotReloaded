@@ -24,16 +24,16 @@ public class commandListener extends ListenerAdapter {
                    if (event.getChannelType().equals(ChannelType.TEXT)) {
                        String PREFIX = MySQL.get("server", "ID", event.getGuild().getId(), "prefix");
                        if (event.getMessage().getContentRaw().replaceFirst("!", "").startsWith(event.getJDA().getSelfUser().getAsMention())) {
-                           beheaded = event.getMessage().getContentRaw().toLowerCase().replaceFirst("!", "").replace(event.getJDA().getSelfUser().getAsMention(), "");
-                           commandHandler.handleCommand(commandHandler.parser.parse(event.getMessage().getContentRaw().toLowerCase(), event));
+                           beheaded = event.getMessage().getContentRaw().replaceFirst("!", "").replace(event.getJDA().getSelfUser().getAsMention(), "");
+                           commandHandler.handleCommand(commandHandler.parser.parse(event.getMessage().getContentRaw(), event));
                            logger.info(event.getAuthor().getName() + " mit ID " + event.getAuthor().getId() + " auf " + event.getGuild().getName() + " hat den Command genutzt: " + event.getMessage().getContentRaw());
                            String Command = MySQL.get1("stats", "1", "command");
                            long jay = Long.parseLong(Command);
                            long juhu = jay + 1;
                            MySQL.update("stats", "command", String.valueOf(juhu), "command", String.valueOf(jay));
                        } else if (event.getMessage().getContentRaw().startsWith(PREFIX)) {
-                            beheaded = event.getMessage().getContentRaw().toLowerCase().replaceFirst(Pattern.quote(PREFIX), "");
-                            commandHandler.handleCommand(commandHandler.parser.parse(event.getMessage().getContentRaw().toLowerCase(), event));
+                            beheaded = event.getMessage().getContentRaw().replaceFirst(Pattern.quote(PREFIX), "");
+                            commandHandler.handleCommand(commandHandler.parser.parse(event.getMessage().getContentRaw(), event));
                             logger.info(event.getAuthor().getName() + " mit ID " + event.getAuthor().getId() + " auf " + event.getGuild().getName() + " hat den Command genutzt: " + event.getMessage().getContentRaw());
                             String Command = MySQL.get1("stats", "1", "command");
                             long jay = Long.parseLong(Command);
