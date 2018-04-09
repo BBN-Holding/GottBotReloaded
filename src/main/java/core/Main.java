@@ -52,8 +52,7 @@ public class Main {
             } else {
                 builder.setShardsTotal(1);
                 logger.info("Dev Mode activated - Don't load Botlist listener - Don't upload the Log file");
-                builder.setAutoReconnect(true)
-                        .setGame(Game.playing(jda.getUsers().get(4444) + " is a coooooollll boy"));
+                builder.setAutoReconnect(true);
             }
             logger.info("read Token and logins");
             MySQL.connect();
