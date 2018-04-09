@@ -1,6 +1,8 @@
 package commands.usercommands;
 
 import commands.Command;
+import core.Main;
+import core.MessageHandler;
 import core.MySQL;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
@@ -22,30 +24,30 @@ public class CommandPremium implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length!=1) {
             String status;
-            if (MySQL.get("user", "id", event.getAuthor().getId(), "premium").equals("none")) status="none";
+            if (MySQL.get("user", "id", event.getAuthor().getId(), "premium").equals("none")) status= MessageHandler.get(event.getAuthor()).getString("util.none");
             else {
                 Date date = new Date();
                 date.setTime(Long.parseLong(MySQL.get("user", "id", event.getAuthor().getId(), "premium")));
                 status= "until "+date.toGMTString();
             }
-            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Premium").setDescription("Your Premium status is: ``"+ status+"``").build()).queue();
+            event.getTextChannel().sendMessage(MessageHandler.getEmbed("usercommands.premium.status.title", "usercomamnds.premium.status.text", status,"normal", event)).queue();
         } else if (args[0].equalsIgnoreCase("buy")) {
-            if (MySQL.get("user", "id", event.getAuthor().getId(), "premium").equalsIgnoreCase("none")) {
-                long Date = TimeUnit.MILLISECONDS.toDays(new Date().getTime());
-                Date= Date+31;
-                Date = TimeUnit.DAYS.toMillis(Date);
-                if (Long.parseLong(MySQL.get("user", "id", event.getAuthor().getId(), "hashes"))>=750000) {
-                    MySQL.update("user", "premium", String.valueOf(Date), "id", event.getAuthor().getId());
-                    MySQL.update("user", "hashes", String.valueOf(Long.parseLong(MySQL.get("user", "id", event.getAuthor().getId(), "hashes"))-750000), "id", event.getAuthor().getId());
-                    event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Premium buyed").setDescription("You have buy Premium").build()).queue();
-                    Guild bbn = event.getJDA().getGuildById(DATA.BBNS);
-                    try {
+            Guild bbn = Main.shardManager.getGuildById(DATA.BBNS);
+            if (event.getGuild().getId().equals(bbn.getId())) {
+                if (MySQL.get("user", "id", event.getAuthor().getId(), "premium").equalsIgnoreCase("none")) {
+                    long Date = TimeUnit.MILLISECONDS.toDays(new Date().getTime());
+                    Date = Date + 31;
+                    Date = TimeUnit.DAYS.toMillis(Date);
+                    if (Long.parseLong(MySQL.get("user", "id", event.getAuthor().getId(), "hashes")) >= 750000) {
+                        MySQL.update("user", "premium", String.valueOf(Date), "id", event.getAuthor().getId());
+                        MySQL.update("user", "hashes", String.valueOf(Long.parseLong(MySQL.get("user", "id", event.getAuthor().getId(), "hashes")) - 750000), "id", event.getAuthor().getId());
                         bbn.getController().addSingleRoleToMember(bbn.getMember(event.getAuthor()), bbn.getRoleById(408660274103451649L)).queue();
-                    } catch (IllegalArgumentException e) {
-                        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("You must be on the official BigBotNetwork Server https://disco.gg/bbn").build()).queue();
-                    }
-                } else event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Mine!").setDescription("You don't have enough Hashes... Mine! https://miner.bigbotnetwork.de").build()).queue();
-            } else event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("You already have Premium").setColor(Color.RED).build()).queue();
+                        event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "usercomamnds.premium.buyed", "", "sucess", event)).queue();
+                    } else
+                        event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "util.mine", "https://miner.bigbotnetwork.de/", "error", event)).queue();
+                } else
+                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "usercommands.premium.alreadyhas", "", "error", event)).queue();
+            } else event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "util.bbnguild", "https://disco.gg/bbn", "error", event)).queue();
         }
     }
 

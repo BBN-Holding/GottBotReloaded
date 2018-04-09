@@ -12,6 +12,7 @@ import stuff.SECRETS;
 
 import java.awt.*;
 import java.time.format.DateTimeFormatter;
+import java.util.ResourceBundle;
 
 import static core.JSONhandler.readJsonFromUrl;
 
@@ -36,13 +37,14 @@ public class CommandProfile implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         try {
+            ResourceBundle msg = MessageHandler.get(event.getAuthor());
             Member user;
             if (event.getMessage().getMentionedMembers().size() == 1) {
                 user = event.getMessage().getMentionedMembers().get(0);
             } else user = event.getMember();
-            if (user.getGame() == null) Game = MessageHandler.get(event.getAuthor()).getString("profilegame");
+            if (user.getGame() == null) Game = msg.getString("tools.profile.nogame");
             else Game = "" + user.getGame().getName();
-            if (user.getNickname() == null) Nick = MessageHandler.get(event.getAuthor()).getString("profilenick");
+            if (user.getNickname() == null) Nick = msg.getString("tools.profile.nonick");
             else Nick = user.getNickname();
             int i = 0;
             String Rollen = "";
@@ -114,21 +116,22 @@ public class CommandProfile implements Command {
                         event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_end_full", true).get(0).getAsMention();
             }
             String Github = MySQL.get("user", "ID", user.getUser().getId(), "github");
-            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("profiletitel"))
-                    .addField("Name", user.getUser().getName(), false)
-                    .addField("Nickname", Nick, false)
-                    .addField("Game", Game, false)
-                    .addField("Roles", Rollen, false)
-                    .addField("Joined", user.getJoinDate().format(DateTimeFormatter.ofPattern("dd.MM.yy, HH:mm:ss")), false)
-                    .addField("Created", event.getMessage().getAuthor().getCreationTime().format(DateTimeFormatter.ofPattern("dd.MM.yy, HH:mm:ss")), false)
-                    .addField("Status", user.getOnlineStatus().toString(), false)
-                    .addField("GitHub", Github, false)
-                    .addField("Level", Level, false)
-                    .addField("XP", Punkte, false)
-                    .addField("Levelprogress", Progress, false)
-                    .addField("Hashes mined", String.valueOf(mined), false)
-                    .addField("Withdrawn", withdrawn, false)
-                    .addField("Hashes", hashes, false)
+            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("tools.profile.title"))
+                    .addField(msg.getString("tools.profile.1"), user.getUser().getName(), false)
+                    .addField(msg.getString("tools.profile.2"), Nick, false)
+                    .addField(msg.getString("tools.profile.3"), Game, false)
+                    .addField(msg.getString("tools.profile.4"), Rollen, false)
+                    .addField(msg.getString("tools.profile.5"), user.getJoinDate().format(DateTimeFormatter.ofPattern("dd.MM.yy, HH:mm:ss")), false)
+                    .addField(msg.getString("tools.profile.6"), event.getMessage().getAuthor().getCreationTime().format(DateTimeFormatter.ofPattern("dd.MM.yy, HH:mm:ss")), false)
+                    .addField(msg.getString("tools.profile.7"), user.getOnlineStatus().toString(), false)
+                    .addField(msg.getString("tools.profile.8"), Github, false)
+                    .addField(msg.getString("tools.profile.9"), Level, false)
+                    .addField(msg.getString("tools.profile.10"), Punkte, false)
+                    .addField(msg.getString("tools.profile.11"), Progress, false)
+                    .addField(msg.getString("tools.profile.12"), String.valueOf(mined), false)
+                    .addField(msg.getString("tools.profile.13"), withdrawn, false)
+                    .addField(msg.getString("tools.profile.14"), String.valueOf(mined-Long.parseLong(withdrawn)), false)
+                    .addField(msg.getString("tools.profile.15"), hashes, false)
                     .setColor(Color.CYAN).setThumbnail(user.getUser().getAvatarUrl()).build()).queue();
         } catch (Exception e) {
             e.printStackTrace();

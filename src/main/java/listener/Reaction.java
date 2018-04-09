@@ -1,6 +1,7 @@
 package listener;
 
 import core.MenuHandler;
+import core.MessageHandler;
 import core.MySQL;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Emote;
@@ -46,13 +47,13 @@ public class Reaction extends ListenerAdapter {
                 if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_HISTORY)) {
                     if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_MANAGE)) {
                         if (event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().size() == 1)
-                            if (event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0).getTitle().contains("HelpMenu")) {
+                            if (event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0).getTitle().contains(MessageHandler.get(event.getUser()).getString("Helpmenu.helpmenu"))) {
                                 try {
                                     if (MySQL.get("helpmenu", "message", event.getMessageId(), "id").equals(event.getUser().getId())) {
                                         Message message = event.getChannel().getMessageById(event.getMessageId()).complete();
                                         message.clearReactions().queue();
-                                        message.editMessage(MenuHandler.getMessage(event.getReactionEmote().getName(), event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0))).queue();
-                                        List<String> list = MenuHandler.getemote(event.getReactionEmote().getName(), event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0));
+                                        message.editMessage(MenuHandler.getMessage(event.getReactionEmote().getName(), event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0), event.getUser())).queue();
+                                        List<String> list = MenuHandler.getemote(event.getReactionEmote().getName(), event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0), event.getUser());
                                         while (list.size() > 0) {
                                             message.addReaction(list.get(0)).queue();
                                             list.remove(0);

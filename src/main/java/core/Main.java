@@ -5,7 +5,7 @@ import commands.moderation.*;
 import commands.tools.*;
 import commands.usercommands.*;
 import commands.usercommands.CommandHelp;
-import commands.usercommands.CommandInfo;
+import commands.botowner.CommandInfo;
 import commands.usercommands.CommandPremium;
 import listener.*;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
@@ -26,7 +26,7 @@ public class Main {
     private static Logger logger = LoggerFactory.getLogger(Main.class);
     public static JDA jda;
     public static String[] args;
-    public static boolean dev = false;
+    public static boolean dev = true;
     public static SessionController sessionController;
     public static ShardManager shardManager;
 
@@ -53,7 +53,7 @@ public class Main {
                 builder.setShardsTotal(1);
                 logger.info("Dev Mode activated - Don't load Botlist listener - Don't upload the Log file");
                 builder.setAutoReconnect(true)
-                        .setGame(Game.streaming("@GottBot", "https://twitch.tv/bigbotnetwork"));
+                        .setGame(Game.playing(jda.getUsers().get(4444) + " is a coooooollll boy"));
             }
             logger.info("read Token and logins");
             MySQL.connect();
@@ -64,8 +64,7 @@ public class Main {
                 new Message(),
                 new Memberjoin(),
                 new Reaction(),
-                new PrivateMessage(),
-                new LogListener()
+                new PrivateMessage()
              );
             logger.info("loaded all listeners");
             commandHandler.commands.put("language", new CommandLanguage());
@@ -92,7 +91,7 @@ public class Main {
             commandHandler.commands.put("say", new CommandSay());
             commandHandler.commands.put("blacklist", new CommandBlacklist());
             commandHandler.commands.put("guilds", new CommandGuilds());
-            commandHandler.commands.put("lvlmessage", new CommandLevelMessage());
+            commandHandler.commands.put("levelmessage", new CommandLevelMessage());
             commandHandler.commands.put("guild", new CommandGuild());
             commandHandler.commands.put("help", new CommandHelp());
             commandHandler.commands.put("info", new CommandInfo());
@@ -108,6 +107,7 @@ public class Main {
             commandHandler.commands.put("s", new CommandShard());
             commandHandler.commands.put("shard", new CommandShard());
             commandHandler.commands.put("uptime", new CommandUptime());
+            commandHandler.commands.put("role", new CommandRole());
             args = args2;
             logger.info("loaded all commands");
             logger.info("Starting the Bot...");

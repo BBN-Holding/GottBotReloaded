@@ -4,7 +4,6 @@ import commands.Command;
 import commands.botowner.Owner;
 import core.MessageHandler;
 import core.MySQL;
-import listener.Message;
 import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;

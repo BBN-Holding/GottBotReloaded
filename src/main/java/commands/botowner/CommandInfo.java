@@ -1,4 +1,4 @@
-package commands.usercommands;
+package commands.botowner;
 
 import commands.Command;
 import commands.botowner.Owner;

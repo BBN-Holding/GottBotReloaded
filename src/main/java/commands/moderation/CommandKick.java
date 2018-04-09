@@ -20,30 +20,25 @@ public class CommandKick implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-
         if (event.getAuthor().getId() == event.getGuild().getOwner().getUser().getId() || event.getMember().hasPermission(Permission.KICK_MEMBERS) || Owner.get(event.getAuthor())) {
             Message msg = event.getMessage();
             if (msg.getMentionedUsers().isEmpty()) {
-                event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.getprefix(event.getGuild()) + "kick <@User>")
-                        .setTitle(MessageHandler.get(event.getAuthor()).getString("kicktitel1")).setColor(Color.YELLOW).build()).queue();
-            }
-            Member User = msg.getGuild().getMember(msg.getMentionedUsers().get(0));
-            if (!msg.getGuild().getSelfMember().canInteract(User)) {
-                event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("kickdescription1"))
-                        .setTitle(MessageHandler.get(event.getAuthor()).getString("kicktitel2")).setColor(Color.YELLOW).build()).queue();
+                event.getTextChannel().sendMessage(MessageHandler.getEmbed("moderation.kick.title", "moderation.kick.text", "", "normal", event)).queue();
             } else {
-                if (!User.getUser().isBot()) {
-                    PrivateChannel channel = User.getUser().openPrivateChannel().complete();
-                    channel.sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("kickdescription2") + " " + event.getMessage().getGuild().getName())
-                            .setTitle(MessageHandler.get(event.getAuthor()).getString("kicktitel3")).setColor(Color.RED).build()).queue();
+                Member User = msg.getGuild().getMember(msg.getMentionedUsers().get(0));
+                if (!msg.getGuild().getSelfMember().canInteract(User)) {
+                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "util.nopermissionbot", "", "error", event)).queue();
+                } else {
+                    if (!User.getUser().isBot()) {
+                        PrivateChannel channel = User.getUser().openPrivateChannel().complete();
+                        channel.sendMessage(MessageHandler.getEmbed("moderation.kick.kick", "moderation.kick.user", event.getGuild().getName(), "sucess", event)).queue();
+                    }
+                    msg.getGuild().getController().kick(User).queue();
+                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("moderation.kick.kick", "moderation.kick.channel", User.getUser().getName(), "sucess", event)).queue();
                 }
-                msg.getGuild().getController().kick(User).queue();
-                event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(User.getUser().getAsMention() + " " + MessageHandler.get(event.getAuthor()).getString("kickdescription3"))
-                        .setTitle(MessageHandler.get(event.getAuthor()).getString("kicktitel4")).setColor(Color.GREEN).build()).queue();
             }
         } else {
-
-            event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(MessageHandler.get(event.getAuthor()).getString("kickdescription4")).setTitle(MessageHandler.get(event.getAuthor()).getString("kicktitel5")).build()).queue();
+            event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "util.nopermissionuser", "", "error", event)).queue();
         }
     }
 
