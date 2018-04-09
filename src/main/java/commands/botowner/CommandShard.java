@@ -28,7 +28,7 @@ public class CommandShard implements Command {
                     case "info":
                     case "i":
                         if (args.length>1) {
-                            if (Main.shardManager.getShardsTotal()>=Integer.parseInt(args[1])) {
+                            if (Main.shardManager.getShardsTotal()>=Integer.parseInt(args[2])) {
                                 JDA shard = Main.shardManager.getShardById(args[2]);
                                 if (args[1].equalsIgnoreCase("o")||args[1].equalsIgnoreCase("overview")) {
                                     event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Shardinfo - Shard "+args[1]+" - Overview")
@@ -41,7 +41,7 @@ public class CommandShard implements Command {
                                     int i=0;
                                     String Guilds="";
                                     while (shard.getGuilds().size()>i) {
-                                        Guilds+=shard.getGuilds().get(i).getName()+"("+shard.getGuilds().get(i).getId()+")";
+                                        Guilds+=shard.getGuilds().get(i).getName()+"("+shard.getGuilds().get(i).getId()+")\n";
                                         i++;
                                     }
                                     event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Shardinfo - Shard "+args[2]+" - "+args[1]).setDescription("Guilds Total: "+shard.getGuilds().size()+"\n"+Guilds).build()).queue();

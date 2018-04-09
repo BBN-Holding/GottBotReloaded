@@ -44,10 +44,10 @@ public class CommandUpvoted implements Command {
                         MySQL.insert("premium", "id", u.getId());
 
                     } else
-                        event.getTextChannel().sendMessage("You haven't voted today! You can vote now on https://discordbots.org/bot/407189087649398795/vote!").queue();
+                        event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "tools.upvoted", "https://discordbots.org/bot/407189087649398795/vote", "error", event)).queue();
                 } else {
 
-                    event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("⚠ Error ⚠").setDescription(MessageHandler.get(event.getAuthor()).getString("wrong-server")).setColor(Color.RED).build()).queue();
+                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "util.bbnguild", "https://disco.gg/bbn", "error", event)).queue();
                 }
     }
 

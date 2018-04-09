@@ -19,6 +19,7 @@ public class Memberjoin extends ListenerAdapter {
         }
         if (!MySQL.get("user", "id", event.getUser().getId(), "premium").equals("none")) {
             Guild bbn = Main.shardManager.getGuildById(DATA.BBNS);
+            if (event.getGuild().getId().equals(bbn.getId()))
             bbn.getController().addSingleRoleToMember(bbn.getMember(event.getUser()), bbn.getRoleById(408660274103451649L)).queue();
         }
     }

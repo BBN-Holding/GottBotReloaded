@@ -14,10 +14,10 @@ public class CommandSay implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length<3) {
-            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Say - Help").setDescription(MessageHandler.get(event.getAuthor()).getString("saytitel")).build()).queue();
+            event.getTextChannel().sendMessage(MessageHandler.getEmbed("usercommands.say.title", "usercommands.say.text", "", "normal", event)).queue();
         } else if (event.getMessage().getMentionedChannels().size()==1){
-            String Message = event.getMessage().getContentRaw().replaceFirst(MessageHandler.getprefix(event.getGuild())+"say "+args[0]+" "+args[1], "");
-            System.out.println(Message);
+            String Message = event.getMessage().getContentRaw().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("say", "")
+                    .replaceFirst(event.getMessage().getMentionedChannels().get(0).getAsMention(),"").replaceFirst(args[1], "");
             event.getMessage().getMentionedChannels().get(0).sendMessage(new EmbedBuilder().setTitle(args[1]).setDescription(Message).build()).queue();
         }
 

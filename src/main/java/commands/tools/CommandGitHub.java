@@ -21,7 +21,7 @@ public class CommandGitHub implements Command{
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length!=1) {
-            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Github - Usage").setDescription("gb.github <list | <Name>>\nträgt dein Namen in dein Profil ein").build()).queue();
+            event.getTextChannel().sendMessage(MessageHandler.getEmbed("tools.github.title", "tools.github.text", "", "normal", event)).queue();
         } else {
             if (args[0].equals("list")) {
 
@@ -32,8 +32,7 @@ public class CommandGitHub implements Command{
 
             } else {
                 MySQL.update("user", "github", args[0], "id", event.getAuthor().getId());
-                event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("githubtitel").replaceAll("gb.", MessageHandler.getprefix(event.getGuild())))
-                        .setDescription(MessageHandler.get(event.getAuthor()).getString("githubdescription")).build()).queue();
+                event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "tools.github.set", "", "sucess", event)).queue();
             }
         }
 
