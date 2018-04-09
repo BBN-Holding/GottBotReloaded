@@ -50,7 +50,7 @@ public class Main {
                 builder.addEventListeners(new BotList());
                 builder.setShardsTotal(2);
             } else {
-                builder.setShardsTotal(1);
+                builder.setShardsTotal(100);
                 logger.info("Dev Mode activated - Don't load Botlist listener - Don't upload the Log file");
                 builder.setAutoReconnect(true);
             }

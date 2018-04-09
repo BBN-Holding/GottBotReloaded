@@ -9,6 +9,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.json.JSONObject;
 import stuff.DATA;
 import stuff.SECRETS;
+import util.Color;
 
 import java.awt.*;
 import java.time.format.DateTimeFormatter;
@@ -133,6 +134,7 @@ public class CommandProfile implements Command {
                     .addField(msg.getString("tools.profile.14"), String.valueOf(mined-Long.parseLong(withdrawn)), false)
                     .addField(msg.getString("tools.profile.15"), hashes, false)
                     .setColor(Color.CYAN).setThumbnail(user.getUser().getAvatarUrl()).build()).queue();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
