@@ -22,7 +22,7 @@ public class MessageHandler {
                 break;
 
             case "error":
-                result = new EmbedBuilder().setColor(Color.RED).setTitle(getTitle).setDescription(getMsg.replaceAll("%prefix%", getprefix(event.getGuild())).replace("%extra%", extra)).build();
+                result = new EmbedBuilder().setColor(Color.RED).setTitle(getTitle.replaceAll("%prefix%", getprefix(event.getGuild())).replace("%extra%", extra)).setDescription(getMsg.replaceAll("%prefix%", getprefix(event.getGuild())).replace("%extra%", extra)).build();
                 break;
 
             case "sucess":
