@@ -1,8 +1,8 @@
 package commands.botowner;
 
 import commands.Command;
+import core.MessageHandler;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import util.Embed;
 
 public class CommandLeave implements Command {
     @Override
@@ -16,7 +16,7 @@ public class CommandLeave implements Command {
 
             event.getJDA().getGuildById(args[0]).leave().queue();
 
-            event.getTextChannel().sendMessage(Embed.normal("Succesfully lefted", "Left the Server " + event.getJDA().getGuildById(args[0])).build()).queue();
+            event.getTextChannel().sendMessage(MessageHandler.getEmbed("botowner.leave.title", "botowner.leave.text" , String.valueOf(event.getJDA().getGuildById(args[0])), "normal", event)).queue();
 
         }
     }

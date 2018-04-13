@@ -5,7 +5,6 @@ import core.MessageHandler;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.PrivateChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import util.Embed;
 
 public class CommandDM implements Command {
     @Override
@@ -21,7 +20,7 @@ public class CommandDM implements Command {
 
             PrivateChannel channel = User.getUser().openPrivateChannel().complete();
             channel.sendMessage(Content).queue();
-            event.getTextChannel().sendMessage(Embed.success(MessageHandler.get(event.getAuthor()).getString("dmtitel"), MessageHandler.get(event.getAuthor()).getString("dmdescription")).build()).queue();
+            event.getTextChannel().sendMessage(MessageHandler.getEmbed("botowner.dm.text", "botowner.dm.title", "", "normal", event)).queue();
         }
     }
 

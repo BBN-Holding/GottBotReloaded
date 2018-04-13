@@ -1,12 +1,9 @@
 package commands.botowner;
 
 import commands.Command;
-import core.MessageHandler;
 import core.MySQL;
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import util.Embed;
 
 public class CommandGiveHashes implements Command {
     @Override

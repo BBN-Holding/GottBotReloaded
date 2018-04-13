@@ -4,7 +4,6 @@ import commands.Command;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import util.Embed;
 
 public class CommandGuilds implements Command {
     @Override

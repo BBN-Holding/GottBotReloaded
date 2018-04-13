@@ -152,7 +152,7 @@ public class BotList extends ListenerAdapter {
 
         String botsfordiscord_url = "https://botsfordiscord.com/api/v1/bots/407189087649398795";
 
-        data.put("server_count", Main.shardManager.getGuilds().size());
+        data.put("server_count", "91");
 
 
         Request botsfordiscord = new Request.Builder()
@@ -187,28 +187,6 @@ public class BotList extends ListenerAdapter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-        String discordbots_url = "https://bots.discord.pw/api/bots/407189087649398795/stats";
-
-        data.put("shard_id", event.getJDA().getShardInfo().getShardId());
-        data.put("shard_count", Main.shardManager.getShardsTotal());
-        data.put("server_count", Main.shardManager.getGuilds().size());
-
-
-        Request discordbots = new Request.Builder()
-                .url(discordbots_url)
-                .post(body)
-                .addHeader("Authorization", SECRETS.discordbots)
-                .build();
-
-        try {
-            new OkHttpClient().newCall(discordbots).execute().close();
-            System.out.println("Successfully posted count for discord.pw!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
 
         String discordbotworld_url = "https://discordbot.world/api/bot/407189087649398795/stats";
 

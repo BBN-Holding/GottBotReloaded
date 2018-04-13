@@ -24,12 +24,6 @@ public class Message extends ListenerAdapter  {
                     logger.info("neuer User in database Name: " + event.getAuthor().getName() + " ID: " + event.getAuthor().getId() + " von " + event.getGuild().getName());
                 }
             }
-            //registeruser premium
-            if (!event.getAuthor().isBot()) {
-                if (MySQL.get("premium", "id", event.getAuthor().getId(), "id") == null) {
-                    MySQL.insert("premium", "id", event.getAuthor().getId() + "");
-                }
-            }
             // Mention
             if (event.getMessage().getContentRaw().replace("!", "").equals(event.getJDA().getSelfUser().getAsMention())) {
                 event.getChannel().sendMessage(MessageHandler.getEmbed("listener.Mention1", "listener.Mention2", "", "sucess", event)).queue();

@@ -1,15 +1,12 @@
 package commands.botowner;
 
 import commands.Command;
+import core.MessageHandler;
 import core.MySQL;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import util.Embed;
 
-import java.awt.*;
 import java.util.List;
 
 public class CommandBlacklist implements Command {
@@ -22,7 +19,7 @@ public class CommandBlacklist implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         if (Owner.get(event.getAuthor())) {
             if (args.length < 1) {
-                event.getTextChannel().sendMessage(Embed.error("Blacklist - Help ", "Do gb.blacklist add @User or gb.blacklist remove @User. DO IT JUST DO IT!").build()).queue();
+                event.getTextChannel().sendMessage(MessageHandler.getEmbed("botowner.blacklist.title2", "botowner.blacklist.text2", "", "error", event)).queue();
             } else {
                 switch (args[0].toLowerCase()) {
                     case "add":
@@ -44,7 +41,7 @@ public class CommandBlacklist implements Command {
                             out += event.getJDA().getUserById(list.get(i)).getName()+", ";
                             i++;
                         }
-                        event.getTextChannel().sendMessage(Embed.normal("Blacklisted Users", out).build()).queue();
+                        event.getTextChannel().sendMessage(MessageHandler.getEmbed("botowner.blacklist.title", "botowner.blacklist.text", out, "normal", event)).queue();
                         break;
                 }
             }
