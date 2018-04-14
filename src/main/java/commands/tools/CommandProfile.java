@@ -17,6 +17,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import static core.JSONhandler.readJsonFromUrl;
+import static javax.print.attribute.standard.Chromaticity.COLOR;
 
 public class CommandProfile implements Command {
     String Nick;
