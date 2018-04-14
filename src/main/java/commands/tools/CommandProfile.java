@@ -133,7 +133,7 @@ public class CommandProfile implements Command {
                     .addField(msg.getString("tools.profile.13"), withdrawn, false)
                     .addField(msg.getString("tools.profile.14"), String.valueOf(mined-Long.parseLong(withdrawn)), false)
                     .addField(msg.getString("tools.profile.15"), hashes, false)
-                    .setColor(Color.CYAN).setThumbnail(user.getUser().getAvatarUrl()).build()).queue();
+                    .setColor(java.awt.Color.CYAN).setThumbnail(user.getUser().getAvatarUrl()).build()).queue();
 
         } catch (Exception e) {
             e.printStackTrace();
