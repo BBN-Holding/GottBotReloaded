@@ -13,6 +13,8 @@ public class CommandLeave implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         if (event.getGuild().getAudioManager().isConnected() || event.getGuild().getAudioManager().isAttemptingToConnect()) {
             event.getGuild().getAudioManager().closeAudioConnection();
+        } else {
+            event.getTextChannel().sendMessage("I cant leave when i am not in a voice channel").queue();
         }
     }
 

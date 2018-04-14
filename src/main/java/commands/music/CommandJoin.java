@@ -16,7 +16,11 @@ public class CommandJoin implements Command {
             if (!event.getGuild().getAudioManager().isConnected() && !event.getGuild().getAudioManager().isAttemptingToConnect()) {
                 if (event.getGuild().getAudioManager().getGuild().getVoiceChannels().contains(event.getMember().getVoiceState().getChannel())) {
                     event.getGuild().getAudioManager().openAudioConnection(event.getMember().getVoiceState().getChannel());
+                } else {
+                    event.getTextChannel().sendMessage("unknown error (eigentlich nicht)").queue();
                 }
+            } else {
+                event.getTextChannel().sendMessage("I am already connected!").queue();
             }
         } catch (PermissionException e) {
 
