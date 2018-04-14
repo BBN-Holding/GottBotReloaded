@@ -47,9 +47,9 @@ public class Reaction extends ListenerAdapter {
                 if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_HISTORY)) {
                     if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_MANAGE)) {
                         if (event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().size() == 1)
-                            if (event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0).getTitle().contains(MessageHandler.get(event.getUser()).getString("Helpmenu.helpmenu"))) {
-                                try {
-                                    if (MySQL.get("helpmenu", "message", event.getMessageId(), "id").equals(event.getUser().getId())) {
+                            if (MySQL.get("helpmenu", "message", event.getMessageId(), "id").equals(event.getUser().getId())) {
+                                if (event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0).getTitle().contains(MessageHandler.get(event.getUser()).getString("Helpmenu.helpmenu"))) {
+                                    try {
                                         Message message = event.getChannel().getMessageById(event.getMessageId()).complete();
                                         message.clearReactions().queue();
                                         message.editMessage(MenuHandler.getMessage(event.getReactionEmote().getName(), event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0), event.getUser())).queue();
@@ -58,9 +58,9 @@ public class Reaction extends ListenerAdapter {
                                             message.addReaction(list.get(0)).queue();
                                             list.remove(0);
                                         }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
                                     }
-                                } catch (Exception e) {
-                                    e.printStackTrace();
                                 }
                             }
                     }
