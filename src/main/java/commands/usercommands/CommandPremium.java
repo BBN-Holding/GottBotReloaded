@@ -24,7 +24,7 @@ public class CommandPremium implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length!=1) {
             String status;
-            if (MySQL.get("user", "id", event.getAuthor().getId(), "premium").equals("none")) status= MessageHandler.get(event.getAuthor()).getString("util.none");
+            if (MySQL.get("user", "id", event.getAuthor().getId(), "premium").equals("none")) status= MessageHandler.get("util.none",event.getAuthor(), event.getGuild());
             else {
                 Date date = new Date();
                 date.setTime(Long.parseLong(MySQL.get("user", "id", event.getAuthor().getId(), "premium")));

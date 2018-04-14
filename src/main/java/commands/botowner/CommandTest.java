@@ -14,13 +14,9 @@ public class CommandTest implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
+        System.out.println("lololololololol");
         if (Owner.get(event.getAuthor())) {
            event.getTextChannel().sendMessage(MessageHandler.getEmbed("botowner.test.title", "botowner.test.text", "", "normal", event)).queue();
-
-
-
-
-
         } else {
             event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "util.nopermissionuser", "", "error", event)).queue();
         }
