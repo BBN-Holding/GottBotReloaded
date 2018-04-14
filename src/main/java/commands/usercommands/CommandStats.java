@@ -6,6 +6,8 @@ import core.MessageHandler;
 import core.MySQL;
 import core.commandHandler;
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.entities.Guild;
+import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 import java.util.ResourceBundle;
@@ -24,16 +26,17 @@ public class CommandStats implements Command {
             User=User+event.getJDA().getGuilds().get(i).getMembers().size();
             i++;
         }
-        ResourceBundle msg = MessageHandler.get(event.getAuthor());
+        net.dv8tion.jda.core.entities.User user = event.getAuthor();
+        Guild guild = event.getGuild();
         event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Stats")
-                .addField(msg.getString("usercommands.stats.stats1"), MySQL.get1("stats",  "1", "command"),true)
-                .addField(msg.getString("usercommands.stats.stats2"), MySQL.get1("stats", "1", "message"),true)
-                .addField(msg.getString("usercommands.stats.stats3"), String.valueOf(Main.shardManager.getGuilds().size()), true)
-                .addField(msg.getString("usercommands.stats.stats4"),String.valueOf(User), true)
-                .addField(msg.getString("usercommands.stats.stats5"), String.valueOf(event.getJDA().getRegisteredListeners().size()), true)
-                .addField(msg.getString("usercommands.stats.stats6"), String.valueOf(commandHandler.commands.size()), true)
-                .addField(msg.getString("usercommands.stats.stats7"), String.valueOf(MySQL.getallwithoutwhere("user", "id").size()), true)
-                .addField(msg.getString("usercommands.stats.stats8"), String.valueOf(MySQL.getallwithoutwhere("server", "id").size()), true)
+                .addField(MessageHandler.get("usercommands.stats.stats1",user,guild), MySQL.get1("stats",  "1", "command"),true)
+                .addField(MessageHandler.get("usercommands.stats.stats2",user,guild), MySQL.get1("stats", "1", "message"),true)
+                .addField(MessageHandler.get("usercommands.stats.stats3",user,guild), String.valueOf(Main.shardManager.getGuilds().size()), true)
+                .addField(MessageHandler.get("usercommands.stats.stats4",user,guild),String.valueOf(User), true)
+                .addField(MessageHandler.get("usercommands.stats.stats5",user,guild), String.valueOf(event.getJDA().getRegisteredListeners().size()), true)
+                .addField(MessageHandler.get("usercommands.stats.stats6",user,guild), String.valueOf(commandHandler.commands.size()), true)
+                .addField(MessageHandler.get("usercommands.stats.stats7",user,guild), String.valueOf(MySQL.getallwithoutwhere("user", "id").size()), true)
+                .addField(MessageHandler.get("usercommands.stats.stats8",user,guild), String.valueOf(MySQL.getallwithoutwhere("server", "id").size()), true)
                 .setThumbnail(event.getJDA().getSelfUser().getEffectiveAvatarUrl())
                 .build()
         ).queue();

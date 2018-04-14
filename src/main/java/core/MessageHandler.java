@@ -11,11 +11,10 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class MessageHandler {
-    public static ResourceBundle messagebundle;
     public static MessageEmbed getEmbed(String title, String msg, String extra, String type, MessageReceivedEvent event) {
         MessageEmbed result = new EmbedBuilder().setTitle("This is a error :O").setDescription("Please use ``%prefix%bug`` Thanks <3".replace("%prefix%", getprefix(event.getGuild()))).setColor(Color.RED).build();
-        String getTitle = get(event.getAuthor()).getString(title);
-        String getMsg = get(event.getAuthor()).getString(msg);
+        String getTitle = get(title, event.getAuthor(), event.getGuild());
+        String getMsg = get(msg, event.getAuthor(), event.getGuild());
         switch (type.toLowerCase()) {
             case "normal":
                 result = new EmbedBuilder().setColor(Color.CYAN).setTitle(getTitle).setDescription(getMsg.replaceAll("%prefix%", getprefix(event.getGuild())).replace("%extra%", extra)).build();
@@ -32,15 +31,15 @@ public class MessageHandler {
         return result;
 
     }
-    public static ResourceBundle get(User user){
+    public static String get(String string, User user, Guild guild){
         try {
             String language = MySQL.get("user", "ID", user.getId()+"", "language");
             Locale locale = new Locale(language);
-            messagebundle = ResourceBundle.getBundle("MessagesBundle", locale);
+            return ResourceBundle.getBundle("MessagesBundle", locale).getString(string).replaceAll("%prefix%", getprefix(guild));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return messagebundle;
+        return "Error";
     }
     public static String getprefix(Guild guild) {
         String Prefix = MySQL.get("server", "ID", guild.getId(), "prefix");
