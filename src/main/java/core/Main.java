@@ -2,12 +2,14 @@ package core;
 
 import commands.botowner.*;
 import commands.moderation.*;
+import commands.music.CommandJoin;
 import commands.tools.*;
 import commands.usercommands.*;
 import commands.usercommands.CommandHelp;
 import commands.botowner.CommandInfo;
 import commands.usercommands.CommandPremium;
 import listener.*;
+import music.AudioCore;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.bot.sharding.ShardManager;
 import net.dv8tion.jda.core.JDA;
@@ -29,6 +31,7 @@ public class Main {
     public static boolean dev = true;
     public static SessionController sessionController;
     public static ShardManager shardManager;
+    public static AudioCore audioCore;
 
     public static void main(String[] args2) {
         try {
@@ -84,7 +87,7 @@ public class Main {
             commandHandler.commands.put("setxp", new CommandSetXP());
             commandHandler.commands.put("clyde", new CommandClyde());
             commandHandler.commands.put("ping", new CommandPing());
-            commandHandler.commands.put("leave", new CommandLeave());
+            commandHandler.commands.put("guildleave", new CommandLeave());
             commandHandler.commands.put("stats", new CommandStats());
             commandHandler.commands.put("verification", new CommandVerification());
             commandHandler.commands.put("say", new CommandSay());
@@ -107,6 +110,9 @@ public class Main {
             commandHandler.commands.put("shard", new CommandShard());
             commandHandler.commands.put("uptime", new CommandUptime());
             commandHandler.commands.put("role", new CommandRole());
+            /*MUSIC*/
+            commandHandler.commands.put("join", new CommandJoin());
+            commandHandler.commands.put("leave", new commands.music.CommandLeave());
             args = args2;
             logger.info("loaded all commands");
             logger.info("Starting the Bot...");
