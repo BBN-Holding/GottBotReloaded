@@ -1,11 +1,8 @@
 package commands.botowner;
 
 import commands.Command;
-<<<<<<< HEAD
 import core.MessageHandler;
-=======
 import core.Main;
->>>>>>> 3c136e0338f156d8787b69dfb3a9ae18657881d5
 import core.MySQL;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.User;
