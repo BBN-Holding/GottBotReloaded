@@ -6,7 +6,7 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Guildjoin extends ListenerAdapter {
+public class Guildjoin extends ListenerAdapter  {
     private static Logger logger = LoggerFactory.getLogger(commandListener.class);
     public void onGuildJoin(GuildJoinEvent event) {
         try {

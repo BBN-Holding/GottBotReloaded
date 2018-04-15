@@ -1,7 +1,9 @@
 package listener;
 
 import core.MenuHandler;
+import core.MessageHandler;
 import core.MySQL;
+import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Emote;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.guild.react.GuildMessageReactionAddEvent;
@@ -19,37 +21,51 @@ public class Reaction extends ListenerAdapter {
     public void onGuildMessageReactionAdd(GuildMessageReactionAddEvent event) {
         // Verification
         if (!event.getUser().isBot()) {
-            if (!MySQL.get("server", "id", event.getGuild().getId(), "verification").equals("none")) {
-                String Message = MySQL.get("server", "id", event.getGuild().getId(), "verification");
-                if (event.getMessageId().equals(Message)) {
-                    if (event.getReaction().getReactionEmote().getName().equals("✅")) {
-                        event.getGuild().getController().addSingleRoleToMember(event.getMember(), event.getGuild().getRoleById(MySQL.get("server", "id", event.getGuild().getId(), "verificationrole"))).queue();
-                    } else if (event.getReaction().getReactionEmote().getName().equals("❌")) {
-                        if (event.getJDA().getRoles().get(0).canInteract(event.getMember().getRoles().get(0)))
-                            event.getGuild().getController().kick(event.getMember()).queue();
+            if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_WRITE)) {
+                if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_HISTORY)) {
+                    if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_MANAGE)) {
+                        if (event.getGuild().getSelfMember().hasPermission(Permission.MANAGE_ROLES)) {
+                        if (!MySQL.get("server", "id", event.getGuild().getId(), "verification").equals("none")) {
+                            String Message = MySQL.get("server", "id", event.getGuild().getId(), "verification");
+                            if (event.getMessageId().equals(Message)) {
+                                if (event.getReaction().getReactionEmote().getName().equals("✅")) {
+                                    event.getGuild().getController().addSingleRoleToMember(event.getMember(), event.getGuild().getRoleById(MySQL.get("server", "id", event.getGuild().getId(), "verificationrole"))).queue();
+                                } else if (event.getReaction().getReactionEmote().getName().equals("❌")) {
+                                    if (event.getJDA().getRoles().get(0).canInteract(event.getMember().getRoles().get(0)))
+                                        event.getGuild().getController().kick(event.getMember()).queue();
+                                }
+                            }
+                        }
+                        }
                     }
                 }
             }
         }
         // Help Menu
         if (!event.getUser().isBot()) {
-            if (event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().size() == 1)
-                if (event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0).getTitle().contains("HelpMenu")) {
-                    try {
-                        if (MySQL.get("helpmenu", "message", event.getMessageId(), "id").equals(event.getUser().getId())) {
-                            Message message = event.getChannel().getMessageById(event.getMessageId()).complete();
-                            message.clearReactions().queue();
-                            message.editMessage(MenuHandler.getMessage(event.getReactionEmote().getName(),event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0) )).queue();
-                            List<String> list = MenuHandler.getemote(event.getReactionEmote().getName(), event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0));
-                            while (list.size() > 0) {
-                                message.addReaction(list.get(0)).queue();
-                                list.remove(0);
+            if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_WRITE)) {
+                if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_HISTORY)) {
+                    if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_MANAGE)) {
+                        if (event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().size() == 1)
+                            if (MySQL.get("helpmenu", "message", event.getMessageId(), "id").equals(event.getUser().getId())) {
+                                if (event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0).getTitle().contains(MessageHandler.get("Helpmenu.helpmenu", event.getUser(),event.getGuild()))) {
+                                    try {
+                                        Message message = event.getChannel().getMessageById(event.getMessageId()).complete();
+                                        message.clearReactions().queue();
+                                        message.editMessage(MenuHandler.getMessage(event.getReactionEmote().getName(), event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0), event.getUser(), event.getGuild())).queue();
+                                        List<String> list = MenuHandler.getemote(event.getReactionEmote().getName(), event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0), event.getUser(), event.getGuild());
+                                        while (list.size() > 0) {
+                                            message.addReaction(list.get(0)).queue();
+                                            list.remove(0);
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
                             }
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
                     }
                 }
+            }
         }
     }
 }

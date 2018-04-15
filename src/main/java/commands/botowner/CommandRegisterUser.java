@@ -17,15 +17,19 @@ public class CommandRegisterUser implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         if (Owner.get(event.getAuthor())) {
             Thread t = new Thread(() -> {
-                int i = 0;
-                while (event.getGuild().getMembers().size() - 1 >= i) {
-                    if (MySQL.get("user", "id", event.getGuild().getMembers().get(i).getUser().getId(), "id") == null) {
-                        MySQL.insert("user", "id", event.getGuild().getMembers().get(i).getUser().getId() + "");
-                        logger.info("neuer User in database Name: " + event.getGuild().getMembers().get(i).getUser().getName() + " ID: " + event.getGuild().getMembers().get(i).getUser().getId() + " von " + event.getGuild().getName());
+                int i2 = 0;
+                while (event.getJDA().getGuilds().size() - 1 >= i2) {
+                    int i = 0;
+                    while (event.getJDA().getGuilds().get(i2).getMembers().size() - 1 >= i) {
+                        if (MySQL.get("user", "id", event.getJDA().getGuilds().get(i2).getMembers().get(i).getUser().getId(), "id") == null) {
+                            MySQL.insert("user", "id", event.getJDA().getGuilds().get(i2).getMembers().get(i).getUser().getId() + "");
+                            logger.info("neuer User in database Name: " + event.getJDA().getGuilds().get(i2).getMembers().get(i).getUser().getName() + " ID: " + event.getJDA().getGuilds().get(i2).getMembers().get(i).getUser().getId() + " von " + event.getJDA().getGuilds().get(i2).getName());
+                        }
+                        i++;
                     }
-                    i++;
+                    i2++;
                 }
-                event.getTextChannel().sendMessage("Succesfully registered "+i+" user").queue();
+                event.getTextChannel().sendMessage("Succesfully registered all users").queue();
             });
             t.setName("registeruser");
             t.start();

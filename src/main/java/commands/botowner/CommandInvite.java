@@ -1,13 +1,8 @@
 package commands.botowner;
 
 import core.MessageHandler;
-import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.core.EmbedBuilder;
 import commands.Command;
-import util.Embed;
-
-import java.awt.*;
 
 public class CommandInvite implements Command {
 
@@ -24,7 +19,7 @@ public class CommandInvite implements Command {
         if (Owner.get(event.getAuthor())) {
             String HALLO = event.getJDA().getGuildById(args[0]).getTextChannels().get(0).createInvite().setMaxAge(400).complete().getURL();
 
-            event.getTextChannel().sendMessage(Embed.normal(":information_source: Invite", "Invite: " + HALLO).build()).queue();
+            event.getTextChannel().sendMessage(MessageHandler.getEmbed("botowner.invite.title", "botowner.invite.text", HALLO, "normal", event)).queue();
 
         }
     }

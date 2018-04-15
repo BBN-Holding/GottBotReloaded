@@ -4,22 +4,24 @@ import commands.Command;
 import core.MessageHandler;
 import core.MySQL;
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.json.JSONObject;
 import stuff.DATA;
 import stuff.SECRETS;
+import util.Color;
 
 import java.awt.*;
 import java.time.format.DateTimeFormatter;
+import java.util.ResourceBundle;
 
 import static core.JSONhandler.readJsonFromUrl;
+import static javax.print.attribute.standard.Chromaticity.COLOR;
 
 public class CommandProfile implements Command {
     String Nick;
     String Game;
-    Member user;
-    String useruser;
     String Punkte;
     String Level;
     String Progress;
@@ -40,9 +42,10 @@ public class CommandProfile implements Command {
             if (event.getMessage().getMentionedMembers().size() == 1) {
                 user = event.getMessage().getMentionedMembers().get(0);
             } else user = event.getMember();
-            if (user.getGame() == null) Game = MessageHandler.get(event.getAuthor()).getString("profilegame");
+            Guild guild = event.getGuild();
+            if (user.getGame() == null) Game = MessageHandler.get("tools.profile.nogame", user.getUser(), guild);
             else Game = "" + user.getGame().getName();
-            if (user.getNickname() == null) Nick = MessageHandler.get(event.getAuthor()).getString("profilenick");
+            if (user.getNickname() == null) Nick = MessageHandler.get("tools.profile.nonick", user.getUser(), guild);
             else Nick = user.getNickname();
             int i = 0;
             String Rollen = "";
@@ -114,22 +117,24 @@ public class CommandProfile implements Command {
                         event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_end_full", true).get(0).getAsMention();
             }
             String Github = MySQL.get("user", "ID", user.getUser().getId(), "github");
-            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get(event.getAuthor()).getString("profiletitel"))
-                    .addField("Name", user.getUser().getName(), false)
-                    .addField("Nickname", Nick, false)
-                    .addField("Game", Game, false)
-                    .addField("Roles", Rollen, false)
-                    .addField("Joined", user.getJoinDate().format(DateTimeFormatter.ofPattern("dd.MM.yy, HH:mm:ss")), false)
-                    .addField("Created", event.getMessage().getAuthor().getCreationTime().format(DateTimeFormatter.ofPattern("dd.MM.yy, HH:mm:ss")), false)
-                    .addField("Status", user.getOnlineStatus().toString(), false)
-                    .addField("GitHub", Github, false)
-                    .addField("Level", Level, false)
-                    .addField("XP", Punkte, false)
-                    .addField("Levelprogress", Progress, false)
-                    .addField("Hashes mined", String.valueOf(mined), false)
-                    .addField("Withdrawn", withdrawn, false)
-                    .addField("Hashes", hashes, false)
-                    .setColor(Color.CYAN).setThumbnail(user.getUser().getAvatarUrl()).build()).queue();
+            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get("tools.profile.title", user.getUser(), guild))
+                    .addField(MessageHandler.get("tools.profile.1", user.getUser(), guild), user.getUser().getName(), false)
+                    .addField(MessageHandler.get("tools.profile.2", user.getUser(), guild), Nick, false)
+                    .addField(MessageHandler.get("tools.profile.3", user.getUser(), guild), Game, false)
+                    .addField(MessageHandler.get("tools.profile.4", user.getUser(), guild), Rollen, false)
+                    .addField(MessageHandler.get("tools.profile.5", user.getUser(), guild), user.getJoinDate().format(DateTimeFormatter.ofPattern("dd.MM.yy, HH:mm:ss")), false)
+                    .addField(MessageHandler.get("tools.profile.6", user.getUser(), guild), event.getMessage().getAuthor().getCreationTime().format(DateTimeFormatter.ofPattern("dd.MM.yy, HH:mm:ss")), false)
+                    .addField(MessageHandler.get("tools.profile.7", user.getUser(), guild), user.getOnlineStatus().toString(), false)
+                    .addField(MessageHandler.get("tools.profile.8", user.getUser(), guild), Github, false)
+                    .addField(MessageHandler.get("tools.profile.9", user.getUser(), guild), Level, false)
+                    .addField(MessageHandler.get("tools.profile.10", user.getUser(), guild), Punkte, false)
+                    .addField(MessageHandler.get("tools.profile.11", user.getUser(), guild), Progress, false)
+                    .addField(MessageHandler.get("tools.profile.12", user.getUser(), guild), String.valueOf(mined), false)
+                    .addField(MessageHandler.get("tools.profile.13", user.getUser(), guild), withdrawn, false)
+                    .addField(MessageHandler.get("tools.profile.14", user.getUser(), guild), String.valueOf(mined-Long.parseLong(withdrawn)), false)
+                    .addField(MessageHandler.get("tools.profile.15", user.getUser(), guild), hashes, false)
+                    .setColor(java.awt.Color.CYAN).setThumbnail(user.getUser().getAvatarUrl()).build()).queue();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

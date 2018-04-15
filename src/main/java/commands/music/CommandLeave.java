@@ -1,14 +1,9 @@
-package commands.botowner;
+package commands.music;
 
 import commands.Command;
-import core.MessageHandler;
-import core.MySQL;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
-public class CommandSetXP implements Command {
-
-
-
+public class CommandLeave implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -16,14 +11,15 @@ public class CommandSetXP implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (Owner.get(event.getAuthor())) {
-            MySQL.update("user", "xp", args[1], "id", args[0]);
-            event.getTextChannel().sendMessage(MessageHandler.getEmbed("botowner.setlvl.title", "botowner.setlvl.text", "", "normal", event)).queue();
+        if (event.getGuild().getAudioManager().isConnected() || event.getGuild().getAudioManager().isAttemptingToConnect()) {
+            event.getGuild().getAudioManager().closeAudioConnection();
+        } else {
+            event.getTextChannel().sendMessage("I cant leave when i am not in a voice channel").queue();
         }
     }
+
     @Override
     public void executed(boolean success, MessageReceivedEvent event) {
 
     }
-
 }
