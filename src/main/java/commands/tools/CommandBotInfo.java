@@ -29,7 +29,10 @@ public class CommandBotInfo implements Command {
 
                     JsonObject jsonObject = new JsonParser().parse(requestResponse.getResponseMessage()).getAsJsonObject();
                     event.getTextChannel().sendMessage(jsonObject.toString()).queue();
-                    event.getTextChannel().sendMessage(new EmbedBuilder().setThumbnail(jsonObject.get("avatar").getAsString()).setTitle("Botinfo: " + jsonObject.get("name").getAsString()).build()).queue();
+                    event.getTextChannel().sendMessage(new EmbedBuilder().setThumbnail(jsonObject.get("avatar").getAsString())
+                            .setTitle("Botinfo: " + jsonObject.get("name").getAsString())
+                            .addField("Owner", "jisdjisdjijsdij " + jsonObject.get("username"), true)
+                            .build()).queue();
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -48,9 +51,6 @@ public class CommandBotInfo implements Command {
 
 
             }
-
-
-
 
         } else {
             event.getTextChannel().sendMessage("Zu kurz!").queue();

@@ -2,18 +2,15 @@ package core;
 
 import commands.botowner.*;
 import commands.moderation.*;
-import commands.music.CommandJoin;
 import commands.tools.*;
 import commands.usercommands.*;
 import commands.usercommands.CommandHelp;
 import commands.botowner.CommandInfo;
 import commands.usercommands.CommandPremium;
 import listener.*;
-import music.AudioCore;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.bot.sharding.ShardManager;
 import net.dv8tion.jda.core.JDA;
-import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.utils.SessionController;
 import org.apache.commons.net.ftp.FTPClient;
 import org.slf4j.Logger;
@@ -31,7 +28,6 @@ public class Main {
     public static boolean dev = true;
     public static SessionController sessionController;
     public static ShardManager shardManager;
-    public static AudioCore audioCore;
 
     public static void main(String[] args2) {
         try {
@@ -82,7 +78,7 @@ public class Main {
             commandHandler.commands.put("ban", new CommandBan());
             commandHandler.commands.put("kick", new CommandKick());
             commandHandler.commands.put("github", new CommandGitHub());
-            commandHandler.commands.put("stop", new CommandStop());
+            commandHandler.commands.put("botstop", new CommandStop());
             commandHandler.commands.put("setlvl", new CommandSetLevel());
             commandHandler.commands.put("setxp", new CommandSetXP());
             commandHandler.commands.put("clyde", new CommandClyde());
@@ -96,11 +92,11 @@ public class Main {
             commandHandler.commands.put("levelmessage", new CommandLevelMessage());
             commandHandler.commands.put("guild", new CommandGuild());
             commandHandler.commands.put("help", new CommandHelp());
-            commandHandler.commands.put("info", new CommandInfo());
+            commandHandler.commands.put("about", new CommandInfo());
             commandHandler.commands.put("warn", new CommandWarn());
             commandHandler.commands.put("token", new CommandToken());
             commandHandler.commands.put("log", new CommandLog());
-            commandHandler.commands.put("play", new CommandPlay());
+            commandHandler.commands.put("game-play", new CommandPlay());
             commandHandler.commands.put("dm", new CommandDM());
             commandHandler.commands.put("miner", new CommandMiner());
             commandHandler.commands.put("premium", new CommandPremium());
@@ -111,9 +107,8 @@ public class Main {
             commandHandler.commands.put("uptime", new CommandUptime());
             commandHandler.commands.put("role", new CommandRole());
             commandHandler.commands.put("botinfo", new CommandBotInfo());
-            /*MUSIC*/
-            commandHandler.commands.put("join", new CommandJoin());
-            commandHandler.commands.put("leave", new commands.music.CommandLeave());
+            commandHandler.commands.put("upvoted", new CommandUpvoted());
+
             args = args2;
             logger.info("loaded all commands");
             logger.info("Starting the Bot...");
