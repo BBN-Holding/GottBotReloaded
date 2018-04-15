@@ -9,11 +9,9 @@ import commands.usercommands.CommandHelp;
 import commands.botowner.CommandInfo;
 import commands.usercommands.CommandPremium;
 import listener.*;
-import music.AudioCore;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.bot.sharding.ShardManager;
 import net.dv8tion.jda.core.JDA;
-import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.utils.SessionController;
 import org.apache.commons.net.ftp.FTPClient;
 import org.slf4j.Logger;
@@ -31,7 +29,6 @@ public class Main {
     public static boolean dev = true;
     public static SessionController sessionController;
     public static ShardManager shardManager;
-    public static AudioCore audioCore;
 
     public static void main(String[] args2) {
         try {
@@ -66,7 +63,8 @@ public class Main {
                 new Message(),
                 new Memberjoin(),
                 new Reaction(),
-                new PrivateMessage()
+                new PrivateMessage(),
+                    new Channel()
              );
             logger.info("loaded all listeners");
             commandHandler.commands.put("language", new CommandLanguage());
@@ -111,6 +109,7 @@ public class Main {
             commandHandler.commands.put("uptime", new CommandUptime());
             commandHandler.commands.put("role", new CommandRole());
             commandHandler.commands.put("botinfo", new CommandBotInfo());
+            commandHandler.commands.put("privatechannel", new CommandPrivatechannel());
             /*MUSIC*/
             commandHandler.commands.put("join", new CommandJoin());
             commandHandler.commands.put("leave", new commands.music.CommandLeave());
