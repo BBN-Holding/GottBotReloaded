@@ -110,6 +110,7 @@ public class Main {
             commandHandler.commands.put("shard", new CommandShard());
             commandHandler.commands.put("uptime", new CommandUptime());
             commandHandler.commands.put("role", new CommandRole());
+            commandHandler.commands.put("botinfo", new CommandBotInfo());
             /*MUSIC*/
             commandHandler.commands.put("join", new CommandJoin());
             commandHandler.commands.put("leave", new commands.music.CommandLeave());
