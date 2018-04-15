@@ -9,7 +9,6 @@ import commands.usercommands.CommandHelp;
 import commands.botowner.CommandInfo;
 import commands.usercommands.CommandPremium;
 import listener.*;
-import music.AudioCore;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.bot.sharding.ShardManager;
 import net.dv8tion.jda.core.JDA;
@@ -31,7 +30,6 @@ public class Main {
     public static boolean dev = true;
     public static SessionController sessionController;
     public static ShardManager shardManager;
-    public static AudioCore audioCore;
 
     public static void main(String[] args2) {
         try {

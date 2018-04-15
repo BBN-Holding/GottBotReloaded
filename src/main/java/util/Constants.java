@@ -15,6 +15,4 @@ public class Constants {
             progBars.put(names[i], ids[i]);
         }
     }
-
-
 }
