@@ -22,11 +22,16 @@ import java.util.List;
 import static core.Main.jda;
 
 public class BotList extends ListenerAdapter {
+
+    String botlistspace_url = "https://botlist.space/api/bots/407189087649398795";
+    String botsfordiscord_url = "https://botsfordiscord.com/api/v1/bots/407189087649398795";
+
+
+    JSONObject data = new JSONObject();
+
     @Override
     public void onGuildJoin(GuildJoinEvent event) {
 
-        String botlistspace_url = "https://botlist.space/api/bots/407189087649398795";
-        JSONObject data = new JSONObject();
         data.put("shard_id", event.getJDA().getShardInfo().getShardId());
         data.put("shard_count", Main.shardManager.getShardsTotal());
         data.put("server_count", Main.shardManager.getGuilds().size());
@@ -45,92 +50,11 @@ public class BotList extends ListenerAdapter {
             e.printStackTrace();
         }
 
-
-        String botsfordiscord_url = "https://botsfordiscord.com/api/v1/bots/407189087649398795";
-
-        data.put("server_count", Main.shardManager.getGuilds().size());
-
-
-        Request botsfordiscord = new Request.Builder()
-                .url(botsfordiscord_url)
-                .post(body)
-                .addHeader("Authorization", SECRETS.botsfordiscord)
-                .build();
-
-        try {
-            new OkHttpClient().newCall(botsfordiscord).execute().close();
-            System.out.println("Successfully posted count for Bots for Discord!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        String discordpw_url = "https://bots.discord.pw/api/bots/407189087649398795/stats";
-
-        data.put("shard_id", event.getJDA().getShardInfo().getShardId());
-        data.put("shard_count", Main.shardManager.getShardsTotal());
-        data.put("server_count", Main.shardManager.getGuilds().size());
-
-
-        Request discordpw = new Request.Builder()
-                .url(discordpw_url)
-                .post(body)
-                .addHeader("Authorization", SECRETS.discordpw)
-                .build();
-
-        try {
-            new OkHttpClient().newCall(discordpw).execute().close();
-            System.out.println("Successfully posted count for discord.pw!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        String discordbots_url = "https://bots.discord.pw/api/bots/407189087649398795/stats";
-
-        data.put("shard_id", event.getJDA().getShardInfo().getShardId());
-        data.put("shard_count", Main.shardManager.getShardsTotal());
-        data.put("server_count", Main.shardManager.getGuilds().size());
-
-
-        Request discordbots = new Request.Builder()
-                .url(discordbots_url)
-                .post(body)
-                .addHeader("Authorization", SECRETS.discordbots)
-                .build();
-
-        try {
-            new OkHttpClient().newCall(discordbots).execute().close();
-            System.out.println("Successfully posted count for discord.pw!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        String discordbotworld_url = "https://discordbot.world/api/bot/407189087649398795/stats";
-
-        data.put("shard_count", Main.shardManager.getShardsTotal());
-        data.put("server_count", Main.shardManager.getGuilds().size());
-
-
-        Request discordbotworld = new Request.Builder()
-                .url(discordbotworld_url)
-                .post(body)
-                .addHeader("Authorization", SECRETS.botworld)
-                .build();
-
-        try {
-            new OkHttpClient().newCall(discordbotworld).execute().close();
-            System.out.println("Successfully posted count for discordbot.world!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 
     public void onGuildLeave(GuildLeaveEvent event) {
 
-        String botlistspace_url = "https://botlist.space/api/bots/407189087649398795";
-        JSONObject data = new JSONObject();
         data.put("shard_id", event.getJDA().getShardInfo().getShardId());
         data.put("shard_count", Main.shardManager.getShardsTotal());
         data.put("server_count", Main.shardManager.getGuilds().size());
@@ -145,64 +69,6 @@ public class BotList extends ListenerAdapter {
         try {
             new OkHttpClient().newCall(botlistspace).execute().close();
             System.out.println("Successfully posted count for botlist.space!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        String botsfordiscord_url = "https://botsfordiscord.com/api/v1/bots/407189087649398795";
-
-        data.put("server_count", "91");
-
-
-        Request botsfordiscord = new Request.Builder()
-                .url(botsfordiscord_url)
-                .post(body)
-                .addHeader("Authorization", SECRETS.botsfordiscord)
-                .build();
-
-        try {
-            new OkHttpClient().newCall(botsfordiscord).execute().close();
-            System.out.println("Successfully posted count for Bots for Discord!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        String discordpw_url = "https://bots.discord.pw/api/bots/407189087649398795/stats";
-
-        data.put("shard_id", event.getJDA().getShardInfo().getShardId());
-        data.put("shard_count", Main.shardManager.getShardsTotal());
-        data.put("server_count", Main.shardManager.getGuilds().size());
-
-
-        Request discordpw = new Request.Builder()
-                .url(discordpw_url)
-                .post(body)
-                .addHeader("Authorization", SECRETS.discordpw)
-                .build();
-
-        try {
-            new OkHttpClient().newCall(discordpw).execute().close();
-            System.out.println("Successfully posted count for discord.pw!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        String discordbotworld_url = "https://discordbot.world/api/bot/407189087649398795/stats";
-
-        data.put("shard_count", Main.shardManager.getShardsTotal());
-        data.put("server_count", Main.shardManager.getGuilds().size());
-
-
-        Request discordbotworld = new Request.Builder()
-                .url(discordbotworld_url)
-                .post(body)
-                .addHeader("Authorization", SECRETS.botworld)
-                .build();
-
-        try {
-            new OkHttpClient().newCall(discordbotworld).execute().close();
-            System.out.println("Successfully posted count for discordbot.world!");
         } catch (IOException e) {
             e.printStackTrace();
         }
