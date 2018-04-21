@@ -18,8 +18,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import stuff.SECRETS;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 
 public class Main {
     public static DefaultShardManagerBuilder builder = new DefaultShardManagerBuilder();
@@ -33,10 +36,7 @@ public class Main {
     public static void main(String[] args2) {
         try {
             logger.info("------------------start Bot----------------------");
-            if (!new File("Gott.log").exists()) {
-                new File("Gott.log").createNewFile();
-                logger.info("created File Gott.log");
-            }
+            //if (!new File("Gott.log").exists()) { new File("Gott.log").createNewFile();logger.info("created File Gott.log"); }
             if (!dev) {
 
                 FTPClient client = new FTPClient();
@@ -110,6 +110,7 @@ public class Main {
             commandHandler.commands.put("role", new CommandRole());
             commandHandler.commands.put("botinfo", new CommandBotInfo());
             commandHandler.commands.put("privatechannel", new CommandPrivatechannel());
+            commandHandler.commands.put("clan", new CommandClan());
             /*MUSIC*/
             commandHandler.commands.put("join", new CommandJoin());
             commandHandler.commands.put("leave", new commands.music.CommandLeave());
@@ -121,9 +122,23 @@ public class Main {
 
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("Jojo");
         }
 
 
+    }
+    public static String geterrorString(Exception e) {
+        String content="";
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            PrintStream ps = new PrintStream(baos, true, "utf-8");
+            e.printStackTrace(ps);
+            content = new String(baos.toByteArray(), StandardCharsets.UTF_8);
+            ps.close();
+        } catch (Exception er) {
+            e.printStackTrace();
+        }
+        return content;
     }
 
 }

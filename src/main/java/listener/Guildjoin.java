@@ -14,9 +14,7 @@ public class Guildjoin extends ListenerAdapter  {
                     MySQL.insert("server", "id", event.getGuild().getId());
                     logger.info("ein neuer Server: Name: "+event.getGuild().getName()+" ID: "+event.getGuild().getId()+" Member: "+event.getGuild().getMembers().size());
                 }
-                if (MySQL.get("log", "serverid", event.getGuild().getId(), "id")==null) {
-                    MySQL.insert("log", "serverid", event.getGuild().getId());
-                }
+               // if (MySQL.get("log", "serverid", event.getGuild().getId(), "id")==null) { MySQL.insert("log", "serverid", event.getGuild().getId()); }
 
 
                 int i = 0;

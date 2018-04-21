@@ -15,7 +15,6 @@ public class CommandLeave implements Command {
         if (Owner.get(event.getAuthor())) {
 
             event.getJDA().getGuildById(args[0]).leave().queue();
-
             event.getTextChannel().sendMessage(MessageHandler.getEmbed("botowner.leave.title", "botowner.leave.text" , String.valueOf(event.getJDA().getGuildById(args[0])), "normal", event)).queue();
 
         }

@@ -1,6 +1,7 @@
 package commands.botowner;
 
 import commands.Command;
+import core.Main;
 import core.MessageHandler;
 import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
 import net.dv8tion.jda.core.EmbedBuilder;
@@ -46,6 +47,7 @@ public class CommandEval implements Command {
         se.put("channel", event.getMessage().getChannel());
         se.put("message", event.getMessage());
         se.put("author", event.getMessage().getAuthor());
+        se.put("shardmanager", Main.shardManager);
 
         progBars.forEach(se::put);
 
