@@ -4,14 +4,12 @@ import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.entities.User;
-import net.dv8tion.jda.core.events.message.guild.react.GuildMessageReactionAddEvent;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
-public class MenuHandler {
+public class MenuHandlerold {
 
     public static MessageEmbed getMessage(String emote, MessageEmbed embed, User user, Guild guild) {
         MessageEmbed out=new EmbedBuilder().setTitle("Error").setDescription("Sorry the Emote was not found! if you are sure that it is a bug use ``gb.bug`` Thanks <3").setColor(Color.RED).build();
@@ -66,7 +64,7 @@ public class MenuHandler {
 
 
         } else if (emote.equals("◀")&&embed.getTitle().equals(MessageHandler.get("Helpmenu.moderation.verification.title", user, guild))) {
-            out= MenuHandler.getMessage("\uD83D\uDD28", new EmbedBuilder().setTitle(MessageHandler.get("Helpmenu.helpmenu", user, guild)).build(), user, guild);
+            out= MenuHandlerold.getMessage("\uD83D\uDD28", new EmbedBuilder().setTitle(MessageHandler.get("Helpmenu.helpmenu", user, guild)).build(), user, guild);
         }
         return out;
     }

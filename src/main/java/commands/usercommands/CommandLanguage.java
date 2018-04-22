@@ -3,10 +3,7 @@ package commands.usercommands;
 import commands.Command;
 import core.MessageHandler;
 import core.MySQL;
-import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-
-import java.awt.*;
 
 public class CommandLanguage implements Command {
     @Override
@@ -24,7 +21,7 @@ public class CommandLanguage implements Command {
             }
         } else if (args[0].equalsIgnoreCase("list")) {
             try {
-                String out=MySQL.getallstring("language", "name").replaceAll(" ", ", ");
+                String out=new Handler().getMySQL().getallstring("language", "name").replaceAll(" ", ", ");
                 event.getTextChannel().sendMessage(MessageHandler.getEmbed("usercommands.language.list.title", "usercommands.language.list.description", out,"normal", event)).queue();
 
             } catch (Exception e) {
@@ -33,8 +30,8 @@ public class CommandLanguage implements Command {
         } else if (args[0].length()==2) {
             try {
 
-                if (MySQL.getallstring("language", "name").contains(args[0].toLowerCase())) {
-                    MySQL.update("user", "language", args[0].toLowerCase(), "ID", event.getAuthor().getId());
+                if (new Handler().getMySQL().getallstring("language", "name").contains(args[0].toLowerCase())) {
+                    new Handler().getMySQL().update("user", "language", args[0].toLowerCase(), "ID", event.getAuthor().getId());
                     event.getTextChannel().sendMessage(MessageHandler.getEmbed("usercommands.language.edit.title", "usercommands.language.edit.description","", "sucess", event)).queue();
                 }
             } catch (Exception e) {

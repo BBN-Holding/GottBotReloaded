@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 public class Guildleave extends ListenerAdapter {
     private static Logger logger = LoggerFactory.getLogger(commandListener.class);
     public void onGuildLeave(GuildLeaveEvent event) {
-        MySQL.delete("server", "ID", event.getGuild().getId());
+        new Handler().getMySQL().delete("server", "ID", event.getGuild().getId());
         logger.info("ein Server weniger: Name: "+event.getGuild().getName()+" ID: "+event.getGuild().getId()+" Member: "+event.getGuild().getMembers().size());
 
 

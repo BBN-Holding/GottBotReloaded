@@ -4,11 +4,8 @@ import commands.Command;
 import commands.botowner.Owner;
 import core.MessageHandler;
 import core.MySQL;
-import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-
-import java.awt.*;
 
 public class CommandPrefix implements Command {
     @Override
@@ -27,7 +24,7 @@ public class CommandPrefix implements Command {
                 }
             } else {
                 try {
-                    MySQL.update("server", "Prefix", args[0], "ID", event.getGuild().getId());
+                    new Handler().getMySQL().update("server", "Prefix", args[0], "ID", event.getGuild().getId());
                     event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "moderation.prefix.changed", "", "sucess", event)).queue();
                 } catch (Exception e) {
                     e.printStackTrace();

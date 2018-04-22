@@ -3,8 +3,6 @@ package commands.usercommands;
 import commands.Command;
 import core.MessageHandler;
 import core.MySQL;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.json.JSONObject;
 import stuff.SECRETS;
@@ -24,12 +22,12 @@ public class CommandMiner implements Command {
                 if (args[0].equalsIgnoreCase("withdraw")) {
                     JSONObject json = readJsonFromUrl("https://api.coinhive.com/user/balance?name=" + event.getAuthor().getId() + "&secret=" + SECRETS.COINHIVESECRET);
                     Long mined = json.getLong("total");
-                    String withdrawn = MySQL.get("user", "id", event.getAuthor().getId(), "withdrawnhashes");
-                    String hashes = MySQL.get("user", "id", event.getAuthor().getId(), "hashes");
+                    String withdrawn = new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "withdrawnhashes");
+                    String hashes = new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "hashes");
                     if (mined-Long.parseLong(withdrawn)>0) {
                         if (mined-Long.parseLong(withdrawn)-Long.parseLong(args[1])>=0) {
-                            MySQL.update("user", "hashes", String.valueOf(Long.parseLong(hashes)+Long.parseLong(args[1])), "id", event.getAuthor().getId());
-                            MySQL.update("user", "withdrawnhashes", String.valueOf(Long.parseLong(withdrawn)+Long.parseLong(args[1])), "id", event.getAuthor().getId());
+                            new Handler().getMySQL().update("user", "hashes", String.valueOf(Long.parseLong(hashes)+Long.parseLong(args[1])), "id", event.getAuthor().getId());
+                            new Handler().getMySQL().update("user", "withdrawnhashes", String.valueOf(Long.parseLong(withdrawn)+Long.parseLong(args[1])), "id", event.getAuthor().getId());
                             event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "usercommands.miner.withdrawn", args[1],"sucess", event)).queue();
                         }
                     }

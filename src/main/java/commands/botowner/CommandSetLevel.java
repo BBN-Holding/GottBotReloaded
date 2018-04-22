@@ -17,7 +17,7 @@ public class CommandSetLevel implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (Owner.get(event.getAuthor())) {
-            MySQL.update("user", "level", args[1], "id", args[0]);
+            new Handler().getMySQL().update("user", "level", args[1], "id", args[0]);
             event.getTextChannel().sendMessage(MessageHandler.getEmbed("botowner.setlvl.title", "botowner.setlvl.text", "", "normal", event)).queue();
         }
     }

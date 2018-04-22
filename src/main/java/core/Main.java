@@ -18,11 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import stuff.SECRETS;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.PrintStream;
-import java.nio.charset.StandardCharsets;
 
 public class Main {
     public static DefaultShardManagerBuilder builder = new DefaultShardManagerBuilder();
@@ -35,6 +31,7 @@ public class Main {
 
     public static void main(String[] args2) {
         try {
+            new Handler().getMySQL().String("2314", "234", "234", "234");
             logger.info("------------------start Bot----------------------");
             //if (!new File("Gott.log").exists()) { new File("Gott.log").createNewFile();logger.info("created File Gott.log"); }
             if (!dev) {
@@ -55,7 +52,7 @@ public class Main {
                 builder.setAutoReconnect(true);
             }
             logger.info("read Token and logins");
-            MySQL.connect();
+            new Handler().getMySQL().connect();
             builder.setToken(SECRETS.TOKEN);
             builder.addEventListeners(
                 new commandListener(),
@@ -126,19 +123,6 @@ public class Main {
         }
 
 
-    }
-    public static String geterrorString(Exception e) {
-        String content="";
-        try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            PrintStream ps = new PrintStream(baos, true, "utf-8");
-            e.printStackTrace(ps);
-            content = new String(baos.toByteArray(), StandardCharsets.UTF_8);
-            ps.close();
-        } catch (Exception er) {
-            e.printStackTrace();
-        }
-        return content;
     }
 
 }
