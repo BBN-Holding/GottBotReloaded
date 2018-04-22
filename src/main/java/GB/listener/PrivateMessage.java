@@ -5,7 +5,7 @@ import net.dv8tion.jda.core.entities.ChannelType;
 import net.dv8tion.jda.core.entities.PrivateChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
-import stuff.DATA;
+import GB.stuff.DATA;
 
 public class PrivateMessage extends ListenerAdapter  {
 

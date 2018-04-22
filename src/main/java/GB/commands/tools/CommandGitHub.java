@@ -1,6 +1,6 @@
 package GB.commands.tools;
 
-import GB.core.MessageHandler;
+import GB.MessageHandler;
 import commands.Command;
 import GB.Handler;
 import net.dv8tion.jda.core.entities.Member;
@@ -20,7 +20,7 @@ public class CommandGitHub implements Command{
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length!=1) {
-            event.getTextChannel().sendMessage(MessageHandler.getEmbed("tools.github.title", "tools.github.text", "", "normal", event)).queue();
+            event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("tools.github.title", "tools.github.text", "", "normal", event)).queue();
         } else {
             if (args[0].equals("list")) {
 
@@ -32,7 +32,7 @@ public class CommandGitHub implements Command{
 
             } else {
                 new Handler().getMySQL().update("user", "github", args[0], "id", event.getAuthor().getId());
-                event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "tools.github.set", "", "sucess", event)).queue();
+                event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.sucess", "tools.github.set", "", "sucess", event)).queue();
             }
         }
 

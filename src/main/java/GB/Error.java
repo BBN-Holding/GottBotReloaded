@@ -1,5 +1,6 @@
 package GB;
 
+import GB.core.Main;
 import GB.stuff.SECRETS;
 import net.dv8tion.jda.core.EmbedBuilder;
 import org.apache.commons.net.ftp.FTPClient;
@@ -53,7 +54,7 @@ public class Error {
             client.storeFile("httpdocs/errors/"+filename, fis);
             client.logout();
             System.out.println(substring);
-            core.Main.shardManager.getGuildById(stuff.DATA.BBNS).getTextChannelById(stuff.DATA.BBNLOG).sendMessage(new EmbedBuilder().setTitle(":warning: GB.Error :warning:").setDescription("<@401817301919465482> <@261083609148948488> A ERROR: "+substring).build()).queue();
+            Main.shardManager.getGuildById(GB.stuff.DATA.BBNS).getTextChannelById(GB.stuff.DATA.BBNLOG).sendMessage(new EmbedBuilder().setTitle(":warning: GB.Error :warning:").setDescription("<@401817301919465482> <@261083609148948488> A ERROR: "+substring).build()).queue();
         } catch (Exception er) {
             er.printStackTrace();
         }

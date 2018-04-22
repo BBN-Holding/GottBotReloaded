@@ -1,4 +1,4 @@
-package stuff;
+package GB.stuff;
 
 
 public class DATA {

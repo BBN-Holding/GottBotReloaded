@@ -1,13 +1,13 @@
 package GB.listener;
 
 import GB.Handler;
-import core.Main;
+import GB.core.Main;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import stuff.DATA;
+import GB.stuff.DATA;
 
 public class Memberjoin extends ListenerAdapter {
     private static Logger logger = LoggerFactory.getLogger(Memberjoin.class);

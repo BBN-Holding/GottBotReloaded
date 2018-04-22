@@ -1,7 +1,7 @@
 package GB.commands.usercommands;
 
 import GB.Handler;
-import GB.core.MessageHandler;
+import GB.MessageHandler;
 import GB.stuff.SECRETS;
 import commands.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -28,11 +28,11 @@ public class CommandMiner implements Command {
                         if (mined-Long.parseLong(withdrawn)-Long.parseLong(args[1])>=0) {
                             new Handler().getMySQL().update("user", "hashes", String.valueOf(Long.parseLong(hashes)+Long.parseLong(args[1])), "id", event.getAuthor().getId());
                             new Handler().getMySQL().update("user", "withdrawnhashes", String.valueOf(Long.parseLong(withdrawn)+Long.parseLong(args[1])), "id", event.getAuthor().getId());
-                            event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "usercommands.miner.withdrawn", args[1],"sucess", event)).queue();
+                            event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.sucess", "usercommands.miner.withdrawn", args[1],"sucess", event)).queue();
                         }
                     }
                 }
-            } else event.getTextChannel().sendMessage(MessageHandler.getEmbed("usercommands.miner.title", "usercomamnds.miner.description", "", "normal", event)).queue();
+            } else event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("usercommands.miner.title", "usercomamnds.miner.description", "", "normal", event)).queue();
         } catch (Exception e) {
             e.printStackTrace();
         }

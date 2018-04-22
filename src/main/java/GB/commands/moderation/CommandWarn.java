@@ -1,7 +1,7 @@
 package GB.commands.moderation;
 
 import GB.Handler;
-import GB.core.MessageHandler;
+import GB.MessageHandler;
 import commands.Command;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.JDA;

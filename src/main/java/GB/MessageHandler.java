@@ -11,7 +11,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class MessageHandler {
-    public static MessageEmbed getEmbed(String title, String msg, String extra, String type, MessageReceivedEvent event) {
+    public MessageEmbed getEmbed(String title, String msg, String extra, String type, MessageReceivedEvent event) {
         MessageEmbed result = new EmbedBuilder().setTitle("This is a error :O").setDescription("Please use ``%prefix%bug`` Thanks <3".replace("%prefix%", getprefix(event.getGuild()))).setColor(Color.RED).build();
         String getTitle = get(title, event.getAuthor(), event.getGuild());
         String getMsg = get(msg, event.getAuthor(), event.getGuild());
@@ -31,7 +31,7 @@ public class MessageHandler {
         return result;
 
     }
-    public static String get(String string, User user, Guild guild){
+    public String get(String string, User user, Guild guild){
         try {
             String language = new Handler().getMySQL().get("user", "ID", user.getId()+"", "language");
             Locale locale = new Locale(language);

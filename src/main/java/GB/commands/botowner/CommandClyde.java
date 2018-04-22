@@ -1,6 +1,6 @@
 package GB.commands.botowner;
 
-import GB.core.MessageHandler;
+import GB.MessageHandler;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.webhook.WebhookClient;
 import net.dv8tion.jda.webhook.WebhookClientBuilder;

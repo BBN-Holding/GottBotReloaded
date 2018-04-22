@@ -1,5 +1,6 @@
 package GB.commands.moderation;
 
+import GB.Handler;
 import GB.MessageHandler;
 import commands.Command;
 import commands.botowner.Owner;
@@ -16,34 +17,34 @@ public class CommandLog implements Command {
 
             try {
                 if (args.length < 2) {
-                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("To short", "The command was to short as example use: ``%prefix%log leave disable``", "", "error", event)).complete();
+                    event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("To short", "The command was to short as example use: ``%prefix%log leave disable``", "", "error", event)).complete();
                     } else if (args.length == 2) {
                     switch (args[0]) {
                         case "channel":
                             if (event.getMessage().getMentionedChannels().size() != 1)
-                                event.getTextChannel().sendMessage(MessageHandler.getEmbed("Only one", "Please mention only one channel", "", "error", event)).complete();
+                                event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("Only one", "Please mention only one channel", "", "error", event)).complete();
                             new Handler().getMySQL().update("log", "logchannel", event.getMessage().getMentionedChannels().get(0).getId(), "serverid", event.getGuild().getId());
-                            event.getTextChannel().sendMessage(MessageHandler.getEmbed("Succes", "Succesfully set log channel!", "", "succed", event)).complete();
+                            event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("Succes", "Succesfully set log channel!", "", "succed", event)).complete();
                         case "command":
                             if (args[0].equals("true") || args[0].equals("false")) {
                                 new Handler().getMySQL().update("log", "command", args[0], "id", event.getGuild().getId());
-                                event.getTextChannel().sendMessage(MessageHandler.getEmbed("Succesfull", "Succesfully enabled/disabled the command log!", "", "succes", event)).complete();
+                                event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("Succesfull", "Succesfully enabled/disabled the command log!", "", "succes", event)).complete();
                             } else {
-                                event.getTextChannel().sendMessage(MessageHandler.getEmbed("Wrong arguments", "Please do ``%prefix%log command true``", "", "error", event)).complete();
+                                event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("Wrong arguments", "Please do ``%prefix%log command true``", "", "error", event)).complete();
                             }
                         case "mod":
                             if (args[0].equals("true") || args[0].equals("false")) {
                                 new Handler().getMySQL().update("log", "mod-log", args[0], "id", event.getGuild().getId());
-                                event.getTextChannel().sendMessage(MessageHandler.getEmbed("Succesfull", "Succesfully enabled/disabled the mod log!", "", "error", event)).complete();
+                                event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("Succesfull", "Succesfully enabled/disabled the mod log!", "", "error", event)).complete();
                             } else {
-                                event.getTextChannel().sendMessage(MessageHandler.getEmbed("Wrong arguments", "Please do ``%prefix%log command true``", "", "error", event)).complete();
+                                event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("Wrong arguments", "Please do ``%prefix%log command true``", "", "error", event)).complete();
                             }
                         case "voice":
                             if (args[0].equals("true") || args[0].equals("false")) {
                                 new Handler().getMySQL().update("log", "voice", args[0], "id", event.getGuild().getId());
-                                event.getTextChannel().sendMessage(MessageHandler.getEmbed("Succesfull", "Succesfully enabled/disabled the voice log!", "", "error", event)).complete();
+                                event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("Succesfull", "Succesfully enabled/disabled the voice log!", "", "error", event)).complete();
                             } else {
-                                event.getTextChannel().sendMessage(MessageHandler.getEmbed("Wrong arguments", "Please do ``%prefix%log command true``", "", "error", event)).complete();
+                                event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("Wrong arguments", "Please do ``%prefix%log command true``", "", "error", event)).complete();
                             }
                     }
                     }

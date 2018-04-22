@@ -1,6 +1,7 @@
 package GB.commands.tools;
 
-import GB.core.MessageHandler;
+import GB.Handler;
+import GB.MessageHandler;
 import commands.Command;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDABuilder;
@@ -32,16 +33,16 @@ public class CommandToken implements Command {
                         id = bot.getJDA().getSelfUser().getId();
                         String zusatz = name + "#" + discrim;
                         String zusatz2 = zusatz+"("+id+")";
-                        event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "tools.token.loggedin", zusatz2, "sucess", event)).queue();
+                        event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.sucess", "tools.token.loggedin", zusatz2, "sucess", event)).queue();
                         bot.getJDA().shutdown();
 
                     }
                 }).buildBlocking();
             } catch (Exception e) {
-                event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "tools.token.invalid", "", "error", event)).queue();
+                event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.error", "tools.token.invalid", "", "error", event)).queue();
             }
         } else {
-            event.getTextChannel().sendMessage(MessageHandler.getEmbed("tools.token.title", "tools.token.text", "", "normal", event)).queue();
+            event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("tools.token.title", "tools.token.text", "", "normal", event)).queue();
         }
     }
 

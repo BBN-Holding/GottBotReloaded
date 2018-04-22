@@ -1,7 +1,7 @@
 package commands.botowner;
 
 import net.dv8tion.jda.core.entities.User;
-import stuff.DATA;
+import GB.stuff.DATA;
 
 public class Owner {
 

@@ -1,12 +1,12 @@
 package GB.commands.usercommands;
 
 import GB.Handler;
-import GB.core.MessageHandler;
+import GB.MessageHandler;
+import GB.core.Main;
 import commands.Command;
-import core.Main;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import stuff.DATA;
+import GB.stuff.DATA;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -21,13 +21,13 @@ public class CommandPremium implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length!=1) {
             String status;
-            if (new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "premium").equals("none")) status= MessageHandler.get("util.none",event.getAuthor(), event.getGuild());
+            if (new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "premium").equals("none")) status= new Handler().getMessageHandler().get("util.none",event.getAuthor(), event.getGuild());
             else {
                 Date date = new Date();
                 date.setTime(Long.parseLong(new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "premium")));
                 status= "until "+date.toGMTString();
             }
-            event.getTextChannel().sendMessage(MessageHandler.getEmbed("usercommands.premium.status.title", "usercomamnds.premium.status.text", status,"normal", event)).queue();
+            event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("usercommands.premium.status.title", "usercomamnds.premium.status.text", status,"normal", event)).queue();
         } else if (args[0].equalsIgnoreCase("buy")) {
             Guild bbn = Main.shardManager.getGuildById(DATA.BBNS);
             if (event.getGuild().getId().equals(bbn.getId())) {
@@ -39,12 +39,12 @@ public class CommandPremium implements Command {
                         new Handler().getMySQL().update("user", "premium", String.valueOf(Date), "id", event.getAuthor().getId());
                         new Handler().getMySQL().update("user", "hashes", String.valueOf(Long.parseLong(new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "hashes")) - 750000), "id", event.getAuthor().getId());
                         bbn.getController().addSingleRoleToMember(bbn.getMember(event.getAuthor()), bbn.getRoleById(408660274103451649L)).queue();
-                        event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "usercomamnds.premium.buyed", "", "sucess", event)).queue();
+                        event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.sucess", "usercomamnds.premium.buyed", "", "sucess", event)).queue();
                     } else
-                        event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "util.mine", "https://miner.bigbotnetwork.de/", "error", event)).queue();
+                        event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.error", "util.mine", "https://miner.bigbotnetwork.de/", "error", event)).queue();
                 } else
-                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "usercommands.premium.alreadyhas", "", "error", event)).queue();
-            } else event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "util.bbnguild", "https://disco.gg/bbn", "error", event)).queue();
+                    event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.error", "usercommands.premium.alreadyhas", "", "error", event)).queue();
+            } else event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.error", "util.bbnguild", "https://disco.gg/bbn", "error", event)).queue();
         }
     }
 

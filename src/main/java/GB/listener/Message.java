@@ -24,7 +24,7 @@ public class Message extends ListenerAdapter  {
             }
             // Mention
             if (event.getMessage().getContentRaw().replace("!", "").equals(event.getJDA().getSelfUser().getAsMention())) {
-                event.getChannel().sendMessage(MessageHandler.getEmbed("listener.Mention1", "listener.Mention2", "", "sucess", event)).queue();
+                event.getChannel().sendMessage(new Handler().getMessageHandler().getEmbed("listener.Mention1", "listener.Mention2", "", "sucess", event)).queue();
                 logger.info(event.getAuthor().getName() + " mit ID " + event.getAuthor().getId() + " auf " + event.getGuild().getName() + " hat mich erwähnt! ");
             }
             // registerserver
@@ -55,7 +55,7 @@ public class Message extends ListenerAdapter  {
                     new Handler().getMySQL().update("user", "level", String.valueOf(level + 1), "ID", event.getAuthor().getId());
                     new Handler().getMySQL().update("user", "xp", "0", "ID", event.getAuthor().getId());
                     if (new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "lvlmessage").equals("true")) {
-                        event.getAuthor().openPrivateChannel().complete().sendMessage(MessageHandler.getEmbed("listener.levelup1", "listener.levelup2", String.valueOf(level+1), "sucess", event)).queue();
+                        event.getAuthor().openPrivateChannel().complete().sendMessage(new Handler().getMessageHandler().getEmbed("listener.levelup1", "listener.levelup2", String.valueOf(level+1), "sucess", event)).queue();
                     }
                 }
 

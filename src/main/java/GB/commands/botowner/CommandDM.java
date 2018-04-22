@@ -1,5 +1,6 @@
 package GB.commands.botowner;
 
+import GB.Handler;
 import GB.MessageHandler;
 import commands.Command;
 import net.dv8tion.jda.core.entities.Member;
@@ -20,7 +21,7 @@ public class CommandDM implements Command {
 
             PrivateChannel channel = User.getUser().openPrivateChannel().complete();
             channel.sendMessage(Content).queue();
-            event.getTextChannel().sendMessage(MessageHandler.getEmbed("botowner.dm.text", "botowner.dm.title", "", "normal", event)).queue();
+            event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("botowner.dm.text", "botowner.dm.title", "", "normal", event)).queue();
         }
     }
 

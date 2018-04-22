@@ -1,7 +1,7 @@
 package GB.commands.moderation;
 
 import GB.Handler;
-import GB.core.MessageHandler;
+import GB.MessageHandler;
 import commands.Command;
 import commands.botowner.Owner;
 import net.dv8tion.jda.core.Permission;
@@ -18,20 +18,20 @@ public class CommandPrefix implements Command {
         if (event.getAuthor().getId()==event.getGuild().getOwner().getUser().getId() || event.getMember().hasPermission(Permission.MANAGE_SERVER) || Owner.get(event.getAuthor())) {
             if (args.length < 1) {
                 try {
-                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("moderation.prefix.title", "moderation.prefix.text", "", "normal", event)).queue();
+                    event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("moderation.prefix.title", "moderation.prefix.text", "", "normal", event)).queue();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             } else {
                 try {
                     new Handler().getMySQL().update("server", "Prefix", args[0], "ID", event.getGuild().getId());
-                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "moderation.prefix.changed", "", "sucess", event)).queue();
+                    event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.sucess", "moderation.prefix.changed", "", "sucess", event)).queue();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         } else {
-            event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error","util.nopermissionuser", "", "error", event)).queue();
+            event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.error","util.nopermissionuser", "", "error", event)).queue();
         }
     }
 

@@ -1,5 +1,6 @@
 package GB.commands.botowner;
 
+import GB.Handler;
 import GB.MessageHandler;
 import commands.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -16,9 +17,9 @@ public class CommandTest implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         System.out.println("lololololololol");
         if (commands.botowner.Owner.get(event.getAuthor())) {
-           event.getTextChannel().sendMessage(MessageHandler.getEmbed("botowner.test.title", "botowner.test.text", "", "normal", event)).queue();
+           event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("botowner.test.title", "botowner.test.text", "", "normal", event)).queue();
         } else {
-            event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "util.nopermissionuser", "", "error", event)).queue();
+            event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.error", "util.nopermissionuser", "", "error", event)).queue();
         }
 
 

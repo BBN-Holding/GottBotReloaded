@@ -55,7 +55,7 @@ public class MySQL {
         return out;
     }
 
-    public static String getfirst(String table, String wherevalue, String spalte) {
+    public String getfirst(String table, String wherevalue, String spalte) {
         String out="";
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM `"+table+"` WHERE ?");

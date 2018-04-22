@@ -7,10 +7,10 @@ import commands.Command;
 import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.discordbots.api.client.DiscordBotListAPI;
-import stuff.DATA;
+import GB.stuff.DATA;
 import java.util.List;
 
-import static stuff.DATA.*;
+import static GB.stuff.DATA.*;
 
 public class CommandUpvoted implements Command {
 
@@ -41,10 +41,10 @@ public class CommandUpvoted implements Command {
                         new Handler().getMySQL().insert("premium", "id", u.getId());
 
                     } else
-                        event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "tools.upvoted", "https://discordbots.org/bot/407189087649398795/vote", "error", event)).queue();
+                        event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.error", "tools.upvoted", "https://discordbots.org/bot/407189087649398795/vote", "error", event)).queue();
                 } else {
 
-                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "util.bbnguild", "https://disco.gg/bbn", "error", event)).queue();
+                    event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.error", "util.bbnguild", "https://disco.gg/bbn", "error", event)).queue();
                 }
     }
 

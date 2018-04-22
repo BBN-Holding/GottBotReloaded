@@ -1,6 +1,7 @@
 package GB.commands.moderation;
 
-import GB.core.MessageHandler;
+import GB.Handler;
+import GB.MessageHandler;
 import commands.Command;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Message;
@@ -20,7 +21,7 @@ public class CommandClear implements Command {
         if (event.getMember().hasPermission(Permission.MESSAGE_MANAGE)) {
             if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_MANAGE)) {
                 if (args.length != 1)
-                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("moderation.clear.title", "moderation.clear.text", "", "normal", event)).queue();
+                    event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("moderation.clear.title", "moderation.clear.text", "", "normal", event)).queue();
                 else {
 
                         Thread t = new Thread(() -> {
@@ -41,19 +42,19 @@ public class CommandClear implements Command {
                                         msgs = history.retrievePast(l).complete();
                                         event.getTextChannel().deleteMessages(msgs).queue();
                                     }
-                                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "moderation.clear.deleted", args[0], "normal", event)).queue();
+                                    event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.sucess", "moderation.clear.deleted", args[0], "normal", event)).queue();
 
                                 }
                             } catch (IllegalArgumentException e) {
-                                event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "moderation.clear.old", "", "error", event)).queue();
+                                event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.error", "moderation.clear.old", "", "error", event)).queue();
                             }
                         });
                         t.setName("messageclear");
                         t.start();
 
                 }
-            } else event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "util.nopermissionbot", "", "error", event)).queue();
-        } else event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "util.nopermissionuser", "", "error", event)).queue();
+            } else event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.error", "util.nopermissionbot", "", "error", event)).queue();
+        } else event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.error", "util.nopermissionuser", "", "error", event)).queue();
     }
 
     @Override

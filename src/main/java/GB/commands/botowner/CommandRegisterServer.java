@@ -1,8 +1,8 @@
-package commands.botowner;
+package GB.commands.botowner;
 
 import GB.Handler;
+import GB.core.Main;
 import commands.Command;
-import core.Main;
 import net.dv8tion.jda.bot.sharding.ShardManager;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.slf4j.Logger;

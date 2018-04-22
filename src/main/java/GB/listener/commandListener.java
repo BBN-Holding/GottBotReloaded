@@ -1,6 +1,7 @@
 package GB.listener;
 
 import GB.Handler;
+import GB.core.Main;
 import GB.core.commandHandler;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.ChannelType;
@@ -8,7 +9,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import stuff.DATA;
+import GB.stuff.DATA;
 
 import java.util.regex.Pattern;
 
@@ -45,7 +46,7 @@ public class commandListener extends ListenerAdapter {
             commandHandler.handleCommand(commandHandler.parser.parse(event.getMessage().getContentRaw(), event));
             logger.info(event.getAuthor().getName() + " mit ID " + event.getAuthor().getId() + " auf " + event.getGuild().getName() + " hat den Command genutzt: " + event.getMessage().getContentRaw());
             String Command = handler.getMySQL().getfirst("stats", "1", "command");
-            core.Main.shardManager.getGuildById(DATA.BBNS).getTextChannelById(DATA.BBNLOG).sendMessage(new EmbedBuilder().setAuthor(event.getAuthor().getName() + event.getAuthor().getId(), event.getAuthor().getAvatarUrl(), event.getAuthor().getAvatarUrl()).setDescription(event.getMessage().getContentRaw()).build()).queue();
+            Main.shardManager.getGuildById(DATA.BBNS).getTextChannelById(DATA.BBNLOG).sendMessage(new EmbedBuilder().setAuthor(event.getAuthor().getName() + event.getAuthor().getId(), event.getAuthor().getAvatarUrl(), event.getAuthor().getAvatarUrl()).setDescription(event.getMessage().getContentRaw()).build()).queue();
             long jay = Long.parseLong(Command);
             long juhu = jay + 1;
             new Handler().getMySQL().update("stats", "command", String.valueOf(juhu), "command", String.valueOf(jay));

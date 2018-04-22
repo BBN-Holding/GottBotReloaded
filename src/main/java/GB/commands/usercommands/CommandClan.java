@@ -1,12 +1,12 @@
 package GB.commands.usercommands;
 
 import GB.Handler;
-import GB.core.MessageHandler;
+import GB.MessageHandler;
+import GB.core.Main;
 import commands.Command;
-import core.Main;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import stuff.DATA;
+import GB.stuff.DATA;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class CommandClan implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length==0) {
-            event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.usage", "usercommands.clan.description", "", "normal", event)).queue();
+            event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.usage", "usercommands.clan.description", "", "normal", event)).queue();
         } else {
             switch (args[0].toLowerCase()) {
                 case "create":
@@ -33,9 +33,9 @@ public class CommandClan implements Command {
                                     Main.shardManager.getGuildById(DATA.BBNS).getController().createTextChannel(args[1]).setParent(Main.shardManager.getCategoryById("437255509951643649")).queue();
                                     event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Clan created").setDescription("You have now a own Clan (channel on the official BigBotNetwork server)!").build()).queue();
                                 } else event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Error").setDescription("name is already in use").build()).queue();
-                            } else event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "util.mine", "https://miner.bigbotnetwork.de", "error", event)).queue();
+                            } else event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.error", "util.mine", "https://miner.bigbotnetwork.de", "error", event)).queue();
                         } else event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("alredy in a Clan").build()).queue();
-                    } else event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "util.error", "", "error", event)).queue();
+                    } else event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.error", "util.error", "", "error", event)).queue();
                     break;
                 case "info":
                     if (!new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "clan").equals("none")) {

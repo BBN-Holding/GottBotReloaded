@@ -4,7 +4,7 @@ import commands.Command;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import stuff.DATA;
+import GB.stuff.DATA;
 
 import java.time.format.DateTimeFormatter;
 

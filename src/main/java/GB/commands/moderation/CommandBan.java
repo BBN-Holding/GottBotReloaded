@@ -1,6 +1,7 @@
 package GB.commands.moderation;
 
-import GB.core.MessageHandler;
+import GB.Handler;
+import GB.MessageHandler;
 import commands.Command;
 import commands.botowner.Owner;
 import net.dv8tion.jda.core.Permission;
@@ -20,22 +21,22 @@ public class CommandBan implements Command {
         if (event.getAuthor().getId() == event.getGuild().getOwner().getUser().getId() || event.getMember().hasPermission(Permission.BAN_MEMBERS) || Owner.get(event.getAuthor())) {
             Message msg = event.getMessage();
             if (msg.getMentionedUsers().size()== 0) {
-                event.getTextChannel().sendMessage(MessageHandler.getEmbed("moderation.ban.title", "moderation.ban.text", "", "normal", event)).queue();
+                event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("moderation.ban.title", "moderation.ban.text", "", "normal", event)).queue();
             } else {
                 Member User = msg.getGuild().getMember(msg.getMentionedUsers().get(0));
                 if (!msg.getGuild().getSelfMember().canInteract(User)) {
-                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "util.nopermissionbot", "", "error", event)).queue();
+                    event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.error", "util.nopermissionbot", "", "error", event)).queue();
                 } else {
                     if (!User.getUser().isBot()) {
                         PrivateChannel channel = User.getUser().openPrivateChannel().complete();
-                        channel.sendMessage(MessageHandler.getEmbed("moderation.ban.ban", "moderation.ban.user", event.getGuild().getName(), "sucess", event)).queue();
+                        channel.sendMessage(new Handler().getMessageHandler().getEmbed("moderation.ban.ban", "moderation.ban.user", event.getGuild().getName(), "sucess", event)).queue();
                     }
                     msg.getGuild().getController().ban(User, 1).queue();
-                    event.getTextChannel().sendMessage(MessageHandler.getEmbed("moderation.ban.ban", "moderation.ban.channel", User.getUser().getName(), "sucess", event)).queue();
+                    event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("moderation.ban.ban", "moderation.ban.channel", User.getUser().getName(), "sucess", event)).queue();
                 }
             }
         } else {
-            event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "util.nopermissionuser", "", "error", event)).queue();
+            event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.error", "util.nopermissionuser", "", "error", event)).queue();
         }
     }
 

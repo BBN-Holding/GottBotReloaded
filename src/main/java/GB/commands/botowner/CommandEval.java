@@ -1,8 +1,8 @@
 package GB.commands.botowner;
 
-import GB.core.MessageHandler;
+import GB.MessageHandler;
+import GB.core.Main;
 import commands.Command;
-import core.Main;
 import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
