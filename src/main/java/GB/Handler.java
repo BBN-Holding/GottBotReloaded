@@ -1,4 +1,4 @@
-package core;
+package GB;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
@@ -29,10 +29,10 @@ public class Handler {
     }
 }
 
-class MenuHandler {
+public class MenuHandler {
 
     public static MessageEmbed getMessage(String emote, MessageEmbed embed, User user, Guild guild) {
-        MessageEmbed out=new EmbedBuilder().setTitle("core.Error").setDescription("Sorry the Emote was not found! if you are sure that it is a bug use ``gb.bug`` Thanks <3").setColor(Color.RED).build();
+        MessageEmbed out=new EmbedBuilder().setTitle("GB.Error").setDescription("Sorry the Emote was not found! if you are sure that it is a bug use ``gb.bug`` Thanks <3").setColor(Color.RED).build();
         // Overview
         if (embed.getTitle().equals(MessageHandler.get("Helpmenu.helpmenu", user, guild))) {
             switch (emote) {
@@ -120,7 +120,7 @@ class MenuHandler {
 
 }
 
-class Error {
+public class Error {
     private String errorString(Exception e) {
         String content="";
         try {
@@ -142,7 +142,7 @@ class Error {
         try {
             String error = geterrorString(e);
             String substring="";
-            String filename = "core.Error-"+new Date().toGMTString().replaceAll(" ", "-").replaceAll(":", "-")+".txt";
+            String filename = "GB.Error-"+new Date().toGMTString().replaceAll(" ", "-").replaceAll(":", "-")+".txt";
             substring += "An error gönn dir: https://bigbotnetwork.de/errors/"+filename;
             new File(filename).createNewFile();
             PrintWriter pWriter = null;
@@ -165,7 +165,7 @@ class Error {
             client.storeFile("httpdocs/errors/"+filename, fis);
             client.logout();
             System.out.println(substring);
-            Main.shardManager.getGuildById(DATA.BBNS).getTextChannelById(DATA.BBNLOG).sendMessage(new EmbedBuilder().setTitle(":warning: core.Error :warning:").setDescription("<@401817301919465482> <@261083609148948488> A ERROR: "+substring).build()).queue();
+            Main.shardManager.getGuildById(DATA.BBNS).getTextChannelById(DATA.BBNLOG).sendMessage(new EmbedBuilder().setTitle(":warning: GB.Error :warning:").setDescription("<@401817301919465482> <@261083609148948488> A ERROR: "+substring).build()).queue();
         } catch (Exception er) {
             er.printStackTrace();
         }
@@ -178,7 +178,7 @@ class Error {
 
 }
 
-class MySQL {
+public class MySQL {
 
 
     private static Connection connection;
@@ -189,14 +189,15 @@ class MySQL {
     }
 
 
-    public void connect() {
+    private boolean connect() {
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost/gottbot?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
-            Logger.info("core.MySQL connection success");
+            Logger.info("GB.MySQL connection success");
         } catch (SQLException e) {
             Logger.error(e.toString());
-            Logger.error("core.MySQL connection failed");
+            Logger.error("GB.MySQL connection failed");
         }
+        return true;
     }
 
     public static void disconnect() {
@@ -208,7 +209,7 @@ class MySQL {
         }
     }
 
-    public String String(String table, String where, String wherevalue, String spalte) {
+    public String get(String table, String where, String wherevalue, String spalte) {
         String out="";
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM `"+table+"` WHERE `"+where+"`=?");
@@ -225,7 +226,7 @@ class MySQL {
         return out;
     }
 
-    public static String StringFirst(String table, String wherevalue, String spalte) {
+    public static String getfirst(String table, String wherevalue, String spalte) {
         String out="";
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM `"+table+"` WHERE ?");

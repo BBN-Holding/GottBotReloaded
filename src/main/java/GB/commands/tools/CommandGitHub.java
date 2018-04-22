@@ -1,7 +1,7 @@
 package commands.tools;
 
 import commands.Command;
-import core.Handler;
+import GB.Handler;
 import core.MessageHandler;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
