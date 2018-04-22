@@ -20,7 +20,6 @@ public class BotList extends ListenerAdapter {
     // URL's
     private String botsfordiscord_url = "https://botsfordiscord.com/api/v1/bots/407189087649398795";
     private String discordbotworld_url = "https://discordbot.world/api/bot/407189087649398795/stats";
-
     private String discordpw_url = "https://bots.discord.pw/api/bots/407189087649398795/stats";
 
     private JSONObject json = new JSONObject();
@@ -38,6 +37,7 @@ public class BotList extends ListenerAdapter {
         BotlistSpaceClient botlistspace = new BotlistSpaceClient(SECRETS.botlistspace, "407189087649398795");
         try {
             botlistspace.postStats(Main.shardManager.getGuilds().size());
+            System.out.println("Successfully posted count for BotList.space");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -88,6 +88,7 @@ public class BotList extends ListenerAdapter {
         }
 
         // Boat-List
+
         String BoatList_url = "https://boat-list.glitch.me/api/stats/407189087649398795/" + SECRETS.boatlist + "/?count=" + Main.shardManager.getGuilds().size();
         body = RequestBody.create(null, new byte[0]);
         Request BoatList = new Request.Builder()
@@ -107,9 +108,13 @@ public class BotList extends ListenerAdapter {
         DiscordBotListAPI DiscordBotList = new DiscordBotListAPI.Builder()
                 .token(SECRETS.discordbotlist)
                 .build();
-
-        DiscordBotList.setStats("407189087649398795", Main.shardManager.getShards().get(0).getGuilds().size(), Main.shardManager.getShards().get(0).getShardInfo().getShardId(), Main.shardManager.getShards().size());
-        DiscordBotList.setStats("407189087649398795", Main.shardManager.getShards().get(1).getGuilds().size(), Main.shardManager.getShards().get(1).getShardInfo().getShardId(), Main.shardManager.getShards().size());
+        try {
+            DiscordBotList.setStats("407189087649398795", Main.shardManager.getShards().get(0).getGuilds().size(), Main.shardManager.getShards().get(0).getShardInfo().getShardId(), Main.shardManager.getShards().size());
+            DiscordBotList.setStats("407189087649398795", Main.shardManager.getShards().get(1).getGuilds().size(), Main.shardManager.getShards().get(1).getShardInfo().getShardId(), Main.shardManager.getShards().size());
+            System.out.println("Successfully posted count for Discord Bot List!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -128,6 +133,7 @@ public class BotList extends ListenerAdapter {
         BotlistSpaceClient botlistspace = new BotlistSpaceClient(SECRETS.botlistspace, "407189087649398795");
         try {
             botlistspace.postStats(Main.shardManager.getGuilds().size());
+            System.out.println("Successfully posted count for BotList.space");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -178,6 +184,7 @@ public class BotList extends ListenerAdapter {
         }
 
         // Boat-List
+
         String BoatList_url = "https://boat-list.glitch.me/api/stats/407189087649398795/" + SECRETS.boatlist + "/?count=" + Main.shardManager.getGuilds().size();
         body = RequestBody.create(null, new byte[0]);
         Request BoatList = new Request.Builder()
@@ -197,9 +204,11 @@ public class BotList extends ListenerAdapter {
         DiscordBotListAPI DiscordBotList = new DiscordBotListAPI.Builder()
                 .token(SECRETS.discordbotlist)
                 .build();
-
-        DiscordBotList.setStats("407189087649398795", Main.shardManager.getShards().get(0).getGuilds().size(), Main.shardManager.getShards().get(0).getShardInfo().getShardId(), Main.shardManager.getShards().size());
-        DiscordBotList.setStats("407189087649398795", Main.shardManager.getShards().get(1).getGuilds().size(), Main.shardManager.getShards().get(1).getShardInfo().getShardId(), Main.shardManager.getShards().size());
-
-    }
+        try {
+            DiscordBotList.setStats("407189087649398795", Main.shardManager.getShards().get(0).getGuilds().size(), Main.shardManager.getShards().get(0).getShardInfo().getShardId(), Main.shardManager.getShards().size());
+            DiscordBotList.setStats("407189087649398795", Main.shardManager.getShards().get(1).getGuilds().size(), Main.shardManager.getShards().get(1).getShardInfo().getShardId(), Main.shardManager.getShards().size());
+            System.out.println("Successfully posted count for Discord Bot List!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 }
