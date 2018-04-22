@@ -1,6 +1,0 @@
-GottBotReloaded ideen
-
-- 1 Handler mit Owner überprüfung, Language Handler, Menu handler, MySQL Handler,  (commandHandler?), usw
-- Music Command
-- commandRegisterHandler damit man nicht so viele zeilen nur für commandRegistering braucht
-- games
