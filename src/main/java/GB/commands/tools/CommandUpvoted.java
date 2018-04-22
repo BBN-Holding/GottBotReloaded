@@ -31,7 +31,6 @@ public class CommandUpvoted implements Command {
 
             List<String> voters = api.getVoterIds("407189087649398795", 1);
 
-
                 if (event.getMessage().getGuild().getId().equals(BBN)) {
                     if (voters.contains(u.getId())) {
 

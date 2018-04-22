@@ -20,6 +20,7 @@ public class CommandBan implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         if (event.getAuthor().getId() == event.getGuild().getOwner().getUser().getId() || event.getMember().hasPermission(Permission.BAN_MEMBERS) || Owner.get(event.getAuthor())) {
             Message msg = event.getMessage();
+
             if (msg.getMentionedUsers().size()== 0) {
                 event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("moderation.ban.title", "moderation.ban.text", "", "normal", event)).queue();
             } else {
@@ -31,8 +32,15 @@ public class CommandBan implements Command {
                         PrivateChannel channel = User.getUser().openPrivateChannel().complete();
                         channel.sendMessage(new Handler().getMessageHandler().getEmbed("moderation.ban.ban", "moderation.ban.user", event.getGuild().getName(), "sucess", event)).queue();
                     }
-                    msg.getGuild().getController().ban(User, 1).queue();
-                    event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("moderation.ban.ban", "moderation.ban.channel", User.getUser().getName(), "sucess", event)).queue();
+                    if (args.length > 0) {
+                        String reason = event.getMessage().getContentRaw().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("ban", "").replaceFirst(args[0], "");
+                        msg.getGuild().getController().ban(User, 1).reason(reason).queue();
+                        event.getTextChannel().sendMessage(MessageHandler.getEmbed("moderation.ban.ban", "moderation.ban.channel", User.getUser().getName(), "sucess", event)).queue();
+                    } else {
+                        msg.getGuild().getController().ban(User, 1).queue();
+                        event.getTextChannel().sendMessage(MessageHandler.getEmbed("moderation.ban.ban", "moderation.ban.channel", User.getUser().getName(), "sucess", event)).queue();
+                    }
+
                 }
             }
         } else {
