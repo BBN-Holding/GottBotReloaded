@@ -6,7 +6,7 @@ import GB.commands.moderation.*;
 import GB.commands.tools.*;
 import GB.commands.usercommands.*;
 import GB.listener.*;
-import stuff.SECRETS;
+import GB.stuff.SECRETS;
 import commands.music.CommandJoin;
 import commands.botowner.CommandInfo;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;

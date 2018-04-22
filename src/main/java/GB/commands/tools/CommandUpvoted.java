@@ -2,7 +2,7 @@ package GB.commands.tools;
 
 import GB.Handler;
 import GB.MessageHandler;
-import stuff.SECRETS;
+import GB.stuff.SECRETS;
 import commands.Command;
 import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;

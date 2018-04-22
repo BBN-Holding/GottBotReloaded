@@ -1,7 +1,7 @@
 package GB.listener;
 
 import GB.core.Main;
-import stuff.SECRETS;
+import GB.stuff.SECRETS;
 import net.dv8tion.jda.core.events.guild.GuildJoinEvent;
 import net.dv8tion.jda.core.events.guild.GuildLeaveEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;

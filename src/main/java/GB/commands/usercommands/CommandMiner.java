@@ -2,7 +2,7 @@ package GB.commands.usercommands;
 
 import GB.Handler;
 import GB.MessageHandler;
-import stuff.SECRETS;
+import GB.stuff.SECRETS;
 import commands.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.json.JSONObject;
