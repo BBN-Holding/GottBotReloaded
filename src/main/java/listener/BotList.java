@@ -26,7 +26,7 @@ public class BotList extends ListenerAdapter {
     // URL's
     String botsfordiscord_url = "https://botsfordiscord.com/api/v1/bots/407189087649398795";
     String discordbotworld_url = "https://discordbot.world/api/bot/407189087649398795/stats";
-    String BoatList_url = "https://boat-list.glitch.me/api/stats/bot/407189087649398795/" + SECRETS.boatlist + "/?count=" + Main.shardManager.getGuilds().size();
+    String BoatList_url = "https://boat-list.glitch.me/api/stats/bot/407189087649398795/";
     String discordpw_url = "https://bots.discord.pw/api/bots/407189087649398795/stats";
 
     private JSONObject json = new JSONObject();
@@ -96,8 +96,9 @@ public class BotList extends ListenerAdapter {
         // Boat-List
 
         body = RequestBody.create(null, new byte[0]);
+        String abc = "https://boat-list.glitch.me/api/stats/407189087649398795/" + SECRETS.boatlist + "/?count=" + Main.shardManager.getGuilds().size();
         Request BoatList = new Request.Builder()
-                .url(BoatList_url)
+                .url(abc)
                 .post(body)
                 .build();
 
@@ -186,8 +187,9 @@ public class BotList extends ListenerAdapter {
         // Boat-List
 
         body = RequestBody.create(null, new byte[0]);
+        String abc = "https://boat-list.glitch.me/api/stats/407189087649398795/" + SECRETS.boatlist + "/?count=" + Main.shardManager.getGuilds().size();
         Request BoatList = new Request.Builder()
-                .url(BoatList_url)
+                .url(abc)
                 .post(body)
                 .build();
 
