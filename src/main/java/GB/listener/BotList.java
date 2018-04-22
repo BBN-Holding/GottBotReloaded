@@ -1,12 +1,7 @@
 package listener;
 
+import GB.stuff.SECRETS;
 import core.Main;
-import de.foryasee.httprequest.HttpRequestBuilder;
-import de.foryasee.httprequest.RequestHeader;
-import de.foryasee.httprequest.RequestResponse;
-import de.foryasee.httprequest.RequestType;
-import org.discordbots.api.client.DiscordBotListAPI;
-import stuff.SECRETS;
 import net.dv8tion.jda.core.events.guild.GuildJoinEvent;
 import net.dv8tion.jda.core.events.guild.GuildLeaveEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;

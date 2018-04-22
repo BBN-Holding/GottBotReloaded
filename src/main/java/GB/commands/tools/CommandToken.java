@@ -1,7 +1,7 @@
-package commands.tools;
+package GB.commands.tools;
 
+import GB.core.MessageHandler;
 import commands.Command;
-import core.MessageHandler;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.events.ReadyEvent;

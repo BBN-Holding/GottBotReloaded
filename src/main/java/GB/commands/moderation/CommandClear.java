@@ -1,7 +1,7 @@
-package commands.moderation;
+package GB.commands.moderation;
 
+import GB.core.MessageHandler;
 import commands.Command;
-import core.MessageHandler;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageHistory;

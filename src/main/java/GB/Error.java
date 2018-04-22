@@ -1,21 +1,36 @@
-package GB.core;
+package GB;
 
-import GB.Handler;
 import GB.stuff.SECRETS;
 import net.dv8tion.jda.core.EmbedBuilder;
 import org.apache.commons.net.ftp.FTPClient;
-import stuff.DATA;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
-public class Errorold {
-
-    public static void handle(Exception e) {
+public class Error {
+    private String errorString(Exception e) {
+        String content="";
         try {
-            String error = new Handler().getError().geterrorString(e);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            PrintStream ps = new PrintStream(baos, true, "utf-8");
+            e.printStackTrace(ps);
+            content = new String(baos.toByteArray(), StandardCharsets.UTF_8);
+            ps.close();
+        } catch (Exception er) {
+            e.printStackTrace();
+        }
+        return content;
+    }
+    public String geterrorString(Exception e) {
+        return errorString(e);
+    }
+
+    private boolean handle(Exception e) {
+        try {
+            String error = geterrorString(e);
             String substring="";
-            String filename = "Error-"+new Date().toGMTString().replaceAll(" ", "-").replaceAll(":", "-")+".txt";
+            String filename = "GB.Error-"+new Date().toGMTString().replaceAll(" ", "-").replaceAll(":", "-")+".txt";
             substring += "An error gönn dir: https://bigbotnetwork.de/errors/"+filename;
             new File(filename).createNewFile();
             PrintWriter pWriter = null;
@@ -38,10 +53,15 @@ public class Errorold {
             client.storeFile("httpdocs/errors/"+filename, fis);
             client.logout();
             System.out.println(substring);
-            core.Main.shardManager.getGuildById(DATA.BBNS).getTextChannelById(DATA.BBNLOG).sendMessage(new EmbedBuilder().setTitle(":warning: Error :warning:").setDescription("<@401817301919465482> <@261083609148948488> A ERROR: "+substring).build()).queue();
+            core.Main.shardManager.getGuildById(stuff.DATA.BBNS).getTextChannelById(stuff.DATA.BBNLOG).sendMessage(new EmbedBuilder().setTitle(":warning: GB.Error :warning:").setDescription("<@401817301919465482> <@261083609148948488> A ERROR: "+substring).build()).queue();
         } catch (Exception er) {
             er.printStackTrace();
         }
+        return true;
+    }
+
+    public boolean gethandle(Exception e) {
+        return handle(e);
     }
 
 }

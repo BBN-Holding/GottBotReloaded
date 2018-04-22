@@ -1,9 +1,8 @@
-package commands.moderation;
+package GB.commands.moderation;
 
+import GB.MessageHandler;
 import commands.Command;
 import commands.botowner.Owner;
-import core.MessageHandler;
-import core.MySQL;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 

@@ -1,8 +1,8 @@
-package commands.tools;
+package GB.commands.tools;
 
+import GB.Handler;
+import GB.core.MessageHandler;
 import commands.Command;
-import core.MessageHandler;
-import core.MySQL;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.managers.GuildController;
 

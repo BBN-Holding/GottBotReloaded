@@ -1,8 +1,8 @@
-package commands.usercommands;
+package GB.commands.usercommands;
 
+import GB.Handler;
+import GB.core.MessageHandler;
 import commands.Command;
-import core.MessageHandler;
-import core.MySQL;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class CommandLanguage implements Command {

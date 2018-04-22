@@ -1,8 +1,8 @@
-package listener;
+package GB.listener;
 
+import GB.Handler;
+import GB.core.MessageHandler;
 import core.MenuHandlerold;
-import core.MessageHandler;
-import core.MySQL;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.guild.react.GuildMessageReactionAddEvent;

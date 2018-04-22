@@ -1,7 +1,7 @@
-package commands.botowner;
+package GB.commands.botowner;
 
+import GB.core.MessageHandler;
 import commands.Command;
-import core.MessageHandler;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class CommandLeave implements Command {
@@ -12,7 +12,7 @@ public class CommandLeave implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (Owner.get(event.getAuthor())) {
+        if (commands.botowner.Owner.get(event.getAuthor())) {
 
             event.getJDA().getGuildById(args[0]).leave().queue();
             event.getTextChannel().sendMessage(MessageHandler.getEmbed("botowner.leave.title", "botowner.leave.text" , String.valueOf(event.getJDA().getGuildById(args[0])), "normal", event)).queue();

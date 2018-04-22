@@ -1,10 +1,10 @@
-package core;
+package GB.core;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 import java.util.ArrayList;
 
-import static listener.commandListener.beheaded;
+import static GB.listener.commandListener.beheaded;
 
 public class commandParser {
 

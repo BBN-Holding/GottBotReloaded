@@ -1,8 +1,8 @@
-package commands.moderation;
+package GB.commands.moderation;
 
+import GB.Handler;
+import GB.core.MessageHandler;
 import commands.Command;
-import core.MessageHandler;
-import core.MySQL;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.Permission;

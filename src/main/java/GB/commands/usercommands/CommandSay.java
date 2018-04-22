@@ -1,7 +1,7 @@
-package commands.usercommands;
+package GB.commands.usercommands;
 
+import GB.core.MessageHandler;
 import commands.Command;
-import core.MessageHandler;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 

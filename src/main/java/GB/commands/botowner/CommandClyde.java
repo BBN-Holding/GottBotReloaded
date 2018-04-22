@@ -1,6 +1,6 @@
-package commands.botowner;
+package GB.commands.botowner;
 
-import core.MessageHandler;
+import GB.core.MessageHandler;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.webhook.WebhookClient;
 import net.dv8tion.jda.webhook.WebhookClientBuilder;
@@ -18,7 +18,7 @@ public class CommandClyde implements Command{
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (Owner.get(event.getAuthor())) {
+        if (commands.botowner.Owner.get(event.getAuthor())) {
             TextChannel otherChannel = event.getMessage().getTextChannel();
 
             try {

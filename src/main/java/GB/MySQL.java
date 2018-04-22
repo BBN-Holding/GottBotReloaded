@@ -1,4 +1,4 @@
-package GB.core;
+package GB;
 
 import GB.stuff.SECRETS;
 import org.slf4j.LoggerFactory;
@@ -7,29 +7,29 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLold {
+public class MySQL {
 
 
     private static Connection connection;
-    private static org.slf4j.Logger Logger = LoggerFactory.getLogger(MySQLold.class);
+    private static org.slf4j.Logger Logger = LoggerFactory.getLogger(MySQL.class);
 
-    @Deprecated
     public static Connection getConnection() {
         return connection;
     }
 
 
-    public void connect() {
+    public boolean connect() {
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost/gottbot?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
-            Logger.info("MySQL connection success");
+            Logger.info("GB.MySQL connection success");
         } catch (SQLException e) {
             Logger.error(e.toString());
-            Logger.error("MySQL connection failed");
+            Logger.error("GB.MySQL connection failed");
         }
+        return true;
     }
 
-    public void disconnect() {
+    public static void disconnect() {
         try {
             connection.close();
             System.out.println("disconnected from MYSQL");
@@ -55,7 +55,7 @@ public class MySQLold {
         return out;
     }
 
-    public String get1(String table, String wherevalue, String spalte) {
+    public static String getfirst(String table, String wherevalue, String spalte) {
         String out="";
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM `"+table+"` WHERE ?");

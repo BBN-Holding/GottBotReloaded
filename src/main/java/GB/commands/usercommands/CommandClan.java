@@ -1,10 +1,9 @@
-package commands.usercommands;
+package GB.commands.usercommands;
 
-import GB.core.Handler;
+import GB.Handler;
+import GB.core.MessageHandler;
 import commands.Command;
 import core.Main;
-import core.MessageHandler;
-import core.MySQL;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import stuff.DATA;

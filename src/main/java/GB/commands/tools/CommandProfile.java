@@ -1,15 +1,15 @@
-package commands.tools;
+package GB.commands.tools;
 
+import GB.Handler;
+import GB.core.MessageHandler;
+import GB.stuff.SECRETS;
 import commands.Command;
-import core.MessageHandler;
-import core.MySQL;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.json.JSONObject;
 import stuff.DATA;
-import stuff.SECRETS;
 
 import java.time.format.DateTimeFormatter;
 

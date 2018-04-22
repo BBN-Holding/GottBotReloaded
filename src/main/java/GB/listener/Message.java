@@ -1,6 +1,7 @@
-package listener;
+package GB.listener;
 
-import core.MessageHandler;
+import GB.Handler;
+import GB.MessageHandler;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import org.slf4j.Logger;
@@ -40,9 +41,9 @@ public class Message extends ListenerAdapter  {
                 }
             }
             //stats
-            long Mesasge = Long.parseLong(new Handler().getMySQL().get1("stats", "1", "message"));
+            long Mesasge = Long.parseLong(new Handler().getMySQL().getfirst("stats", "1", "message"));
             Mesasge++;
-            new Handler().getMySQL().update("stats", "message", String.valueOf(Mesasge), "message", new Handler().getMySQL().get1("stats", "1", "message"));
+            new Handler().getMySQL().update("stats", "message", String.valueOf(Mesasge), "message", new Handler().getMySQL().getfirst("stats", "1", "message"));
             //lvl
             if (!event.getAuthor().isBot()) {
                 long xp = Long.parseLong(new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "xp"));

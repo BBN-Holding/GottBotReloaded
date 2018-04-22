@@ -1,7 +1,7 @@
-package commands.botowner;
+package GB.commands.botowner;
 
+import GB.Handler;
 import commands.Command;
-import core.MySQL;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +15,7 @@ public class CommandRegisterUser implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (Owner.get(event.getAuthor())) {
+        if (commands.botowner.Owner.get(event.getAuthor())) {
             Thread t = new Thread(() -> {
                 int i2 = 0;
                 while (event.getJDA().getGuilds().size() - 1 >= i2) {

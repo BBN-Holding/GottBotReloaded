@@ -1,6 +1,7 @@
-package listener;
+package GB.listener;
 
-import core.MySQL;
+import GB.Handler;
+import GB.listener.commandListener;
 import net.dv8tion.jda.core.events.guild.GuildLeaveEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import org.slf4j.Logger;

@@ -1,13 +1,13 @@
 package listener;
 
-import core.MySQL;
+import GB.Handler;
 import net.dv8tion.jda.core.events.guild.GuildJoinEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Guildjoin extends ListenerAdapter  {
-    private static Logger logger = LoggerFactory.getLogger(commandListener.class);
+    private static Logger logger = LoggerFactory.getLogger(Guildjoin.class);
     public void onGuildJoin(GuildJoinEvent event) {
         try {
                 if (new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "id")==null) {

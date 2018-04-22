@@ -1,8 +1,8 @@
-package commands.botowner;
+package GB.commands.botowner;
 
+import GB.Handler;
+import GB.core.MessageHandler;
 import commands.Command;
-import core.MessageHandler;
-import core.MySQL;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class CommandSetXP implements Command {
@@ -16,7 +16,7 @@ public class CommandSetXP implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (Owner.get(event.getAuthor())) {
+        if (commands.botowner.Owner.get(event.getAuthor())) {
             new Handler().getMySQL().update("user", "xp", args[1], "id", args[0]);
             event.getTextChannel().sendMessage(MessageHandler.getEmbed("botowner.setlvl.title", "botowner.setlvl.text", "", "normal", event)).queue();
         }

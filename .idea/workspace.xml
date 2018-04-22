@@ -7,81 +7,58 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="389cd4f6-73e2-44e2-a70a-634beea5a8dd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GBideen.txt" beforeDir="false" afterPath="$PROJECT_DIR$/GBideen.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GottBotReloaded.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/Command.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/botowner/CommandBlacklist.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/botowner/CommandClyde.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/botowner/CommandDM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/botowner/CommandEval.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/botowner/CommandGiveHashes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/botowner/CommandGuild.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/botowner/CommandGuilds.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/botowner/CommandInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/botowner/CommandInvite.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/botowner/CommandLeave.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/botowner/CommandPlay.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/botowner/CommandRegisterServer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/botowner/CommandRegisterUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/botowner/CommandSetLevel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/botowner/CommandSetPremium.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/botowner/CommandSetXP.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/botowner/CommandShard.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/botowner/CommandStop.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/botowner/CommandTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/botowner/Owner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/moderation/CommandBan.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/moderation/CommandClear.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/moderation/CommandKick.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/moderation/CommandLog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/moderation/CommandPrefix.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/moderation/CommandRole.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/moderation/CommandVerification.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/moderation/CommandWarn.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/music/CommandJoin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/music/CommandLeave.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/tools/CommandBotInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/tools/CommandFAQ.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/tools/CommandGitHub.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/tools/CommandPing.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/tools/CommandPrivatechannel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/tools/CommandProfile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/tools/CommandToken.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/tools/CommandUptime.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/tools/CommandUpvoted.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/usercommands/CommandBug.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/usercommands/CommandClan.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/usercommands/CommandHelp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/usercommands/CommandLanguage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/usercommands/CommandLevelMessage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/usercommands/CommandMiner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/usercommands/CommandPremium.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/usercommands/CommandSay.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/usercommands/CommandStats.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/Errorold.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/Handler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/JSONhandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/MenuHandlerold.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/MessageHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/MySQLold.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/commandHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/commandParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/listener/BotList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/listener/Channel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/listener/Guildjoin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/listener/Guildleave.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/listener/Memberjoin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/listener/Message.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/listener/PrivateMessage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/listener/Reaction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/listener/commandListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/stuff/DATA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Color.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Constants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/webpanel/webpanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/Handler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandBlacklist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandBlacklist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandClyde.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandClyde.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandDM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandDM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandEval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandEval.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandGiveHashes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandGiveHashes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandInvite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandInvite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandLeave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandLeave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandRegisterServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandRegisterServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandRegisterUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandRegisterUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandSetLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandSetLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandSetPremium.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandSetPremium.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandSetXP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandSetXP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandBan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandBan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandClear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandClear.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandKick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandKick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandPrefix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandPrefix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandVerification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandVerification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandWarn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandWarn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandGitHub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandGitHub.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandPrivatechannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandPrivatechannel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandUptime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandUptime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandUpvoted.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandUpvoted.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandBug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandBug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandClan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandClan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandHelp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandHelp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandLanguage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandLanguage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandLevelMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandLevelMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandMiner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandMiner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandPremium.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandPremium.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandSay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandSay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandStats.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/core/Errorold.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/core/Errorold.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/core/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/core/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/core/MessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/core/MessageHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/core/MySQLold.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/core/MySQLold.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/core/commandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/core/commandHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/core/commandParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/core/commandParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/listener/BotList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/listener/BotList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/listener/Channel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/listener/Channel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/listener/Guildjoin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/listener/Guildjoin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/listener/Guildleave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/listener/Guildleave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/listener/Memberjoin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/listener/Memberjoin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/listener/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/listener/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/listener/Reaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/listener/Reaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/listener/commandListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/listener/commandListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/log4j.properties" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -93,26 +70,122 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Handler.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/GB/Handler.java">
+      <file leaf-file-name="CommandRegisterUser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandRegisterUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="228" column="33" selection-start-line="228" selection-start-column="33" selection-end-line="228" selection-end-column="33" />
+            <state relative-caret-position="187">
+              <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
               <folding>
-                <element signature="class#MenuHandler#0" />
-                <element signature="class#Error#0" />
-                <element signature="e#9404#9405#0" expanded="true" />
-                <element signature="e#9437#9438#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/GB/core/Main.java">
+      <file leaf-file-name="CommandVerification.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandVerification.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
+            <state relative-caret-position="291">
+              <caret line="47" column="9" lean-forward="true" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommandLevelMessage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandLevelMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-301">
+              <caret column="18" selection-start-column="18" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommandSay.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandSay.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="27" lean-forward="true" selection-start-column="27" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommandLog.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandLog.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="19" selection-start-column="19" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommandDM.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandDM.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="17" selection-start-column="17" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommandUpvoted.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandUpvoted.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="43" column="67" selection-start-line="43" selection-start-column="67" selection-end-line="43" selection-end-column="67" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Message.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GB/listener/Message.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-287">
+              <caret line="45" column="134" lean-forward="true" selection-start-line="45" selection-start-column="134" selection-end-line="45" selection-end-column="134" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommandTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="13" selection-start-column="13" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Memberjoin.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GB/listener/Memberjoin.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -137,34 +210,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/commands/botowner/CommandWebhook.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/usercommands/CommandStatus.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/botowner/CommandStop.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/moderation/CommandWarn.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/botowner/CommandRegisterServer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/listener/Memberjoin.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/botowner/CommandRegisterUser.java" />
-        <option value="$PROJECT_DIR$/target/classes/log4j.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/core/MySQLold.java" />
-        <option value="$PROJECT_DIR$/src/main/java/core/Errorold.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/botowner/CommandEval.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/usercommands/CommandClan.java" />
-        <option value="$PROJECT_DIR$/src/main/java/listener/Message.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GB/listener/Message.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GB/core/Handler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/tools/CommandGitHub.java" />
-        <option value="$PROJECT_DIR$/src/main/java/core/MenuHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/core/Error.java" />
-        <option value="$PROJECT_DIR$/src/main/java/handler/MySQL.java" />
-        <option value="$PROJECT_DIR$/src/main/java/handler/MenuHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/handler/Error.java" />
-        <option value="$PROJECT_DIR$/src/main/java/handler/Handler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/core/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/core/MySQL.java" />
-        <option value="$PROJECT_DIR$/src/main/java/listener/commandListener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/core/Handler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/MessageHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/listener/Channel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/listener/Guildjoin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandSetPremium.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandRegisterServer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/listener/BotList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/stuff/SECRETS.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/core/commandParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/core/commandHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/listener/Guildleave.java" />
         <option value="$PROJECT_DIR$/src/main/java/GB/core/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GB/Handler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/core/MessageHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandGiveHashes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/core/Errorold.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandStats.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/listener/Reaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandWarn.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandUptime.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandKick.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandInvite.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandPremium.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandClan.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandSetLevel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandRole.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandSetXP.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandBug.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandToken.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandClyde.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandClear.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandBan.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandMiner.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandLanguage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandEval.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandBlacklist.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandPrivatechannel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/core/MySQLold.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandGitHub.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandLeave.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandHelp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandProfile.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandPrefix.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandRegisterUser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandVerification.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandLevelMessage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandSay.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandLog.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandDM.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandUpvoted.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/listener/Message.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/listener/Memberjoin.java" />
       </list>
     </option>
   </component>
@@ -241,7 +337,25 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="GB" type="462c0819:PsiDirectoryNode" />
-              <item name="Handler.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+              <item name="listener" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GottBotReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GottBotReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="GB" type="462c0819:PsiDirectoryNode" />
+              <item name="stuff" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GottBotReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GottBotReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="GB" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="GottBotReloaded" type="b2602c69:ProjectViewProjectNode" />
@@ -392,6 +506,7 @@
     <layout>
       <window_info anchor="right" id="Palette" order="5" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32897604" />
+      <window_info active="true" anchor="bottom" id="Messages" order="9" visible="true" weight="0.40699524" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info id="Image Layers" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
@@ -402,7 +517,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32897604" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Designer" order="4" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25549048" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25549048" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3290938" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -412,7 +527,6 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.32937366" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -423,140 +537,498 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/MessageHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
+        <state relative-caret-position="68">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/listener/Channel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="16" selection-start-column="16" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/listener/commandListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="23" column="36" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/usercommands/CommandPremium.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/moderation/CommandVerification.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandWebhook.java" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="70" column="37" selection-start-line="70" selection-start-column="37" selection-end-line="70" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/commandHandler.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/commandParser.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/usercommands/CommandStatus.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandStop.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandEval.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/moderation/CommandWarn.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/listener/Reaction.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/listener/Message.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/Main.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandRegisterUser.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandRegisterServer.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandWebhook.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/commandHandler.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/commandParser.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/usercommands/CommandStatus.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandStop.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/moderation/CommandWarn.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandWebhook.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/listener/Reaction.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/listener/Memberjoin.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/listener/Guildleave.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandRegisterServer.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandRegisterUser.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/listener/PrivateMessage.java" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/log4j.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandGiveHashes.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandLeave.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/MySQLold.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/MenuHandlerold.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/botowner/CommandEval.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/usercommands/CommandClan.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/Handler.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/GB.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/listener/Message.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/GB/listener/Message.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/tools/CommandGitHub.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="27" column="63" selection-start-line="27" selection-start-column="63" selection-end-line="27" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/handler/connect.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/handler/MySQL.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/Handler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="180" column="12" selection-start-line="180" selection-start-column="12" selection-end-line="180" selection-end-column="12" />
-          <folding>
-            <element signature="class#MenuHandler#0" />
-            <element signature="class#Error#0" />
-            <element signature="class#MySQL#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/MySQL.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/listener/Guildjoin.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/listener/BotList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="38" column="55" selection-start-line="38" selection-start-column="55" selection-end-line="38" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/listener/commandListener.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandRegisterServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="23" column="36" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
+        <state relative-caret-position="187">
+          <caret line="26" column="42" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandSetPremium.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/stuff/SECRETS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/core/commandParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="12" lean-forward="true" selection-start-column="12" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/core/commandHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="51" selection-start-line="8" selection-start-column="51" selection-end-line="8" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/listener/Guildleave.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GB/core/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
+        <state relative-caret-position="108">
+          <caret line="97" column="38" selection-start-line="97" selection-start-column="38" selection-end-line="97" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GB/Handler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/core/MessageHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="228" column="33" selection-start-line="228" selection-start-column="33" selection-end-line="228" selection-end-column="33" />
+        <state relative-caret-position="124">
+          <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
           <folding>
-            <element signature="class#MenuHandler#0" />
-            <element signature="class#Error#0" />
-            <element signature="e#9404#9405#0" expanded="true" />
-            <element signature="e#9437#9438#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandGiveHashes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="14" selection-start-column="14" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/core/Errorold.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="41" column="12" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandStats.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="29" column="120" lean-forward="true" selection-start-line="29" selection-start-column="120" selection-end-line="29" selection-end-column="120" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/listener/Reaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="45" column="154" selection-start-line="45" selection-start-column="154" selection-end-line="45" selection-end-column="154" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandWarn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="55" column="76" selection-start-line="55" selection-start-column="76" selection-end-line="55" selection-end-column="76" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandUptime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="19" column="77" selection-start-line="19" selection-start-column="77" selection-end-line="19" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandKick.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="33" column="55" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandInvite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="27" selection-start-column="27" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandPremium.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandClan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-68">
+          <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandSetLevel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandRole.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="24" column="60" selection-start-line="24" selection-start-column="60" selection-end-line="24" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandSetXP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="26" selection-start-column="26" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandBug.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="28" selection-start-column="28" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandToken.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-510">
+          <caret column="23" selection-start-column="23" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandClyde.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="41" column="93" selection-start-line="41" selection-start-column="93" selection-end-line="41" selection-end-column="93" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandClear.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandBan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandMiner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="30" column="71" selection-start-line="30" selection-start-column="71" selection-end-line="30" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandLanguage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="17" column="61" selection-start-line="17" selection-start-column="61" selection-end-line="17" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandEval.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="53" column="80" selection-start-line="53" selection-start-column="80" selection-end-line="53" selection-end-column="80" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandBlacklist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-714">
+          <caret column="25" lean-forward="true" selection-start-column="25" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandPrivatechannel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/core/MySQLold.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="23" column="199" selection-start-line="23" selection-start-column="199" selection-end-line="23" selection-end-column="199" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandGitHub.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandLeave.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="27" selection-start-column="27" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandHelp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="24" column="85" selection-start-line="24" selection-start-column="85" selection-end-line="24" selection-end-column="85" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandProfile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1241">
+          <caret line="41" column="51" selection-start-line="41" selection-start-column="51" selection-end-line="41" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandPrefix.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandRegisterUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandVerification.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="47" column="9" lean-forward="true" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandLevelMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-301">
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandSay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="27" lean-forward="true" selection-start-column="27" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="19" selection-start-column="19" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandDM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandUpvoted.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="43" column="67" selection-start-line="43" selection-start-column="67" selection-end-line="43" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/listener/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-287">
+          <caret line="45" column="134" lean-forward="true" selection-start-line="45" selection-start-column="134" selection-end-line="45" selection-end-column="134" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/listener/Memberjoin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

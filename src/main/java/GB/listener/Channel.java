@@ -1,6 +1,6 @@
-package listener;
+package GB.listener;
 
-import core.MySQL;
+import GB.Handler;
 import net.dv8tion.jda.client.events.relationship.FriendRequestReceivedEvent;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.*;

@@ -1,15 +1,17 @@
-package core;
+package GB.core;
 
 import GB.Handler;
-import commands.botowner.*;
-import commands.moderation.*;
+import GB.commands.botowner.CommandGiveHashes;
+import GB.commands.botowner.CommandSetLevel;
+import GB.commands.botowner.CommandTest;
+import GB.commands.moderation.CommandPrefix;
+import GB.commands.tools.CommandProfile;
+import GB.commands.usercommands.*;
+import GB.listener.*;
+import GB.stuff.SECRETS;
 import commands.music.CommandJoin;
-import commands.tools.*;
-import commands.usercommands.*;
-import commands.usercommands.CommandHelp;
 import commands.botowner.CommandInfo;
-import commands.usercommands.CommandPremium;
-import listener.*;
+import listener.BotList;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.bot.sharding.ShardManager;
 import net.dv8tion.jda.core.JDA;
@@ -17,9 +19,10 @@ import net.dv8tion.jda.core.utils.SessionController;
 import org.apache.commons.net.ftp.FTPClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import stuff.SECRETS;
 
 import java.io.FileInputStream;
+
+import static GB.core.commandHandler.commands;
 
 public class Main {
     public static DefaultShardManagerBuilder builder = new DefaultShardManagerBuilder();
@@ -32,7 +35,6 @@ public class Main {
 
     public static void main(String[] args2) {
         try {
-            new Handler().getMySQL()("2314", "234", "234", "234");
             logger.info("------------------start Bot----------------------");
             //if (!new File("Gott.log").exists()) { new File("Gott.log").createNewFile();logger.info("created File Gott.log"); }
             if (!dev) {
@@ -57,61 +59,61 @@ public class Main {
             builder.setToken(SECRETS.TOKEN);
             builder.addEventListeners(
                 new commandListener(),
-                new Guildjoin(),
+                new listener.Guildjoin(),
                 new Message(),
                 new Memberjoin(),
                 new Reaction(),
-                new PrivateMessage(),
+                new listener.PrivateMessage(),
                     new Channel()
              );
             logger.info("loaded all listeners");
-            commandHandler.commands.put("language", new CommandLanguage());
-            commandHandler.commands.put("test", new CommandTest());
-            commandHandler.commands.put("prefix", new CommandPrefix());
-            commandHandler.commands.put("bug", new CommandBug());
-            commandHandler.commands.put("profile", new CommandProfile());
-            commandHandler.commands.put("givehashes", new CommandGiveHashes());
-            commandHandler.commands.put("registeruser", new CommandRegisterUser());
-            commandHandler.commands.put("registerserver", new CommandRegisterServer());
-            commandHandler.commands.put("invite", new CommandInvite());
-            commandHandler.commands.put("eval", new CommandEval());
-            commandHandler.commands.put("ban", new CommandBan());
-            commandHandler.commands.put("kick", new CommandKick());
-            commandHandler.commands.put("github", new CommandGitHub());
-            commandHandler.commands.put("stop", new CommandStop());
-            commandHandler.commands.put("setlvl", new CommandSetLevel());
-            commandHandler.commands.put("setxp", new CommandSetXP());
-            commandHandler.commands.put("clyde", new CommandClyde());
-            commandHandler.commands.put("ping", new CommandPing());
-            commandHandler.commands.put("guildleave", new CommandLeave());
-            commandHandler.commands.put("stats", new CommandStats());
-            commandHandler.commands.put("verification", new CommandVerification());
-            commandHandler.commands.put("say", new CommandSay());
-            commandHandler.commands.put("blacklist", new CommandBlacklist());
-            commandHandler.commands.put("guilds", new CommandGuilds());
-            commandHandler.commands.put("levelmessage", new CommandLevelMessage());
-            commandHandler.commands.put("guild", new CommandGuild());
-            commandHandler.commands.put("help", new CommandHelp());
-            commandHandler.commands.put("info", new CommandInfo());
-            commandHandler.commands.put("warn", new CommandWarn());
-            commandHandler.commands.put("token", new CommandToken());
-            commandHandler.commands.put("log", new CommandLog());
-            commandHandler.commands.put("play", new CommandPlay());
-            commandHandler.commands.put("dm", new CommandDM());
-            commandHandler.commands.put("miner", new CommandMiner());
-            commandHandler.commands.put("premium", new CommandPremium());
-            commandHandler.commands.put("setpremium", new CommandSetPremium());
-            commandHandler.commands.put("clear", new CommandClear());
-            commandHandler.commands.put("s", new CommandShard());
-            commandHandler.commands.put("shard", new CommandShard());
-            commandHandler.commands.put("uptime", new CommandUptime());
-            commandHandler.commands.put("role", new CommandRole());
-            commandHandler.commands.put("botinfo", new CommandBotInfo());
-            commandHandler.commands.put("privatechannel", new CommandPrivatechannel());
-            commandHandler.commands.put("clan", new CommandClan());
+            commands.put("language", new CommandLanguage());
+            commands.put("test", new CommandTest());
+            commands.put("prefix", new CommandPrefix());
+            commands.put("bug", new CommandBug());
+            commands.put("profile", new CommandProfile());
+            commands.put("givehashes", new CommandGiveHashes());
+            commands.put("registeruser", new commands.botowner.CommandRegisterUser());
+            commands.put("registerserver", new commands.botowner.CommandRegisterServer());
+            commands.put("invite", new commands.botowner.CommandInvite());
+            commands.put("eval", new commands.botowner.CommandEval());
+            commands.put("ban", new commands.moderation.CommandBan());
+            commands.put("kick", new commands.moderation.CommandKick());
+            commands.put("github", new commands.tools.CommandGitHub());
+            commands.put("stop", new commands.botowner.CommandStop());
+            commands.put("setlvl", new CommandSetLevel());
+            commands.put("setxp", new commands.botowner.CommandSetXP());
+            commands.put("clyde", new commands.botowner.CommandClyde());
+            commands.put("ping", new commands.tools.CommandPing());
+            commands.put("guildleave", new commands.botowner.CommandLeave());
+            commands.put("stats", new commands.usercommands.CommandStats());
+            commands.put("verification", new commands.moderation.CommandVerification());
+            commands.put("say", new commands.usercommands.CommandSay());
+            commands.put("blacklist", new commands.botowner.CommandBlacklist());
+            commands.put("guilds", new commands.botowner.CommandGuilds());
+            commands.put("levelmessage", new commands.usercommands.CommandLevelMessage());
+            commands.put("guild", new commands.botowner.CommandGuild());
+            commands.put("help", new CommandHelp());
+            commands.put("info", new CommandInfo());
+            commands.put("warn", new commands.moderation.CommandWarn());
+            commands.put("token", new commands.tools.CommandToken());
+            commands.put("log", new commands.moderation.CommandLog());
+            commands.put("play", new commands.botowner.CommandPlay());
+            commands.put("dm", new commands.botowner.CommandDM());
+            commands.put("miner", new CommandMiner());
+            commands.put("premium", new CommandPremium());
+            commands.put("setpremium", new commands.botowner.CommandSetPremium());
+            commands.put("clear", new commands.moderation.CommandClear());
+            commands.put("s", new commands.botowner.CommandShard());
+            commands.put("shard", new commands.botowner.CommandShard());
+            commands.put("uptime", new commands.tools.CommandUptime());
+            commands.put("role", new commands.moderation.CommandRole());
+            commands.put("botinfo", new commands.tools.CommandBotInfo());
+            commands.put("privatechannel", new commands.tools.CommandPrivatechannel());
+            commands.put("clan", new CommandClan());
             /*MUSIC*/
-            commandHandler.commands.put("join", new CommandJoin());
-            commandHandler.commands.put("leave", new commands.music.CommandLeave());
+            commands.put("join", new CommandJoin());
+            commands.put("leave", new commands.music.CommandLeave());
             args = args2;
             logger.info("loaded all commands");
             logger.info("Starting the Bot...");

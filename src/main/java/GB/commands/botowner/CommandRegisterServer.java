@@ -1,8 +1,8 @@
 package commands.botowner;
 
+import GB.Handler;
 import commands.Command;
 import core.Main;
-import core.MySQL;
 import net.dv8tion.jda.bot.sharding.ShardManager;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.slf4j.Logger;
@@ -17,7 +17,7 @@ public class CommandRegisterServer implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (Owner.get(event.getAuthor())) {
+        if (commands.botowner.Owner.get(event.getAuthor())) {
             Thread t = new Thread(() -> {
                 int i = 0;
                 int i2 = 0;

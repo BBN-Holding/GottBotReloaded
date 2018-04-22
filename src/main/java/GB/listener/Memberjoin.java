@@ -1,7 +1,7 @@
-package listener;
+package GB.listener;
 
+import GB.Handler;
 import core.Main;
-import core.MySQL;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;

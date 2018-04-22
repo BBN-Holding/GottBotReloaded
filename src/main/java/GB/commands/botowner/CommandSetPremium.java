@@ -1,7 +1,7 @@
 package commands.botowner;
 
+import GB.Handler;
 import commands.Command;
-import core.MySQL;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
@@ -15,7 +15,7 @@ public class CommandSetPremium implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (Owner.get(event.getAuthor())) {
+        if (commands.botowner.Owner.get(event.getAuthor())) {
             if (args.length<1) {
                 event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Help - SetPremium").setDescription("gb.setpremium @user reset - reseted premium\ngb.setpremium @User set <Java new Date().getTime>\ngb.setpremium @User check").build()).queue();
 
