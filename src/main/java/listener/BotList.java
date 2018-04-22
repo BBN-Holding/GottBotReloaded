@@ -1,11 +1,8 @@
 package listener;
 
 import core.Main;
-import de.foryasee.httprequest.HttpRequestBuilder;
-import de.foryasee.httprequest.RequestHeader;
-import de.foryasee.httprequest.RequestResponse;
-import de.foryasee.httprequest.RequestType;
 import org.discordbots.api.client.DiscordBotListAPI;
+import space.botlist.api.*;
 import stuff.SECRETS;
 import net.dv8tion.jda.core.events.guild.GuildJoinEvent;
 import net.dv8tion.jda.core.events.guild.GuildLeaveEvent;
@@ -17,17 +14,14 @@ import okhttp3.RequestBody;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.List;
-
-import static core.Main.jda;
 
 public class BotList extends ListenerAdapter {
 
     // URL's
-    String botsfordiscord_url = "https://botsfordiscord.com/api/v1/bots/407189087649398795";
-    String discordbotworld_url = "https://discordbot.world/api/bot/407189087649398795/stats";
-    String BoatList_url = "https://boat-list.glitch.me/api/stats/407189087649398795/" + SECRETS.boatlist + "/?count=" + Main.shardManager.getGuilds().size();
-    String discordpw_url = "https://bots.discord.pw/api/bots/407189087649398795/stats";
+    private String botsfordiscord_url = "https://botsfordiscord.com/api/v1/bots/407189087649398795";
+    private String discordbotworld_url = "https://discordbot.world/api/bot/407189087649398795/stats";
+    private String BoatList_url = "https://boat-list.glitch.me/api/stats/407189087649398795/" + SECRETS.boatlist + "/?count=" + Main.shardManager.getGuilds().size();
+    private String discordpw_url = "https://bots.discord.pw/api/bots/407189087649398795/stats";
 
     private JSONObject json = new JSONObject();
 
@@ -41,13 +35,13 @@ public class BotList extends ListenerAdapter {
 
         // BotList.space
 
-        /*botlistspace = new BotlistSpaceClient(SECRETS.botlistspace, "407189087649398795");
+        BotlistSpaceClient botlistspace = new BotlistSpaceClient(SECRETS.botlistspace, "407189087649398795");
         try {
-            botlistSpaceClient.postStats(Main.shardManager.getGuilds().size());
+            botlistspace.postStats(Main.shardManager.getGuilds().size());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        */
+
         // BotsForDiscord
 
         Request botsfordiscord = new Request.Builder()
@@ -131,13 +125,13 @@ public class BotList extends ListenerAdapter {
 
         // BotList.space
 
-        /*botlistspace = new BotlistSpaceClient(SECRETS.botlistspace, "407189087649398795");
+        BotlistSpaceClient botlistspace = new BotlistSpaceClient(SECRETS.botlistspace, "407189087649398795");
         try {
-            botlistSpaceClient.postStats(Main.shardManager.getGuilds().size());
+            botlistspace.postStats(Main.shardManager.getGuilds().size());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        */
+
         // BotsForDiscord
 
         Request botsfordiscord = new Request.Builder()
