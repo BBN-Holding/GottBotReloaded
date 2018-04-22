@@ -18,54 +18,189 @@ import static core.Main.jda;
 
 public class BotList extends ListenerAdapter {
 
-    String botlistspace_url = "https://botlist.space/api/bots/407189087649398795";
+    // URL's
     String botsfordiscord_url = "https://botsfordiscord.com/api/v1/bots/407189087649398795";
+    String discordbotworld_url = "https://discordbot.world/api/bot/407189087649398795/stats";
+    String BoatList_url = "https://boat-list.glitch.me/api/stats/bot/407189087649398795/";
+    String discordpw_url = "https://bots.discord.pw/api/bots/407189087649398795/stats";
 
-
-    JSONObject data = new JSONObject();
+    private JSONObject json = new JSONObject();
 
     @Override
     public void onGuildJoin(GuildJoinEvent event) {
+        // Count
+        json.put("server_count", Main.shardManager.getGuilds().size());
+        json.put("guild_count", Main.shardManager.getGuilds().size());
+        json.put("shard_count", Main.shardManager.getShards().size());
+        RequestBody body = RequestBody.create(MediaType.parse("application/json"), json.toString());
 
-        data.put("shard_id", event.getJDA().getShardInfo().getShardId());
-        data.put("shard_count", Main.shardManager.getShardsTotal());
-        data.put("server_count", Main.shardManager.getGuilds().size());
-        RequestBody body = RequestBody.create(MediaType.parse("application/json"), data.toString());
+        // BotList.space
 
-        Request botlistspace = new Request.Builder()
-                .url(botlistspace_url)
+        /*botlistspace = new BotlistSpaceClient(SECRETS.botlistspace, "407189087649398795");
+        try {
+            botlistSpaceClient.postStats(Main.shardManager.getGuilds().size());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        */
+        // BotsForDiscord
+
+        Request botsfordiscord = new Request.Builder()
+                .url(botsfordiscord_url)
                 .post(body)
                 .addHeader("User-Agent", "DiscordBot")
-                .addHeader("Authorization", SECRETS.botlistspace)
+                .addHeader("Authorization", SECRETS.botsfordiscord)
                 .build();
         try {
-            new OkHttpClient().newCall(botlistspace).execute().close();
-            System.out.println("Successfully posted count for botlist.space!");
+            new OkHttpClient().newCall(botsfordiscord).execute().close();
+            System.out.println("Successfully posted count for BotsForDiscord!");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        // DiscordBot.World
+
+        Request discordbotworld = new Request.Builder()
+                .url(discordbotworld_url)
+                .post(body)
+                .addHeader("User-Agent", "DiscordBot")
+                .addHeader("Authorization", SECRETS.discordbotworld)
+                .build();
+        try {
+            new OkHttpClient().newCall(discordbotworld).execute().close();
+            System.out.println("Successfully posted count for DiscordBot.World!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // DiscordBots
+
+        Request DiscordBots = new Request.Builder()
+                .url(discordpw_url)
+                .post(body)
+                .addHeader("User-Agent", "DiscordBot")
+                .addHeader("Authorization", SECRETS.discordpw)
+                .build();
+        try {
+            new OkHttpClient().newCall(DiscordBots).execute().close();
+            System.out.println("Successfully posted count for bots.discord.pw!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Boat-List
+
+        body = RequestBody.create(null, new byte[0]);
+        Request BoatList = new Request.Builder()
+                .url(BoatList_url)
+                .post(body)
+                .build();
+
+        try {
+            new OkHttpClient().newCall(BoatList).execute().close();
+            System.out.println("Successfully posted count for Boat List!");
+        } catch (IOException e) {
+            System.out.println(e.toString());
+        }
+
+        // Discord Bot List
+
+        DiscordBotListAPI DiscordBotList = new DiscordBotListAPI.Builder()
+                .token(SECRETS.discordbotlist)
+                .build();
+
+        DiscordBotList.setStats("407189087649398795", Main.shardManager.getShards().get(0).getGuilds().size(), Main.shardManager.getShards().get(0).getShardInfo().getShardId(), Main.shardManager.getShards().size());
+        DiscordBotList.setStats("407189087649398795", Main.shardManager.getShards().get(1).getGuilds().size(), Main.shardManager.getShards().get(1).getShardInfo().getShardId(), Main.shardManager.getShards().size());
     }
 
 
+
+
+    @Override
     public void onGuildLeave(GuildLeaveEvent event) {
+        // Count
+        json.put("server_count", Main.shardManager.getGuilds().size());
+        json.put("guild_count", Main.shardManager.getGuilds().size());
+        json.put("shard_count", Main.shardManager.getShards().size());
+        RequestBody body = RequestBody.create(MediaType.parse("application/json"), json.toString());
 
-        data.put("shard_id", event.getJDA().getShardInfo().getShardId());
-        data.put("shard_count", Main.shardManager.getShardsTotal());
-        data.put("server_count", Main.shardManager.getGuilds().size());
-        RequestBody body = RequestBody.create(MediaType.parse("application/json"), data.toString());
+        // BotList.space
 
-        Request botlistspace = new Request.Builder()
-                .url(botlistspace_url)
-                .post(body)
-                .addHeader("User-Agent", "DiscordBot")
-                .addHeader("Authorization", SECRETS.botlistspace)
-                .build();
+        /*botlistspace = new BotlistSpaceClient(SECRETS.botlistspace, "407189087649398795");
         try {
-            new OkHttpClient().newCall(botlistspace).execute().close();
-            System.out.println("Successfully posted count for botlist.space!");
+            botlistSpaceClient.postStats(Main.shardManager.getGuilds().size());
         } catch (IOException e) {
             e.printStackTrace();
         }
+        */
+        // BotsForDiscord
+
+        Request botsfordiscord = new Request.Builder()
+                .url(botsfordiscord_url)
+                .post(body)
+                .addHeader("User-Agent", "DiscordBot")
+                .addHeader("Authorization", SECRETS.botsfordiscord)
+                .build();
+        try {
+            new OkHttpClient().newCall(botsfordiscord).execute().close();
+            System.out.println("Successfully posted count for BotsForDiscord!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // DiscordBot.World
+
+        Request discordbotworld = new Request.Builder()
+                .url(discordbotworld_url)
+                .post(body)
+                .addHeader("User-Agent", "DiscordBot")
+                .addHeader("Authorization", SECRETS.discordbotworld)
+                .build();
+        try {
+            new OkHttpClient().newCall(discordbotworld).execute().close();
+            System.out.println("Successfully posted count for DiscordBot.World!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // DiscordBots
+
+        Request DiscordBots = new Request.Builder()
+                .url(discordpw_url)
+                .post(body)
+                .addHeader("User-Agent", "DiscordBot")
+                .addHeader("Authorization", SECRETS.discordpw)
+                .build();
+        try {
+            new OkHttpClient().newCall(DiscordBots).execute().close();
+            System.out.println("Successfully posted count for bots.discord.pw!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Boat-List
+
+        body = RequestBody.create(null, new byte[0]);
+        Request BoatList = new Request.Builder()
+                .url(BoatList_url)
+                .post(body)
+                .build();
+
+        try {
+            new OkHttpClient().newCall(BoatList).execute().close();
+            System.out.println("Successfully posted count for Boat List!");
+        } catch (IOException e) {
+            System.out.println(e.toString());
+        }
+
+        // Discord Bot List
+
+        DiscordBotListAPI DiscordBotList = new DiscordBotListAPI.Builder()
+                .token(SECRETS.discordbotlist)
+                .build();
+
+        DiscordBotList.setStats("407189087649398795", Main.shardManager.getShards().get(0).getGuilds().size(), Main.shardManager.getShards().get(0).getShardInfo().getShardId(), Main.shardManager.getShards().size());
+        DiscordBotList.setStats("407189087649398795", Main.shardManager.getShards().get(1).getGuilds().size(), Main.shardManager.getShards().get(1).getShardInfo().getShardId(), Main.shardManager.getShards().size());
+
     }
 }
