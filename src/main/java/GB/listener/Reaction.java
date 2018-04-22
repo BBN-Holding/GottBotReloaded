@@ -41,8 +41,9 @@ public class Reaction extends ListenerAdapter {
                 if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_HISTORY)) {
                     if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_MANAGE)) {
                         if (event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().size() == 1)
-                            if (new Handler().getMySQL().get("helpmenu", "message", event.getMessageId(), "id").equals(event.getUser().getId())) {
-                                if (event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0).getTitle().contains(new Handler().getMessageHandler().get("Helpmenu.helpmenu", event.getUser(),event.getGuild()))) {
+                            if (event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0).getTitle().contains(new Handler().getMessageHandler().get("Helpmenu.helpmenu", event.getUser(),event.getGuild()))) {
+                                if (new Handler().getMySQL().get("helpmenu", "message", event.getMessageId(), "id").equals(event.getUser().getId())) {
+
                                     try {
                                         Message message = event.getChannel().getMessageById(event.getMessageId()).complete();
                                         message.clearReactions().queue();
