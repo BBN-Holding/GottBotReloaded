@@ -1,5 +1,6 @@
 package core;
 
+import GB.Handler;
 import commands.botowner.*;
 import commands.moderation.*;
 import commands.music.CommandJoin;
@@ -31,7 +32,7 @@ public class Main {
 
     public static void main(String[] args2) {
         try {
-            new Handler().getMySQL().String("2314", "234", "234", "234");
+            new Handler().getMySQL()("2314", "234", "234", "234");
             logger.info("------------------start Bot----------------------");
             //if (!new File("Gott.log").exists()) { new File("Gott.log").createNewFile();logger.info("created File Gott.log"); }
             if (!dev) {
