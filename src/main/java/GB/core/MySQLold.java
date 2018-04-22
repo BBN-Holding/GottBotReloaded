@@ -1,6 +1,6 @@
 package GB.core;
 
-import GB.stuff.SECRETS;
+import stuff.SECRETS;
 import org.slf4j.LoggerFactory;
 
 import java.sql.*;
