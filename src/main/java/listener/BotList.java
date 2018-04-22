@@ -211,4 +211,5 @@ public class BotList extends ListenerAdapter {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 }
