@@ -25,19 +25,19 @@ public class CommandBlacklist implements Command {
                 switch (args[0].toLowerCase()) {
                     case "add":
                         User user = event.getMessage().getMentionedUsers().get(0);
-                        MySQL.insert("blacklist", "id", user.getId());
+                        new Handler().getMySQL().insert("blacklist", "id", user.getId());
                         event.getTextChannel().sendMessage(":white_check_mark:").queue();
                         break;
 
                     case "remove":
                         User usa = event.getMessage().getMentionedUsers().get(0);
-                        MySQL.delete("blacklist", "id", usa.getId());
+                        new Handler().getMySQL().delete("blacklist", "id", usa.getId());
                         event.getTextChannel().sendMessage(":white_check_mark:").queue();
                         break;
                     case "list":
                         String out="";
                         int i=0;
-                        List<String> list = MySQL.getallwithoutwhere("blacklist",  "id");
+                        List<String> list = new Handler().getMySQL().getallwithoutwhere("blacklist",  "id");
                         while (list.size()>i) {
                             out += Main.shardManager.getUserById(list.get(i)).getName()+", ";
                             i++;

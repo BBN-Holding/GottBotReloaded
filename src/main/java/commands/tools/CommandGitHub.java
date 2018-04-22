@@ -1,9 +1,8 @@
 package commands.tools;
 
 import commands.Command;
+import core.Handler;
 import core.MessageHandler;
-import core.MySQL;
-import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
@@ -25,13 +24,14 @@ public class CommandGitHub implements Command{
         } else {
             if (args[0].equals("list")) {
 
-                String Liste = MySQL.getallstring("user", "github");
+                new Handler().getMySQL();
+                String Liste = new Handler().getMySQL().getallstring("user", "github");
                 String AlleMit = Liste.replaceAll("none", "");
 
                 event.getTextChannel().sendMessage(AlleMit).queue();
 
             } else {
-                MySQL.update("user", "github", args[0], "id", event.getAuthor().getId());
+                new Handler().getMySQL().update("user", "github", args[0], "id", event.getAuthor().getId());
                 event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "tools.github.set", "", "sucess", event)).queue();
             }
         }

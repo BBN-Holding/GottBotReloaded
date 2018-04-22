@@ -82,11 +82,11 @@ public class CommandWarn implements Command{
         }
 
         LocalDateTime currentTime = LocalDateTime.now();
-        MySQL.insert("warns", "user_id", warnUser.getId());
-        MySQL.update("warns", "guild_id", guild.getId(),"moderator_user_id", "000000000000000000");
-        MySQL.update("warns", "reason", reason,"moderator_user_id", "000000000000000000");
-        MySQL.update("warns", "warn_time", String.valueOf(currentTime.toLocalDate()),"moderator_user_id", "000000000000000000");
-        MySQL.update("warns", "moderator_user_id", user.getId(),"moderator_user_id", "000000000000000000");
+        new Handler().getMySQL().insert("warns", "user_id", warnUser.getId());
+        new Handler().getMySQL().update("warns", "guild_id", guild.getId(),"moderator_user_id", "000000000000000000");
+        new Handler().getMySQL().update("warns", "reason", reason,"moderator_user_id", "000000000000000000");
+        new Handler().getMySQL().update("warns", "warn_time", String.valueOf(currentTime.toLocalDate()),"moderator_user_id", "000000000000000000");
+        new Handler().getMySQL().update("warns", "moderator_user_id", user.getId(),"moderator_user_id", "000000000000000000");
 
 
                 event.getTextChannel().sendMessage("Warned " + warnUser.getName() + "#" + warnUser.getDiscriminator()).queue();

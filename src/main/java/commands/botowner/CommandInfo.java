@@ -1,8 +1,6 @@
 package commands.botowner;
 
 import commands.Command;
-import commands.botowner.Owner;
-import core.MenuHandler;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 

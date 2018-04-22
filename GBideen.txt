@@ -1,0 +1,6 @@
+GottBotReloaded ideen
+
+- 1 GB.core.Handler mit Owner überprüfung, Language GB.core.Handler, Menu handler, GB.core.MySQL GB.core.Handler,  (commandHandler?), usw
+- Music Command
+- commandRegisterHandler damit man nicht so viele zeilen nur für commandRegistering braucht
+- games

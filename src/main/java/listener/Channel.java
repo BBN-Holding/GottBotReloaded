@@ -15,8 +15,8 @@ public class Channel extends ListenerAdapter {
 
     @Override
     public void onGuildVoiceJoin(GuildVoiceJoinEvent event) {
-        if (!MySQL.get("server", "id", event.getGuild().getId(), "privatechannel").equals("none")) {
-            if (event.getChannelJoined().getParent().getId().equals(MySQL.get("server", "id", event.getGuild().getId(), "privatechannel"))) {
+        if (!new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "privatechannel").equals("none")) {
+            if (event.getChannelJoined().getParent().getId().equals(new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "privatechannel"))) {
                 if (event.getChannelJoined().getName().equals("➕ Create Privatechannel")) {
                     Category category = event.getChannelJoined().getParent();
                     System.out.println("asdasdasd");
@@ -36,7 +36,7 @@ public class Channel extends ListenerAdapter {
 
     @Override
     public void onGuildVoiceMove(GuildVoiceMoveEvent event) {
-        if (event.getChannelLeft().getParent().getId().equals(MySQL.get("server", "id", event.getGuild().getId(), "privatechannel"))) {
+        if (event.getChannelLeft().getParent().getId().equals(new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "privatechannel"))) {
             if (!(event.getChannelLeft().getName().equals("\uD83D\uDE36 Wait for a Move in a Privatechannel")||event.getChannelLeft().getName().equals("➕ Create Privatechannel"))&&event.getChannelLeft().getMembers().size()==0) {
                 event.getChannelLeft().delete().queue();
             }
@@ -45,7 +45,7 @@ public class Channel extends ListenerAdapter {
 
     @Override
     public void onGuildVoiceLeave(GuildVoiceLeaveEvent event) {
-        if (event.getChannelLeft().getParent().getId().equals(MySQL.get("server", "id", event.getGuild().getId(), "privatechannel"))) {
+        if (event.getChannelLeft().getParent().getId().equals(new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "privatechannel"))) {
             if (!(event.getChannelLeft().getName().equals("\uD83D\uDE36 Wait for a Move in a Privatechannel")||event.getChannelLeft().getName().equals("➕ Create Privatechannel"))&&event.getChannelLeft().getMembers().size()==0) {
                 event.getChannelLeft().delete().queue();
             }

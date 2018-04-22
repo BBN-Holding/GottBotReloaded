@@ -1,18 +1,14 @@
 package core;
 
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.Message;
-import net.dv8tion.jda.core.entities.MessageEmbed;
 import org.apache.commons.net.ftp.FTPClient;
 import stuff.DATA;
 import stuff.SECRETS;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Date;
 
-public class Error {
+public class Errorold {
 
     public static void handle(Exception e) {
         try {

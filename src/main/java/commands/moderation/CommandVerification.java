@@ -4,11 +4,8 @@ import commands.Command;
 import commands.botowner.Owner;
 import core.MessageHandler;
 import core.MySQL;
-import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-
-import java.awt.*;
 
 public class CommandVerification implements Command {
 
@@ -28,11 +25,11 @@ public class CommandVerification implements Command {
                     if (args.length < 2) {
                         event.getTextChannel().sendMessage(MessageHandler.getEmbed("moderation.verification.setup", "moderation.verification.setup2", "", "normal", event)).queue();
                     } else {
-                        if (MySQL.get("server", "id", event.getGuild().getId(), "verification").equals("none")) {
+                        if (new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "verification").equals("none")) {
                             if (event.getTextChannel().getMessageById(args[1]) != null) {
                                 if (event.getGuild().getRoleById(args[2]) != null) {
-                                    MySQL.update("server", "verification", event.getTextChannel().getMessageById(args[1]).complete().getId(), "id", event.getGuild().getId());
-                                    MySQL.update("server", "verificationrole", event.getGuild().getRoleById(args[2]).getId(), "id", event.getGuild().getId());
+                                    new Handler().getMySQL().update("server", "verification", event.getTextChannel().getMessageById(args[1]).complete().getId(), "id", event.getGuild().getId());
+                                    new Handler().getMySQL().update("server", "verificationrole", event.getGuild().getRoleById(args[2]).getId(), "id", event.getGuild().getId());
                                     event.getTextChannel().getMessageById(args[1]).complete().addReaction("✅").queue();
                                     event.getTextChannel().getMessageById(args[1]).complete().addReaction("❌").queue();
                                     String zusatz = event.getGuild().getRoleById(args[2]).getName()+" - "+event.getTextChannel().getMessageById(args[1]).complete().getContentRaw();
@@ -43,8 +40,8 @@ public class CommandVerification implements Command {
                             event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.error", "moderation.verification.alreadyexist", "", "error", event)).queue();
                     }
                 } else if (args[0].equalsIgnoreCase("reset")) {
-                    MySQL.update("server", "verification", "none", "id", event.getGuild().getId());
-                    MySQL.update("server", "verificationrole", "none", "id", event.getGuild().getId());
+                    new Handler().getMySQL().update("server", "verification", "none", "id", event.getGuild().getId());
+                    new Handler().getMySQL().update("server", "verificationrole", "none", "id", event.getGuild().getId());
                     event.getTextChannel().sendMessage(MessageHandler.getEmbed("util.sucess", "moderation.verification.reset", "", "normal", event)).queue();
                 }
             }

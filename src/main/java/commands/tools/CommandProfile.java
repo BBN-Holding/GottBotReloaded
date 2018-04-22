@@ -10,14 +10,10 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.json.JSONObject;
 import stuff.DATA;
 import stuff.SECRETS;
-import util.Color;
 
-import java.awt.*;
 import java.time.format.DateTimeFormatter;
-import java.util.ResourceBundle;
 
 import static core.JSONhandler.readJsonFromUrl;
-import static javax.print.attribute.standard.Chromaticity.COLOR;
 
 public class CommandProfile implements Command {
     String Nick;
@@ -62,14 +58,14 @@ public class CommandProfile implements Command {
 
             JSONObject json = readJsonFromUrl("https://api.coinhive.com/user/balance?name=" + user.getUser().getId() + "&secret=" + SECRETS.COINHIVESECRET);
             Long mined = json.getLong("total");
-            String withdrawn = MySQL.get("user", "id", user.getUser().getId(), "withdrawnhashes");
-            String hashes = MySQL.get("user", "id", user.getUser().getId(), "hashes");
+            String withdrawn = new Handler().getMySQL().get("user", "id", user.getUser().getId(), "withdrawnhashes");
+            String hashes = new Handler().getMySQL().get("user", "id", user.getUser().getId(), "hashes");
 
-            Punkte = MySQL.get("user", "ID", user.getUser().getId(), "xp");
-            Level = MySQL.get("user", "ID", user.getUser().getId(), "level");
-            TempProgress = Integer.parseInt(MySQL.get("user", "ID", user.getUser().getId(), "level")) + 1;
-            viertel = Integer.parseInt(MySQL.get("lvl", "lvl", String.valueOf(TempProgress), "xp")) / 8;
-            ProgressMax = MySQL.get("lvl", "lvl", String.valueOf(TempProgress), "xp");
+            Punkte = new Handler().getMySQL().get("user", "ID", user.getUser().getId(), "xp");
+            Level = new Handler().getMySQL().get("user", "ID", user.getUser().getId(), "level");
+            TempProgress = Integer.parseInt(new Handler().getMySQL().get("user", "ID", user.getUser().getId(), "level")) + 1;
+            viertel = Integer.parseInt(new Handler().getMySQL().get("lvl", "lvl", String.valueOf(TempProgress), "xp")) / 8;
+            ProgressMax = new Handler().getMySQL().get("lvl", "lvl", String.valueOf(TempProgress), "xp");
             LevelPlus = (Integer.parseInt(Level) + 1) + "";
             //unter 25% viertel=2
             String mid_full = event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_mid_full", true).get(0).getAsMention();
@@ -116,7 +112,7 @@ public class CommandProfile implements Command {
                         mid_full+mid_full+mid_full+mid_full+mid_full+mid_full+
                         event.getJDA().getGuildById(DATA.BBNS).getEmotesByName("progbar_end_full", true).get(0).getAsMention();
             }
-            String Github = MySQL.get("user", "ID", user.getUser().getId(), "github");
+            String Github = new Handler().getMySQL().get("user", "ID", user.getUser().getId(), "github");
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle(MessageHandler.get("tools.profile.title", user.getUser(), guild))
                     .addField(MessageHandler.get("tools.profile.1", user.getUser(), guild), user.getUser().getName(), false)
                     .addField(MessageHandler.get("tools.profile.2", user.getUser(), guild), Nick, false)

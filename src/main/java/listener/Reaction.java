@@ -1,19 +1,14 @@
 package listener;
 
-import core.MenuHandler;
+import core.MenuHandlerold;
 import core.MessageHandler;
 import core.MySQL;
 import net.dv8tion.jda.core.Permission;
-import net.dv8tion.jda.core.entities.Emote;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.guild.react.GuildMessageReactionAddEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
 
 public class Reaction extends ListenerAdapter {
 
@@ -25,11 +20,11 @@ public class Reaction extends ListenerAdapter {
                 if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_HISTORY)) {
                     if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_MANAGE)) {
                         if (event.getGuild().getSelfMember().hasPermission(Permission.MANAGE_ROLES)) {
-                        if (!MySQL.get("server", "id", event.getGuild().getId(), "verification").equals("none")) {
-                            String Message = MySQL.get("server", "id", event.getGuild().getId(), "verification");
+                        if (!new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "verification").equals("none")) {
+                            String Message = new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "verification");
                             if (event.getMessageId().equals(Message)) {
                                 if (event.getReaction().getReactionEmote().getName().equals("✅")) {
-                                    event.getGuild().getController().addSingleRoleToMember(event.getMember(), event.getGuild().getRoleById(MySQL.get("server", "id", event.getGuild().getId(), "verificationrole"))).queue();
+                                    event.getGuild().getController().addSingleRoleToMember(event.getMember(), event.getGuild().getRoleById(new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "verificationrole"))).queue();
                                 } else if (event.getReaction().getReactionEmote().getName().equals("❌")) {
                                     if (event.getJDA().getRoles().get(0).canInteract(event.getMember().getRoles().get(0)))
                                         event.getGuild().getController().kick(event.getMember()).queue();
@@ -47,13 +42,13 @@ public class Reaction extends ListenerAdapter {
                 if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_HISTORY)) {
                     if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_MANAGE)) {
                         if (event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().size() == 1)
-                            if (MySQL.get("helpmenu", "message", event.getMessageId(), "id").equals(event.getUser().getId())) {
+                            if (new Handler().getMySQL().get("helpmenu", "message", event.getMessageId(), "id").equals(event.getUser().getId())) {
                                 if (event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0).getTitle().contains(MessageHandler.get("Helpmenu.helpmenu", event.getUser(),event.getGuild()))) {
                                     try {
                                         Message message = event.getChannel().getMessageById(event.getMessageId()).complete();
                                         message.clearReactions().queue();
-                                        message.editMessage(MenuHandler.getMessage(event.getReactionEmote().getName(), event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0), event.getUser(), event.getGuild())).queue();
-                                        List<String> list = MenuHandler.getemote(event.getReactionEmote().getName(), event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0), event.getUser(), event.getGuild());
+                                        message.editMessage(MenuHandlerold.getMessage(event.getReactionEmote().getName(), event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0), event.getUser(), event.getGuild())).queue();
+                                        List<String> list = MenuHandlerold.getemote(event.getReactionEmote().getName(), event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0), event.getUser(), event.getGuild());
                                         while (list.size() > 0) {
                                             message.addReaction(list.get(0)).queue();
                                             list.remove(0);

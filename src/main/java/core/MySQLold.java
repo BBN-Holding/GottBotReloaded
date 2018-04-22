@@ -5,14 +5,13 @@ import stuff.SECRETS;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class MySQL {
+public class MySQLold {
 
 
     private static Connection connection;
-    private static org.slf4j.Logger Logger = LoggerFactory.getLogger(MySQL.class);
+    private static org.slf4j.Logger Logger = LoggerFactory.getLogger(MySQLold.class);
 
     @Deprecated
     public static Connection getConnection() {
@@ -20,7 +19,7 @@ public class MySQL {
     }
 
 
-    public static void connect() {
+    public void connect() {
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost/gottbot?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", SECRETS.user, SECRETS.password);
             Logger.info("MySQL connection success");
@@ -39,7 +38,7 @@ public class MySQL {
         }
     }
 
-    public static String get(String table, String where, String wherevalue, String spalte) {
+    public String get(String table, String where, String wherevalue, String spalte) {
         String out="";
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM `"+table+"` WHERE `"+where+"`=?");
@@ -56,7 +55,7 @@ public class MySQL {
         return out;
     }
 
-    public static String get1(String table, String wherevalue, String spalte) {
+    public String get1(String table, String wherevalue, String spalte) {
         String out="";
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM `"+table+"` WHERE ?");
@@ -73,7 +72,7 @@ public class MySQL {
         return out;
     }
 
-    public static List<String> getall(String table, String where, String wherevalue, String spalte) {
+    public List<String> getall(String table, String where, String wherevalue, String spalte) {
         List<String> List = new ArrayList<>();
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM `"+table+"` WHERE `"+where+"`=?");
@@ -89,7 +88,7 @@ public class MySQL {
         return List;
     }
 
-    public static List<String> getallwithoutwhere(String table, String spalte) {
+    public List<String> getallwithoutwhere(String table, String spalte) {
         List<String> List = new ArrayList<>();
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM `"+table+"`");
@@ -105,7 +104,7 @@ public class MySQL {
         return List;
     }
 
-    public static String getallstring(String table, String spalte) {
+    public String getallstring(String table, String spalte) {
         String out="";
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM `" + table + "`");
@@ -120,7 +119,7 @@ public class MySQL {
         return out;
     }
 
-    public static String update(String table, String what, String whatvalue, String where, String wherevalue) {
+    public String update(String table, String what, String whatvalue, String where, String wherevalue) {
         try {
             PreparedStatement ps = connection.prepareStatement("UPDATE `"+table+"` SET `"+what+"`=? WHERE `"+where+"`=?");
             ps.setString(1, whatvalue);
@@ -132,7 +131,7 @@ public class MySQL {
         return null;
     }
 
-    public static String insert(String table, String what, String whatvalue) {
+    public String insert(String table, String what, String whatvalue) {
         try {
             PreparedStatement ps = connection.prepareStatement("INSERT INTO `"+table+"`(`"+what+"`) VALUES ('"+whatvalue+"')");
             ps.execute();
@@ -142,7 +141,7 @@ public class MySQL {
         return null;
     }
 
-    public static void delete(String table, String where, String wherevalue) {
+    public void delete(String table, String where, String wherevalue) {
         try {
             PreparedStatement ps = connection.prepareStatement("DELETE FROM `"+table+"` WHERE `"+where+"`=?");
             ps.setString(1, wherevalue);
@@ -152,7 +151,7 @@ public class MySQL {
         }
     }
 
-    public static void exist(String table, String where) {
+    public void exist(String table, String where) {
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM `"+table+"` WHERE `"+where+"` = ?");
             ps.execute();

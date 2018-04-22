@@ -14,10 +14,10 @@ public class Memberjoin extends ListenerAdapter {
 
     @Override
     public void onGuildMemberJoin(GuildMemberJoinEvent event) {
-        if (MySQL.get("user", "ID", event.getUser().getId(), "ID")==null) {
-            MySQL.insert("user", "ID", event.getUser().getId());
+        if (new Handler().getMySQL().get("user", "ID", event.getUser().getId(), "ID")==null) {
+            new Handler().getMySQL().insert("user", "ID", event.getUser().getId());
         }
-        if (!MySQL.get("user", "id", event.getUser().getId(), "premium").equals("none")) {
+        if (!new Handler().getMySQL().get("user", "id", event.getUser().getId(), "premium").equals("none")) {
             Guild bbn = Main.shardManager.getGuildById(DATA.BBNS);
             if (event.getGuild().getId().equals(bbn.getId()))
             bbn.getController().addSingleRoleToMember(bbn.getMember(event.getUser()), bbn.getRoleById(408660274103451649L)).queue();

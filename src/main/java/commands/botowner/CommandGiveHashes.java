@@ -15,8 +15,8 @@ public class CommandGiveHashes implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         if (Owner.get(event.getAuthor())) {
             if (event.getMessage().getMentionedUsers().size()==1) {
-                long hashes = Long.parseLong(MySQL.get("user", "id", event.getMessage().getMentionedUsers().get(0).getId(), "hashes"))+Long.parseLong(args[0]);
-                MySQL.update("user", "hashes", String.valueOf(hashes), "id", event.getMessage().getMentionedUsers().get(0).getId());
+                long hashes = Long.parseLong(new Handler().getMySQL().get("user", "id", event.getMessage().getMentionedUsers().get(0).getId(), "hashes"))+Long.parseLong(args[0]);
+                new Handler().getMySQL().update("user", "hashes", String.valueOf(hashes), "id", event.getMessage().getMentionedUsers().get(0).getId());
                 event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Sucess!").setDescription("Sucessfully add "+event.getMessage().getMentionedUsers().get(0).getName()+" "+args[0]+" hashes").build()).queue();
             }
         }

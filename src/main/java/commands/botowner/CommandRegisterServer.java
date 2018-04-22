@@ -4,7 +4,6 @@ import commands.Command;
 import core.Main;
 import core.MySQL;
 import net.dv8tion.jda.bot.sharding.ShardManager;
-import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,8 +23,8 @@ public class CommandRegisterServer implements Command {
                 int i2 = 0;
                 ShardManager shardManager = Main.shardManager;
                 while (shardManager.getGuilds().size() - 1 >= i) {
-                    if (MySQL.get("server", "id", shardManager.getGuilds().get(i).getId(), "id") == null) {
-                        MySQL.insert("server", "id", shardManager.getGuilds().get(i).getId() + "");
+                    if (new Handler().getMySQL().get("server", "id", shardManager.getGuilds().get(i).getId(), "id") == null) {
+                        new Handler().getMySQL().insert("server", "id", shardManager.getGuilds().get(i).getId() + "");
                         logger.info("neuer Server in database Name: " + shardManager.getGuilds().get(i).getName() + " ID: " + shardManager.getGuilds().get(i).getId());
                         i2++;
                     }
