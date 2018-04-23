@@ -26,7 +26,7 @@ public class Main {
     private static Logger logger = LoggerFactory.getLogger(Main.class);
     public static JDA jda;
     public static String[] args;
-    public static boolean dev = true;
+    public static boolean dev = false;
     public static SessionController sessionController;
     public static ShardManager shardManager;
 
@@ -56,7 +56,7 @@ public class Main {
             builder.setToken(SECRETS.TOKEN);
             builder.addEventListeners(
                 new commandListener(),
-                new listener.Guildjoin(),
+                new Guildjoin(),
                 new Message(),
                 new Memberjoin(),
                 new Reaction(),
