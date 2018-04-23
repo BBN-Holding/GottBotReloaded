@@ -11,16 +11,18 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import org.discordbots.api.client.DiscordBotListAPI;
 import org.json.JSONObject;
+import space.botlist.api.BotlistSpaceClient;
 
 import java.io.IOException;
 
 public class BotList extends ListenerAdapter {
 
     // URL's
-    String botsfordiscord_url = "https://botsfordiscord.com/api/v1/bots/407189087649398795";
-    String discordbotworld_url = "https://discordbot.world/api/bot/407189087649398795/stats";
-    String BoatList_url = "https://boat-list.glitch.me/api/stats/bot/407189087649398795/";
-    String discordpw_url = "https://bots.discord.pw/api/bots/407189087649398795/stats";
+    private String botsfordiscord_url = "https://botsfordiscord.com/api/v1/bots/407189087649398795";
+    private String discordbotworld_url = "https://discordbot.world/api/bot/407189087649398795/stats";
+    private String BoatList_url = "https://boat-list.glitch.me/api/stats/bot/407189087649398795/";
+    private String discordpw_url = "https://bots.discord.pw/api/bots/407189087649398795/stats";
+    private String terminal_url = "https://ls.terminal.ink/api/v1/bots/407189087649398795";
 
     private JSONObject json = new JSONObject();
 
@@ -34,13 +36,13 @@ public class BotList extends ListenerAdapter {
 
         // BotList.space
 
-        /*botlistspace = new BotlistSpaceClient(SECRETS.botlistspace, "407189087649398795");
+        BotlistSpaceClient botlistspace = new BotlistSpaceClient(SECRETS.botlistspace, "407189087649398795");
         try {
-            botlistSpaceClient.postStats(Main.shardManager.getGuilds().size());
+            botlistspace.postStats(Main.shardManager.getGuilds().size());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        */
+
         // BotsForDiscord
 
         Request botsfordiscord = new Request.Builder()
@@ -82,6 +84,21 @@ public class BotList extends ListenerAdapter {
         try {
             new OkHttpClient().newCall(DiscordBots).execute().close();
             System.out.println("Successfully posted count for bots.discord.pw!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // ls.terminal.ink
+
+        Request terminal = new Request.Builder()
+                .url(terminal_url)
+                .post(body)
+                .addHeader("User-Agent", "DiscordBot")
+                .addHeader("Authorization", SECRETS.terminal)
+                .build();
+        try {
+            new OkHttpClient().newCall(terminal).execute().close();
+            System.out.println("Successfully posted count for ls.terminal.ink!");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -124,13 +141,13 @@ public class BotList extends ListenerAdapter {
 
         // BotList.space
 
-        /*botlistspace = new BotlistSpaceClient(SECRETS.botlistspace, "407189087649398795");
+        BotlistSpaceClient botlistspace = new BotlistSpaceClient(SECRETS.botlistspace, "407189087649398795");
         try {
-            botlistSpaceClient.postStats(Main.shardManager.getGuilds().size());
+            botlistspace.postStats(Main.shardManager.getGuilds().size());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        */
+
         // BotsForDiscord
 
         Request botsfordiscord = new Request.Builder()
@@ -172,6 +189,21 @@ public class BotList extends ListenerAdapter {
         try {
             new OkHttpClient().newCall(DiscordBots).execute().close();
             System.out.println("Successfully posted count for bots.discord.pw!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // ls.terminal.ink
+
+        Request terminal = new Request.Builder()
+                .url(terminal_url)
+                .post(body)
+                .addHeader("User-Agent", "DiscordBot")
+                .addHeader("Authorization", SECRETS.terminal)
+                .build();
+        try {
+            new OkHttpClient().newCall(terminal).execute().close();
+            System.out.println("Successfully posted count for ls.terminal.ink!");
         } catch (IOException e) {
             e.printStackTrace();
         }

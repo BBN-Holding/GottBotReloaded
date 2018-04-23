@@ -61,7 +61,7 @@ public class Main {
                 new Memberjoin(),
                 new Reaction(),
                 new listener.PrivateMessage(),
-                    new Channel()
+                new Channel()
              );
             logger.info("loaded all listeners");
             commands.put("language", new CommandLanguage());
@@ -119,7 +119,7 @@ public class Main {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Jojo");
+            System.out.println("IST DAS HIER ZUM DEBUGEN ODER WAS?");
         }
 
 
