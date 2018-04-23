@@ -1,4 +1,4 @@
-package listener;
+package GB.listener;
 
 import GB.Handler;
 import net.dv8tion.jda.core.events.guild.GuildJoinEvent;
