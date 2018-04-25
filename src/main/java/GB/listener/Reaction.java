@@ -53,8 +53,7 @@ public class Reaction extends ListenerAdapter {
                                             message.addReaction(list.get(0)).queue();
                                             list.remove(0);
                                         }
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
+                                    } catch (Exception ignored) {
                                     }
                                 }
                             }

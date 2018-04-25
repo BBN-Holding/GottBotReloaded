@@ -26,7 +26,7 @@ public class Main {
     private static Logger logger = LoggerFactory.getLogger(Main.class);
     public static JDA jda;
     public static String[] args;
-    public static boolean dev = false;
+    public static boolean dev = true;
     public static SessionController sessionController;
     public static ShardManager shardManager;
 
@@ -81,7 +81,7 @@ public class Main {
             commands.put("setlvl", new CommandSetLevel());
             commands.put("setxp", new CommandSetXP());
             commands.put("clyde", new CommandClyde());
-            commands.put("ping", new commands.tools.CommandPing());
+            commands.put("ping", new CommandPing());
             commands.put("guildleave", new CommandLeave());
             commands.put("stats", new CommandStats());
             commands.put("verification", new CommandVerification());
@@ -105,7 +105,7 @@ public class Main {
             commands.put("shard", new CommandShard());
             commands.put("uptime", new CommandUptime());
             commands.put("role", new CommandRole());
-            commands.put("botinfo", new commands.tools.CommandBotInfo());
+            commands.put("botinfo", new CommandBotInfo());
             commands.put("privatechannel", new CommandPrivatechannel());
             commands.put("clan", new CommandClan());
             /*MUSIC*/
