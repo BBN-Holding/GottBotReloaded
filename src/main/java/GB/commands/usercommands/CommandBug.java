@@ -17,7 +17,7 @@ public class CommandBug implements Command {
         if (args.length<=2) {
             event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("usercommands.bug.help.title", "usercomamnds.bug.help.text","", "normal", event)).queue();
         } else {
-            String text = event.getMessage().getContentStripped().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("bug ", "");
+            String text = event.getMessage().getContentStripped().replaceFirst(new Handler().getMessageHandler().getprefix(event.getGuild()), "").replaceFirst("bug ", "");
             event.getJDA().getGuildById("396732579920740352").getTextChannelById("417074854701826049").sendMessage(
                     new EmbedBuilder()
                             .setAuthor(event.getAuthor().getName() + "#" + event.getAuthor().getDiscriminator(), null, event.getAuthor().getAvatarUrl())

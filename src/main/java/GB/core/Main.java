@@ -44,7 +44,7 @@ public class Main {
                 fis = new FileInputStream(filename);
                 client.storeFile(filename, fis);
                 client.logout();
-                builder.addEventListeners(new BotList());
+                // builder.addEventListeners(new BotList());
                 builder.setShardsTotal(2);
             } else {
                 builder.setShardsTotal(1);
@@ -64,6 +64,7 @@ public class Main {
                 new Channel()
              );
             logger.info("loaded all listeners");
+            commands.put("achievement", new CommnadAchievment());
             commands.put("language", new CommandLanguage());
             commands.put("test", new CommandTest());
             commands.put("prefix", new CommandPrefix());

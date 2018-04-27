@@ -52,7 +52,7 @@ public class CommandWarn implements Command{
                     event.getTextChannel().sendMessage("nichts selbst warnen digga").queue();
                 }
 
-                String reason = event.getMessage().getContentStripped().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("warn", "");
+                String reason = event.getMessage().getContentStripped().replaceFirst(new Handler().getMessageHandler().getprefix(event.getGuild()), "").replaceFirst("warn", "");
                 reason = reason.equals("") ? "No reason specified" : reason;
 
                 Date now = new Date();

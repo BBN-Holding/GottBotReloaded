@@ -33,7 +33,7 @@ public class CommandBan implements Command {
                         channel.sendMessage(new Handler().getMessageHandler().getEmbed("moderation.ban.ban", "moderation.ban.user", event.getGuild().getName(), "sucess", event)).queue();
                     }
                     if (args.length > 0) {
-                        String reason = event.getMessage().getContentRaw().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("ban", "").replaceFirst(args[0], "");
+                        String reason = event.getMessage().getContentRaw().replaceFirst(new Handler().getMessageHandler().getprefix(event.getGuild()), "").replaceFirst("ban", "").replaceFirst(args[0], "");
                         msg.getGuild().getController().ban(User, 1).reason(reason).queue();
                         event.getTextChannel().sendMessage("Banned").queue();
                     } else {
