@@ -1,9 +1,8 @@
 package GB.commands.moderation;
 
 import GB.Handler;
-import GB.MessageHandler;
-import commands.Command;
-import commands.botowner.Owner;
+import GB.commands.Command;
+import GB.commands.botowner.Owner;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
@@ -33,7 +32,7 @@ public class CommandBan implements Command {
                         channel.sendMessage(new Handler().getMessageHandler().getEmbed("moderation.ban.ban", "moderation.ban.user", event.getGuild().getName(), "sucess", event)).queue();
                     }
                     if (args.length > 0) {
-                        String reason = event.getMessage().getContentRaw().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("ban", "").replaceFirst(args[0], "");
+                        String reason = event.getMessage().getContentRaw().replaceFirst(new Handler().getMessageHandler().getprefix(event.getGuild()), "").replaceFirst("ban", "").replaceFirst(args[0], "");
                         msg.getGuild().getController().ban(User, 1).reason(reason).queue();
                         event.getTextChannel().sendMessage("Banned").queue();
                     } else {

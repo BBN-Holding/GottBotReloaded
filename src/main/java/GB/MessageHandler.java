@@ -41,7 +41,7 @@ public class MessageHandler {
         }
         return "Error";
     }
-    public static String getprefix(Guild guild) {
+    public String getprefix(Guild guild) {
         String Prefix = new Handler().getMySQL().get("server", "ID", guild.getId(), "prefix");
         return Prefix;
     }

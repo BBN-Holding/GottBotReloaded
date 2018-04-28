@@ -1,8 +1,7 @@
 package GB.commands.tools;
 
 import GB.Handler;
-import GB.MessageHandler;
-import commands.Command;
+import GB.commands.Command;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.events.ReadyEvent;
@@ -17,7 +16,7 @@ public class CommandToken implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        String Token = event.getMessage().getContentStripped().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("token ", "");
+        String Token = event.getMessage().getContentStripped().replaceFirst(new Handler().getMessageHandler().getprefix(event.getGuild()), "").replaceFirst("token ", "");
         if (args.length  > 0) {
             try {
                 new JDABuilder(AccountType.BOT)

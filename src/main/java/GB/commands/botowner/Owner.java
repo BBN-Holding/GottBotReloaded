@@ -1,4 +1,4 @@
-package commands.botowner;
+package GB.commands.botowner;
 
 import net.dv8tion.jda.core.entities.User;
 import GB.stuff.DATA;

@@ -1,16 +1,10 @@
 package GB.commands.tools;
 
-import GB.MessageHandler;
-import commands.Command;
+import GB.commands.Command;
 import GB.Handler;
-import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class CommandGitHub implements Command{
-
-    Member user;
-    String useruser;
-
 
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {

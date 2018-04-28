@@ -20,7 +20,7 @@ public class BotList extends ListenerAdapter {
     // URL's
     private String botsfordiscord_url = "https://botsfordiscord.com/api/v1/bots/407189087649398795";
     private String discordbotworld_url = "https://discordbot.world/api/bot/407189087649398795/stats";
-    private String BoatList_url = "https://boat-list.glitch.me/api/stats/bot/407189087649398795/";
+    private String BoatList_url = "https://boat-list.glitch.me/api/stats/bot/407189087649398795/" + SECRETS.boatlist;
     private String discordpw_url = "https://bots.discord.pw/api/bots/407189087649398795/stats";
     private String terminal_url = "https://ls.terminal.ink/api/v1/bots/407189087649398795";
 

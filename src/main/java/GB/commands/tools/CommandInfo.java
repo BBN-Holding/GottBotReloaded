@@ -1,6 +1,6 @@
-package commands.botowner;
+package GB.commands.tools;
 
-import commands.Command;
+import GB.commands.Command;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
@@ -12,7 +12,6 @@ public class CommandInfo implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (Owner.get(event.getAuthor()))
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("System-Info")
                     .addField("OS", System.getProperty("os.name")+" (" + System.getProperty("os.arch") + ")", true)
                     .addField("Java Version", System.getProperty("java.version"), true)

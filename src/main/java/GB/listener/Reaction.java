@@ -56,6 +56,10 @@ public class Reaction extends ListenerAdapter {
                                             }
                                         } catch (Exception ignored) {
                                         }
+<<<<<<< HEAD
+=======
+                                    } catch (Exception ignored) {
+>>>>>>> aee98e4dbc49021c13451cec445edd28f1393bd9
                                     }
                                 }
                             } catch (Exception ignored){

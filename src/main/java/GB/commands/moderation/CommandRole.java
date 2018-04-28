@@ -1,9 +1,8 @@
 package GB.commands.moderation;
 
 import GB.Handler;
-import GB.MessageHandler;
-import commands.Command;
-import commands.botowner.Owner;
+import GB.commands.Command;
+import GB.commands.botowner.Owner;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Role;

@@ -1,9 +1,8 @@
 package GB.commands.botowner;
 
 import GB.Handler;
-import GB.MessageHandler;
 import GB.core.Main;
-import commands.Command;
+import GB.commands.Command;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -18,7 +17,7 @@ public class CommandBlacklist implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (commands.botowner.Owner.get(event.getAuthor())) {
+        if (Owner.get(event.getAuthor())) {
             if (args.length < 1) {
                 event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("botowner.blacklist.title2", "botowner.blacklist.text2", "", "error", event)).queue();
             } else {
