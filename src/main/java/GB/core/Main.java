@@ -63,7 +63,7 @@ public class Main {
                 new Channel()
              );
             logger.info("loaded all listeners");
-            commands.put("achievement", new CommnadAchievment());
+            commands.put("builder", new CommandBuilder());
             commands.put("language", new CommandLanguage());
             commands.put("test", new CommandTest());
             commands.put("prefix", new CommandPrefix());
