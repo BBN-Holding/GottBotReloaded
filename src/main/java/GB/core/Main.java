@@ -59,7 +59,7 @@ public class Main {
                 new Message(),
                 new Memberjoin(),
                 new Reaction(),
-                new listener.PrivateMessage(),
+                new PrivateMessage(),
                 new Channel()
              );
             logger.info("loaded all listeners");
