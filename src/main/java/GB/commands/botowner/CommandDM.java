@@ -20,14 +20,14 @@ public class CommandDM implements Command {
         if (commands.botowner.Owner.get(event.getAuthor())) {
             if (event.getMessage().getMentionedUsers().size() == 0) {
                 Member User = event.getMessage().getGuild().getMember(event.getMessage().getMentionedUsers().get(0));
-                String Content = event.getMessage().getContentStripped().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("dm", "").replaceFirst(String.valueOf(User), "");
+                String Content = event.getMessage().getContentStripped().replaceFirst(new Handler().getMessageHandler().getprefix(event.getGuild()), "").replaceFirst("dm", "").replaceFirst(String.valueOf(User), "");
 
                 PrivateChannel channel = User.getUser().openPrivateChannel().complete();
                 channel.sendMessage(Content).queue();
                 event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("botowner.dm.text", "botowner.dm.title", "", "normal", event)).queue();
             } else {
                 User User = Main.jda.getUserById(args[0]);
-                String Content = event.getMessage().getContentStripped().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("dm", "").replaceFirst(String.valueOf(User), "");
+                String Content = event.getMessage().getContentStripped().replaceFirst(new Handler().getMessageHandler().getprefix(event.getGuild()), "").replaceFirst("dm", "").replaceFirst(String.valueOf(User), "");
 
                 PrivateChannel channel = User.openPrivateChannel().complete();
                 channel.sendMessage(Content).queue();

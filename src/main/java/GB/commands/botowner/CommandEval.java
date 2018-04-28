@@ -1,5 +1,6 @@
 package GB.commands.botowner;
 
+import GB.Handler;
 import GB.MessageHandler;
 import GB.core.Main;
 import commands.Command;
@@ -51,7 +52,7 @@ public class CommandEval implements Command {
 
         progBars.forEach(se::put);
 
-        String input = event.getMessage().getContentRaw().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("eval", "").trim();
+        String input = event.getMessage().getContentRaw().replaceFirst(new Handler().getMessageHandler().getprefix(event.getGuild()), "").replaceFirst("eval", "").trim();
         try {
             if (input.equals("1+1")) {
                 ret = "1";
