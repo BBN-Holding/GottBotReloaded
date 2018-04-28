@@ -1,6 +1,6 @@
 package GB.commands.tools;
 
-import commands.Command;
+import GB.commands.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 

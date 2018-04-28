@@ -1,16 +1,13 @@
 package GB.commands.tools;
 
 import GB.Handler;
-import GB.MessageHandler;
 import GB.stuff.SECRETS;
-import commands.Command;
+import GB.commands.Command;
 import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.discordbots.api.client.DiscordBotListAPI;
 import GB.stuff.DATA;
 import org.discordbots.api.client.entity.SimpleUser;
-
-import java.util.List;
 
 import static GB.stuff.DATA.*;
 

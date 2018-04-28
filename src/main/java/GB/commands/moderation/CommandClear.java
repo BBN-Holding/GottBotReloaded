@@ -1,8 +1,8 @@
 package GB.commands.moderation;
 
 import GB.Handler;
-import GB.MessageHandler;
-import commands.Command;
+import GB.commands.Command;
+import GB.commands.botowner.Owner;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageHistory;
@@ -18,7 +18,7 @@ public class CommandClear implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (event.getMember().hasPermission(Permission.MESSAGE_MANAGE)) {
+        if (event.getMember().hasPermission(Permission.MESSAGE_MANAGE) || Owner.get(event.getAuthor())) {
             if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_MANAGE)) {
                 if (args.length != 1)
                     event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("moderation.clear.title", "moderation.clear.text", "", "normal", event)).queue();

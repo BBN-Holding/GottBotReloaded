@@ -1,13 +1,10 @@
 package GB.commands.botowner;
 
-import commands.Command;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.OnlineStatus;
+import GB.Handler;
+import GB.core.Main;
+import GB.commands.Command;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-
-import java.awt.*;
-import java.util.concurrent.TimeUnit;
 
 public class CommandPlay implements Command {
 
@@ -19,18 +16,10 @@ public class CommandPlay implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (commands.botowner.Owner.get(event.getAuthor())) {
+        if (Owner.get(event.getAuthor())) {
 
-            EmbedBuilder succes = new EmbedBuilder();
-                event.getMessage().delete().queue();
-                event.getJDA().getPresence().setGame(Game.playing(String.join(" ", args)));
-                event.getJDA().getPresence().setStatus(OnlineStatus.ONLINE);
-                succes.setTitle("Set Game Status to");
-                succes.setColor(Color.GREEN);
-                succes.setDescription(String.join("", args));
-                event.getTextChannel().sendMessage(succes.build()).queue(msg -> {
-                    msg.delete().queueAfter(20, TimeUnit.SECONDS);
-                });
+                Main.shardManager.setGame(Game.playing(String.join(" ", args)));
+                event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("Succes", "Succesfully set the playing status", "", "succes", event)).queue();
         }
     }
 

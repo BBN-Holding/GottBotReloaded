@@ -1,6 +1,6 @@
 package GB.core;
 
-import commands.Command;
+import GB.commands.Command;
 
 import java.util.HashMap;
 

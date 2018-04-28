@@ -1,8 +1,7 @@
 package GB.commands.usercommands;
 
 import GB.Handler;
-import GB.MessageHandler;
-import commands.Command;
+import GB.commands.Command;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Message;
@@ -33,7 +32,6 @@ public class CommandHelp implements Command {
                 event.getTextChannel().sendMessage("I need Manage Messages Permission").queue();
             }
         }
-
     }
 
     @Override

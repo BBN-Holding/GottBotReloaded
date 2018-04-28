@@ -1,10 +1,11 @@
 package GB.commands.tools;
 
+import GB.commands.Command;
 import GB.Handler;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
-public class CommnadAchievment implements commands.Command {
+public class CommnadAchievment implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;

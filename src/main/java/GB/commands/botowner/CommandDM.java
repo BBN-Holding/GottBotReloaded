@@ -1,9 +1,8 @@
 package GB.commands.botowner;
 
 import GB.Handler;
-import GB.MessageHandler;
 import GB.core.Main;
-import commands.Command;
+import GB.commands.Command;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.PrivateChannel;
 import net.dv8tion.jda.core.entities.User;
@@ -17,7 +16,7 @@ public class CommandDM implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (commands.botowner.Owner.get(event.getAuthor())) {
+        if (Owner.get(event.getAuthor())) {
             if (event.getMessage().getMentionedUsers().size() == 0) {
                 Member User = event.getMessage().getGuild().getMember(event.getMessage().getMentionedUsers().get(0));
                 String Content = event.getMessage().getContentStripped().replaceFirst(new Handler().getMessageHandler().getprefix(event.getGuild()), "").replaceFirst("dm", "").replaceFirst(String.valueOf(User), "");
