@@ -1,13 +1,13 @@
 package GB.commands.botowner;
 
-import GB.MessageHandler;
+import GB.Handler;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.webhook.WebhookClient;
 import net.dv8tion.jda.webhook.WebhookClientBuilder;
 import net.dv8tion.jda.webhook.WebhookMessage;
 import net.dv8tion.jda.core.entities.Webhook;
 import net.dv8tion.jda.webhook.WebhookMessageBuilder;
-import commands.Command;
+import GB.commands.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class CommandClyde implements Command{
@@ -18,7 +18,7 @@ public class CommandClyde implements Command{
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (commands.botowner.Owner.get(event.getAuthor())) {
+        if (Owner.get(event.getAuthor())) {
             TextChannel otherChannel = event.getMessage().getTextChannel();
 
             try {
@@ -39,7 +39,7 @@ public class CommandClyde implements Command{
 
                 event.getMessage().delete().queue();
                 WebhookMessageBuilder builder = new WebhookMessageBuilder();
-                builder.setContent(event.getMessage().getContentStripped().replaceFirst(MessageHandler.getprefix(event.getGuild()), "").replaceFirst("clyde", ""));
+                builder.setContent(event.getMessage().getContentStripped().replaceFirst(new Handler().getMessageHandler().getprefix(event.getGuild()), "").replaceFirst("clyde", ""));
                 builder.setAvatarUrl("https://cdn.discordapp.com/avatars/419613495881891841/f0454b649c2f2faaf4f6e2ff12a5d954.webp");
                 WebhookMessage message = builder.build();
                 client.send(message);
