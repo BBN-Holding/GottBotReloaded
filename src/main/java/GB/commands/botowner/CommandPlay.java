@@ -1,4 +1,4 @@
-package commands.botowner;
+package GB.commands.botowner;
 
 import commands.Command;
 import net.dv8tion.jda.core.EmbedBuilder;
@@ -19,7 +19,7 @@ public class CommandPlay implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (Owner.get(event.getAuthor())) {
+        if (commands.botowner.Owner.get(event.getAuthor())) {
 
             EmbedBuilder succes = new EmbedBuilder();
                 event.getMessage().delete().queue();

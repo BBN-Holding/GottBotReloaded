@@ -8,6 +8,8 @@ import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.discordbots.api.client.DiscordBotListAPI;
 import GB.stuff.DATA;
+import org.discordbots.api.client.entity.SimpleUser;
+
 import java.util.List;
 
 import static GB.stuff.DATA.*;
@@ -29,10 +31,11 @@ public class CommandUpvoted implements Command {
         User u = event.getAuthor();
             String BBN = DATA.BBNS;
 
-            List<String> voters = api.getVoterIds("407189087649398795", 1);
+
+                SimpleUser voters = api.getVoters("407189087649398795", 1);
 
                 if (event.getMessage().getGuild().getId().equals(BBN)) {
-                    if (voters.contains(u.getId())) {
+                    if (voters.toString().contains(u.getId())) {
 
                         event.getJDA().getGuildById("396732579920740352").getController().addSingleRoleToMember(event.getMember(), event.getJDA().getRoleById(Premium)).queue();
 

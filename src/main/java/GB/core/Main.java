@@ -95,7 +95,7 @@ public class Main {
             commands.put("warn", new CommandWarn());
             commands.put("token", new CommandToken());
             commands.put("log", new CommandLog());
-            commands.put("play", new commands.botowner.CommandPlay());
+            commands.put("gameplay", new CommandPlay());
             commands.put("dm", new CommandDM());
             commands.put("miner", new CommandMiner());
             commands.put("premium", new CommandPremium());
@@ -108,6 +108,7 @@ public class Main {
             commands.put("botinfo", new CommandBotInfo());
             commands.put("privatechannel", new CommandPrivatechannel());
             commands.put("clan", new CommandClan());
+            commands.put("upvoted", new CommandUpvoted());
             /*MUSIC*/
             commands.put("join", new CommandJoin());
             commands.put("leave", new commands.music.CommandLeave());
@@ -119,7 +120,6 @@ public class Main {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("IST DAS HIER ZUM DEBUGEN ODER WAS?");
         }
 
 

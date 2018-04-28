@@ -20,23 +20,28 @@ public class CommandSetPremium implements Command {
                 event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Help - SetPremium").setDescription("gb.setpremium @user reset - reseted premium\ngb.setpremium @User set <Java new Date().getTime>\ngb.setpremium @User check").build()).queue();
 
             } else if (event.getMessage().getMentionedMembers().size()==1&&args.length>=2) {
-                if (args[1].equals("reset")) {
-                    new Handler().getMySQL().update("user", "premium", "none", "id", event.getMessage().getMentionedUsers().get(0).getId());
-                    event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Sucessfully reset Premium for "+ event.getMessage().getMentionedUsers().get(0).getName()).build()).queue();
-                    event.getMessage().getMentionedUsers().get(0).openPrivateChannel().complete().sendMessage(new EmbedBuilder().setTitle("Premium expired").setDescription("Buy new Premium with gb.premium buy").build()).queue();
+                switch (args[1]) {
+                    case "reset":
+                        new Handler().getMySQL().update("user", "premium", "none", "id", event.getMessage().getMentionedUsers().get(0).getId());
+                        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Sucessfully reset Premium for " + event.getMessage().getMentionedUsers().get(0).getName()).build()).queue();
+                        event.getMessage().getMentionedUsers().get(0).openPrivateChannel().complete().sendMessage(new EmbedBuilder().setTitle("Premium expired").setDescription("Buy new Premium with gb.premium buy").build()).queue();
 
-                } else if (args[1].equals("set")) {
-                    new Handler().getMySQL().update("user", "premium", args[2], "id", event.getMessage().getMentionedUsers().get(0).getId());
-                    event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Sucessfully set Premium for "+ event.getMessage().getMentionedUsers().get(0).getName()).build()).queue();
-                } else if (args[1].equals("check")) {
-                    String status;
-                    if (new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "premium").equals("none")) status="none";
-                    else {
-                        Date date = new Date();
-                        date.setTime(Long.parseLong(new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "premium")));
-                        status= "until "+date.toGMTString();
-                    }
-                    event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Premium").setDescription(event.getMessage().getMentionedUsers().get(0).getName()+"'s Premium status is: ``"+ status+"``").build()).queue();
+                        break;
+                    case "set":
+                        new Handler().getMySQL().update("user", "premium", args[2], "id", event.getMessage().getMentionedUsers().get(0).getId());
+                        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Sucessfully set Premium for " + event.getMessage().getMentionedUsers().get(0).getName()).build()).queue();
+                        break;
+                    case "check":
+                        String status;
+                        if (new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "premium").equals("none"))
+                            status = "none";
+                        else {
+                            Date date = new Date();
+                            date.setTime(Long.parseLong(new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "premium")));
+                            status = "until " + date.toGMTString();
+                        }
+                        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Premium").setDescription(event.getMessage().getMentionedUsers().get(0).getName() + "'s Premium status is: ``" + status + "``").build()).queue();
+                        break;
                 }
 
             }
