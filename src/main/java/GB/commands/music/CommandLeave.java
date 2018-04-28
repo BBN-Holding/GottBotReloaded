@@ -1,6 +1,6 @@
-package commands.music;
+package GB.commands.music;
 
-import commands.Command;
+import GB.commands.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class CommandLeave implements Command {

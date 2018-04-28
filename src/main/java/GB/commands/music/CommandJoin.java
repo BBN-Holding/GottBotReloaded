@@ -1,6 +1,6 @@
-package commands.music;
+package GB.commands.music;
 
-import commands.Command;
+import GB.commands.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.PermissionException;
 
@@ -22,7 +22,7 @@ public class CommandJoin implements Command {
             } else {
                 event.getTextChannel().sendMessage("I am already connected!").queue();
             }
-        } catch (PermissionException e) {
+        } catch (PermissionException ignored) {
 
         }
         event.getGuild().getAudioManager().setSelfDeafened(true);

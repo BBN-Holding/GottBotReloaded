@@ -3,7 +3,7 @@ package GB.commands.tools;
 import GB.Handler;
 import GB.MessageHandler;
 import GB.stuff.SECRETS;
-import commands.Command;
+import GB.commands.Command;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
@@ -16,15 +16,15 @@ import java.time.format.DateTimeFormatter;
 import static core.JSONhandler.readJsonFromUrl;
 
 public class CommandProfile implements Command {
-    String Nick;
-    String Game;
-    String Punkte;
-    String Level;
-    String Progress;
-    String ProgressMax;
-    int TempProgress;
-    int viertel;
-    String LevelPlus;
+    private String Nick;
+    private String Game;
+    private String Punkte;
+    private String Level;
+    private String Progress;
+    private String ProgressMax;
+    private int TempProgress;
+    private int viertel;
+    private String LevelPlus;
 
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {

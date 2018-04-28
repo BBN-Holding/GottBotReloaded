@@ -1,6 +1,6 @@
-package commands.botowner;
+package GB.commands.botowner;
 
-import commands.Command;
+import GB.commands.Command;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;

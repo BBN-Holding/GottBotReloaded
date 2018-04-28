@@ -1,4 +1,4 @@
-package webpanel;
+package GB.webpanel;
 
 
 public class webpanel {

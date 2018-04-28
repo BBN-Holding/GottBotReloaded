@@ -1,7 +1,7 @@
 package GB.commands.botowner;
 
 import GB.core.Main;
-import commands.Command;
+import GB.commands.Command;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -14,7 +14,7 @@ public class CommandShard implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        if (commands.botowner.Owner.get(event.getAuthor())) {
+        if (Owner.get(event.getAuthor())) {
             if (args.length<1) {
                 event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Shard info")
                         .addField("Total Shards", String.valueOf(Main.shardManager.getShardsTotal()), true)

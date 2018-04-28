@@ -15,15 +15,7 @@ public class Constants {
             progBars.put(names[i], ids[i]);
         }
     }
-    public static String argsToString(String[] args, String filler){
-        String out = "";
-        for (String s : args){
-            if (out != "")
-                out += filler;
-            out += s;
-        }
-        return out;
-    }
+
 
 
 }
