@@ -23,7 +23,7 @@ public class CommandPrivatechannel implements Command {
                 guildController.createVoiceChannel("➕ Create Privatechannel").setParent(event.getGuild().getCategoryById(id)).queue();
                 guildController.createVoiceChannel("\uD83D\uDE36 Wait for a Move in a Privatechannel").setParent(event.getGuild().getCategoryById(id)).queue();
                 event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.sucess", "tools.privatechannel.sucess", "", "sucess", event)).queue();
-            } else event.getTextChannel().sendMessage("FEHLER EY").queue();
+            } else event.getTextChannel().sendMessage("Schon vorhanden :facepalm:").queue();
         }
     }
 
