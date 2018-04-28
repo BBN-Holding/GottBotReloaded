@@ -57,7 +57,7 @@ public class CommandProfile implements Command {
             }
 
             JSONObject json = readJsonFromUrl("https://api.coinhive.com/user/balance?name=" + user.getUser().getId() + "&secret=" + SECRETS.COINHIVESECRET);
-            Long mined = json.getLong("total");
+
             String withdrawn = new Handler().getMySQL().get("user", "id", user.getUser().getId(), "withdrawnhashes");
             String hashes = new Handler().getMySQL().get("user", "id", user.getUser().getId(), "hashes");
 
@@ -126,9 +126,9 @@ public class CommandProfile implements Command {
                     .addField(messageHandler.get("tools.profile.9", user.getUser(), guild), Level, false)
                     .addField(messageHandler.get("tools.profile.10", user.getUser(), guild), Punkte, false)
                     .addField(messageHandler.get("tools.profile.11", user.getUser(), guild), Progress, false)
-                    .addField(messageHandler.get("tools.profile.12", user.getUser(), guild), String.valueOf(mined), false)
+                    //.addField(messageHandler.get("tools.profile.12", user.getUser(), guild), String.valueOf(mined), false)
                     .addField(messageHandler.get("tools.profile.13", user.getUser(), guild), withdrawn, false)
-                    .addField(messageHandler.get("tools.profile.14", user.getUser(), guild), String.valueOf(mined-Long.parseLong(withdrawn)), false)
+                    //.addField(messageHandler.get("tools.profile.14", user.getUser(), guild), String.valueOf(mined-Long.parseLong(withdrawn)), false)
                     .addField(messageHandler.get("tools.profile.15", user.getUser(), guild), hashes, false)
                     .setColor(java.awt.Color.CYAN).setThumbnail(user.getUser().getAvatarUrl()).build()).queue();
 

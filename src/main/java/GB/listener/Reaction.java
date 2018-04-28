@@ -41,22 +41,24 @@ public class Reaction extends ListenerAdapter {
                 if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_HISTORY)) {
                     if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_MANAGE)) {
                         if (event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().size() == 1)
-                            if (event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0).getTitle().contains(new Handler().getMessageHandler().get("Helpmenu.helpmenu", event.getUser(),event.getGuild()))) {
-                                if (new Handler().getMySQL().get("helpmenu", "message", event.getMessageId(), "id").equals(event.getUser().getId())) {
+                            try {
+                                if (event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0).getTitle().contains(new Handler().getMessageHandler().get("Helpmenu.helpmenu", event.getUser(),event.getGuild()))) {
+                                    if (new Handler().getMySQL().get("helpmenu", "message", event.getMessageId(), "id").equals(event.getUser().getId())) {
 
-                                    try {
-                                        Message message = event.getChannel().getMessageById(event.getMessageId()).complete();
-                                        message.clearReactions().queue();
-                                        message.editMessage(new Handler().getMenuHandler().getMessage(event.getReactionEmote().getName(), event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0), event.getUser(), event.getGuild())).queue();
-                                        List<String> list = new Handler().getMenuHandler().getemote(event.getReactionEmote().getName(), event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0), event.getUser(), event.getGuild());
-                                        while (list.size() > 0) {
-                                            message.addReaction(list.get(0)).queue();
-                                            list.remove(0);
+                                        try {
+                                            Message message = event.getChannel().getMessageById(event.getMessageId()).complete();
+                                            message.clearReactions().queue();
+                                            message.editMessage(new Handler().getMenuHandler().getMessage(event.getReactionEmote().getName(), event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0), event.getUser(), event.getGuild())).queue();
+                                            List<String> list = new Handler().getMenuHandler().getemote(event.getReactionEmote().getName(), event.getChannel().getMessageById(event.getMessageId()).complete().getEmbeds().get(0), event.getUser(), event.getGuild());
+                                            while (list.size() > 0) {
+                                                message.addReaction(list.get(0)).queue();
+                                                list.remove(0);
+                                            }
+                                        } catch (Exception ignored) {
                                         }
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
                                     }
                                 }
+                            } catch (Exception ignored){
                             }
                     }
                 }
