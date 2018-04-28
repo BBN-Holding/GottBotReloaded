@@ -12,11 +12,9 @@ public class Guildjoin extends ListenerAdapter  {
         try {
                 if (new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "id")==null) {
                     new Handler().getMySQL().insert("server", "id", event.getGuild().getId());
-                    logger.info("ein neuer Server: Name: "+event.getGuild().getName()+" ID: "+event.getGuild().getId()+" Member: "+event.getGuild().getMembers().size());
                 }
                // if (new GB.GB.Handler().getMySQL().get("log", "serverid", event.getGuild().getId(), "id")==null) { new GB.GB.Handler().getMySQL().insert("log", "serverid", event.getGuild().getId()); }
-            
-                int i = 0;
+            logger.info("ein neuer Server: Name: "+event.getGuild().getName()+" ID: "+event.getGuild().getId()+" Member: "+event.getGuild().getMembers().size());
             while (event.getGuild().getMembers().size()-1>=i) {
                 if (new Handler().getMySQL().get("user", "id", event.getGuild().getMembers().get(i).getUser().getId(), "id")==null) {
                     new Handler().getMySQL().insert("user", "id", event.getGuild().getMembers().get(i).getUser().getId()+"");

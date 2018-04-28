@@ -8,6 +8,7 @@ import net.dv8tion.jda.core.events.guild.voice.GuildVoiceJoinEvent;
 import net.dv8tion.jda.core.events.guild.voice.GuildVoiceLeaveEvent;
 import net.dv8tion.jda.core.events.guild.voice.GuildVoiceMoveEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import org.mozilla.javascript.EcmaError;
 
 import java.util.concurrent.TimeUnit;
 
@@ -36,10 +37,13 @@ public class Channel extends ListenerAdapter {
 
     @Override
     public void onGuildVoiceMove(GuildVoiceMoveEvent event) {
-        if (event.getChannelLeft().getParent().getId().equals(new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "privatechannel"))) {
-            if (!(event.getChannelLeft().getName().equals("\uD83D\uDE36 Wait for a Move in a Privatechannel")||event.getChannelLeft().getName().equals("➕ Create Privatechannel"))&&event.getChannelLeft().getMembers().size()==0) {
-                event.getChannelLeft().delete().queue();
+        try{
+            if (event.getChannelLeft().getParent().getId().equals(new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "privatechannel"))) {
+                if (!(event.getChannelLeft().getName().equals("\uD83D\uDE36 Wait for a Move in a Privatechannel")||event.getChannelLeft().getName().equals("➕ Create Privatechannel"))&&event.getChannelLeft().getMembers().size()==0) {
+                    event.getChannelLeft().delete().queue();
+                }
             }
+        } catch (Exception ignored) {
         }
     }
 
