@@ -11,6 +11,7 @@ import GB.stuff.SECRETS;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.bot.sharding.ShardManager;
 import net.dv8tion.jda.core.JDA;
+import net.dv8tion.jda.core.managers.AudioManager;
 import net.dv8tion.jda.core.utils.SessionController;
 import org.apache.commons.net.ftp.FTPClient;
 import org.slf4j.Logger;
@@ -28,6 +29,7 @@ public class Main {
     private static boolean dev = true;
     private static SessionController sessionController;
     public static ShardManager shardManager;
+    public static AudioManager audioManager;
 
     public static void main(String[] args2) {
         try {
@@ -94,7 +96,7 @@ public class Main {
             commands.put("info", new CommandInfo());
             commands.put("token", new CommandToken());
             commands.put("log", new CommandLog());
-            commands.put("gameplay", new CommandPlay());
+            commands.put("gameplay", new CommandGame());
             commands.put("dm", new CommandDM());
             commands.put("miner", new CommandMiner());
             commands.put("premium", new CommandPremium());
@@ -112,6 +114,7 @@ public class Main {
             /*MUSIC*/
             commands.put("join", new CommandJoin());
             commands.put("leave", new CommandLeave());
+            commands.put("play", new CommandPlay());
             args = args2;
             logger.info("loaded all commands");
             logger.info("Starting the Bot...");
