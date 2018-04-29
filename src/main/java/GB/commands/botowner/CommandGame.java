@@ -6,7 +6,7 @@ import GB.commands.Command;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
-public class CommandPlay implements Command {
+public class CommandGame implements Command {
 
 
     @Override

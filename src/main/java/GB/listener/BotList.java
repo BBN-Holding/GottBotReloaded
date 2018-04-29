@@ -11,7 +11,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import org.discordbots.api.client.DiscordBotListAPI;
 import org.json.JSONObject;
-import space.botlist.api.BotlistSpaceClient;
+import space.botlist.api.*;
 
 import java.io.IOException;
 
