@@ -25,11 +25,11 @@ public class CommandStats implements Command {
                 .addField(new Handler().getMessageHandler().get("usercommands.stats.stats2",user,guild), new Handler().getMySQL().getfirst("stats", "1", "message"),true)
                 .addField(new Handler().getMessageHandler().get("usercommands.stats.stats3",user,guild), String.valueOf(Main.shardManager.getGuilds().size()), true)
                 .addField(new Handler().getMessageHandler().get("usercommands.stats.stats4",user,guild), String.valueOf(Main.shardManager.getUsers().size()), true)
-                .addField(new Handler().getMessageHandler().get("usercommands.stats.stats5",user,guild), String.valueOf(Main.jda.getRegisteredListeners().size()), true)
+                .addField(new Handler().getMessageHandler().get("usercommands.stats.stats5",user,guild), String.valueOf(event.getJDA().getRegisteredListeners().size()), true)
                 .addField(new Handler().getMessageHandler().get("usercommands.stats.stats6",user,guild), String.valueOf(commandHandler.commands.size()), true)
                 .addField(new Handler().getMessageHandler().get("usercommands.stats.stats7",user,guild), String.valueOf(new Handler().getMySQL().getallwithoutwhere("user", "id").size()), true)
                 .addField(new Handler().getMessageHandler().get("usercommands.stats.stats8",user,guild), String.valueOf(new Handler().getMySQL().getallwithoutwhere("server", "id").size()), true)
-                .setThumbnail(Main.jda.getSelfUser().getEffectiveAvatarUrl())
+                .setThumbnail(event.getJDA().getSelfUser().getEffectiveAvatarUrl())
                 .build()
         ).queue();
     }
