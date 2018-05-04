@@ -127,9 +127,14 @@
             <version>2.1.2</version>
         </dependency>
         <dependency>
-            <groupId>com.github.Biospheere</groupId>
+            <groupId>com.github.BigBotNetwork</groupId>
             <artifactId>BotlistSpace-API</artifactId>
-            <version>1.0</version>
+            <version>f6544fa7f5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.20</version>
         </dependency>
     </dependencies>
 </project>

@@ -38,6 +38,14 @@ public class Channel extends ListenerAdapter {
                 if (event.getChannelJoined().getParent().getId().equals(new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "privatechannel"))) {
                     createprivateTextchannel(event.getChannelJoined(), event.getGuild(), event.getMember());
                 }
+                try {
+                    if (event.getChannelLeft().getParent().getId().equals(new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "privatechannel"))) {
+                        if (!(event.getChannelLeft().getName().equals("\uD83D\uDE36 Wait for a Move in a Privatechannel") || event.getChannelLeft().getName().equals("➕ Create Privatechannel")) && event.getChannelLeft().getMembers().size() == 0) {
+                            event.getChannelLeft().delete().queue();
+                        }
+                    }
+                } catch (Exception ignored) {
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -59,24 +67,23 @@ public class Channel extends ListenerAdapter {
             if (channel.getName().equals("➕ Create Privatechannel")) {
                 Category category = channel.getParent();
                 System.out.println("asdasdasd");
-                if (guild.getVoiceChannelsByName(member.getUser().getName()+"'s Channel", false).size()==0) {
+                if (guild.getVoiceChannelsByName(member.getUser().getName() + "'s Channel", false).size() == 0) {
                     String id = category.createVoiceChannel(member.getUser().getName() + "'s Channel").addPermissionOverride(member, 3145728, 0).complete().getId();
                     guild.getController().moveVoiceMember(member, guild.getVoiceChannelById(id)).queue();
                     guild.getVoiceChannelsByName("\uD83D\uDE36 Wait for a Move in a Privatechannel", true).get(0).createPermissionOverride(member).setDeny(Permission.VOICE_CONNECT).queue();
                     guild.getVoiceChannelsByName("➕ Create Privatechannel", true).get(0).createPermissionOverride(member).setDeny(Permission.VOICE_CONNECT).queue();
                     System.out.println(guild.getVoiceChannelsByName("\uD83D\uDE36 Wait for a Move in a Privatechannel", true).get(0).getPermissionOverrides().size());
                 } else {
-                    guild.getController().moveVoiceMember(member, guild.getVoiceChannelById(guild.getVoiceChannelsByName(member.getUser().getName()+"'s Channel", false).get(0).getId())).queue();
+                    guild.getController().moveVoiceMember(member, guild.getVoiceChannelById(guild.getVoiceChannelsByName(member.getUser().getName() + "'s Channel", false).get(0).getId())).queue();
                 }
 
             } else if (channel.getName().equals("\uD83D\uDE36 Wait for a Move in a Privatechannel")) {
-
             }
         }
-    }
 
-    private static void deletepermissionoverride(Guild guild, Member member) {
-        guild.getVoiceChannelsByName("\uD83D\uDE36 Wait for a Move in a Privatechannel", false).get(0).getPermissionOverride(member).delete().queueAfter(2, TimeUnit.SECONDS);
-        guild.getVoiceChannelsByName("➕ Create Privatechannel", false).get(0).getPermissionOverride(member).delete().queueAfter(2, TimeUnit.SECONDS);
+    }    private static void deletepermissionoverride (Guild guild, Member member){
+                guild.getVoiceChannelsByName("\uD83D\uDE36 Wait for a Move in a Privatechannel", false).get(0).getPermissionOverride(member).delete().queueAfter(2, TimeUnit.SECONDS);
+                guild.getVoiceChannelsByName("➕ Create Privatechannel", false).get(0).getPermissionOverride(member).delete().queueAfter(2, TimeUnit.SECONDS);
+            }
+
     }
-}

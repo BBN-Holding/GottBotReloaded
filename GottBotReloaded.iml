@@ -26,7 +26,7 @@
     <orderEntry type="library" name="Maven: org.livetribe:livetribe-jsr223:2.0.3" level="project" />
     <orderEntry type="library" name="Maven: rhino:js:1.7R1" level="project" />
     <orderEntry type="library" name="Maven: org.json:json:20180130" level="project" />
-    <orderEntry type="library" name="Maven: net.dv8tion:JDA:3.6.0_358" level="project" />
+    <orderEntry type="library" name="Maven: net.dv8tion:JDA:3.6.0_359" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:3.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-collections4:4.1" level="project" />
     <orderEntry type="library" name="Maven: net.sf.trove4j:trove4j:3.0.3" level="project" />
@@ -70,6 +70,7 @@
     <orderEntry type="library" name="Maven: javax.transaction:transaction-api:1.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.http-client:google-http-client-appengine:1.23.0" level="project" />
     <orderEntry type="library" name="Maven: com.github.cliftonlabs:json-simple:2.1.2" level="project" />
-    <orderEntry type="library" name="Maven: com.github.Biospheere:BotlistSpace-API:1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.github.BigBotNetwork:BotlistSpace-API:f6544fa7f5" level="project" />
+    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.16.20" level="project" />
   </component>
 </module>
