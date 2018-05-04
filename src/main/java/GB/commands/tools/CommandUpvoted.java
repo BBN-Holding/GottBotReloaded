@@ -43,7 +43,7 @@ public class CommandUpvoted implements Command {
                 Response respose = new OkHttpClient().newCall(request).execute();
                 System.out.println(respose);
             if (event.getMessage().getGuild().getId().equals(BBN)) {
-                if (u.getId().contains(u.getId())) {
+                if (respose.toString().contains(u.getId())) {
 
                     event.getJDA().getGuildById("396732579920740352").getController().addSingleRoleToMember(event.getMember(), event.getJDA().getRoleById(Premium)).queue();
 
