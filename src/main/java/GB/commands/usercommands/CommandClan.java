@@ -29,7 +29,7 @@ public class CommandClan implements Command {
                                     // Create the clan and add the user
                                     new Handler().getMySQL().insert("clan", "Name", args[1]);
                                     new Handler().getMySQL().update("user", "clan", new Handler().getMySQL().get("clan", "name", args[1], "id"), "id", event.getAuthor().getId());
-                                    Main.shardManager.getGuildById(DATA.BBNS).getController().createTextChannel(args[1]).setParent(Main.shardManager.getCategoryById("437255509951643649")).queue();
+                                    Main.shardManager.getGuildById(DATA.BBNS).getController().createTextChannel(args[1]).setParent(Main.shardManager.getCategoryById(DATA.Clan)).queue();
                                     event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Clan created").setDescription("You have now a own Clan (channel on the official BigBotNetwork server)!").build()).queue();
                                 } else event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Error").setDescription("name is already in use").build()).queue();
                             } else event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.error", "util.mine", "https://miner.bigbotnetwork.de", "error", event)).queue();
@@ -51,7 +51,11 @@ public class CommandClan implements Command {
                     } else event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("You are not in a clan").setDescription("Join a clan or create one").build()).queue();
                      break;
                 case "invite":
+                    if (args.length==2&&event.getMessage().getMentionedMembers().size()==1) {
+                        if (!new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "clan").equals("none")) {
 
+                        } else event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("you're not in 1 clan :facepalm:").build()).queue();
+                    } else event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Ey use -clan invite @User").build()).queue();
                     break;
                 case "accept":
 
@@ -72,6 +76,9 @@ public class CommandClan implements Command {
 
                     break;
                 case "best":
+
+                    break;
+                case "leave":
 
                     break;
             }
