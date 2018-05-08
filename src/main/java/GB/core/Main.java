@@ -29,6 +29,7 @@ public class Main {
     private static boolean dev = true;
     private static SessionController sessionController;
     public static ShardManager shardManager;
+    public static boolean uploaderrors;
     public static AudioManager audioManager;
 
     public static void main(String[] args2) {
@@ -36,7 +37,7 @@ public class Main {
             logger.info("------------------start Bot----------------------");
             //if (!new File("Gott.log").exists()) { new File("Gott.log").createNewFile();logger.info("created File Gott.log"); }
             if (!dev) {
-
+                uploaderrors=true;
                 FTPClient client = new FTPClient();
                 FileInputStream fis;
                 client.connect("ftp.bigbotnetwork.de");
@@ -48,8 +49,9 @@ public class Main {
                 builder.addEventListeners(new BotList());
                 builder.setShardsTotal(2);
             } else {
+                uploaderrors=false;
                 builder.setShardsTotal(1);
-                logger.info("Dev Mode activated - Don't load Botlist listener - Don't upload the Log file");
+                logger.info("Dev Mode activated - Don't load Botlist listener - Don't upload the Log file - Don't upload errors");
                 builder.setAutoReconnect(true);
             }
             logger.info("read Token and logins");
@@ -62,7 +64,8 @@ public class Main {
                 new Memberjoin(),
                 new Reaction(),
                 new PrivateMessage(),
-                new Channel()
+                new Channel(),
+                    new READY()
              );
             logger.info("loaded all listeners");
             commands.put("builder", new CommandBuilder());

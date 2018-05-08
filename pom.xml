@@ -127,9 +127,9 @@
             <version>2.1.2</version>
         </dependency>
         <dependency>
-            <groupId>com.github.BigBotNetwork</groupId>
-            <artifactId>BotlistSpace-API</artifactId>
-            <version>f6544fa7f5</version>
+            <groupId>com.github.GregTCLTK</groupId>
+            <artifactId>BotListSpace-API</artifactId>
+            <version>LATEST</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
