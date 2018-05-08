@@ -14,6 +14,9 @@ import static util.Constants.progBars;
 
 
 public class CommandEval implements Command {
+    String help() {
+        return "jda = event.getJDA()\nguild = event.getGuild()\nchannel = event.getChannel()\nmessage = event.getMessage()\nauthor = event.getAuthor()\nshardmanager = Main.shardmanager";
+    }
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -22,6 +25,7 @@ public class CommandEval implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (Owner.get(event.getAuthor())) {
+            new Thread(() -> {
             ScriptEngineFactory scriptEngineFactory = new NashornScriptEngineFactory();
             ScriptEngine se = scriptEngineFactory.getScriptEngine();
             String ret = null;
@@ -49,6 +53,7 @@ public class CommandEval implements Command {
             se.put("message", event.getMessage());
             se.put("author", event.getMessage().getAuthor());
             se.put("shardmanager", Main.shardManager);
+            se.put("help", help());
 
             progBars.forEach(se::put);
 
@@ -75,7 +80,7 @@ public class CommandEval implements Command {
             }
             EmbedBuilder eB = new EmbedBuilder()
                     .setTitle("Eval'd")
-                    .setFooter(event.getMessage().getCategory().getName(), event.getJDA().getSelfUser().getEffectiveAvatarUrl())
+                    .setFooter(event.getJDA().getSelfUser().getName(), event.getJDA().getSelfUser().getEffectiveAvatarUrl())
                     .addField(":inbox_tray:Input", "```java\n" + input + "\n```", false);
             if (initError != null) {
                 eB.addField(":x:Error! (During Init)", "```java\n" + initError + "\n```", false);
@@ -87,6 +92,9 @@ public class CommandEval implements Command {
                 eB.addField(":x:Error!", "```java\n" + error + "\n```", false);
             }
             event.getMessage().getTextChannel().sendMessage(eB.build()).queue();
+
+            }).start();
+
         }
     }
 
