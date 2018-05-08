@@ -13,7 +13,7 @@ import GB.stuff.DATA;
 
 import java.time.format.DateTimeFormatter;
 
-import static core.JSONhandler.readJsonFromUrl;
+import static GB.core.JSONhandler.readJsonFromUrl;
 
 public class CommandProfile implements Command {
     private String Nick;

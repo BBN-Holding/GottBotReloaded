@@ -36,7 +36,7 @@ public class CommandBlacklist implements Command {
                     case "list":
                         String out="";
                         int i=0;
-                        List<String> list = new Handler().getMySQL().getallwithoutwhere("blacklist",  "id");
+                        List<String> list = List.of(new Handler().getMySQL().getAll("blacklist",  "id").split(" "));
                         while (list.size()>i) {
                             out += Main.shardManager.getUserById(list.get(i)).getName()+", ";
                             i++;

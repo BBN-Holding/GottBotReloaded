@@ -1,4 +1,4 @@
-package core;
+package GB.core;
 
 import org.json.JSONException;
 import org.json.JSONObject;

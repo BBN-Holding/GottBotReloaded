@@ -1,8 +1,8 @@
 package GB;
 
 public class Handler {
-    public MySQL getMySQL() {
-        return new MySQL();
+    public Rethink getMySQL() {
+        return new Rethink();
     }
     public Error getError() {
         return new Error();

@@ -6,7 +6,7 @@ import GB.commands.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.json.JSONObject;
 
-import static core.JSONhandler.readJsonFromUrl;
+import static GB.core.JSONhandler.readJsonFromUrl;
 
 public class CommandMiner implements Command {
     @Override

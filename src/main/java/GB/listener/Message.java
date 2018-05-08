@@ -40,11 +40,13 @@ public class Message extends ListenerAdapter  {
                     i++;
                 }
             }
-            //stats
-            long Mesasge = Long.parseLong(new Handler().getMySQL().getfirst("stats", "1", "message"));
-            Mesasge++;
-            new Handler().getMySQL().update("stats", "message", String.valueOf(Mesasge), "message", new Handler().getMySQL().getfirst("stats", "1", "message"));
-            //lvl
+            // TODO: rethink integration
+            // stats
+            //            long Mesasge = Long.parseLong(new Handler().getMySQL().getfirst("stats", "1", "message"));
+            //            Mesasge++;
+            //            new Handler().getMySQL().update("stats", "message", String.valueOf(Mesasge), "message", new Handler().getMySQL().getfirst("stats", "1", "message"));
+
+            // lvl
             if (!event.getAuthor().isBot()) {
                 long xp = Long.parseLong(new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "xp"));
                 xp++;

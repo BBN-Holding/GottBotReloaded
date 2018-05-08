@@ -136,5 +136,10 @@
             <artifactId>lombok</artifactId>
             <version>1.16.20</version>
         </dependency>
+        <dependency>
+            <groupId>com.rethinkdb</groupId>
+            <artifactId>rethinkdb-driver</artifactId>
+            <version>LATEST</version>
+        </dependency>
     </dependencies>
 </project>

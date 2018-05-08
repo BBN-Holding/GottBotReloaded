@@ -19,7 +19,7 @@ public class CommandGitHub implements Command{
             if (args[0].equals("list")) {
 
                 new Handler().getMySQL();
-                String Liste = new Handler().getMySQL().getallstring("user", "github");
+                String Liste = new Handler().getMySQL().getAll("user", "github");
                 String AlleMit = Liste.replaceAll("none", "");
 
                 event.getTextChannel().sendMessage(AlleMit).queue();

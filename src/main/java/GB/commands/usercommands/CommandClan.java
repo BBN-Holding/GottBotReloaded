@@ -37,18 +37,20 @@ public class CommandClan implements Command {
                     } else event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.error", "util.error", "", "error", event)).queue();
                     break;
                 case "info":
-                    if (!new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "clan").equals("none")) {
-                        String Bank = new Handler().getMySQL().get("clan", "id", new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "clan"), "bank");
-                        String Id = new Handler().getMySQL().get("clan", "id", new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "clan"), "id");
-                        String Name = new Handler().getMySQL().get("clan", "id", new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "clan"), "name");
-                        List<String> Members = new Handler().getMySQL().getall("user", "clan", Id, "id");
-                        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Clan Informations")
-                                .addField("Name", Name, true)
-                                .addField("ID", Id, true)
-                                .addField("Bank", Bank, true)
-                                .addField("Members", String.valueOf(Members.size()), true)
-                                .build()).queue();
-                    } else event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("You are not in a clan").setDescription("Join a clan or create one").build()).queue();
+                    // TODO: RETIHNK INTEGRATION
+                    //if (!new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "clan").equals("none")) {
+                    //                        String Bank = new Handler().getMySQL().get("clan", "id", new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "clan"), "bank");
+                    //                        String Id = new Handler().getMySQL().get("clan", "id", new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "clan"), "id");
+                    //                        String Name = new Handler().getMySQL().get("clan", "id", new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "clan"), "name");
+                    //                        List<String> Members = new Handler().getMySQL().getAll("user", "clan", Id, "id");
+                    //                        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Clan Informations")
+                    //                                .addField("Name", Name, true)
+                    //                                .addField("ID", Id, true)
+                    //                                .addField("Bank", Bank, true)
+                    //                                .addField("Members", String.valueOf(Members.size()), true)
+                    //                                .build()).queue();
+                    //                    } else event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("You are not in a clan").setDescription("Join a clan or create one").build()).queue();
+
                      break;
                 case "invite":
 

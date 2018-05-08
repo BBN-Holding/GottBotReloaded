@@ -39,17 +39,18 @@ public class commandListener extends ListenerAdapter {
         }
     }
     public static void handle(MessageReceivedEvent event) {
+        // TODO: Add this with Rethink
+        // String Command = handler.getMySQL().getfirst("stats", "1", "command");
+        //            Main.shardManager.getGuildById(DATA.BBNS).getTextChannelById(DATA.BBNLOG).sendMessage(new EmbedBuilder().setAuthor(event.getAuthor().getName() + event.getAuthor().getId(), event.getAuthor().getAvatarUrl(), event.getAuthor().getAvatarUrl()).setDescription(event.getMessage().getContentRaw()).build()).queue();
+        //            long jay = Long.parseLong(Command);
+        //            long juhu = jay + 1;
+        //            new Handler().getMySQL().update("stats", "command", String.valueOf(juhu), "command", String.valueOf(jay));
         try {
             Handler handler = new Handler();
             String PREFIX = new Handler().getMySQL().get("server", "ID", event.getGuild().getId(), "prefix");
             beheaded = event.getMessage().getContentRaw().replaceFirst(Pattern.quote(PREFIX), "");
             commandHandler.handleCommand(commandHandler.parser.parse(event.getMessage().getContentRaw(), event));
             logger.info(event.getAuthor().getName() + " mit ID " + event.getAuthor().getId() + " auf " + event.getGuild().getName() + " hat den Command genutzt: " + event.getMessage().getContentRaw());
-            String Command = handler.getMySQL().getfirst("stats", "1", "command");
-            Main.shardManager.getGuildById(DATA.BBNS).getTextChannelById(DATA.BBNLOG).sendMessage(new EmbedBuilder().setAuthor(event.getAuthor().getName() + event.getAuthor().getId(), event.getAuthor().getAvatarUrl(), event.getAuthor().getAvatarUrl()).setDescription(event.getMessage().getContentRaw()).build()).queue();
-            long jay = Long.parseLong(Command);
-            long juhu = jay + 1;
-            new Handler().getMySQL().update("stats", "command", String.valueOf(juhu), "command", String.valueOf(jay));
         } catch (Exception e) {
             new Handler().getError().gethandle(e);
         }
