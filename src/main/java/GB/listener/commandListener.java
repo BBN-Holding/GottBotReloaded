@@ -24,7 +24,7 @@ public class commandListener extends ListenerAdapter {
                 Handler handler = new Handler();
                 if (new Handler().getMySQL().get("blacklist", "id", event.getAuthor().getId(), "id")==null) {
                    if (event.getChannelType().equals(ChannelType.TEXT)) {
-                       String PREFIX = new Handler().getMySQL().get("server", "ID", event.getGuild().getId(), "prefix");
+                       String PREFIX = new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "prefix");
                        if (event.getMessage().getContentRaw().replaceFirst("!", "").startsWith(event.getJDA().getSelfUser().getAsMention())) {
                             handle(event);
                        } else if (event.getMessage().getContentRaw().startsWith(PREFIX)) {

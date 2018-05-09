@@ -4,6 +4,7 @@ import GB.Handler;
 import GB.core.Main;
 import GB.stuff.SECRETS;
 import GB.commands.Command;
+import com.rethinkdb.RethinkDB;
 import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import okhttp3.*;
@@ -48,7 +49,7 @@ public class CommandUpvoted implements Command {
                     event.getJDA().getGuildById("396732579920740352").getController().addSingleRoleToMember(event.getMember(), event.getJDA().getRoleById(Premium)).queue();
 
                     event.getTextChannel().sendMessage("SUCCES JA LEL").queue();
-                    new Handler().getMySQL().insert("premium", "id", u.getId());
+                    new Handler().getMySQL().insert("premium", new RethinkDB().hashMap("id", u.getId()));
 
                 } else
                     event.getTextChannel().sendMessage(new Handler().getMessageHandler().getEmbed("util.error", "tools.upvoted", "https://discordbots.org/bot/407189087649398795/vote", "error", event)).queue();

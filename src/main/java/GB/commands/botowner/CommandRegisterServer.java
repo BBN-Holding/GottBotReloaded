@@ -24,7 +24,7 @@ public class CommandRegisterServer implements Command {
                 ShardManager shardManager = Main.shardManager;
                 while (shardManager.getGuilds().size() - 1 >= i) {
                     if (new Handler().getMySQL().get("server", "id", shardManager.getGuilds().get(i).getId(), "id") == null) {
-                        new Handler().getMySQL().insert("server", "id", shardManager.getGuilds().get(i).getId() + "");
+                        new Handler().getMySQL().insertServer(shardManager.getGuilds().get(i).getId());
                         logger.info("neuer Server in database Name: " + shardManager.getGuilds().get(i).getName() + " ID: " + shardManager.getGuilds().get(i).getId());
                         i2++;
                     }

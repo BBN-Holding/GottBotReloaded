@@ -23,7 +23,7 @@ public class CommandRegisterUser implements Command {
                 while (event.getJDA().getGuilds().size() - 1 >= i2) {
                     while (event.getJDA().getGuilds().get(i2).getMembers().size() - 1 >= i) {
                         if (new Handler().getMySQL().get("user", "id", Main.shardManager.getGuilds().get(i2).getMembers().get(i).getUser().getId(), "id") == null) {
-                            new Handler().getMySQL().insert("user", "id", Main.shardManager.getGuilds().get(i2).getMembers().get(i).getUser().getId() + "");
+                            new Handler().getMySQL().insertUser(Main.shardManager.getGuilds().get(i2).getMembers().get(i).getUser().getId());
                             logger.info("neuer User in database Name: " + Main.shardManager.getGuilds().get(i2).getMembers().get(i).getUser().getName() + " ID: " + event.getJDA().getGuilds().get(i2).getMembers().get(i).getUser().getId() + " von " + event.getJDA().getGuilds().get(i2).getName());
                             i++;
                         }

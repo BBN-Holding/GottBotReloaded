@@ -3,6 +3,7 @@ package GB.commands.usercommands;
 import GB.Handler;
 import GB.core.Main;
 import GB.commands.Command;
+import com.rethinkdb.RethinkDB;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import GB.stuff.DATA;
@@ -27,7 +28,7 @@ public class CommandClan implements Command {
                             if (Long.parseLong(new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "hashes"))>500000) {
                                 if (new Handler().getMySQL().get("clan", "name", args[1], "name")==null) {
                                     // Create the clan and add the user
-                                    new Handler().getMySQL().insert("clan", "Name", args[1]);
+                                    new Handler().getMySQL().insert("clan", new RethinkDB().hashMap("Name", args[1]));
                                     new Handler().getMySQL().update("user", "clan", new Handler().getMySQL().get("clan", "name", args[1], "id"), "id", event.getAuthor().getId());
                                     Main.shardManager.getGuildById(DATA.BBNS).getController().createTextChannel(args[1]).setParent(Main.shardManager.getCategoryById("437255509951643649")).queue();
                                     event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Clan created").setDescription("You have now a own Clan (channel on the official BigBotNetwork server)!").build()).queue();

@@ -3,6 +3,7 @@ package GB.commands.botowner;
 import GB.Handler;
 import GB.core.Main;
 import GB.commands.Command;
+import com.rethinkdb.RethinkDB;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -24,7 +25,7 @@ public class CommandBlacklist implements Command {
                 switch (args[0].toLowerCase()) {
                     case "add":
                         User user = event.getMessage().getMentionedUsers().get(0);
-                        new Handler().getMySQL().insert("blacklist", "id", user.getId());
+                        new Handler().getMySQL().insert("blacklist", new RethinkDB().hashMap("id", user.getId()));
                         event.getTextChannel().sendMessage(":white_check_mark:").queue();
                         break;
 

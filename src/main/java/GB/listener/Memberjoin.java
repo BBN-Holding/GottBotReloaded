@@ -17,7 +17,7 @@ public class Memberjoin extends ListenerAdapter {
     @Override
     public void onGuildMemberJoin(GuildMemberJoinEvent event) {
         if (new Handler().getMySQL().get("user", "ID", event.getUser().getId(), "ID")==null) {
-            new Handler().getMySQL().insert("user", "ID", event.getUser().getId());
+            new Handler().getMySQL().insertUser(event.getUser().getId());
         }
         if (!new Handler().getMySQL().get("user", "id", event.getUser().getId(), "premium").equals("none")) {
             Guild bbn = Main.shardManager.getGuildById(DATA.BBNS);
