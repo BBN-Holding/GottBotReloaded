@@ -29,32 +29,34 @@ public class Error {
 
     private boolean handle(Exception e) {
         try {
-            String error = geterrorString(e);
-            String substring="";
-            String filename = "GB.Error-"+new Date().toGMTString().replaceAll(" ", "-").replaceAll(":", "-")+".txt";
-            substring += "An error gönn dir: https://bigbotnetwork.de/errors/"+filename;
-            new File(filename).createNewFile();
-            PrintWriter pWriter = null;
-            try {
-                pWriter = new PrintWriter(new BufferedWriter(new FileWriter(filename)));
-                pWriter.print(error);
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            } finally {
-                if (pWriter != null){
-                    pWriter.flush();
-                    pWriter.close();
+            if (!Main.dev) {
+                String error = geterrorString(e);
+                String substring = "";
+                String filename = "GB.Error-" + new Date().toGMTString().replaceAll(" ", "-").replaceAll(":", "-") + ".txt";
+                substring += "An error gönn dir: https://bigbotnetwork.de/errors/" + filename;
+                new File(filename).createNewFile();
+                PrintWriter pWriter = null;
+                try {
+                    pWriter = new PrintWriter(new BufferedWriter(new FileWriter(filename)));
+                    pWriter.print(error);
+                } catch (IOException ioe) {
+                    ioe.printStackTrace();
+                } finally {
+                    if (pWriter != null) {
+                        pWriter.flush();
+                        pWriter.close();
+                    }
                 }
+                FTPClient client = new FTPClient();
+                FileInputStream fis = null;
+                client.connect("ftp.bigbotnetwork.de");
+                client.login(SECRETS.FTPUSER, SECRETS.FTPPW);
+                fis = new FileInputStream(filename);
+                client.storeFile("httpdocs/errors/" + filename, fis);
+                client.logout();
+                System.out.println(substring);
+                Main.shardManager.getGuildById(GB.stuff.DATA.BBNS).getTextChannelById(GB.stuff.DATA.BBNLOG).sendMessage(new EmbedBuilder().setTitle(":warning: GB.Error :warning:").setDescription("<@401817301919465482> <@261083609148948488> A ERROR: " + substring).build()).queue();
             }
-            FTPClient client = new FTPClient();
-            FileInputStream fis = null;
-            client.connect("ftp.bigbotnetwork.de");
-            client.login(SECRETS.FTPUSER, SECRETS.FTPPW);
-            fis = new FileInputStream(filename);
-            client.storeFile("httpdocs/errors/"+filename, fis);
-            client.logout();
-            System.out.println(substring);
-            Main.shardManager.getGuildById(GB.stuff.DATA.BBNS).getTextChannelById(GB.stuff.DATA.BBNLOG).sendMessage(new EmbedBuilder().setTitle(":warning: GB.Error :warning:").setDescription("<@401817301919465482> <@261083609148948488> A ERROR: "+substring).build()).queue();
         } catch (Exception er) {
             er.printStackTrace();
         }

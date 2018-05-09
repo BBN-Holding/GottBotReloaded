@@ -26,7 +26,7 @@ public class Main {
     private static Logger logger = LoggerFactory.getLogger(Main.class);
     public static JDA jda;
     public static String[] args;
-    private static boolean dev = true;
+    public static boolean dev = true;
     private static SessionController sessionController;
     public static ShardManager shardManager;
     public static AudioManager audioManager;
