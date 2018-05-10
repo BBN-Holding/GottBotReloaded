@@ -64,7 +64,8 @@ public class Main {
                 new Memberjoin(),
                 new Reaction(),
                 new PrivateMessage(),
-                new Channel()
+                new Channel(),
+                    new READY()
              );
             logger.info("loaded all listeners");
             commands.put("builder", new CommandBuilder());
