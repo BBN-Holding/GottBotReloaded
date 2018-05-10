@@ -1,6 +1,7 @@
 package GB;
 
 import GB.stuff.SECRETS;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -8,6 +9,9 @@ import com.rethinkdb.RethinkDB;
 import com.rethinkdb.model.MapObject;
 import com.rethinkdb.net.Connection;
 import com.rethinkdb.net.Cursor;
+import org.json.JSONObject;
+import org.json.simple.JsonArray;
+import org.json.simple.parser.JSONParser;
 import org.slf4j.LoggerFactory;
 
 import java.sql.*;
@@ -40,11 +44,15 @@ public class Rethink {
         try {
             // TODO: Remove "" e.g. you must do "gb."test not gb.test
             Cursor cursor = r.table(table).filter(row -> row.g(where.toLowerCase()).eq(wherevalue)).run(conn);
-            JsonObject json=new JsonParser().parse(cursor.next().toString()).getAsJsonObject();
-            return json.get(spalte).toString();
+            if (cursor.hasNext()) {
+                return new JsonParser().parse(cursor.next().toString()).getAsJsonObject().get(spalte).toString();
+            } else return null;
         } catch (NoSuchElementException e) {
             return null;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return "adadfsdaf";
     }
 
     public String getAll(String table, String spalte) {

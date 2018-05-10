@@ -18,30 +18,33 @@ public class Message extends ListenerAdapter  {
         if (event.getChannelType().isGuild()) {
             Handler handler = new Handler();
             //registeruser
-            if (!event.getAuthor().isBot()) {
-                if (new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "id") == null) {
-                    new Handler().getMySQL().insertUser(event.getAuthor().getId());
-                    logger.info("neuer User in database Name: " + event.getAuthor().getName() + " ID: " + event.getAuthor().getId() + " von " + event.getGuild().getName());
-                }
-            }
+            // TODO: Mach mal ey
+            // if (!event.getAuthor().isBot()) {
+            //                if (new Handler().getMySQL().get("user", "id", event.getAuthor().getId(), "id") == null) {
+            //                    new Handler().getMySQL().insertUser(event.getAuthor().getId());
+            //                    logger.info("neuer User in database Name: " + event.getAuthor().getName() + " ID: " + event.getAuthor().getId() + " von " + event.getGuild().getName());
+            //                }
+            //            }
             // Mention
             if (event.getMessage().getContentRaw().replace("!", "").equals(event.getJDA().getSelfUser().getAsMention())) {
                 event.getChannel().sendMessage(new Handler().getMessageHandler().getEmbed("listener.Mention1", "listener.Mention2", "", "sucess", event)).queue();
                 logger.info(event.getAuthor().getName() + " mit ID " + event.getAuthor().getId() + " auf " + event.getGuild().getName() + " hat mich erwähnt! ");
             }
             // registerserver
-            if (new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "id") == null) {
-                new Handler().getMySQL().insertServer(event.getGuild().getId());
-                logger.info("neuer Server: Name: " + event.getGuild().getName() + " ID: " + event.getGuild().getId() + " Member: " + event.getGuild().getMembers().size());
-                int i = 0;
-                while (event.getGuild().getMembers().size() - 1 >= i) {
-                    if (new Handler().getMySQL().get("user", "id", event.getGuild().getMembers().get(i).getUser().getId(), "id") == null) {
-                        new Handler().getMySQL().insertUser(event.getGuild().getMembers().get(i).getUser().getId());
-                        logger.info("neuer User in database Name: " + event.getGuild().getMembers().get(i).getUser().getName() + " ID: " + event.getGuild().getMembers().get(i).getUser().getId() + " von " + event.getGuild().getName());
-                    }
-                    i++;
-                }
-            }
+            // TODO: Mach mal :(
+            // if (new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "id") == null) {
+            //                new Handler().getMySQL().insertServer(event.getGuild().getId());
+            //                logger.info("neuer Server: Name: " + event.getGuild().getName() + " ID: " + event.getGuild().getId() + " Member: " + event.getGuild().getMembers().size());
+            //                int i = 0;
+            //                while (event.getGuild().getMembers().size() - 1 >= i) {
+            //                    if (new Handler().getMySQL().get("user", "id", event.getGuild().getMembers().get(i).getUser().getId(), "id") == null) {
+            //                        new Handler().getMySQL().insertUser(event.getGuild().getMembers().get(i).getUser().getId());
+            //                        logger.info("neuer User in database Name: " + event.getGuild().getMembers().get(i).getUser().getName() + " ID: " + event.getGuild().getMembers().get(i).getUser().getId() + " von " + event.getGuild().getName());
+            //                    }
+            //                    i++;
+            //                }
+            //            }
+
             // TODO: rethink integration
             // stats
             //            long Mesasge = Long.parseLong(new Handler().getMySQL().getfirst("stats", "1", "message"));
@@ -67,17 +70,18 @@ public class Message extends ListenerAdapter  {
             //            }
 
             // Verification
-            if (!event.getAuthor().isBot()) {
-                if (!new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "verification").equals("none") && new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "verificationart").equals("text")) {
-                    String Message = new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "verification");
-                    if (event.getChannel().getId().equals(Message)) {
-                        if (event.getMessage().getContentRaw().equalsIgnoreCase(new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "verificationmessage")) && event.getChannel().getId().equals(new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "verification"))) {
-                            event.getGuild().getController().addSingleRoleToMember(event.getMember(), event.getGuild().getRoleById(new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "verificationrole"))).queue();
-                            event.getMessage().delete().queueAfter(2, TimeUnit.SECONDS);
-                        }
-                    }
-                }
-            }
+            // TODO: Mach mal ...
+            // if (!event.getAuthor().isBot()) {
+            //                if (!new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "verification").equals("none") && new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "verificationart").equals("text")) {
+            //                    String Message = new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "verification");
+            //                    if (event.getChannel().getId().equals(Message)) {
+            //                        if (event.getMessage().getContentRaw().equalsIgnoreCase(new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "verificationmessage")) && event.getChannel().getId().equals(new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "verification"))) {
+            //                            event.getGuild().getController().addSingleRoleToMember(event.getMember(), event.getGuild().getRoleById(new Handler().getMySQL().get("server", "id", event.getGuild().getId(), "verificationrole"))).queue();
+            //                            event.getMessage().delete().queueAfter(2, TimeUnit.SECONDS);
+            //                        }
+            //                    }
+            //                }
+            //            }
         }
     }
 }
