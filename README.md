@@ -11,4 +11,4 @@
 
 <br>
 [![Discord Bots](https://discordbots.org/api/widget/407189087649398795.svg)](https://discordbots.org/bot/407189087649398795)
-[![Bots For Discord](https://botsfordiscord.com/api/v1/bots/353287088528949248/embed)](https://botsfordiscord.com/api/v1/bots/353287088528949248/embed)
+<a href="https://botsfordiscord.com/bot/407189087649398795"><img src="https://botsfordiscord.com/api/v1/bots/407189087649398795/embed.png"/></a> 
