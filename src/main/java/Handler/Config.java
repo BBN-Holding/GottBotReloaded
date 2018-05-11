@@ -19,5 +19,5 @@ public class Config {
     public Map<String, String> getDB() {
         return DB;
     }
-
+    
 }
