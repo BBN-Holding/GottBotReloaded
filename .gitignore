@@ -4,6 +4,9 @@
 # Log file
 *.log
 
+# All .idea Files
+.idea/
+
 # BlueJ files
 *.ctxt
 
@@ -24,3 +27,4 @@ hs_err_pid*
 
 # Tokens and co
 config.yml
+.idea/workspace.xml
