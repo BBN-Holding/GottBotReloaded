@@ -7,7 +7,7 @@
 ## Invite's
 #### <a href="https://discordapp.com/oauth2/authorize?client_id=407189087649398795&scope=bot&permissions=1008204887">Invite the Bot</a>
 <br>
-####<a href="https://disco.gg/bbn">Join the support server</a>
+#### <a href="https://disco.gg/bbn">Join the support server</a>
 
 <br>
 <br>
