@@ -6,6 +6,8 @@ public class GottBot {
 
     }
 
-    public static Config getConfig()
+    public static Config getConfig() {
+        return new Config();
+    }
 
 }
