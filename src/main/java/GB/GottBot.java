@@ -1,7 +1,7 @@
 package GB;
 
 import GB.Handler.CommandHandling.commandHandler;
-import GB.Handler.CommandHandling.commandListener;
+import GB.Handler.CommandHandling.ListenerCommand;
 import GB.Handler.DB;
 import GB.Handler.Info;
 import GB.commands.admin.CommandPrefix;
@@ -51,10 +51,10 @@ public class GottBot {
     }
 
     private static void getInfos() {
-        System.out.println("Max Shards: "+getInfo().getMaxShards());
-        System.out.println("Total Shards: "+getInfo().getTotalShards());
-        System.out.println("StartShards: "+getInfo().getstartShards());
-        System.out.println("Online Shards: "+getInfo().getShards());
+        System.out.println("Max Shards: " + getInfo().getMaxShards());
+        System.out.println("Total Shards: " + getInfo().getTotalShards());
+        System.out.println("StartShards: " + getInfo().getstartShards());
+        System.out.println("Online Shards: " + getInfo().getShards());
     }
 
     private static void listentochanges() {
@@ -79,7 +79,7 @@ public class GottBot {
     private static void startBot() {
             registerListener();
             registerCommands();
-            shards=getInfo().getstartShards();
+            shards = getInfo().getstartShards();
             builder.setShardsTotal(Integer.parseInt(getInfo().getMaxShards()));
             builder.setShards(shards);
             builder.setToken(getConfig().getToken());
@@ -120,7 +120,7 @@ public class GottBot {
 
     private static void registerListener() {
         builder.addEventListeners(
-          new commandListener(),
+          new ListenerCommand(),
                 new Message()
         );
     }
