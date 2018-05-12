@@ -1,17 +1,11 @@
 package GB.Handler;
 
 import GB.GottBot;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.rethinkdb.RethinkDB;
 import com.rethinkdb.model.MapObject;
 import com.rethinkdb.net.Connection;
 import com.rethinkdb.net.Cursor;
-import org.json.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
-import java.io.Writer;
-import java.util.Collection;
 import java.util.LinkedList;
 
 public class DB {

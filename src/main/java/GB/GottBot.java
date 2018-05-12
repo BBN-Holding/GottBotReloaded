@@ -10,27 +10,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.rethinkdb.net.Cursor;
 import net.dv8tion.jda.bot.sharding.*;
-import net.dv8tion.jda.core.AccountType;
-import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.utils.SessionController;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.security.auth.login.LoginException;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.Collection;
 
 import GB.Handler.Config;
-import org.json.JSONObject;
 
 public class GottBot {
     private static DefaultShardManagerBuilder builder = new DefaultShardManagerBuilder();
@@ -52,10 +42,10 @@ public class GottBot {
     }
 
     private static void getInfos() {
-        System.out.println("Max Shards: "+getInfo().getMaxShards());
-        System.out.println("Total Shards: "+getInfo().getTotalShards());
-        System.out.println("StartShards: "+getInfo().getstartShards());
-        System.out.println("Online Shards: "+getInfo().getShards());
+        System.out.println("Max Shards: " + getInfo().getMaxShards());
+        System.out.println("Total Shards: " + getInfo().getTotalShards());
+        System.out.println("StartShards: " + getInfo().getstartShards());
+        System.out.println("Online Shards: " + getInfo().getShards());
     }
 
     private static void listentochanges() {
@@ -80,7 +70,7 @@ public class GottBot {
     private static void startBot() {
             registerListener();
             registerCommands();
-            shards=getInfo().getstartShards();
+            shards = getInfo().getstartShards();
             builder.setShardsTotal(Integer.parseInt(getInfo().getMaxShards()));
             builder.setShards(shards);
             builder.setToken(getConfig().getToken());
