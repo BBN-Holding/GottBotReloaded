@@ -4,33 +4,30 @@ import GB.Handler.CommandHandling.commandHandler;
 import GB.Handler.CommandHandling.commandListener;
 import GB.Handler.DB;
 import GB.Handler.Info;
-import GB.commands.TestCommand;
+import GB.commands.admin.CommandPrefix;
+import GB.commands.owner.CommandGuilds;
+import GB.commands.owner.CommandTest;
+import GB.commands.user.CommandPing;
+import GB.commands.user.CommandStats;
 import GB.listener.Message;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.rethinkdb.net.Cursor;
 import net.dv8tion.jda.bot.sharding.*;
 import net.dv8tion.jda.core.AccountType;
+import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.utils.SessionController;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.security.auth.login.LoginException;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.Collection;
 
 import GB.Handler.Config;
-import org.json.JSONObject;
 
 public class GottBot {
     private static DefaultShardManagerBuilder builder = new DefaultShardManagerBuilder();
@@ -38,6 +35,7 @@ public class GottBot {
     private static SessionController sessionController;
     private static Config config;
     private static Collection<Integer> shards;
+    private static JDA Oneshardbot;
 
     public static void main(String[] args) {
         Startall();
@@ -49,6 +47,7 @@ public class GottBot {
         getInfos();
         listentochanges();
         startBot();
+        startBot2();
     }
 
     private static void getInfos() {
@@ -95,6 +94,14 @@ public class GottBot {
                 e.printStackTrace();
             }
     }
+    private static void startBot2() {
+        JDABuilder builder = new JDABuilder(AccountType.BOT).setToken(getConfig().getToken()).setAutoReconnect(true);
+        try {
+            Oneshardbot=builder.buildAsync();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     private static void writeShards() {
         getDB().updateShards();
@@ -119,7 +126,11 @@ public class GottBot {
     }
 
     private static void registerCommands() {
-        commandHandler.commands.put("test", new TestCommand());
+        commandHandler.commands.put("test", new CommandTest());
+        commandHandler.commands.put("guilds", new CommandGuilds());
+        commandHandler.commands.put("prefix", new CommandPrefix());
+        commandHandler.commands.put("ping", new CommandPing());
+        commandHandler.commands.put("stats", new CommandStats());
     }
 
     public static Config getConfig() {
@@ -132,6 +143,10 @@ public class GottBot {
 
     public static Info getInfo() {
         return new Info();
+    }
+
+    public static JDA getOneshardbot() {
+        return Oneshardbot;
     }
 
 }
