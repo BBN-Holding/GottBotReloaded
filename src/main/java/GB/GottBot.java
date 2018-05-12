@@ -1,7 +1,7 @@
 package GB;
 
 import GB.Handler.CommandHandling.commandHandler;
-import GB.Handler.CommandHandling.commandListener;
+import GB.Handler.CommandHandling.ListenerCommand;
 import GB.Handler.DB;
 import GB.Handler.Info;
 import GB.commands.TestCommand;
@@ -103,7 +103,7 @@ public class GottBot {
 
     private static void registerListener() {
         builder.addEventListeners(
-          new commandListener(),
+          new ListenerCommand(),
                 new Message()
         );
     }
