@@ -17,7 +17,7 @@ public class CommandPrefix implements Command {
         // TODO: Test it
         if (args.length>0) {
             GottBot.getDB().update(RethinkDB.r.hashMap("CommandPrefix", args[0]));
-            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Your Prefix is now: "+args[0]).build()).queue();
+            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Your Prefix is now: " + args[0]).build()).queue();
         }
     }
 

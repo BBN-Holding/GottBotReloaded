@@ -12,9 +12,8 @@ public class CommandPing implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        // TODO: Test it :kappa:
         event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Ping")
-                .setDescription("```Shard "+event.getJDA().getShardInfo().getShardId()+" -> "+event.getJDA().getPing()+"``").build()).queue();
+                .setDescription("``Shard " + event.getJDA().getShardInfo().getShardId() + " -> " + event.getJDA().getPing() + "``").build()).queue();
     }
 
     @Override
