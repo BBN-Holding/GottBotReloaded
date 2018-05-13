@@ -11,7 +11,7 @@ public class CommandTest implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        event.getTextChannel().sendMessage("Test angekommen").queue();
+        event.getTextChannel().sendMessage(":white_check_mark:").queue();
     }
 
     @Override
