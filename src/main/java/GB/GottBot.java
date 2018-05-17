@@ -9,6 +9,7 @@ import GB.commands.owner.CommandGuilds;
 import GB.commands.owner.CommandTest;
 import GB.commands.user.CommandPing;
 import GB.commands.user.CommandStats;
+import GB.listener.BotLists;
 import GB.listener.Message;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
@@ -56,7 +57,6 @@ public class GottBot {
         System.out.println("StartShards: " + getInfo().getstartShards());
         System.out.println("Online Shards: " + getInfo().getShards());
     }
-
     private static void listentochanges() {
         Thread t = new Thread(() -> {
             Cursor cursor = getDB().getR().table("requests").changes().run(getDB().getConn());
@@ -71,7 +71,7 @@ public class GottBot {
     private static void requestHandler(String request) {
         if (request.startsWith("{new_val={Request=Stop,")) {
             System.out.println(getDB().removeShards());
-            System.out.println("Stopping Shards because of the database request....");
+            System.out.println("Stopping Shards because of the database request...");
             System.exit(1);
         }
     }
@@ -121,7 +121,8 @@ public class GottBot {
     private static void registerListener() {
         builder.addEventListeners(
           new ListenerCommand(),
-                new Message()
+                new Message(),
+                new BotLists()
         );
     }
 

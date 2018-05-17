@@ -41,7 +41,6 @@ public class DB {
             Cursor cursor = r.table(table).filter(row -> row.g(where).eq(wherevalue)).getField(field).run(conn);
             if (cursor.hasNext()) {
                 jsonString = cursor.next().toString();
-                System.out.println("Hasnext");
             } else jsonString = null;
         } catch (Exception e) {
             e.printStackTrace();

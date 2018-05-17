@@ -26,6 +26,10 @@
             <name>jcenter-bintray</name>
             <url>http://jcenter.bintray.com</url>
         </repository>
+            <repository>
+                <id>jitpack.io</id>
+                <url>https://jitpack.io</url>
+            </repository>
     </repositories>
 
     <dependencies>
@@ -57,6 +61,16 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.DiscordBotList</groupId>
+            <artifactId>DBL-Java-Wrapper</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.GregTCLTK</groupId>
+            <artifactId>BotListSpace-API</artifactId>
             <version>LATEST</version>
         </dependency>
     </dependencies>
