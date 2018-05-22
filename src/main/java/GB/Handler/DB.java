@@ -60,7 +60,7 @@ public class DB {
     public String insertServer(String id) {
         String result = r.table("server").insert(
                 r.hashMap("serverid", id)
-                        .with("prefix", "gb.")
+                        .with("CommandPrefix", "gb.")
         ).run(conn).toString();
         return result;
     }

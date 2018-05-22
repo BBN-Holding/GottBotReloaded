@@ -7,6 +7,7 @@ public class Config {
     public String Token;
     public String Shards;
     public Map<String, String> DB;
+    public Map<String, String> BotLists;
 
     public String getToken() {
         return Token;
@@ -18,5 +19,7 @@ public class Config {
     public Map<String, String> getDB() {
         return DB;
     }
+
+    public Map<String, String> getBotLists(){return BotLists;}
 
 }

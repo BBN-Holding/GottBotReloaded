@@ -9,7 +9,6 @@ public class commandHandler {
 
     public static final commandParser parser = new commandParser();
     public static HashMap<String, Plugin> commands = new HashMap<>();
-
     public static void handleCommand(commandParser.commandContainer cmd, MessageReceivedEvent event) {
         String invoke = cmd.invoke;
         invoke = invoke.toLowerCase();

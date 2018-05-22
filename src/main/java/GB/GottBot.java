@@ -1,16 +1,18 @@
 package GB;
 
 import GB.Handler.CommandHandling.commandHandler;
-import GB.Handler.CommandHandling.commandListener;
+import GB.Handler.CommandHandling.ListenerCommand;
 import GB.Handler.DB;
 import GB.Handler.Info;
 import GB.Handler.Logger;
 import GB.Pluginmanager.Plugin;
 import GB.Pluginmanager.PluginLoader;
+import GB.listener.BotLists;
 import GB.listener.Message;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import net.dv8tion.jda.bot.sharding.*;
+import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.utils.SessionController;
@@ -31,6 +33,7 @@ public class GottBot {
     private static Collection<Integer> shards;
     private static boolean streaming=true;
 
+    private static JDA Oneshardbot;
 
     public static void main(String[] args) {
         Startall();
@@ -74,12 +77,14 @@ public class GottBot {
 
     private static void registerListener() {
         builder.addEventListeners(
-          new commandListener(),
-                new Message()
+          new ListenerCommand(),
+                new Message(),
+                new BotLists()
         );
     }
 
     private static void registerCommands() {
+
         try {
             Class<?>[] classes=PluginLoader.loadDirectory(new File("plugins"));
             Plugin[] plugins=PluginLoader.initAsPlugin(classes);
@@ -103,7 +108,6 @@ public class GottBot {
     public static Info getInfo() {
         return new Info();
     }
-
     public static Logger getLogger() {
         return new Logger();
     }
