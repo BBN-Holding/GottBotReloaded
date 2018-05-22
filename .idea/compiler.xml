@@ -6,8 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="GottBotRework" />
+        <module name="Testplugin" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Api" target="9" />
+      <module name="Testplugin" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>

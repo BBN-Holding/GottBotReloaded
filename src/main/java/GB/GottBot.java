@@ -4,33 +4,24 @@ import GB.Handler.CommandHandling.commandHandler;
 import GB.Handler.CommandHandling.commandListener;
 import GB.Handler.DB;
 import GB.Handler.Info;
-import GB.commands.TestCommand;
+import GB.Handler.Logger;
+import GB.Pluginmanager.Plugin;
+import GB.Pluginmanager.PluginLoader;
 import GB.listener.Message;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import com.rethinkdb.net.Cursor;
 import net.dv8tion.jda.bot.sharding.*;
-import net.dv8tion.jda.core.AccountType;
-import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.utils.SessionController;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.security.auth.login.LoginException;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.Collection;
 
 import GB.Handler.Config;
-import org.json.JSONObject;
 
 public class GottBot {
     private static DefaultShardManagerBuilder builder = new DefaultShardManagerBuilder();
@@ -38,6 +29,8 @@ public class GottBot {
     private static SessionController sessionController;
     private static Config config;
     private static Collection<Integer> shards;
+    private static boolean streaming=true;
+
 
     public static void main(String[] args) {
         Startall();
@@ -46,49 +39,19 @@ public class GottBot {
     private static void Startall() {
         read();
         DB.Connect();
-        getInfos();
-        listentochanges();
         startBot();
-    }
-
-    private static void getInfos() {
-        System.out.println("Max Shards: "+getInfo().getMaxShards());
-        System.out.println("Total Shards: "+getInfo().getTotalShards());
-        System.out.println("StartShards: "+getInfo().getstartShards());
-        System.out.println("Online Shards: "+getInfo().getShards());
-    }
-
-    private static void listentochanges() {
-        Thread t = new Thread(() -> {
-            Cursor cursor = getDB().getR().table("requests").changes().run(getDB().getConn());
-            for (Object doc : cursor) {
-                System.out.println(doc);
-                requestHandler(doc.toString());
-            }
-        });
-        t.start();
-    }
-
-    private static void requestHandler(String request) {
-        if (request.startsWith("{new_val={Request=Stop,")) {
-            System.out.println(getDB().removeShards());
-            System.out.println("Stopping Shards because of the database request....");
-            System.exit(1);
-        }
+        getLogger().setup();
     }
 
     private static void startBot() {
             registerListener();
             registerCommands();
-            shards=getInfo().getstartShards();
-            builder.setShardsTotal(Integer.parseInt(getInfo().getMaxShards()));
-            builder.setShards(shards);
+            builder.setShardsTotal(Integer.parseInt(getConfig().getShards()));
             builder.setToken(getConfig().getToken());
             builder.setSessionController(sessionController);
             builder.setAutoReconnect(true);
             builder.setStatus(OnlineStatus.DO_NOT_DISTURB);
             builder.setGame(Game.playing("Starting"));
-            writeShards();
             try {
                 shardManager = builder.build();
             } catch (LoginException e) {
@@ -96,16 +59,14 @@ public class GottBot {
             }
     }
 
-    private static void writeShards() {
-        getDB().updateShards();
-    }
 
     private static void read() {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         try {
             config=mapper.readValue(new File("config.yml"), Config.class);
-            System.out.println(ReflectionToStringBuilder.toString(config, ToStringStyle.MULTI_LINE_STYLE));
-
+            String yml = ReflectionToStringBuilder.toString(config, ToStringStyle.MULTI_LINE_STYLE);
+            if (!streaming)
+                System.out.println(yml);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -119,7 +80,16 @@ public class GottBot {
     }
 
     private static void registerCommands() {
-        commandHandler.commands.put("test", new TestCommand());
+        try {
+            Class<?>[] classes=PluginLoader.loadDirectory(new File("plugins"));
+            Plugin[] plugins=PluginLoader.initAsPlugin(classes);
+            for (int i=0; i<plugins.length; i++) {
+                commandHandler.commands.put(plugins[i].registercommandname(), plugins[i]);
+                System.out.println(plugins[i].registercommandname()+ " enabled!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static Config getConfig() {
@@ -132,6 +102,10 @@ public class GottBot {
 
     public static Info getInfo() {
         return new Info();
+    }
+
+    public static Logger getLogger() {
+        return new Logger();
     }
 
 }

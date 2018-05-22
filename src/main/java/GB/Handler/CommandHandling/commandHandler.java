@@ -1,24 +1,22 @@
 package GB.Handler.CommandHandling;
 
+import GB.Pluginmanager.Plugin;
+import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+
 import java.util.HashMap;
 
 public class commandHandler {
 
     public static final commandParser parser = new commandParser();
-    public static HashMap<String, Command> commands = new HashMap<>();
+    public static HashMap<String, Plugin> commands = new HashMap<>();
 
-    public static void handleCommand(commandParser.commandContainer cmd) {
+    public static void handleCommand(commandParser.commandContainer cmd, MessageReceivedEvent event) {
         String invoke = cmd.invoke;
         invoke = invoke.toLowerCase();
-        if (commands.containsKey(invoke)) {
-
-            boolean safe = commands.get(invoke).called(cmd.args, cmd.event);
-
-            if (!safe) {
-                commands.get(invoke).action(cmd.args, cmd.event);
-                commands.get(invoke).executed(safe, cmd.event);
-            } else {
-                commands.get(invoke).executed(safe, cmd.event);
+        String permissions = "command.*";
+        if (permissions.contains("command." + cmd.invoke) || permissions.contains("command.*") || event.getGuild().getOwner().getUser().getId().equals(event.getAuthor().getId())) {
+            if (commands.containsKey(invoke)) {
+                    commands.get(invoke).onCommand(cmd.args, cmd.event);
             }
         }
     }
