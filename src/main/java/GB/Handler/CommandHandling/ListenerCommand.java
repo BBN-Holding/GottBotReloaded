@@ -22,6 +22,6 @@ public class ListenerCommand extends ListenerAdapter {
     }
 
     private void handle(MessageReceivedEvent event, String prefix) {
-        commandHandler.handleCommand(commandHandler.parser.parse(prefix, event.getMessage().getContentRaw(), event), event.getAuthor().getId(), event.getGuild().getId());
+        commandHandler.handleCommand(commandHandler.parser.parse(prefix, event.getMessage().getContentRaw(), event), event);
     }
 }
