@@ -8,7 +8,7 @@
 Introduction goes here
 
 ## Modules
-<a href="wiki/Modules">The GottBot work with plugins. Here is a Tutorial to this.</a>
+<a href="https://github.com/BigBotNetwork/GottBotReloaded/wiki/Modules">The GottBot work with plugins. Here is a Tutorial to this.</a>
 
 ## Invite's
 #### <a href="https://discordapp.com/oauth2/authorize?client_id=407189087649398795&scope=bot&permissions=1008204887">Invite the Bot</a>
