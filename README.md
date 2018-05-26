@@ -4,6 +4,12 @@
 <br>
 <br>
 <br>
+## Introduction
+Introduction goes here
+
+## Modules
+The GottBot work with plugins. Here is a Tutorial to this
+
 ## Invite's
 #### <a href="https://discordapp.com/oauth2/authorize?client_id=407189087649398795&scope=bot&permissions=1008204887">Invite the Bot</a>
 #### <a href="https://disco.gg/bbn">Join the support server</a>
