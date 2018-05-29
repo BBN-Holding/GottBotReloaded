@@ -27,5 +27,4 @@ public class Message extends ListenerAdapter {
             }
         }
     }
-
 }

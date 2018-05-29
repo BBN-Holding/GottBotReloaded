@@ -8,6 +8,9 @@ public class Config {
     public String Shards;
     public Map<String, String> DB;
     public Map<String, String> BotLists;
+    public String ServerIP;
+    public String ServerPort;
+    public String ServerPassword;
 
     public String getToken() {
         return Token;
@@ -21,5 +24,14 @@ public class Config {
     }
 
     public Map<String, String> getBotLists(){return BotLists;}
+    public String getServerIP() {
+        return ServerIP;
+    }
+    public String getServerPort() {
+        return ServerPort;
+    }
+    public String getServerPassword() {
+        return ServerPassword;
+    }
 
 }

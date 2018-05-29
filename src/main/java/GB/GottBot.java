@@ -7,12 +7,12 @@ import GB.Handler.Info;
 import GB.Handler.Logger;
 import GB.Pluginmanager.Plugin;
 import GB.Pluginmanager.PluginLoader;
+import GB.Pluginmanager.eventlistener;
 import GB.listener.BotLists;
 import GB.listener.Message;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import net.dv8tion.jda.bot.sharding.*;
-import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.utils.SessionController;
@@ -20,8 +20,10 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.security.auth.login.LoginException;
-import java.io.File;
-import java.util.Collection;
+import java.io.*;
+import java.net.Socket;
+import java.nio.Buffer;
+import java.util.Scanner;
 
 import GB.Handler.Config;
 
@@ -30,11 +32,9 @@ public class GottBot {
     public static ShardManager shardManager;
     private static SessionController sessionController;
     private static Config config;
-    private static Collection<Integer> shards;
     private static boolean streaming=true;
-
-    private static JDA Oneshardbot;
-
+    private static String MaxShards;
+    private static String Shard;
     public static void main(String[] args) {
         Startall();
     }
@@ -42,14 +42,42 @@ public class GottBot {
     private static void Startall() {
         read();
         DB.Connect();
-        startBot();
         getLogger().setup();
+        ServerConnect();
+    }
+
+    private static void ServerConnect() {
+        new Thread(() -> {
+            try {
+                Socket socket = new Socket(getConfig().getServerIP(), Integer.parseInt(getConfig().getServerPort()));
+                PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                printWriter.println("Password: "+getConfig().getServerPassword());
+                printWriter.flush();
+                printWriter.println("Connected! I need a Shard!");
+                printWriter.flush();
+                System.out.println("Connected to Server");
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    if (line.contains("Start with Shard ")) {
+                        String[] temp = line.replace("Start with Shard ", "").split(" Max Shards: ");
+                        Shard = temp[0];
+                        MaxShards = temp[1];
+                        System.out.println("Starting Bot");
+                        startBot();
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
     private static void startBot() {
             registerListener();
-            registerCommands();
-            builder.setShardsTotal(Integer.parseInt(getConfig().getShards()));
+            EnablePlugins();
+            builder.setShardsTotal(Integer.parseInt(MaxShards));
+            builder.setShards(Integer.parseInt(Shard));
             builder.setToken(getConfig().getToken());
             builder.setSessionController(sessionController);
             builder.setAutoReconnect(true);
@@ -75,26 +103,32 @@ public class GottBot {
         }
     }
 
-    private static void registerListener() {
-        builder.addEventListeners(
-          new ListenerCommand(),
-                new Message(),
-                new BotLists()
-        );
-    }
-
-    private static void registerCommands() {
-
+    private static void EnablePlugins() {
         try {
-            Class<?>[] classes=PluginLoader.loadDirectory(new File("plugins"));
-            Plugin[] plugins=PluginLoader.initAsPlugin(classes);
-            for (int i=0; i<plugins.length; i++) {
-                commandHandler.commands.put(plugins[i].registercommandname(), plugins[i]);
-                System.out.println(plugins[i].registercommandname()+ " enabled!");
+            Class<?>[] classes = PluginLoader.loadDirectory(new File("plugins"));
+            Plugin[] plugins = PluginLoader.initAsPlugin(classes);
+            for (int i = 0; i < plugins.length; i++) {
+                if (plugins[i].hascommand()) {
+                    commandHandler.commands.add(plugins[i]);
+                }
+                if (plugins[i].haslistener()) {
+                    eventlistener.plugins.add(plugins[i]);
+                }
+                plugins[i].onEnable();
+                System.out.println(classes[i].getName()+" Enabled!");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private static void registerListener() {
+        builder.addEventListeners(
+          new ListenerCommand(),
+                new Message(),
+                new BotLists(),
+                new eventlistener()
+        );
     }
 
     public static Config getConfig() {
@@ -110,6 +144,9 @@ public class GottBot {
     }
     public static Logger getLogger() {
         return new Logger();
+    }
+    public static SessionController getSessionController() {
+        return sessionController;
     }
 
 }
