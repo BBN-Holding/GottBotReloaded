@@ -7,21 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="accc1fce-66d1-44b0-93cf-235c5397e878" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/GB/Handler/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GB/Handler/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GB/commands/owner/CommandShardManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GB/commands/owner/Shutdown.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GB/commands/owner/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GB/listener/shutdown.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GB/GottBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/GottBot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GB/Handler/CommandHandling/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/Handler/CommandHandling/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GB/Handler/CommandHandling/commandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/Handler/CommandHandling/commandHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GB/Handler/CommandHandling/commandListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/Handler/CommandHandling/commandListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GB/Handler/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/Handler/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GB/Handler/DB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/Handler/DB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GB/Handler/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/Handler/Info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GB/Handler/Language.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/owner/CommandShardManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GB/commands/owner/CommandShardManager.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -34,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GottBot.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GottBot.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/GB/GottBot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="75" column="294" selection-start-line="75" selection-start-column="283" selection-end-line="75" selection-end-column="294" />
+            <state relative-caret-position="262">
+              <caret line="33" column="33" lean-forward="true" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1285#1286#0" expanded="true" />
@@ -55,6 +42,8 @@
                 <element signature="e#6528#6529#0" expanded="true" />
                 <element signature="e#6575#6576#0" expanded="true" />
                 <element signature="e#6609#6610#0" expanded="true" />
+                <element signature="e#7173#7174#0" expanded="true" />
+                <element signature="e#7198#7199#0" expanded="true" />
                 <element signature="e#6670#6671#0" expanded="true" />
                 <element signature="e#6710#6711#0" expanded="true" />
               </folding>
@@ -62,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommandShardManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CommandShardManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/owner/CommandShardManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="55">
-              <caret line="24" column="38" lean-forward="true" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+            <state relative-caret-position="582">
+              <caret line="44" column="160" selection-start-line="44" selection-start-column="160" selection-end-line="44" selection-end-column="160" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#235#236#0" expanded="true" />
@@ -192,8 +181,8 @@
         <option value="$PROJECT_DIR$/target/classes/Messages_en.properties" />
         <option value="$PROJECT_DIR$/target/classes/Messages_de.properties" />
         <option value="$PROJECT_DIR$/src/main/java/GB/Handler/DB.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GB/GottBot.java" />
         <option value="$PROJECT_DIR$/src/main/java/GB/commands/owner/CommandShardManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/GottBot.java" />
       </list>
     </option>
   </component>
@@ -325,13 +314,6 @@
               <item name="GottBotRework" type="462c0819:PsiDirectoryNode" />
               <item name="target" type="462c0819:PsiDirectoryNode" />
               <item name="classes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GottBotRework" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GottBotRework" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="Resource Bundle 'Messages'" type="a6c14932:ResourceBundleNode" />
             </path>
             <path>
               <item name="GottBotRework" type="b2602c69:ProjectViewProjectNode" />
@@ -764,10 +746,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/owner/CommandShardManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="582">
+          <caret line="44" column="160" selection-start-line="44" selection-start-column="160" selection-end-line="44" selection-end-column="160" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#235#236#0" expanded="true" />
+            <element signature="e#280#281#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GB/GottBot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="75" column="294" selection-start-line="75" selection-start-column="283" selection-end-line="75" selection-end-column="294" />
+        <state relative-caret-position="262">
+          <caret line="33" column="33" lean-forward="true" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1285#1286#0" expanded="true" />
@@ -784,20 +778,10 @@
             <element signature="e#6528#6529#0" expanded="true" />
             <element signature="e#6575#6576#0" expanded="true" />
             <element signature="e#6609#6610#0" expanded="true" />
+            <element signature="e#7173#7174#0" expanded="true" />
+            <element signature="e#7198#7199#0" expanded="true" />
             <element signature="e#6670#6671#0" expanded="true" />
             <element signature="e#6710#6711#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/owner/CommandShardManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="55">
-          <caret line="24" column="38" lean-forward="true" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#235#236#0" expanded="true" />
-            <element signature="e#280#281#0" expanded="true" />
           </folding>
         </state>
       </provider>

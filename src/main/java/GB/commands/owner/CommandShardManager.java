@@ -27,24 +27,23 @@ public class CommandShardManager implements Command, Server {
             switch (args[0].toLowerCase()) {
                 case "info":
                     if (args.length==1) {
-                        EmbedBuilder embedBuilder = new EmbedBuilder().setTitle("ShardManager - Info");
-                        GottBot.sendToServer().println("ShardManager - Info");
-                        GottBot.sendToServer().flush();
-                        try {
-                            Thread.sleep(2000L);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        for (HashMap<String, String> hashMap:hashMaps) {
-                            embedBuilder.addField("Shard "+hashMap.get("ShardID:"), "Guilds: "+hashMap.get("Guilds:")+
-                                    " Users: "+hashMap.get("Users:")+" TextChannels: "+hashMap.get("TextChannels:")+
-                                    " VoiceChannels: "+hashMap.get("VoiceChannels:")+" Categories: "+hashMap.get("Categories:"), false);
-                        }
-                        event.getTextChannel().sendMessage(embedBuilder.build()).queue();
+                        if (!GottBot.getDev()) {
+                            EmbedBuilder embedBuilder = new EmbedBuilder().setTitle("ShardManager - Info");
+                            GottBot.sendToServer().println("ShardManager - Info");
+                            GottBot.sendToServer().flush();
+                            try {
+                                Thread.sleep(2000L);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            for (HashMap<String, String> hashMap : hashMaps) {
+                                embedBuilder.addField("Shard " + hashMap.get("ShardID:"), "Guilds: " + hashMap.get("Guilds:") +
+                                        " Users: " + hashMap.get("Users:") + " TextChannels: " + hashMap.get("TextChannels:") +
+                                        " VoiceChannels: " + hashMap.get("VoiceChannels:") + " Categories: " + hashMap.get("Categories:"), false);
+                            }
+                            event.getTextChannel().sendMessage(embedBuilder.build()).queue();
+                        } else event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Error").setDescription("Dev mode is activated").build()).queue();
                     }
-                    break;
-                case "start 1":
-
                     break;
             }
         }
@@ -52,10 +51,8 @@ public class CommandShardManager implements Command, Server {
 
     @Override
     public void onMessage(String Message) {
-        System.out.println("LOOOL");
         if (Message.startsWith("ShardManager - inforesult: ")) {
             String msg = Message.replace("ShardManager - inforesult: ", "");
-            System.out.println(msg);
             hashMaps = new ArrayList<>();
             String[] shards = msg.replaceAll("\n", " ").split(",");
             for (String shard:shards) {

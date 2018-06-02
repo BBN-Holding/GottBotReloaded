@@ -33,7 +33,7 @@ public class GottBot {
     private static SessionController sessionController;
     private static Config config;
     private static boolean streaming=true;
-    private static boolean dev=false;
+    private static boolean dev=true;
     private static String MaxShards;
     private static String Shard;
     private static PrintWriter printWriter;
@@ -72,13 +72,10 @@ public class GottBot {
                             startBot();
                         } else if (line.equals("ShardManager - inforequest")) {
                             JDA jda = shardManager.getShards().get(0);
-                                System.out.println("LEEEL");
                                 printWriter.println("ShardManager - Inforesult ShardID:"+jda.getShardInfo().getShardId()+" Guilds:"+jda.getGuilds().size()+" Users:"+jda.getUsers().size()+" TextChannels:"+jda.getTextChannels().size()+" VoiceChannels:"+jda.getVoiceChannels().size()+" Categories:"+jda.getCategories().size());
                                 printWriter.flush();
                         } else {
-                            System.out.println(serverclasses.size());
                             for (int i = 0; serverclasses.size() > i; i++) {
-                                System.out.println("TRIGGER");
                                 serverclasses.get(i).onMessage(line);
                             }
                         }
@@ -181,6 +178,9 @@ public class GottBot {
     }
     public static PrintWriter sendToServer() {
         return printWriter;
+    }
+    public static boolean getDev() {
+        return dev;
     }
     public static SessionController getSessionController() {
         return sessionController;
