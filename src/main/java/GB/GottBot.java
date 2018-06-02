@@ -1,13 +1,9 @@
 package GB;
 
-import GB.Handler.CommandHandling.commandHandler;
-import GB.Handler.CommandHandling.ListenerCommand;
+import GB.Handler.CommandHandling.commandListener;
 import GB.Handler.DB;
 import GB.Handler.Info;
 import GB.Handler.Logger;
-import GB.Pluginmanager.Plugin;
-import GB.Pluginmanager.PluginLoader;
-import GB.Pluginmanager.eventlistener;
 import GB.listener.BotLists;
 import GB.listener.Message;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,8 +18,6 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import javax.security.auth.login.LoginException;
 import java.io.*;
 import java.net.Socket;
-import java.nio.Buffer;
-import java.util.Scanner;
 
 import GB.Handler.Config;
 
@@ -75,7 +69,7 @@ public class GottBot {
 
     private static void startBot() {
             registerListener();
-            EnablePlugins();
+
             builder.setShardsTotal(Integer.parseInt(MaxShards));
             builder.setShards(Integer.parseInt(Shard));
             builder.setToken(getConfig().getToken());
@@ -90,6 +84,9 @@ public class GottBot {
             }
     }
 
+    private static void registerCommands() {
+        // commandHandler.commands.put()
+    }
 
     private static void read() {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
@@ -103,31 +100,12 @@ public class GottBot {
         }
     }
 
-    private static void EnablePlugins() {
-        try {
-            Class<?>[] classes = PluginLoader.loadDirectory(new File("plugins"));
-            Plugin[] plugins = PluginLoader.initAsPlugin(classes);
-            for (int i = 0; i < plugins.length; i++) {
-                if (plugins[i].hascommand()) {
-                    commandHandler.commands.add(plugins[i]);
-                }
-                if (plugins[i].haslistener()) {
-                    eventlistener.plugins.add(plugins[i]);
-                }
-                plugins[i].onEnable();
-                System.out.println(classes[i].getName()+" Enabled!");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     private static void registerListener() {
         builder.addEventListeners(
-          new ListenerCommand(),
+          new commandListener(),
                 new Message(),
-                new BotLists(),
-                new eventlistener()
+                new BotLists()
         );
     }
 
