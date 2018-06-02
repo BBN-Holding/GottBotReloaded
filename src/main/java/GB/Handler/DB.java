@@ -53,6 +53,7 @@ public class DB {
     public String insertUser(String id) {
         String result = r.table("user").insert(
                 r.hashMap("userid", id)
+                .with("language", "en")
         ).run(conn).toString();
         return result;
     }

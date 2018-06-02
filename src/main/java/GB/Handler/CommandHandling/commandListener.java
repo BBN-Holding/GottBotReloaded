@@ -10,7 +10,7 @@ public class commandListener extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         if (event.getTextChannel().getGuild().getSelfMember().hasPermission(event.getTextChannel(), Permission.MESSAGE_WRITE) && event.getTextChannel().getGuild().getSelfMember().hasPermission(event.getTextChannel(), Permission.MESSAGE_HISTORY) && event.getTextChannel().getGuild().getSelfMember().hasPermission(event.getTextChannel(), Permission.MESSAGE_EMBED_LINKS)) {
-          String prefix = GottBot.getInfo().getPrefix(event.getGuild().getId());
+          String prefix = GottBot.getMessage().getPrefix(event.getGuild().getId());
             if (!event.getAuthor().isBot()) {
                 if (event.getMessage().getContentRaw().startsWith(event.getJDA().getSelfUser().getAsMention())) {
                     handle(event, event.getJDA().getSelfUser().getAsMention());

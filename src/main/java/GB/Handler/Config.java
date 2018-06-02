@@ -5,6 +5,7 @@ import java.util.Map;
 public class Config {
 
     public String Token;
+    public String OwnerID;
     public String Shards;
     public Map<String, String> DB;
     public Map<String, String> BotLists;
@@ -14,6 +15,9 @@ public class Config {
 
     public String getToken() {
         return Token;
+    }
+    public String getOwnerID() {
+        return OwnerID;
     }
     public String getShards() {
         return Shards;

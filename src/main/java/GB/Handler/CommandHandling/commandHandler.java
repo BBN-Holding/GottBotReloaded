@@ -1,5 +1,6 @@
 package GB.Handler.CommandHandling;
 
+import GB.GottBot;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 import java.util.ArrayList;
@@ -12,6 +13,13 @@ public class commandHandler {
     public static void handleCommand(commandParser.commandContainer cmd) {
         String invoke = cmd.invoke;
         invoke = invoke.toLowerCase();
-        commands.get(invoke).action(cmd.args, cmd.event);
+        if (commands.containsKey(invoke)) {
+            if (commands.get(invoke).getClass().getPackageName().equals("GB.commands.owner")) {
+                if (GottBot.getConfig().getOwnerID().contains(cmd.event.getAuthor().getId())) {
+                    commands.get(invoke).action(cmd.args, cmd.event);
+                }
+            } else
+            commands.get(invoke).action(cmd.args, cmd.event);
+        }
     }
 }
