@@ -7,6 +7,9 @@ import GB.Handler.CommandHandling.commandListener;
 import GB.commands.owner.CommandShardManager;
 import GB.commands.owner.Shutdown;
 import GB.commands.owner.Test;
+import GB.commands.usercommands.CommandFeedback;
+import GB.commands.usercommands.CommandHelp;
+import GB.commands.usercommands.CommandLanguage;
 import GB.listener.BotLists;
 import GB.listener.shutdown;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,9 +18,11 @@ import net.dv8tion.jda.bot.sharding.*;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
+import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.utils.SessionController;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import space.botlist.api.bot.Owner;
 
 import javax.security.auth.login.LoginException;
 import java.io.*;
@@ -26,6 +31,7 @@ import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class GottBot {
     private static DefaultShardManagerBuilder builder = new DefaultShardManagerBuilder();
@@ -39,6 +45,11 @@ public class GottBot {
     private static PrintWriter printWriter;
     private static BufferedReader bufferedReader;
     private static ArrayList<Server> serverclasses=new ArrayList<>();
+    private static boolean debug=true;
+    private static HashMap<String, Command[]> commands;
+    private static ArrayList<String> commandlists;
+
+
     public static void main(String[] args) {
         Startall();
     }
@@ -72,8 +83,10 @@ public class GottBot {
                             startBot();
                         } else if (line.equals("ShardManager - inforequest")) {
                             JDA jda = shardManager.getShards().get(0);
-                                printWriter.println("ShardManager - Inforesult ShardID:"+jda.getShardInfo().getShardId()+" Guilds:"+jda.getGuilds().size()+" Users:"+jda.getUsers().size()+" TextChannels:"+jda.getTextChannels().size()+" VoiceChannels:"+jda.getVoiceChannels().size()+" Categories:"+jda.getCategories().size());
-                                printWriter.flush();
+                            printWriter.println("ShardManager - Inforesult ShardID:" + jda.getShardInfo().getShardId() + " Guilds:" + jda.getGuilds().size() + " Users:" + jda.getUsers().size() + " TextChannels:" + jda.getTextChannels().size() + " VoiceChannels:" + jda.getVoiceChannels().size() + " Categories:" + jda.getCategories().size());
+                            printWriter.flush();
+                        } else if (line.equals("Stop!")) {
+                            shardManager.shutdown();
                         } else {
                             for (int i = 0; serverclasses.size() > i; i++) {
                                 serverclasses.get(i).onMessage(line);
@@ -113,17 +126,36 @@ public class GottBot {
         Server[] servers = {new CommandShardManager()};
         for (int i =0;i<servers.length; i++) {
             serverclasses.add(servers[i]);
-            System.out.println("registered "+servers[i].getClass().getName());
+            System.out.println("[Shardlistener] "+servers[i].getClass().getSimpleName());
         }
     }
 
     private static void registerCommands() {
-        Command[] Commands = {new CommandShardManager(), new Test(), new Shutdown()};
+        Command[] OwnerCommands = {
+                new CommandShardManager(), new Test(), new Shutdown()
+        };
+        Command[] ModerationComamnds = {
 
-        for (int i =0;i<Commands.length; i++) {
-            for (int i2=0;Commands[i].Aliases().length>i2; i2++) {
-                commandHandler.commands.put(Commands[i].Aliases()[i2], Commands[i]);
-                System.out.println("registered "+Commands[i].getClass().getName()+" with Alias "+Commands[i].Aliases()[i2]);
+        };
+        Command[] Usercomamnds = {
+                new CommandHelp(), new CommandFeedback(), new CommandLanguage()
+        };
+        commands = new HashMap<>();
+        commands.put("owner", OwnerCommands);
+        commands.put("user", Usercomamnds);
+        commands.put("moderation", ModerationComamnds);
+        commandlists = new ArrayList<>();
+        commandlists.add("owner");
+        commandlists.add("user");
+        commandlists.add("moderation");
+        for (String list:commandlists) {
+            for (Command cmd:commands.get(list)) {
+                for (String alias:cmd.Aliases()) {
+                    commandHandler.commands.put(alias, cmd);
+                    if (debug) {
+                        System.out.println("[Command] "+cmd.getClass().getSimpleName()+" alias "+alias);
+                    }
+                }
             }
         }
     }
@@ -162,11 +194,9 @@ public class GottBot {
     public static Config getConfig() {
         return config;
     }
-
     public static DB getDB() {
         return new DB();
     }
-
     public static Info getInfo() {
         return new Info();
     }
@@ -182,8 +212,17 @@ public class GottBot {
     public static boolean getDev() {
         return dev;
     }
+    public static ShardManager getShardManager() {
+        return shardManager;
+    }
     public static SessionController getSessionController() {
         return sessionController;
+    }
+    public static ArrayList<String> getCommandlists() {
+        return commandlists;
+    }
+    public static HashMap<String, Command[]> getCommands() {
+        return commands;
     }
 
 }

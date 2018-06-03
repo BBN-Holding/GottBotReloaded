@@ -61,7 +61,7 @@ public class DB {
     public String insertServer(String id) {
         String result = r.table("server").insert(
                 r.hashMap("serverid", id)
-                        .with("CommandPrefix", "gb.")
+                        .with("prefix", "gb.")
         ).run(conn).toString();
         return result;
     }
@@ -78,9 +78,9 @@ public class DB {
         return result;
     }
 
-    public String update(MapObject hashmap) {
-        r.table("info").update(hashmap).run(conn);
-        return "";
+    public String update(String table,String where, String wherevalue, MapObject hashmap) {
+        String string = r.table(table).filter(row -> row.g(where).eq(wherevalue)).update(hashmap).run(conn).toString();
+        return string;
     }
 
 }

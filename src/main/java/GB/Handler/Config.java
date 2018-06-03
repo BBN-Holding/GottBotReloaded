@@ -12,6 +12,7 @@ public class Config {
     public String ServerIP;
     public String ServerPort;
     public String ServerPassword;
+    public String FeedBackandBugTextchannelid;
 
     public String getToken() {
         return Token;
@@ -22,7 +23,6 @@ public class Config {
     public String getShards() {
         return Shards;
     }
-
     public Map<String, String> getDB() {
         return DB;
     }
@@ -36,6 +36,9 @@ public class Config {
     }
     public String getServerPassword() {
         return ServerPassword;
+    }
+    public String getFeedBackandBugTextchannelid() {
+        return FeedBackandBugTextchannelid;
     }
 
 }

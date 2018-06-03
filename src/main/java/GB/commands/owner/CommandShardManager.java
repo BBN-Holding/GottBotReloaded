@@ -13,21 +13,18 @@ public class CommandShardManager implements Command, Server {
     static ArrayList<HashMap> hashMaps;
     @Override
     public String[] Aliases() {
-        return new String[]{"sm", "shardmanager", "shardcontroller", "sc"};
+        return new String[]{"shardmanager","sm", "shardcontroller", "sc"};
     }
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length<1) {
-            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Help")
-                    .addField("Aliases", Aliases().toString(), false)
-                    .addField("Usage", "gb.sm info", false)
-                    .build()).queue();
+            event.getTextChannel().sendMessage(GottBot.getMessage().getCommandTemplate(Aliases(), "gb.sm info", "Shows Information about all Shards")).queue();
         } else {
-            switch (args[0].toLowerCase()) {
-                case "info":
-                    if (args.length==1) {
-                        if (!GottBot.getDev()) {
+            if (!GottBot.getDev()) {
+                switch (args[0].toLowerCase()) {
+                    case "info":
+                        if (args.length==1) {
                             EmbedBuilder embedBuilder = new EmbedBuilder().setTitle("ShardManager - Info");
                             GottBot.sendToServer().println("ShardManager - Info");
                             GottBot.sendToServer().flush();
@@ -42,10 +39,15 @@ public class CommandShardManager implements Command, Server {
                                         " VoiceChannels: " + hashMap.get("VoiceChannels:") + " Categories: " + hashMap.get("Categories:"), false);
                             }
                             event.getTextChannel().sendMessage(embedBuilder.build()).queue();
-                        } else event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Error").setDescription("Dev mode is activated").build()).queue();
-                    }
-                    break;
-            }
+                        }
+                        break;
+                    case "stopall":
+                        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("ShardManager - Stop all").setDescription("Stopping all Shards").build()).queue();
+                        GottBot.sendToServer().println("Stop all!");
+                        GottBot.sendToServer().flush();
+                        break;
+                }
+            } else event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Error").setDescription("Dev mode is activated").build()).queue();
         }
     }
 

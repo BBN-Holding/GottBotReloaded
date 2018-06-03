@@ -14,6 +14,6 @@ public class Test implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        event.getTextChannel().sendMessage(GottBot.getMessage().getEmbed("commands.owner.test", "commands.owner.test", Color.GREEN, event.getAuthor(), event.getGuild())).queue();
+        event.getTextChannel().sendMessage(GottBot.getMessage().getEmbed("commands.owner.test", "commands.owner.test", Color.GREEN, event)).queue();
     }
 }
