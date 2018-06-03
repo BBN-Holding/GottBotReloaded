@@ -19,8 +19,9 @@ import static GB.GottBot.getConfig;
 
 public class BotLists extends ListenerAdapter {
 
-    String bfd_url = "https://botsfordiscord.com/api/v1/bots/407189087649398795";
+    private String bfd_url = "https://botsfordiscord.com/api/v1/bots/407189087649398795";
     private String dbw_url = "https://discordbot.world/api/bot/407189087649398795/stats";
+    private String dpw_url = "https://bots.discord.pw/api/bots/407189087649398795/stats";
 
     private JSONObject json = new JSONObject();
 
@@ -84,12 +85,25 @@ public class BotLists extends ListenerAdapter {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // DiscordBots
+
+        Request DiscordBots = new Request.Builder()
+                .url(dpw_url)
+                .post(body)
+                .addHeader("Authorization", getConfig().getBotLists().get("DiscordPW"))
+                .build();
+        try {
+            new OkHttpClient().newCall(DiscordBots).execute().close();
+            System.out.println("Successfully posted count for bots.discord.pw!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
     @Override
     public void onGuildLeave(GuildLeaveEvent event) {
-
 
 
     }
