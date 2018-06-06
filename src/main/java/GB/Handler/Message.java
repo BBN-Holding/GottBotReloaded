@@ -44,6 +44,10 @@ public class Message {
     }
 
     public MessageEmbed getCommandTemplate(String[] aliases, String usage, String description) {
+        return getCommandTemplate(aliases, usage, description, Color.CYAN);
+    }
+
+    public MessageEmbed getCommandTemplate(String[] aliases, String usage, String description, Color color) {
         String aliasess="";
         for (int i =0; (aliases.length-1)>i; i++) {
             aliasess+=aliases[i]+", ";

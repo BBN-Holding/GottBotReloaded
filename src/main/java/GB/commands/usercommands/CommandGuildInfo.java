@@ -6,6 +6,7 @@ import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class CommandGuildInfo implements Command {
+    // TODO: Weiter machen
     @Override
     public String[] Aliases() {
         return new String[]{"guildinfo", "serverinfo", "gi", "si"};

@@ -4,12 +4,12 @@ import GB.Handler.*;
 import GB.Handler.CommandHandling.Command;
 import GB.Handler.CommandHandling.commandHandler;
 import GB.Handler.CommandHandling.commandListener;
+import GB.commands.moderation.CommandMoveAll;
+import GB.commands.owner.CommandPlayingStatus;
 import GB.commands.owner.CommandShardManager;
 import GB.commands.owner.Shutdown;
 import GB.commands.owner.Test;
-import GB.commands.usercommands.CommandFeedback;
-import GB.commands.usercommands.CommandHelp;
-import GB.commands.usercommands.CommandLanguage;
+import GB.commands.usercommands.*;
 import GB.listener.BotLists;
 import GB.listener.shutdown;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -132,13 +132,20 @@ public class GottBot {
 
     private static void registerCommands() {
         Command[] OwnerCommands = {
-                new CommandShardManager(), new Test(), new Shutdown()
+                new CommandShardManager(),
+                new Test(),
+                new Shutdown(),
+                new CommandPlayingStatus()
         };
         Command[] ModerationComamnds = {
-
+            new CommandMoveAll()
         };
         Command[] Usercomamnds = {
-                new CommandHelp(), new CommandFeedback(), new CommandLanguage()
+                new CommandHelp(),
+                new CommandFeedback(),
+                new CommandLanguage(),
+                new CommandGuildInfo(),
+                new CommandQuote()
         };
         commands = new HashMap<>();
         commands.put("owner", OwnerCommands);
