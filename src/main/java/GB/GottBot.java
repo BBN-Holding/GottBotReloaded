@@ -13,13 +13,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import net.dv8tion.jda.bot.sharding.*;
 import net.dv8tion.jda.core.JDA;
-import net.dv8tion.jda.core.OnlineStatus;
-import net.dv8tion.jda.core.entities.Game;
-import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.utils.SessionController;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import space.botlist.api.bot.Owner;
 
 import javax.security.auth.login.LoginException;
 import java.io.*;
@@ -36,7 +32,7 @@ public class GottBot {
     private static SessionController sessionController;
     private static Config config;
     private static boolean streaming=true;
-    private static boolean dev=false;
+    private static boolean dev=true;
     private static String MaxShards;
     private static String Shard;
     private static PrintWriter printWriter;
@@ -46,18 +42,15 @@ public class GottBot {
     private static HashMap<String, Command[]> commands;
     private static ArrayList<String> commandlists;
 
-
     public static void main(String[] args) {
         Startall();
     }
-
     private static void Startall() {
         read();
         DB.Connect();
         getLogger().setup();
         ServerConnect();
     }
-
     private static void ServerConnect() {
         new Thread(() -> {
             try {
@@ -100,7 +93,6 @@ public class GottBot {
             }
         }).start();
     }
-
     private static void startBot() {
             registerListener();
             registerCommands();
@@ -116,7 +108,6 @@ public class GottBot {
                 e.printStackTrace();
             }
     }
-
     private static void registerServerClasses() {
         Server[] servers = {new CommandShardManager(), new CommandGameAnimator()};
         for (int i =0;i<servers.length; i++) {
@@ -124,13 +115,12 @@ public class GottBot {
             System.out.println("[Shardlistener] "+servers[i].getClass().getSimpleName());
         }
     }
-
     private static void registerCommands() {
         Command[] OwnerCommands = {
                 new CommandShardManager(),
                 new Test(),
                 new Shutdown(),
-                new CommandPlayingStatus(),
+                new CommandProfile(),
                 new CommandGameAnimator()
         };
         Command[] ModerationComamnds = {
@@ -162,7 +152,6 @@ public class GottBot {
             }
         }
     }
-
     private static void read() {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         try {
@@ -183,8 +172,6 @@ public class GottBot {
             e.printStackTrace();
         }
     }
-
-
     private static void registerListener() {
         builder.addEventListeners(
           new commandListener(),

@@ -19,6 +19,7 @@ public class CommandGameAnimator implements Command, Server {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
+        // TODO: Vllt noch ein add game oder so ka
         if (args.length<1) {
             event.getTextChannel().sendMessage(GottBot.getMessage().getCommandTemplate(Aliases(), "gb.gameanimator info | gb.gameanimator setgame [Game (z.b. ONLINE:WATCHING:to youuuu)] | gb.gameanimator toggle", "Control the GameAnimator")).queue();
         } else {
