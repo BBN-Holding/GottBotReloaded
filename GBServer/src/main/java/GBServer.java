@@ -1,3 +1,11 @@
+import net.dv8tion.jda.core.AccountType;
+import net.dv8tion.jda.core.JDA;
+import net.dv8tion.jda.core.JDABuilder;
+import net.dv8tion.jda.core.OnlineStatus;
+import net.dv8tion.jda.core.entities.Game;
+import net.dv8tion.jda.core.events.ReadyEvent;
+import net.dv8tion.jda.core.hooks.ListenerAdapter;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.InputStreamReader;
@@ -5,6 +13,8 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class GBServer {
     private static ServerSocket serverSocket;
@@ -39,6 +49,7 @@ public class GBServer {
         try {
             new BotHandler().main();
             new GBServer();
+            new Bot().main();
             System.out.println("Reading Password");
             FileReader fr = new FileReader("password.txt");
             BufferedReader br = new BufferedReader(fr);
@@ -112,6 +123,29 @@ class ClientHandler implements Runnable {
                         System.out.println("Receiving result from Shardmanager: "+result);
                     } else if (line.equals("Stop all!")) {
                         new BotHandler().sendToAll("Stop!");
+                    } else if (line.startsWith("Set game to: ")) {
+                        String game=line.replaceFirst("Set game to: ","");
+                        String[] strings = game.split(":");
+                        Bot.jda.getPresence().setPresence(OnlineStatus.valueOf(strings[0]), Game.of(Game.GameType.valueOf(strings[1]), strings[2]));
+                    } else if (line.equals("GameAni - Info")) {
+                        String listGames="";
+                        for (String game:Bot.games) {
+                            listGames+=game+" ";
+                        }
+                        boolean on = Bot.GameAni;
+                        String currentgame=Bot.current;
+                        print.println("GameAni - Inforesult: "+on+"///"+currentgame+"///"+listGames);
+                        print.flush();
+                    } else if (line.equals("GameAni - Toggle")) {
+                        if (Bot.GameAni) {
+                            Bot.GameAni=false;
+                        } else {
+                            Bot.GameAni=true;
+                        }
+
+                    } else if (line.startsWith("GameAni - SetGame - ")) {
+                        String game = line.replaceFirst("GameAni - SetGame - ", "");
+                        Bot.setGame(game);
                     }
                 } else {
                     if (line.equals("Password: "+passwordd)) password = true;
@@ -128,7 +162,7 @@ class BotHandler {
     static ArrayList<String> shards = new ArrayList<>();
     static String Shards;
     public void main() {
-        Shards="5";
+        Shards="2";
         for (int i =0; (Integer.parseInt(Shards)-1)>i; i++) {
             shards.add(String.valueOf(i));
         }
@@ -155,5 +189,51 @@ class BotHandler {
             printWriter.println(message);
             printWriter.flush();
         }
+    }
+}
+
+class Bot extends ListenerAdapter {
+    public static JDA jda;
+    public static boolean GameAni=true;
+    public static ArrayList<String> games=new ArrayList<>();
+    public static String current;
+    public void main() {
+        try {
+            JDABuilder builder = new JDABuilder(AccountType.BOT);
+            builder.addEventListener(this);
+            jda = builder.setToken(thisistopsecret.Token).setAutoReconnect(true).buildAsync();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void setGame(String game) {
+        String[] strings = game.split(":");
+        jda.getPresence().setPresence(OnlineStatus.valueOf(strings[0]), Game.of(Game.GameType.valueOf(strings[1]), strings[2]));
+        System.out.println("SetGame!!!!!!!");
+    }
+
+    @Override
+    public void onReady(ReadyEvent event) {
+        games.add("ONLINE:DEFAULT:dis is a test");
+        System.out.println(games.size());
+        new Thread(() ->
+        {
+            // keine ahnung warum int[] frag intellij :D
+            final int[] i = {0};
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    if (GameAni) {
+                        if (games.size() > i[0]) {
+                            current = games.get(i[0]);
+                            String[] strings = games.get(i[0]).split(":");
+                            jda.getPresence().setPresence(OnlineStatus.valueOf(strings[0]), Game.of(Game.GameType.valueOf(strings[1]), strings[2]));
+                            i[0]++;
+                        }
+                    }
+                }
+            }, 2000, 30000);
+        }).start();
     }
 }
