@@ -60,4 +60,12 @@ public class Message {
                 .build();
         return messageEmbed;
     }
+
+    public String getWithoutprefixandcommand(String in, String[] aliases, Guild guild) {
+        in=in.replaceFirst(getPrefix(guild.getId()), "");
+        for (String alias:aliases) {
+            in=in.replaceFirst(alias+" ", "");
+        }
+        return in;
+    }
 }

@@ -5,10 +5,7 @@ import GB.Handler.CommandHandling.Command;
 import GB.Handler.CommandHandling.commandHandler;
 import GB.Handler.CommandHandling.commandListener;
 import GB.commands.moderation.CommandMoveAll;
-import GB.commands.owner.CommandPlayingStatus;
-import GB.commands.owner.CommandShardManager;
-import GB.commands.owner.Shutdown;
-import GB.commands.owner.Test;
+import GB.commands.owner.*;
 import GB.commands.usercommands.*;
 import GB.listener.BotLists;
 import GB.listener.shutdown;
@@ -39,7 +36,7 @@ public class GottBot {
     private static SessionController sessionController;
     private static Config config;
     private static boolean streaming=true;
-    private static boolean dev=true;
+    private static boolean dev=false;
     private static String MaxShards;
     private static String Shard;
     private static PrintWriter printWriter;
@@ -113,8 +110,6 @@ public class GottBot {
             builder.setToken(getConfig().getToken());
             builder.setSessionController(sessionController);
             builder.setAutoReconnect(true);
-            builder.setStatus(OnlineStatus.DO_NOT_DISTURB);
-            builder.setGame(Game.playing("Starting"));
             try {
                 shardManager = builder.build();
             } catch (LoginException e) {
@@ -123,7 +118,7 @@ public class GottBot {
     }
 
     private static void registerServerClasses() {
-        Server[] servers = {new CommandShardManager()};
+        Server[] servers = {new CommandShardManager(), new CommandGameAnimator()};
         for (int i =0;i<servers.length; i++) {
             serverclasses.add(servers[i]);
             System.out.println("[Shardlistener] "+servers[i].getClass().getSimpleName());
@@ -135,7 +130,8 @@ public class GottBot {
                 new CommandShardManager(),
                 new Test(),
                 new Shutdown(),
-                new CommandPlayingStatus()
+                new CommandPlayingStatus(),
+                new CommandGameAnimator()
         };
         Command[] ModerationComamnds = {
             new CommandMoveAll()

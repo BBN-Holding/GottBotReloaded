@@ -20,16 +20,36 @@ public class CommandGameAnimator implements Command, Server {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length<1) {
-            event.getTextChannel().sendMessage(GottBot.getMessage().getCommandTemplate(Aliases(), "gb.gameanimator", "Control the GameAnimator")).queue();
+            event.getTextChannel().sendMessage(GottBot.getMessage().getCommandTemplate(Aliases(), "gb.gameanimator info | gb.gameanimator setgame [Game (z.b. ONLINE:WATCHING:to youuuu)] | gb.gameanimator toggle", "Control the GameAnimator")).queue();
         } else {
             if (!GottBot.getDev()) {
                 switch (args[0]) {
                     case "info":
-
+                        GottBot.sendToServer().println("GameAni - Info");
+                        GottBot.sendToServer().flush();
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("GameAni - Info")
+                                .addField("On", resultsarrray.get(0),false)
+                                .addField("Current Game", resultsarrray.get(1),false)
+                                .addField("All Games", resultsarrray.get(2),false)
+                                .build()
+                        ).queue();
                         break;
 
                     case "toggle":
-
+                        GottBot.sendToServer().println("GameAni - Toggle");
+                        GottBot.sendToServer().flush();
+                        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Success").setDescription("Toggled GameAnimator").build()).queue();
+                        break;
+                    case "setgame":
+                        GottBot.sendToServer().println("GameAni - SetGame - "+GottBot.getMessage().getWithoutprefixandcommand(event.getMessage().getContentRaw(), Aliases(), event.getGuild()).replace("setgame ",""));
+                        GottBot.sendToServer().flush();
+                        System.out.println("GameAni - SetGame - "+GottBot.getMessage().getWithoutprefixandcommand(event.getMessage().getContentRaw(), Aliases(), event.getGuild()).replace("setgame ",""));
+                        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Succes").setDescription("Successfully set game").build()).queue();
                         break;
                 }
             } else event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Disable Dev mode plsss").setColor(Color.RED).build()).queue();
