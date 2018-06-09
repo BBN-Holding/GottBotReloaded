@@ -5,9 +5,11 @@ import GB.Handler.CommandHandling.Command;
 import GB.Handler.CommandHandling.commandHandler;
 import GB.Handler.CommandHandling.commandListener;
 import GB.commands.moderation.CommandMoveAll;
+import GB.commands.moderation.CommandPortal;
 import GB.commands.owner.*;
 import GB.commands.usercommands.*;
 import GB.listener.BotLists;
+import GB.listener.shardmanagerlistener;
 import GB.listener.shutdown;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
@@ -104,6 +106,7 @@ public class GottBot {
             builder.setAutoReconnect(true);
             try {
                 shardManager = builder.build();
+                shardManager.addEventListener(new shardmanagerlistener());
             } catch (LoginException e) {
                 e.printStackTrace();
             }
@@ -124,7 +127,7 @@ public class GottBot {
                 new CommandGameAnimator()
         };
         Command[] ModerationComamnds = {
-            new CommandMoveAll()
+            new CommandMoveAll(), new CommandPortal()
         };
         Command[] Usercomamnds = {
                 new CommandHelp(),

@@ -72,7 +72,7 @@
         <dependency>
             <groupId>com.github.GregTCLTK</groupId>
             <artifactId>BotListSpace-API</artifactId>
-            <version>d39d61c328</version>
+            <version>LATEST</version>
         </dependency>
     </dependencies>
 </project>
