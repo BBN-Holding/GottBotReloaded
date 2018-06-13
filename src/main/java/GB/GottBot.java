@@ -4,8 +4,8 @@ import GB.Handler.*;
 import GB.Handler.CommandHandling.Command;
 import GB.Handler.CommandHandling.commandHandler;
 import GB.Handler.CommandHandling.commandListener;
+import GB.commands.moderation.CommandLobby;
 import GB.commands.moderation.CommandMoveAll;
-import GB.commands.moderation.CommandPortal;
 import GB.commands.owner.*;
 import GB.commands.usercommands.*;
 import GB.listener.BotLists;
@@ -14,7 +14,9 @@ import GB.listener.shutdown;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import net.dv8tion.jda.bot.sharding.*;
+import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
+import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.utils.SessionController;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -43,6 +45,7 @@ public class GottBot {
     private static boolean debug=true;
     private static HashMap<String, Command[]> commands;
     private static ArrayList<String> commandlists;
+    private static JDA oneShardBot;
 
     public static void main(String[] args) {
         Startall();
@@ -99,6 +102,7 @@ public class GottBot {
             registerListener();
             registerCommands();
             registerServerClasses();
+            startOneShardBot();
             builder.setShardsTotal(Integer.parseInt(MaxShards));
             builder.setShards(Integer.parseInt(Shard));
             builder.setToken(getConfig().getToken());
@@ -106,10 +110,16 @@ public class GottBot {
             builder.setAutoReconnect(true);
             try {
                 shardManager = builder.build();
-                shardManager.addEventListener(new shardmanagerlistener());
             } catch (LoginException e) {
                 e.printStackTrace();
             }
+    }
+    private static void startOneShardBot() {
+        try {
+            oneShardBot = new JDABuilder(AccountType.BOT).setToken(getConfig().getToken()).addEventListener(new shardmanagerlistener()).setAutoReconnect(true).buildAsync();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     private static void registerServerClasses() {
         Server[] servers = {new CommandShardManager(), new CommandGameAnimator()};
@@ -127,7 +137,7 @@ public class GottBot {
                 new CommandGameAnimator()
         };
         Command[] ModerationComamnds = {
-            new CommandMoveAll(), new CommandPortal()
+            new CommandMoveAll(), new CommandLobby()
         };
         Command[] Usercomamnds = {
                 new CommandHelp(),
@@ -216,6 +226,9 @@ public class GottBot {
     }
     public static HashMap<String, Command[]> getCommands() {
         return commands;
+    }
+    public static JDA getOneShardBot() {
+        return oneShardBot;
     }
 
 }

@@ -62,6 +62,7 @@ public class DB {
         String result = r.table("server").insert(
                 r.hashMap("serverid", id)
                         .with("prefix", "gb.")
+                        .with("lobby", "none")
         ).run(conn).toString();
         return result;
     }
@@ -78,16 +79,6 @@ public class DB {
         return result;
     }
 
-    public String insertPortal(String serverid) {
-        String result = r.table("portal").insert(
-                r.hashMap("serverid", serverid)
-                        .with("connected", "false")
-                        .with("connectedservers", r.array(""))
-                        .with("channel", "none")
-                        .with("public", "false")
-        ).run(conn).toString();
-        return result;
-    }
 
     public String update(String table,String where, String wherevalue, MapObject hashmap) {
         String string = r.table(table).filter(row -> row.g(where).eq(wherevalue)).update(hashmap).run(conn).toString();
