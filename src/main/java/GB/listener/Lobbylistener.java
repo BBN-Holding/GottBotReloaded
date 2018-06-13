@@ -16,8 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class shardmanagerlistener extends ListenerAdapter {
-    static ArrayList<TextChannel> textChannels = new ArrayList<>();
+public class Lobbylistener extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         if (!event.getAuthor().isBot()) {
