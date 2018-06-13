@@ -144,7 +144,8 @@ public class GottBot {
                 new CommandFeedback(),
                 new CommandLanguage(),
                 new CommandGuildInfo(),
-                new CommandQuote()
+                new CommandQuote(),
+                new CommandGottCoin()
         };
         commands = new HashMap<>();
         commands.put("owner", OwnerCommands);

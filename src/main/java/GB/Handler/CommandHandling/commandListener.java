@@ -9,13 +9,15 @@ public class commandListener extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        if (event.getTextChannel().getGuild().getSelfMember().hasPermission(event.getTextChannel(), Permission.MESSAGE_WRITE) && event.getTextChannel().getGuild().getSelfMember().hasPermission(event.getTextChannel(), Permission.MESSAGE_HISTORY) && event.getTextChannel().getGuild().getSelfMember().hasPermission(event.getTextChannel(), Permission.MESSAGE_EMBED_LINKS)) {
-            if (!event.getAuthor().isBot()) {
-                String prefix = GottBot.getMessage().getPrefix(event.getGuild().getId());
-                if (event.getMessage().getContentRaw().startsWith(event.getJDA().getSelfUser().getAsMention())) {
-                    handle(event, event.getJDA().getSelfUser().getAsMention());
-                } else if (event.getMessage().getContentRaw().startsWith(prefix)) {
-                    handle(event, prefix);
+        if (event.getChannelType().isGuild()) {
+            if (event.getTextChannel().getGuild().getSelfMember().hasPermission(event.getTextChannel(), Permission.MESSAGE_WRITE) && event.getTextChannel().getGuild().getSelfMember().hasPermission(event.getTextChannel(), Permission.MESSAGE_HISTORY) && event.getTextChannel().getGuild().getSelfMember().hasPermission(event.getTextChannel(), Permission.MESSAGE_EMBED_LINKS)) {
+                if (!event.getAuthor().isBot()) {
+                    String prefix = GottBot.getMessage().getPrefix(event.getGuild().getId());
+                    if (event.getMessage().getContentRaw().startsWith(event.getJDA().getSelfUser().getAsMention())) {
+                        handle(event, event.getJDA().getSelfUser().getAsMention());
+                    } else if (event.getMessage().getContentRaw().startsWith(prefix)) {
+                        handle(event, prefix);
+                    }
                 }
             }
         }

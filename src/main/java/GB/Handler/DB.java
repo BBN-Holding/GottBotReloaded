@@ -46,7 +46,7 @@ public class DB {
     }
 
     public String insert(String table, MapObject Hashmap) {
-        String result = r.table(table).insert(Hashmap).run(conn);
+        String result = r.table(table).insert(Hashmap).run(conn).toString();
         return result;
     }
 
