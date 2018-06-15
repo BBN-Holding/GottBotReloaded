@@ -8,7 +8,6 @@ import GB.commands.moderation.CommandLobby;
 import GB.commands.moderation.CommandMoveAll;
 import GB.commands.owner.*;
 import GB.commands.usercommands.*;
-import GB.listener.BotLists;
 import GB.listener.Lobbylistener;
 import GB.listener.shutdown;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -190,8 +189,8 @@ public class GottBot {
         builder.addEventListeners(
           new commandListener(),
                 new GB.listener.Message(),
-                new BotLists(),
                 new shutdown()
+                // ,new BotLists()
         );
     }
 

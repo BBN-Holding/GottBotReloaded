@@ -5,6 +5,11 @@ import com.rethinkdb.RethinkDB;
 import com.rethinkdb.model.MapObject;
 import com.rethinkdb.net.Connection;
 import com.rethinkdb.net.Cursor;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.function.Consumer;
+
 public class DB {
     private static RethinkDB r = RethinkDB.r;
     private static Connection conn;
@@ -25,6 +30,29 @@ public class DB {
                 .user(GottBot.getConfig().getDB().get("User"), GottBot.getConfig().getDB().get("Password"))
                 .connect();
         System.out.println("CONNECTED! " + conn.isOpen());
+        System.out.println(r.tableList().run(conn).toString());
+        ArrayList<String> tables = new ArrayList<>() {{
+            add("user");
+            add("server");
+            add("serveruser");
+            add("gottcoin");
+        }};
+        for (String table:tables) {
+            if (!r.tableList().run(conn).toString().contains(table)) {
+                r.tableCreate(table).run(conn);
+                System.out.println("Created table "+table);
+            }
+        }
+    }
+
+    public HashMap<String, String> getMap(String table, String where, String wherevalue, String field1, String field2) {
+        Cursor cursor = r.table(table).filter(row -> row.g(where).equals(wherevalue)).getField(field1).run(conn);
+        Cursor cursor2 = r.table(table).filter(row -> row.g(where).equals(wherevalue)).getField(field2).run(conn);
+        HashMap<String, String> strings=new HashMap<>();
+        while (cursor.hasNext()&&cursor2.hasNext()) {
+            strings.put(cursor.next().toString(), cursor2.next().toString());
+        }
+        return strings;
     }
 
     public String getAll(String table, String field) {
