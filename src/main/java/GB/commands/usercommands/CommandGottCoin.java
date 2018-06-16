@@ -79,8 +79,6 @@ public class CommandGottCoin implements Command {
                     if (GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "userid") != null) {
                         String[] miners = GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "miner").replace("[", "").replace("]", "").split(", ");
                         for (String miner:miners) {
-                            System.out.println(miners.length);
-                            System.out.println(miner);
                             GottBot.getDB().update("gottcoin", "userid", event.getAuthor().getId(),
                                     RethinkDB.r.hashMap("gottcoins",String.valueOf(
                                             Integer.parseInt(
