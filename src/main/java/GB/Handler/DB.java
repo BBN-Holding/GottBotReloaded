@@ -46,7 +46,8 @@ public class DB {
     }
 
     public String getByID(String table, String id, String field) {
-        return r.table(table).get(id).getField(field).run(conn);
+        Object object = r.table(table).get(id).getField(field).run(conn);
+        return String.valueOf(object);
     }
 
     public String getAll(String table, String field) {

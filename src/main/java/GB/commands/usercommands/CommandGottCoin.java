@@ -43,7 +43,7 @@ public class CommandGottCoin implements Command {
                         }
                         embedBuilder.setTitle("GottCoin - Info");
                         event.getTextChannel().sendMessage(embedBuilder.build()).queue();
-                    }
+                    } else event.getTextChannel().sendMessage("NOT REGISTERED").queue();
                     break;
 
                 case "register":
@@ -70,21 +70,23 @@ public class CommandGottCoin implements Command {
                             GottBot.getDB().update("gottcoin", "userid", event.getAuthor().getId(),
                                     RethinkDB.r.hashMap("miner",
                                             GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "miner").replace("]", "")
-                                                    +value+"]"));
+                                                    +value+"]").with("gottcoins", String.valueOf(Integer.parseInt(GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "gottcoins"))-100)));
                             event.getTextChannel().sendMessage("successfully buyed miner").queue();
                         } else event.getTextChannel().sendMessage("Zu wenig geld hier so").queue();
                     } else event.getTextChannel().sendMessage("nicht registriert hier so").queue();
                     break;
                 case "payout":
                     if (GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "userid") != null) {
-                        String[] miners = GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "miner").split(", ");
+                        String[] miners = GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "miner").replace("[", "").replace("]", "").split(", ");
                         for (String miner:miners) {
+                            System.out.println(miners.length);
+                            System.out.println(miner);
                             GottBot.getDB().update("gottcoin", "userid", event.getAuthor().getId(),
-                                    RethinkDB.r.hashMap("gottcoins",
+                                    RethinkDB.r.hashMap("gottcoins",String.valueOf(
                                             Integer.parseInt(
                                                     GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "gottcoins")
                                             )+
-                                                    GottBot.getDB().get("gottcoin", "minerid", miner, "gottcoins")));
+                                                    GottBot.getDB().getByID("gottcoin", miner, "gottcoins"))));
                         }
                         event.getTextChannel().sendMessage("successfully payed out mined GottCoins").queue();
                     } else event.getTextChannel().sendMessage("nicht registriert ey").queue();
