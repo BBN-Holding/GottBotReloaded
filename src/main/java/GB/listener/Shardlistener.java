@@ -11,7 +11,6 @@ public class Shardlistener extends ListenerAdapter {
     @Override
     public void onReady(ReadyEvent event) {
         System.out.println("[Start] Starting GottCoin Thread");
-        // TODO: Fertig machen
         new Thread(() -> {
             new Timer().schedule(new TimerTask() {
                 @Override

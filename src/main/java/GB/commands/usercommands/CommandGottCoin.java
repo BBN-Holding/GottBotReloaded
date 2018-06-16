@@ -1,5 +1,6 @@
 package GB.commands.usercommands;
 
+import GB.Entitites.GottCoin.Miner;
 import GB.GottBot;
 import GB.Handler.CommandHandling.Command;
 import com.rethinkdb.RethinkDB;
@@ -20,7 +21,7 @@ public class CommandGottCoin implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length < 1) {
-            event.getTextChannel().sendMessage(GottBot.getMessage().getCommandTemplate(Aliases(), "gb.gc register|info|buyminer|payout(|pools|miner|wallet)", "GOTTCOIN WOUHHHH", Color.CYAN)).queue();
+            event.getTextChannel().sendMessage(GottBot.getMessage().getCommandTemplate(Aliases(), "gb.gc register|info|buyminer|payout(|pool|miner|wallet)", "GOTTCOIN WOUHHHH", Color.CYAN)).queue();
         } else {
             switch (args[0].toLowerCase()) {
                 case "info":
@@ -46,6 +47,19 @@ public class CommandGottCoin implements Command {
                     } else event.getTextChannel().sendMessage("NOT REGISTERED").queue();
                     break;
 
+                case "miner":
+                    if (args.length<2) {
+                        String[] miners = GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "miner").replace("[", "").replace("]", "").split(", ");
+                        String miner="";
+                        for (String minerr:miners) {
+                            miner += minerr+" ";
+                        }
+                        event.getTextChannel().sendMessage(miner).queue();
+                    } else {
+                        System.out.println(new Miner(args[1]));
+                    }
+                    break;
+
                 case "register":
                     if (GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "userid") == null) {
                         GottBot.getDB().insert("gottcoin", RethinkDB.r.hashMap("userid", event.getAuthor().getId())
@@ -55,6 +69,7 @@ public class CommandGottCoin implements Command {
                         event.getTextChannel().sendMessage("now you can mine GottCoins. Wouh").queue();
                     } else event.getTextChannel().sendMessage("You're already registered").queue();
                     break;
+
                 case "buyminer":
                     if (GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "userid") != null) {
                         if (Integer.parseInt(GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "gottcoins"))>=100) {

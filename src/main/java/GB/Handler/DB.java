@@ -50,6 +50,11 @@ public class DB {
         return String.valueOf(object);
     }
 
+    public String getByIDwithoutField(String table, String id) {
+        Object object = r.table(table).get(id).run(conn);
+        return String.valueOf(object);
+    }
+
     public String getAll(String table, String field) {
         Cursor cursor = r.table(table).getField(field).run(conn);
         return cursor.next().toString();
