@@ -45,19 +45,22 @@ public class DB {
         }
     }
 
-    public HashMap<String, String> getMap(String table, String where, String wherevalue, String field1, String field2) {
-        Cursor cursor = r.table(table).filter(row -> row.g(where).equals(wherevalue)).getField(field1).run(conn);
-        Cursor cursor2 = r.table(table).filter(row -> row.g(where).equals(wherevalue)).getField(field2).run(conn);
-        HashMap<String, String> strings=new HashMap<>();
-        while (cursor.hasNext()&&cursor2.hasNext()) {
-            strings.put(cursor.next().toString(), cursor2.next().toString());
-        }
-        return strings;
+    public String getByID(String table, String id, String field) {
+        return r.table(table).get(id).getField(field).run(conn);
     }
 
     public String getAll(String table, String field) {
         Cursor cursor = r.table(table).getField(field).run(conn);
         return cursor.next().toString();
+    }
+
+    public ArrayList<String> getAllWhere(String table,String where, String wherevalue, String field) {
+        Cursor cursor = r.table(table).filter(row -> row.g(where).eq(wherevalue)).getField(field).run(conn);
+        ArrayList<String> strings=new ArrayList<>();
+        for (Object object:cursor) {
+            strings.add(String.valueOf(object));
+        }
+        return strings;
     }
 
     public String get(String table, String where, String wherevalue, String field) {

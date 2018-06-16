@@ -9,6 +9,7 @@ import GB.commands.moderation.CommandMoveAll;
 import GB.commands.owner.*;
 import GB.commands.usercommands.*;
 import GB.listener.Lobbylistener;
+import GB.listener.Shardlistener;
 import GB.listener.shutdown;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
@@ -115,7 +116,7 @@ public class GottBot {
     }
     private static void startOneShardBot() {
         try {
-            oneShardBot = new JDABuilder(AccountType.BOT).setToken(getConfig().getToken()).addEventListener(new Lobbylistener()).setAutoReconnect(true).buildAsync();
+            oneShardBot = new JDABuilder(AccountType.BOT).setToken(getConfig().getToken()).addEventListener(new Lobbylistener(), new Shardlistener()).setAutoReconnect(true).buildAsync();
         } catch (Exception e) {
             e.printStackTrace();
         }

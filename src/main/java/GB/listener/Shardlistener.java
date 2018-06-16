@@ -19,21 +19,22 @@ public class Shardlistener extends ListenerAdapter {
                 @Override
                 public void run() {
                     Random random = new Random();
-                    HashMap<String, String> miner = GottBot.getDB().getMap("gottcoin", "type", "miner", "minerid", "chance");
-                        int totalSum = miner.size();
-                        int count = random.nextInt(totalSum) + 1;
-                        String currentObject;
-                        while (count > 0) {
-                            for (Map.Entry<String, String> entry : miner.entrySet()) {
-                                currentObject = entry.getKey();
-                                count -= Integer.parseInt(entry.getValue());
-                                if (count <= 0) GottBot.getDB()
-                                        .update("gottcoin", "minerid", currentObject, RethinkDB.r.hashMap("gottcoins",
-                                                String.valueOf(Integer.parseInt(GottBot.getDB().get("gottcoin", "minerid", currentObject, "gottcoins"))+1))
-                                                .with("minedgottcoins",
-                                                        String.valueOf(Integer.parseInt(GottBot.getDB().get("gottcoin", "minerid", currentObject, "minedgottcoins"))+1)));
-                            }
+                    ArrayList<String> string1 = GottBot.getDB().getAllWhere("gottcoin", "type", "miner", "id");
+                    ArrayList<String> officialminer = new ArrayList<>();
+                    for (String id: string1) {
+                        String chance = GottBot.getDB().getByID("gottcoin", id, "chance");
+                        for (int i =0; Integer.parseInt(chance)>i; i++) {
+                            officialminer.add(id);
                         }
+                    }
+                    int randomnumber = random.nextInt(officialminer.size());
+                    String minerid = officialminer.get(randomnumber);
+                    String minedgottcoins = GottBot.getDB().getByID("gottcoin", minerid, "gottcoinsmined");
+                                 GottBot.getDB()
+                                        .update("gottcoin", "id", minerid, RethinkDB.r.hashMap("gottcoinsmined",
+                                                        String.valueOf(Integer.parseInt(minedgottcoins)+1)));
+                                 GottBot.getDB().update("gottcoin", "id", minerid,
+                                         RethinkDB.r.hashMap("gottcoins", Integer.parseInt(GottBot.getDB().get("gottcoin", "id", minerid, "gottcoins"))+1));
                 }
             }, 1000, 1000);
         }).start();
