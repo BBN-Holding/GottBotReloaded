@@ -6,6 +6,7 @@ import GB.Handler.CommandHandling.commandHandler;
 import GB.Handler.CommandHandling.commandListener;
 import GB.commands.moderation.CommandLobby;
 import GB.commands.moderation.CommandMoveAll;
+import GB.commands.moderation.CommandPrefix;
 import GB.commands.owner.*;
 import GB.commands.usercommands.*;
 import GB.listener.Lobbylistener;
@@ -138,7 +139,7 @@ public class GottBot {
                 new CommandGameAnimator()
         };
         Command[] ModerationComamnds = {
-            new CommandMoveAll(), new CommandLobby()
+            new CommandMoveAll(), new CommandLobby(), new CommandPrefix()
         };
         Command[] Usercomamnds = {
                 new CommandHelp(),
@@ -159,9 +160,15 @@ public class GottBot {
         for (String list:commandlists) {
             for (Command cmd:commands.get(list)) {
                 for (String alias:cmd.Aliases()) {
-                    commandHandler.commands.put(alias, cmd);
-                    if (debug) {
-                        System.out.println("[Command] "+cmd.getClass().getSimpleName()+" alias "+alias);
+                    if (commandHandler.commands.get(alias)==null) {
+                        commandHandler.commands.put(alias, cmd);
+                        if (debug) {
+                            System.out.println("[Command] " + cmd.getClass().getSimpleName() + " alias " + alias);
+                        }
+                    } else {
+                        System.out.println("Multiple Aliases Found! : "+alias+" in "+cmd.getClass().getName()+ " and "+
+                                commandHandler.commands.get(alias).getClass().getName()+"... Exiting...");
+                        System.exit(1);
                     }
                 }
             }
