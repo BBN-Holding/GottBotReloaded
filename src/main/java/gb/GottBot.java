@@ -138,7 +138,7 @@ public class GottBot {
                 new CommandGameAnimator()
         };
         Command[] ModerationComamnds = {
-            new CommandMoveAll(), new CommandLobby()
+            new CommandMoveAll(), new CommandLobby(), new CommandPrefix()
         };
         Command[] Usercomamnds = {
                 new CommandHelp(),
@@ -159,9 +159,15 @@ public class GottBot {
         for (String list:commandlists) {
             for (Command cmd:commands.get(list)) {
                 for (String alias:cmd.Aliases()) {
-                    commandHandler.commands.put(alias, cmd);
-                    if (debug) {
-                        System.out.println("[Command] "+cmd.getClass().getSimpleName()+" alias "+alias);
+                    if (commandHandler.commands.get(alias)==null) {
+                        commandHandler.commands.put(alias, cmd);
+                        if (debug) {
+                            System.out.println("[Command] " + cmd.getClass().getSimpleName() + " alias " + alias);
+                        }
+                    } else {
+                        System.out.println("Multiple Aliases Found! : "+alias+" in "+cmd.getClass().getName()+ " and "+
+                                commandHandler.commands.get(alias).getClass().getName()+"... Exiting...");
+                        System.exit(1);
                     }
                 }
             }
