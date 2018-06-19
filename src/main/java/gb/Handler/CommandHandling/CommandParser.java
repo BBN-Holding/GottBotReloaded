@@ -5,7 +5,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
-public class commandParser {
+public class CommandParser {
 
     public commandContainer parse(String prefix, String raw, MessageReceivedEvent event) {
         String beheaded = event.getMessage().getContentRaw().replaceFirst(Pattern.quote(prefix), "");

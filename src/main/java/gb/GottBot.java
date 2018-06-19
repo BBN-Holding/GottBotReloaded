@@ -2,10 +2,11 @@ package gb;
 
 import gb.Handler.*;
 import gb.Handler.CommandHandling.Command;
-import gb.Handler.CommandHandling.commandHandler;
+import gb.Handler.CommandHandling.CommandHandler;
 import gb.Handler.CommandHandling.commandListener;
 import gb.commands.moderation.CommandLobby;
 import gb.commands.moderation.CommandMoveAll;
+import gb.commands.moderation.CommandPrefix;
 import gb.commands.owner.*;
 import gb.commands.usercommands.*;
 import gb.listener.Lobbylistener;
@@ -159,14 +160,14 @@ public class GottBot {
         for (String list:commandlists) {
             for (Command cmd:commands.get(list)) {
                 for (String alias:cmd.Aliases()) {
-                    if (commandHandler.commands.get(alias)==null) {
-                        commandHandler.commands.put(alias, cmd);
+                    if (CommandHandler.commands.get(alias)==null) {
+                        CommandHandler.commands.put(alias, cmd);
                         if (debug) {
                             System.out.println("[Command] " + cmd.getClass().getSimpleName() + " alias " + alias);
                         }
                     } else {
                         System.out.println("Multiple Aliases Found! : "+alias+" in "+cmd.getClass().getName()+ " and "+
-                                commandHandler.commands.get(alias).getClass().getName()+"... Exiting...");
+                                CommandHandler.commands.get(alias).getClass().getName()+"... Exiting...");
                         System.exit(1);
                     }
                 }

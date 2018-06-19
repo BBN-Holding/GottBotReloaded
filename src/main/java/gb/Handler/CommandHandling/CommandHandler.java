@@ -1,14 +1,13 @@
 package gb.Handler.CommandHandling;
 
 import gb.GottBot;
-
 import java.util.HashMap;
 
-public class commandHandler {
+public class CommandHandler {
 
-    public static final commandParser parser = new commandParser();
+    public static final CommandParser parser = new CommandParser();
     public static HashMap<String, Command> commands = new HashMap<>();
-    public static void handleCommand(commandParser.commandContainer cmd) {
+    public static void handleCommand(CommandParser.commandContainer cmd) {
         String invoke = cmd.invoke;
         invoke = invoke.toLowerCase();
         if (commands.containsKey(invoke)) {

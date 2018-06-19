@@ -24,6 +24,6 @@ public class commandListener extends ListenerAdapter {
     }
 
     private void handle(MessageReceivedEvent event, String prefix) {
-        commandHandler.handleCommand(commandHandler.parser.parse(prefix, event.getMessage().getContentRaw(), event));
+        CommandHandler.handleCommand(CommandHandler.parser.parse(prefix, event.getMessage().getContentRaw(), event));
     }
 }

@@ -1,8 +1,8 @@
-package GB.commands.moderation;
+package gb.commands.moderation;
 
-import GB.GottBot;
-import GB.Handler.CommandHandling.Command;
 import com.rethinkdb.RethinkDB;
+import gb.GottBot;
+import gb.Handler.CommandHandling.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class CommandPrefix implements Command {
