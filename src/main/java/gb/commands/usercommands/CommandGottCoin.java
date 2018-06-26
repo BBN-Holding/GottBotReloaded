@@ -1,6 +1,7 @@
 package gb.commands.usercommands;
 
 import gb.Entitites.GottCoin.Miner;
+import gb.Entitites.GottCoin.User;
 import gb.GottBot;
 import gb.Handler.CommandHandling.Command;
 import com.rethinkdb.RethinkDB;
@@ -20,58 +21,43 @@ public class CommandGottCoin implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length < 1) {
-            event.getTextChannel().sendMessage(GottBot.getMessage().getCommandTemplate(Aliases(), "gb.gc register|info|buyminer|payout(|pool|miner|wallet)", "GOTTCOIN WOUHHHH", Color.CYAN)).queue();
+            event.getTextChannel().sendMessage(GottBot.getMessage().getCommandTemplate(Aliases(), "gb.gc info|buyminer|payout(|pool|miner|wallet)", "GOTTCOIN WOUHHHH", Color.CYAN)).queue();
         } else {
+            User user = new User(GottBot.getDB().getByWherewithoutField("gottcoin", "userid", event.getAuthor().getId()));
             switch (args[0].toLowerCase()) {
                 case "info":
-                    if (GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "userid") != null) {
-                        EmbedBuilder embedBuilder = new EmbedBuilder();
-                        String miner = GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "miner").replace("[", "").replace("]", "");
-                        String[] miners;
-                        miners = miner.split(", ");
-                        if (miners.length==0) {
-                            String string= miner.replace("[", "").replace("]", "");
-                            miners[0] = string;
-                        }
-                        for (int i =0;miners.length>i; i++) {
-                            embedBuilder.addField("Miner "+String.valueOf(i+1),
-                                    "Pool: "+GottBot.getDB().getByID("gottcoin", miners[i], "pool")+
-                                            "\nChance: "+GottBot.getDB().getByID("gottcoin", miners[i], "chance")+
-                                            "\nGC Mined: "+GottBot.getDB().getByID("gottcoin", miners[i], "gottcoinsmined")+
-                                            "\nGC: "+GottBot.getDB().getByID("gottcoin", miners[i], "gottcoins")
-                                    , false);
-                        }
-                        embedBuilder.setTitle("GottCoin - Info");
-                        event.getTextChannel().sendMessage(embedBuilder.build()).queue();
-                    } else event.getTextChannel().sendMessage("NOT REGISTERED").queue();
+                    EmbedBuilder embedBuilder = new EmbedBuilder();
+                    embedBuilder.addField("User: "+event.getAuthor().getName(),
+                            "Gottcoins: "+user.getGottcoins()+
+                                    "\nMinedGottCoins: "+user.getGottcoinsmined()
+                            , false);
+                    String[] miners = user.getMiner();
+                    for (int i =0;miners.length>i; i++) {
+                        embedBuilder.addField("Miner "+String.valueOf(i+1),
+                                "Pool: "+GottBot.getDB().getByID("gottcoin", miners[i], "pool")+
+                                        "\nChance: "+GottBot.getDB().getByID("gottcoin", miners[i], "chance")+
+                                        "\nGC Mined: "+GottBot.getDB().getByID("gottcoin", miners[i], "gottcoinsmined")+
+                                        "\nGC: "+GottBot.getDB().getByID("gottcoin", miners[i], "gottcoins")
+                                , true);
+                    }
+                    embedBuilder.setTitle("GottCoin - Info");
+                    event.getTextChannel().sendMessage(embedBuilder.build()).queue();
                     break;
 
                 case "miner":
                     if (args.length<2) {
-                        String[] miners = GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "miner").replace("[", "").replace("]", "").split(", ");
-                        String miner="";
-                        for (String minerr:miners) {
-                            miner += minerr+" ";
+                        StringBuilder minerstring=new StringBuilder();
+                        for (String miner:user.getMiner()) {
+                            minerstring.append(miner);
                         }
-                        event.getTextChannel().sendMessage(miner).queue();
+                        event.getTextChannel().sendMessage(minerstring.toString()).queue();
                     } else {
                         System.out.println(new Miner(args[1]));
                     }
                     break;
 
-                case "register":
-                    if (GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "userid") == null) {
-                        GottBot.getDB().insert("gottcoin", RethinkDB.r.hashMap("userid", event.getAuthor().getId())
-                                .with("type", "user")
-                                .with("miner", RethinkDB.r.array()).with("gottcoinsmined", "0")
-                                .with("gottcoins", "1000000"));
-                        event.getTextChannel().sendMessage("now you can mine GottCoins. Wouh").queue();
-                    } else event.getTextChannel().sendMessage("You're already registered").queue();
-                    break;
-
                 case "buyminer":
-                    if (GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "userid") != null) {
-                        if (Integer.parseInt(GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "gottcoins"))>=100) {
+                        if (Long.parseLong(user.getGottcoins())>=100) {
                             String[] soso = GottBot.getDB().insert("gottcoin", RethinkDB.r.hashMap("type", "miner")
                                     .with("author", event.getAuthor().getId())
                                     .with("chance", "10")
@@ -80,28 +66,46 @@ public class CommandGottCoin implements Command {
                             .with("gottcoins", "0")).split(",");
                             String string = soso[4].split("=")[1].replace("[", "").replace("]", "");
                             String value = ", "+string;
-                            if (GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "miner").replace("]", "").equals("[")) value = string;
+                            StringBuilder miner=new StringBuilder();
+                            for (String oneMiner:user.getMiner()) {
+                                miner.append(oneMiner);
+                            }
+                            if (miner.toString().replace("]", "").equals("[")) value = string;
                             GottBot.getDB().update("gottcoin", "userid", event.getAuthor().getId(),
                                     RethinkDB.r.hashMap("miner",
                                             GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "miner").replace("]", "")
-                                                    +value+"]").with("gottcoins", String.valueOf(Integer.parseInt(GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "gottcoins"))-100)));
+                                                    +value+"]").with("gottcoins", String.valueOf(Long.parseLong(user.getGottcoins())-100)));
                             event.getTextChannel().sendMessage("successfully buyed miner").queue();
                         } else event.getTextChannel().sendMessage("Zu wenig geld hier so").queue();
-                    } else event.getTextChannel().sendMessage("nicht registriert hier so").queue();
                     break;
                 case "payout":
-                    if (GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "userid") != null) {
-                        String[] miners = GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "miner").replace("[", "").replace("]", "").split(", ");
-                        for (String miner:miners) {
+                        String[] miners1=user.getMiner();
+                        for (String miner:miners1) {
+                            Long mined = Long.parseLong(GottBot.getDB().getByID("gottcoin", miner, "gottcoins"));
                             GottBot.getDB().update("gottcoin", "userid", event.getAuthor().getId(),
                                     RethinkDB.r.hashMap("gottcoins",String.valueOf(
-                                            Integer.parseInt(
-                                                    GottBot.getDB().get("gottcoin", "userid", event.getAuthor().getId(), "gottcoins")
-                                            )+
-                                                    GottBot.getDB().getByID("gottcoin", miner, "gottcoins"))));
+                                            Long.parseLong(
+                                                    user.getGottcoins()
+                                            )+mined
+                                                    ))
+                                            .with("gottcoinsmined", Long.parseLong(user.getGottcoinsmined())+mined));
                         }
                         event.getTextChannel().sendMessage("successfully payed out mined GottCoins").queue();
-                    } else event.getTextChannel().sendMessage("nicht registriert ey").queue();
+                    break;
+                case "pool":
+                    if (args.length>=2) {
+                        switch (args[1].toLowerCase()) {
+                            case "create":
+
+                                break;
+                            case "join":
+
+                                break;
+                            case "list":
+
+                                break;
+                        }
+                    }
                     break;
             }
         }

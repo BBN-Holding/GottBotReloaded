@@ -53,6 +53,11 @@ public class DB {
         return String.valueOf(object);
     }
 
+    public String getByWherewithoutField(String table, String where, String wherevalue) {
+        Cursor cursor = r.table(table).filter(row -> row.g(where).eq(wherevalue)).run(conn);
+        return String.valueOf(cursor.next());
+    }
+
     public String getAll(String table, String field) {
         Cursor cursor = r.table(table).getField(field).run(conn);
         return cursor.next().toString();
