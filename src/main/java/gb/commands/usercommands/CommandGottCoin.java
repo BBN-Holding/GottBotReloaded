@@ -44,18 +44,6 @@ public class CommandGottCoin implements Command {
                     event.getTextChannel().sendMessage(embedBuilder.build()).queue();
                     break;
 
-                case "miner":
-                    if (args.length<2) {
-                        StringBuilder minerstring=new StringBuilder();
-                        for (String miner:user.getMiner()) {
-                            minerstring.append(miner);
-                        }
-                        event.getTextChannel().sendMessage(minerstring.toString()).queue();
-                    } else {
-                        System.out.println(new Miner(args[1]));
-                    }
-                    break;
-
                 case "buyminer":
                         if (Long.parseLong(user.getGottcoins())>=100) {
                             String[] soso = GottBot.getDB().insert("gottcoin", RethinkDB.r.hashMap("type", "miner")
@@ -96,10 +84,27 @@ public class CommandGottCoin implements Command {
                     if (args.length>=2) {
                         switch (args[1].toLowerCase()) {
                             case "create":
-
+                                if (args.length>2) {
+                                    if (Long.parseLong(user.getGottcoins()) >= 1000000) {
+                                        String poolname = event.getMessage().getContentRaw().replaceFirst(GottBot.getMessage().getPrefix(event.getGuild().getId()), "").replaceFirst("pool create ","");
+                                        if (GottBot.getDB().get("gottcoin", "poolname", poolname, "id") == null) {
+                                            GottBot.getDB().insert("gottcoin", RethinkDB.r
+                                                    .hashMap("poolname", poolname)
+                                                    .with("miners", RethinkDB.r.array())
+                                                    .with("owner", event.getAuthor().getId())
+                                                    .with("type", "pool")
+                                                    .with("chance", "0")
+                                                    .with("gottcoinsmined", "0")
+                                            );
+                                            event.getTextChannel().sendMessage("created pool "+poolname).queue();
+                                        } else event.getTextChannel().sendMessage("Dat Existiert schon").queue();
+                                    }
+                                } else event.getTextChannel().sendMessage("use gb.pool create [name]").queue();
                                 break;
                             case "join":
+                                if (args.length<3) {
 
+                                }
                                 break;
                             case "list":
 

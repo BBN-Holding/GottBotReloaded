@@ -118,7 +118,18 @@ public class GottBot {
     }
     private static void startOneShardBot() {
         try {
-            oneShardBot = new JDABuilder(AccountType.BOT).setToken(getConfig().getToken()).addEventListener(new Lobbylistener(), new Shardlistener()).setAutoReconnect(true).buildAsync();
+            new Thread(() -> {
+                try {
+                    Thread.sleep(5000L);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    oneShardBot = new JDABuilder(AccountType.BOT).setToken(getConfig().getToken()).addEventListener(new Lobbylistener(), new Shardlistener()).setAutoReconnect(true).buildAsync();
+                } catch (LoginException e) {
+                    e.printStackTrace();
+                }
+            }).start();
         } catch (Exception e) {
             e.printStackTrace();
         }
