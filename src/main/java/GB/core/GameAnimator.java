@@ -15,7 +15,7 @@ public class GameAnimator {
         // games.add("online:playing:Testing new Features:https://twitch.tv/bigbotnetwork");
         new Thread(() -> {
             if (On) {
-                // keine ahnung warum int[] frag intellij :D
+                // keine ahnung warum int[] frag java :D
                 final int[] i = {0};
                 new Timer().schedule(new TimerTask() {
                     @Override

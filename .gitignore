@@ -27,6 +27,5 @@ hs_err_pid*
 
 # Tokens and co
 config.yml
-.idea/workspace.xml
 
 *.yml

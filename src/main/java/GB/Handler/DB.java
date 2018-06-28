@@ -27,7 +27,7 @@ public class DB {
                 .hostname(GottBot.getConfig().getDB().get("Hostname"))
                 .db(GottBot.getConfig().getDB().get("Database"))
                 .port(Integer.parseInt(GottBot.getConfig().getDB().get("Port")))
-                .user(GottBot.getConfig().getDB().get("User"), GottBot.getConfig().getDB().get("Password"))
+                 // .user(GottBot.getConfig().getDB().get("User"), GottBot.getConfig().getDB().get("Password"))
                 .connect();
         System.out.println("CONNECTED! " + conn.isOpen());
         System.out.println(r.tableList().run(conn).toString());

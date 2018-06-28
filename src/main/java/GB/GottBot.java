@@ -1,17 +1,11 @@
 package GB;
 
 import GB.Handler.*;
-import GB.Handler.CommandHandling.Command;
-import GB.Handler.CommandHandling.commandHandler;
-import GB.Handler.CommandHandling.commandListener;
-import GB.commands.moderation.CommandLobby;
-import GB.commands.moderation.CommandMoveAll;
+import GB.Handler.CommandHandling.*;
+import GB.commands.moderation.*;
 import GB.commands.owner.*;
 import GB.commands.usercommands.*;
-import GB.listener.Lobbylistener;
-import GB.listener.MentionListener;
-import GB.listener.Shardlistener;
-import GB.listener.shutdown;
+import GB.listener.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import net.dv8tion.jda.bot.sharding.*;
@@ -32,18 +26,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GottBot {
+
     private static DefaultShardManagerBuilder builder = new DefaultShardManagerBuilder();
     public static ShardManager shardManager;
     private static SessionController sessionController;
     private static Config config;
-    private static boolean streaming=true;
-    private static boolean dev=true;
+    private static boolean streaming = true;
+    private static boolean dev = true;
     private static String MaxShards;
     private static String Shard;
     private static PrintWriter printWriter;
     private static BufferedReader bufferedReader;
-    private static ArrayList<Server> serverclasses=new ArrayList<>();
-    private static boolean debug=true;
+    private static ArrayList<Server> serverclasses = new ArrayList<>();
+    private static boolean debug = true;
     private static HashMap<String, Command[]> commands;
     private static ArrayList<String> commandlists;
     private static JDA oneShardBot;
@@ -84,8 +79,8 @@ public class GottBot {
                         } else if (line.equals("Stop!")) {
                             shardManager.shutdown();
                         } else {
-                            for (int i = 0; serverclasses.size() > i; i++) {
-                                serverclasses.get(i).onMessage(line);
+                            for (Server serverclass : serverclasses) {
+                                serverclass.onMessage(line);
                             }
                         }
                     }
@@ -138,7 +133,7 @@ public class GottBot {
                 new CommandGameAnimator()
         };
         Command[] ModerationComamnds = {
-            new CommandMoveAll(), new CommandLobby()
+            new CommandMoveAll(), new CommandLobby(), new CommandPrefix()
         };
         Command[] Usercomamnds = {
                 new CommandHelp(),
@@ -159,9 +154,15 @@ public class GottBot {
         for (String list:commandlists) {
             for (Command cmd:commands.get(list)) {
                 for (String alias:cmd.Aliases()) {
-                    commandHandler.commands.put(alias, cmd);
-                    if (debug) {
-                        System.out.println("[Command] "+cmd.getClass().getSimpleName()+" alias "+alias);
+                    if (commandHandler.commands.get(alias)==null) {
+                        commandHandler.commands.put(alias, cmd);
+                        if (debug) {
+                            System.out.println("[Command] " + cmd.getClass().getSimpleName() + " alias " + alias);
+                        }
+                    } else {
+                        System.out.println("Multiple Aliases Found! : "+alias+" in "+cmd.getClass().getName()+ " and "+
+                                commandHandler.commands.get(alias).getClass().getName()+"... Exiting...");
+                        System.exit(1);
                     }
                 }
             }
