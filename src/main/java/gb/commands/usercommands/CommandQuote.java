@@ -15,7 +15,7 @@ public class CommandQuote implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length<1) {
-            event.getTextChannel().sendMessage(GottBot.getMessage().getCommandTemplate(Aliases(), "gb.quote [MessageID]", "Quote a Message")).queue();
+            event.getTextChannel().sendMessage(GottBot.getMessage().getCommandTemplate(Aliases(), "gb.quote [MessageID]", "Quote a MessageListener")).queue();
         } else {
             Message msg = event.getTextChannel().getMessageById(args[0]).complete();
             event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Quote from "+msg.getAuthor().getName()).setDescription("```"+msg.getContentRaw()+"```").build()).queue();

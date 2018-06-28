@@ -7,7 +7,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public class Shutdown implements Command {
     @Override
     public String[] Aliases() {
-        return new String[]{"close", "shutdown","exit","stop"};
+        return new String[]{"close", "ShutdownListener","exit","stop"};
     }
 
     @Override

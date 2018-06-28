@@ -13,7 +13,7 @@ import net.dv8tion.jda.webhook.WebhookMessageBuilder;
 import java.io.IOException;
 import java.net.URL;
 
-public class Lobbylistener extends ListenerAdapter {
+public class LobbyListener extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         if (!event.getAuthor().isBot()) {

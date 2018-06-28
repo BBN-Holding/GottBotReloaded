@@ -1,11 +1,12 @@
 package gb.listener;
-/*
- * @author Hax
- * @time 20:18 26.06.2018
- * @project GottBotRework
- * @package gb.listener
- * @class ready
- */
+
+/**
+  @author Hax
+  @time 20:18 26.06.2018
+  @project GottBotRework
+  @package gb.listener
+  @class ReadyListener
+ **/
 
 import com.rethinkdb.RethinkDB;
 import gb.GottBot;
@@ -13,7 +14,7 @@ import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.ReadyEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
-public class ready extends ListenerAdapter {
+public class ReadyListener extends ListenerAdapter {
 
     @Override
     public void onReady(ReadyEvent event) {

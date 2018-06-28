@@ -6,7 +6,7 @@ import net.dv8tion.jda.core.events.ReadyEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import java.util.*;
 
-public class Shardlistener extends ListenerAdapter {
+public class ShardListener extends ListenerAdapter {
 
     @Override
     public void onReady(ReadyEvent event) {

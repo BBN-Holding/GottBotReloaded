@@ -1,30 +1,16 @@
 package gb;
 
-import GB.Handler.*;
-import GB.Handler.CommandHandling.*;
-import GB.commands.moderation.*;
-import GB.commands.owner.*;
-import GB.commands.usercommands.*;
-import GB.listener.*;
 import gb.Handler.*;
-import gb.Handler.CommandHandling.Command;
-import gb.Handler.CommandHandling.CommandHandler;
-import gb.Handler.CommandHandling.commandListener;
-import gb.commands.moderation.CommandLobby;
-import gb.commands.moderation.CommandMoveAll;
-import gb.commands.moderation.CommandPrefix;
-import gb.commands.owner.*;
-import gb.commands.usercommands.*;
-import gb.listener.Lobbylistener;
-import gb.listener.MentionListener;
-import gb.listener.Shardlistener;
-import gb.listener.shutdown;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import gb.Handler.CommandHandling.*;
+import gb.Handler.Message;
+import gb.commands.moderation.*;
+import gb.commands.owner.*;
+import gb.commands.usercommands.*;
+import gb.listener.*;
 import net.dv8tion.jda.bot.sharding.*;
-import net.dv8tion.jda.core.AccountType;
-import net.dv8tion.jda.core.JDA;
-import net.dv8tion.jda.core.JDABuilder;
+import net.dv8tion.jda.core.*;
 import net.dv8tion.jda.core.utils.SessionController;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -125,27 +111,16 @@ public class GottBot {
     }
     private static void startOneShardBot() {
         try {
-            new Thread(() -> {
-                try {
-                    Thread.sleep(5000L);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    oneShardBot = new JDABuilder(AccountType.BOT).setToken(getConfig().getToken()).addEventListener(new Lobbylistener(), new Shardlistener()).setAutoReconnect(true).buildAsync();
-                } catch (LoginException e) {
-                    e.printStackTrace();
-                }
-            }).start();
+            oneShardBot = new JDABuilder(AccountType.BOT).setToken(getConfig().getToken()).addEventListener(new LobbyListener(), new ShardListener()).setAutoReconnect(true).buildAsync();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
     private static void registerServerClasses() {
         Server[] servers = {new CommandShardManager(), new CommandGameAnimator()};
-        for (int i =0;i<servers.length; i++) {
-            serverclasses.add(servers[i]);
-            System.out.println("[Shardlistener] "+servers[i].getClass().getSimpleName());
+        for (Server server : servers) {
+            serverclasses.add(server);
+            System.out.println("[ShardListener] " + server.getClass().getSimpleName());
         }
     }
     private static void registerCommands() {
@@ -178,23 +153,14 @@ public class GottBot {
         for (String list:commandlists) {
             for (Command cmd:commands.get(list)) {
                 for (String alias:cmd.Aliases()) {
-<<<<<<< HEAD:src/main/java/GB/GottBot.java
-                    if (commandHandler.commands.get(alias)==null) {
-                        commandHandler.commands.put(alias, cmd);
-=======
                     if (CommandHandler.commands.get(alias)==null) {
                         CommandHandler.commands.put(alias, cmd);
->>>>>>> 03e9acd2b5529a2d9b5b574736ca18dbd88e0985:src/main/java/gb/GottBot.java
                         if (debug) {
                             System.out.println("[Command] " + cmd.getClass().getSimpleName() + " alias " + alias);
                         }
                     } else {
                         System.out.println("Multiple Aliases Found! : "+alias+" in "+cmd.getClass().getName()+ " and "+
-<<<<<<< HEAD:src/main/java/GB/GottBot.java
-                                commandHandler.commands.get(alias).getClass().getName()+"... Exiting...");
-=======
                                 CommandHandler.commands.get(alias).getClass().getName()+"... Exiting...");
->>>>>>> 03e9acd2b5529a2d9b5b574736ca18dbd88e0985:src/main/java/gb/GottBot.java
                         System.exit(1);
                     }
                 }
@@ -223,9 +189,9 @@ public class GottBot {
     }
     private static void registerListener() {
         builder.addEventListeners(
-          new commandListener(),
-                new gb.listener.Message(),
-                new shutdown(),
+          new CommandListener(),
+                new MessageListener(),
+                new ShutdownListener(),
                 new MentionListener()
                 // ,new BotLists()
         );
