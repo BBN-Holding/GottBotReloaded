@@ -1,13 +1,11 @@
 package gb;
 
-<<<<<<< HEAD:src/main/java/GB/GottBot.java
 import GB.Handler.*;
 import GB.Handler.CommandHandling.*;
 import GB.commands.moderation.*;
 import GB.commands.owner.*;
 import GB.commands.usercommands.*;
 import GB.listener.*;
-=======
 import gb.Handler.*;
 import gb.Handler.CommandHandling.Command;
 import gb.Handler.CommandHandling.CommandHandler;
@@ -21,7 +19,6 @@ import gb.listener.Lobbylistener;
 import gb.listener.MentionListener;
 import gb.listener.Shardlistener;
 import gb.listener.shutdown;
->>>>>>> 03e9acd2b5529a2d9b5b574736ca18dbd88e0985:src/main/java/gb/GottBot.java
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import net.dv8tion.jda.bot.sharding.*;
