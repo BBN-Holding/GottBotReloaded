@@ -2,7 +2,6 @@
 # By Skidder and Hax
 
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/gb_Bbn/localized.svg)](https://crowdin.com/project/gb_Bbn) [![Discord Bots](https://discordbots.org/api/widget/status/407189087649398795.svg)](https://discordbots.org/bot/407189087649398795)  [![Discord Bots](https://discordbots.org/api/widget/servers/407189087649398795.svg)](https://discordbots.org/bot/407189087649398795)  [![Discord Bots](https://discordbots.org/api/widget/upvotes/407189087649398795.svg)](https://discordbots.org/bot/407189087649398795)  [![Discord Bots](https://discordbots.org/api/widget/lib/407189087649398795.svg)](https://discordbots.org/bot/407189087649398795)
-<a href="https://disco.gg/bbn"><img src="https://discordapp.com/api/guilds/396732579920740352/embed.png"/></a> 
 <br>
 <br>
 <br>
