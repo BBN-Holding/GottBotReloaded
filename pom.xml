@@ -42,19 +42,16 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.5</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.kohsuke/github-api -->
         <dependency>
             <groupId>org.kohsuke</groupId>
             <artifactId>github-api</artifactId>
             <version>1.92</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.9-rc</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.google.code.scriptengines/scriptengines-javascript -->
         <dependency>
             <groupId>com.google.code.scriptengines</groupId>
             <artifactId>scriptengines-javascript</artifactId>
@@ -74,12 +71,6 @@
             <groupId>com.github.ForYaSee</groupId>
             <artifactId>HttpRequest</artifactId>
             <version>LATEST</version>
-        </dependency>
-        <!-- https://bintray.com/sedmelluq/com.sedmelluq/lavaplayer -->
-        <dependency>
-            <groupId>com.sedmelluq</groupId>
-            <artifactId>lavaplayer</artifactId>
-            <version>1.2.34</version>
         </dependency>
         <dependency>
             <groupId>com.github.taycaldwell</groupId>
@@ -120,7 +111,6 @@
             <artifactId>google-api-client-appengine</artifactId>
             <version>1.23.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.cliftonlabs/json-simple -->
         <dependency>
             <groupId>com.github.cliftonlabs</groupId>
             <artifactId>json-simple</artifactId>
