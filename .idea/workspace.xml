@@ -1,0 +1,917 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="GottBotRework:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="accc1fce-66d1-44b0-93cf-235c5397e878" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CODE_OF_CONDUCT.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolGuysOnBBNServer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/Error.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/Handler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/MenuHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/MessageHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/MySQL.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/Command.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandBlacklist.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandClyde.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandDM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandEval.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandGame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandGiveHashes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandGuildLeave.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandGuilds.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandInvite.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandRegisterServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandRegisterUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandSetLevel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandSetPremium.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandSetXP.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandShard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandStop.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/CommandTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/botowner/Owner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandBan.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandClear.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandKick.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandLog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandPrefix.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandRole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandVerification.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/music/CommandJoin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/music/CommandLeave.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/music/CommandPlay.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/tools/Achievement Blocks.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandBotInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandFAQ.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandGitHub.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandGuild.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandPing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandPrivatechannel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandProfile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandUptime.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/tools/CommandUpvoted.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandBug.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandClan.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandHelp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandLanguage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandLevelMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandMiner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandPremium.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandSay.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandStats.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/core/Errorold.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/core/JSONhandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/core/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/core/MySQLold.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/core/commandHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/core/commandParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/listener/BotList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/listener/Channel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/listener/Guildjoin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/listener/Guildleave.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/listener/Memberjoin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/listener/Message.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/listener/PrivateMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/listener/READY.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/listener/Reaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/listener/commandListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/stuff/DATA.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/util/Constants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GB/webpanel/webpanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/MessagesBundle_de.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MessagesBundle_de.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/MessagesBundle_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MessagesBundle_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/MessagesBundle_de.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MessagesBundle_de.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/MessagesBundle_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MessagesBundle_en.properties" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="1196869485">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="750" />
+          <entry key="md" value="3" />
+          <entry key="xml" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="750" />
+          <entry key="Markdown" value="3" />
+          <entry key="XML" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="10" />
+          <entry key="md" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="10" />
+          <entry key="Markdown" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.js.language.service.starts" />
+    </session>
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="GottBotReloaded" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="721">
+              <caret line="48" column="21" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/GottBot/GottBot.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="29" column="71" selection-start-line="29" selection-start-column="71" selection-end-line="29" selection-end-column="71" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/GottBot/commands/Owner/CommandShutdown.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#476#477#0" expanded="true" />
+                <element signature="e#503#504#0" expanded="true" />
+                <element signature="e#552#553#0" expanded="true" />
+                <element signature="e#579#580#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/GottBot/commands/Command.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="26" lean-forward="true" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/GottBot/commands/Owner/test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#454#455#0" expanded="true" />
+                <element signature="e#481#482#0" expanded="true" />
+                <element signature="e#530#531#0" expanded="true" />
+                <element signature="e#557#558#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/net/dv8tion/JDA/3.7.1_386/JDA-3.7.1_386-sources.jar!/net/dv8tion/jda/core/hooks/ListenerAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="605">
+              <caret line="161" column="16" selection-start-line="161" selection-start-column="16" selection-end-line="161" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/GottBot/core/CommandHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/GottBot/core/CommandParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>addev</find>
+      <find>Int</find>
+      <find>parse</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/GB/Handler/CommandHandling/ListenerCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/Handler/CommandHandling/Command.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/Handler/Info.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/Handler/Language.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/Handler/CommandHandling/commandListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/Test.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/owner/Test.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/Handler/Server.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/Handler/Config.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/Handler/Message.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/listener/shutdown.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/owner/Shutdown.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/Handler/CommandHandling/commandHandler.java" />
+        <option value="$PROJECT_DIR$/target/classes/Messages_en.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/owner/CommandShardManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/owner/CommandGameAnimator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/Profile.java" />
+        <option value="$PROJECT_DIR$/target/classes/Messages_de.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandProfile.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/listener/shardmanagerlistener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandPortal.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/listener/Shardlistener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/listener/MentionListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/Handler/DB.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandGottCoin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/Entitites/GottCoin/Miner.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gb/listener/Message.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gb/commands/usercommands/CommandProfile.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gb/Handler/DB.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gb/listener/ready.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gb/Entitites/GottCoin/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gb/commands/usercommands/CommandGottCoin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GB/GottBot.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gb/GottBot.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gb/listener/ReadyListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gb/listener/dfd.java" />
+        <option value="$PROJECT_DIR$/config.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/gb/listener/BotListListener.java" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/main/java/commandHandler/CommandManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GottBot.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commandHandler/Command.java" />
+        <option value="$PROJECT_DIR$/src/main/java/listener/CommandListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/GottBot/commands/Command.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/GottBot/core/CommandParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/GottBot/core/CommandHandler.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/de/GottBot/GottBot.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/GottBot/listener/CommandListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/GottBot/commands/Owner/CommandShutdown.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/GottBot/commands/Owner/test.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="GottBotRework" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="GottBotRework" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="10" />
+    <option name="y" value="20" />
+    <option name="width" value="1260" />
+    <option name="height" value="944" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="GottBotReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GottBotReloaded" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GottBotReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GottBotReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GottBotReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GottBotReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GottBotReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GottBotReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GottBotReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GottBotReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="GottBot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GottBotReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GottBotReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="GottBot" type="462c0819:PsiDirectoryNode" />
+              <item name="commands" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GottBotReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GottBotReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="GottBot" type="462c0819:PsiDirectoryNode" />
+              <item name="commands" type="462c0819:PsiDirectoryNode" />
+              <item name="Owner" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GottBotReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GottBotReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="GottBot" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GottBotReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GottBotReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="GottBot" type="462c0819:PsiDirectoryNode" />
+              <item name="listener" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533080477456" />
+    <property name="create.test.in.the.same.root" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.33793104" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GottBot\Workspaces\GottBotRework\target\classes" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.GottBot">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GottBot" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.GottBot.GottBot" />
+      <module name="GottBotReloaded" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="10" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="GB.core.Main" />
+      <module name="GottBotReloaded" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GB.core.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.GottBot" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.GottBot" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="accc1fce-66d1-44b0-93cf-235c5397e878" name="Default" comment="" />
+      <created>1526027180447</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1526027180447</updated>
+      <workItem from="1526142424573" duration="4554000" />
+      <workItem from="1526632891520" duration="1044000" />
+      <workItem from="1527077237720" duration="292000" />
+      <workItem from="1527078265246" duration="111000" />
+      <workItem from="1527078445019" duration="264000" />
+      <workItem from="1530207509481" duration="2668000" />
+      <workItem from="1530276491612" duration="93000" />
+      <workItem from="1531240011561" duration="698000" />
+      <workItem from="1531245956792" duration="148000" />
+      <workItem from="1533076486997" duration="3762000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="8212000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49834985" visible="true" weight="0.2510661" />
+      <window_info id="Structure" order="1" sideWeight="0.50165015" side_tool="true" weight="0.21028744" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" sideWeight="0.50165015" side_tool="true" weight="0.21028744" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49947917" weight="0.489154" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32779622" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32838285" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32838285" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5005208" side_tool="true" weight="0.3630363" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.325887" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24962178" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Maven Projects" order="7" weight="0.32980332" />
+      <window_info anchor="right" id="Database" order="8" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/Handler/CommandHandling/Command.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/Handler/CommandHandling/CommandHandler.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/Handler/CommandHandling/CommandListener.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/Handler/CommandHandling/CommandParser.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/Handler/Config.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/Handler/DB.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/Handler/Info.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/Handler/Logger.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/Handler/Message.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/Handler/Server.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/Entitites/GottCoin/Miner.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/Entitites/GottCoin/User.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/core/GameAnimator.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandLobby.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandMoveAll.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/moderation/CommandPrefix.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/owner/CommandGameAnimator.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/owner/CommandShardManager.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/owner/Shutdown.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/owner/Test.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandFeedback.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandGuildInfo.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandHelp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandLanguage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandProfile.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandQuote.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/commands/usercommands/CommandGottCoin.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/listener/ShardListener.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/listener/MentionListener.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/listener/LobbyListener.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/listener/MessageListener.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/listener/ReadyListener.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/gb/listener/dfd.java" />
+    <entry file="file://$PROJECT_DIR$/config.yml" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/listener/ShutdownListener.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/gb/listener/BotListListener.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/gb/GottBot.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GB/core/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="32" column="44" lean-forward="true" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor>
+            <caret column="2" selection-start-column="2" selection-end-column="2" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/GottBot/commandHandler/Command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="40" column="62" lean-forward="true" selection-start-line="40" selection-start-column="62" selection-end-line="40" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/GottBot/commandHandler/CommandManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1777#1778#0" expanded="true" />
+            <element signature="e#1847#1848#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="721">
+          <caret line="48" column="21" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/GottBot/core/CommandHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/GottBot/core/CommandParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/GottBot/listener/CommandListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/GottBot/commands/Command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="26" lean-forward="true" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/GottBot/GottBot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="71" selection-start-line="29" selection-start-column="71" selection-end-line="29" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/net/dv8tion/JDA/3.7.1_386/JDA-3.7.1_386-sources.jar!/net/dv8tion/jda/core/hooks/ListenerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="605">
+          <caret line="161" column="16" selection-start-line="161" selection-start-column="16" selection-end-line="161" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/GottBot/commands/Owner/CommandShutdown.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#476#477#0" expanded="true" />
+            <element signature="e#503#504#0" expanded="true" />
+            <element signature="e#552#553#0" expanded="true" />
+            <element signature="e#579#580#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/GottBot/commands/Owner/test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#454#455#0" expanded="true" />
+            <element signature="e#481#482#0" expanded="true" />
+            <element signature="e#530#531#0" expanded="true" />
+            <element signature="e#557#558#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>GottBotRework:jar</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="Copyright.UI">
+        <settings>
+          <last-edited>Default</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.12642226" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>10</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.33793104" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>GottBotReloaded</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.33793104" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: club.minnced:opus-java-api:1.0.2</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.33793104" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
