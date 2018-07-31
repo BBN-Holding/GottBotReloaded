@@ -19,7 +19,6 @@ public class CommandListener extends ListenerAdapter {
     public void onMessageReceived(MessageReceivedEvent event) {
         if(event.getMessage().getContentRaw().startsWith("gb.")) {
             CommandHandler.handleCommand(CommandParser.parser(event.getMessage().getContentRaw(), event));
-
         }
     }
 }
