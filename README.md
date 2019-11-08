@@ -1,1 +1,1 @@
-GB
+#Gott Bot (OUTDATED)
