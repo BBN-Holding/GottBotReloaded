@@ -1,10 +1,10 @@
 package GB;
 
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.Guild;
-import net.dv8tion.jda.core.entities.MessageEmbed;
-import net.dv8tion.jda.core.entities.User;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api..EmbedBuilder;
+import net.dv8tion.jda.api..entities.Guild;
+import net.dv8tion.jda.api..entities.MessageEmbed;
+import net.dv8tion.jda.api..entities.User;
+import net.dv8tion.jda.api..events.message.MessageReceivedEvent;
 
 import java.awt.*;
 import java.util.Locale;

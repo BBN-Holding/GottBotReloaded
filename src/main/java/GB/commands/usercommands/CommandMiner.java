@@ -3,7 +3,7 @@ package GB.commands.usercommands;
 import GB.Handler;
 import GB.stuff.SECRETS;
 import GB.commands.Command;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.json.JSONObject;
 
 import static GB.core.JSONhandler.readJsonFromUrl;

@@ -2,8 +2,8 @@ package GB.commands.tools;
 
 import GB.Handler;
 import GB.commands.Command;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.core.managers.GuildController;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.managers.GuildController;
 
 public class CommandPrivatechannel implements Command {
     @Override

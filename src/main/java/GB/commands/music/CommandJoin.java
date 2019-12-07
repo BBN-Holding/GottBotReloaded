@@ -1,8 +1,8 @@
 package GB.commands.music;
 
 import GB.commands.Command;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.core.exceptions.PermissionException;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.exceptions.PermissionException;
 
 public class CommandJoin implements Command {
     @Override

@@ -4,8 +4,8 @@ import GB.Handler;
 import GB.core.Main;
 import GB.commands.Command;
 import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineFactory;
@@ -30,7 +30,7 @@ public class CommandEval implements Command {
             try {
                 se.eval("var imports = new JavaImporter(" +
                         "java.nio.file," +
-                        "Packages.net.dv8tion.jda.core.Permission," +
+                        "Packages.net.dv8tion.jda.api.Permission," +
                         "Packages.net.dv8tion.jda.core," +
                         "java.lang," +
                         "java.lang.management," +

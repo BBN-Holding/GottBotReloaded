@@ -1,7 +1,7 @@
 package GB.commands.botowner;
 
 import GB.Handler;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import GB.commands.Command;
 
 public class CommandInvite implements Command {

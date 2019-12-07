@@ -2,7 +2,7 @@ package GB.core;
 
 import GB.Handler;
 import GB.stuff.SECRETS;
-import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.api.EmbedBuilder;
 import org.apache.commons.net.ftp.FTPClient;
 import GB.stuff.DATA;
 

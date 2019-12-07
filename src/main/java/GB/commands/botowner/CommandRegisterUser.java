@@ -3,7 +3,7 @@ package GB.commands.botowner;
 import GB.Handler;
 import GB.core.Main;
 import GB.commands.Command;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
